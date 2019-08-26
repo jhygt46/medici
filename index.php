@@ -1,12 +1,12 @@
 <?php
 
 if($_SERVER["HTTP_HOST"] == "localhost"){
-    $dir = $_SERVER["DOCUMENT_ROOT"]."/medici";
+    $dir = $_SERVER["DOCUMENT_ROOT"]."/medici/";
 }else{
     $dir = $_SERVER["DOCUMENT_ROOT"]."";
 }
 
-require_once $dir."/class/core_class.php";
+require_once $dir."admin/class/core_class.php";
 $core = new Core();
 
 ?>
