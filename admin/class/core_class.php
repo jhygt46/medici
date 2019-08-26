@@ -1,7 +1,7 @@
 <?php
 
-echo "CORE_CLASS<br/>";
-echo $dir_base."config.php";
+echo $dir."<br/>";
+echo $dir_base."<br/>";
 exit;
 
 require_once $dir."config.php";
