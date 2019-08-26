@@ -1,6 +1,6 @@
 <?php
 
-require_once $dir_base."config/config.php";
+require_once DIR_BASE."config/config.php";
 date_default_timezone_set("America/Santiago");
 
 class Core{
