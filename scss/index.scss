@@ -1,0 +1,497 @@
+html{
+    height: 100%;
+    body{
+        height: 100%;
+        font-family: 'Oswald', sans-serif;
+        #contenedor{
+            display: block;
+            min-height: 100%;
+            position: relative;
+            .m1{
+                width: 300px;
+                height: 100%;
+            }
+            .m2{
+                width: 100%;
+                height: 100px;
+            }
+            .menu{
+                position: fixed;
+                .cont_menu{
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    .data_menu{
+                        width: calc(100% - 20px);
+                        padding-right: 20px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        z-index: 1;
+                        .cont_data_menu{
+                            width: 100%;
+                            height: 100%;
+                            background: #bbb;
+                        }
+                    }
+                    .btn_menu{
+                        width: 36px;
+                        height: 32px;
+                        position: absolute;
+                        top: 50px;
+                        left: 300px;
+                        z-index: 2;
+                        .cont_btn_menu{
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            .linea{
+                                width: 100%;
+                                height: 8px;
+                                background: #000;
+                                position: absolute;
+                            }
+                            .l1{
+                                top: 0px;
+                                left: 0px;
+                            }
+                            .l2{
+                                bottom: 0px;
+                                left: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+            .pop_up{
+                display: none;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                z-index: 6;
+                top: 0px;
+                left: 0px;
+                .cont_pop{
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    .pop{
+                        width: 90%;
+                        min-width: 300px;
+                        max-width: 360px;
+                        background: #fff;
+                        border-radius: 10px;
+                        .cp{
+                            display: block;
+                            padding: 30px;
+                            position: relative;
+                            .close{
+                                position: absolute;
+                                width: 34px;
+                                height: 34px;
+                                background: #fff;
+                                top: -12px;
+                                right: -12px;
+                                border-radius: 34px;
+                                border: 2px solid #666;
+                                .cc{
+                                    position: absolute;
+                                    background: #666;
+                                    transform: rotate(45deg);
+                                }
+                                .c1{
+                                    width: 26px;
+                                    height: 4px;
+                                    top: 15px;
+                                    left: 4px;
+                                }
+                                .c2{
+                                    width: 4px;
+                                    height: 26px;
+                                    left: 15px;
+                                    top: 4px;
+                                }
+                            }
+                            .titulo{
+                                font-size: 30px;
+                            }
+                            .formulario{
+                                display: block;
+                                form{
+                                    padding-top: 15px;
+                                    padding-bottom: 15px;
+                                    h3{
+                                        font-size: 18px;
+                                    }
+                                    .input{
+                                        display: block;
+                                        padding-bottom: 4px;
+                                        input{
+                                            width: calc(100% - 2px);
+                                            height: 35px;
+                                            border: 1px solid #999;
+                                        }
+                                    }
+                                    h6{
+                                        font-size: 16px;
+                                    }
+                                    .acciones{
+                                        display: block;
+                                        padding-top: 10px;
+                                        input{
+                                            padding: 10px 30px;
+                                            border: 1px solid #999;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .sitio{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: #ddd;
+                z-index: 1;
+                .cont_sitio{
+                    position: relative;
+                    overflow-y: scroll;
+                    width: 100%;
+                    height: 100%;
+                    .titulo_pagina{
+                        position: fixed;
+                        width: 100%;
+                        height: 140px;
+                        background: #66A;
+                        z-index: 2;
+                        border-bottom: 1px solid #999;
+                        .logo_pagina_mobile{
+                            width: 240px;
+                            height: 100px;
+                            background: #666;
+                        }
+                        .logo_pagina_web{
+                            width: 100%;
+                            max-width: 749px;
+                            height: 100px;
+                            .cont_logo{
+                                width: 100%;
+                                height: 100%;
+                                position: relative;
+                                .logo{
+                                    width: 240px;
+                                    height: 100px;
+                                    left: 0px;
+                                    background: #999;
+                                }
+                                .botones{
+                                    width: calc(100% - 260px);
+                                    right: 0px;
+                                    .btns{
+                                        padding: 10px 0px;
+                                        .btn{
+                                            float: right;
+                                            font-size: 18px;
+                                            text-align: right;
+                                            color: #fff;
+                                            font-weight: bold;
+                                        }
+                                        .btn1{
+                                            width: 110px;
+                                        }
+                                        .btn2{
+                                            width: 159px;
+                                        }
+                                        .btn3{
+                                            width: 120px;
+                                        }
+                                        .btn4{
+                                            width: 100px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .sitio_pagina{
+                        position: absolute;
+                        top: 141px;
+                        left: 0px;
+                        width: 100%;
+                        height: calc(100% - 161px);
+                        z-index: 1;
+                        margin: 10px 0px;
+                        .seccion{
+                            width: 96%;
+                            max-width: 749px;
+                            margin: 0px auto;
+                            .preguntas{
+                                width: 100%;
+                                .pregunta{
+                                    float: left;
+                                    width: 25%;
+                                    height: 85px;
+                                    position: relative;
+                                    color: #666;
+                                    .data{
+                                        width: 92%;
+                                        left: 4%;
+                                        h2{
+                                            font-size: 14px;
+                                        }
+                                        h1{
+                                            font-size: 20px;
+                                            line-height : 20px;
+                                        }
+                                    }
+                                    .close{
+                                        width: 16px;
+                                        height: 16px;
+                                        position: absolute;
+                                        transform: rotate(45deg);
+                                        top: 4px;
+                                        right: 4px;
+                                        .cont_close{
+                                            position: relative;
+                                            width: 100%;
+                                            height: 100%;
+                                            .line{
+                                                background: #fff;
+                                            }
+                                            .l1{
+                                                width: 100%;
+                                                height: 3px;
+                                            }
+                                            .l2{
+                                                height: 100%;
+                                                width: 3px;
+                                            }
+                                        }
+                                    }
+                                }
+                                .selected{
+                                    background: #666;
+                                    color: #fff;
+                                }
+                            }
+                            .info_titulo{
+                                display: block;
+                                font-size: 26px;
+                                color: #999;
+                                padding-left: 10px;
+                                padding-top: 10px;
+                                padding-right: 10px;
+                            }
+                            .info_subtitulo{
+                                display: block;
+                                font-size: 16px;
+                                color: #999;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                            }
+                            .list_servicios{
+                                display: block;
+                                padding-top: 20px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                .servicio{
+                                    display: block;
+                                    font-size: 20px;
+                                    padding: 10px 6px;
+                                    background: #e7e7e7;
+                                    border-bottom: 1px solid #999;
+                                    color: #666;
+                                }
+                            }
+                            .list_doctores{
+                                display: block;
+                                padding-top: 20px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                .doctor{
+                                    display: block;
+                                    font-size: 20px;
+                                    padding: 10px 6px;
+                                    background: #e7e7e7;
+                                    border-bottom: 1px solid #999;
+                                    color: #666;
+                                }
+                            }
+                            .cont_fecha{
+                                display: block;
+                                .detalle{
+                                    background: #ddd;
+                                    .cont_dtl{
+                                        padding: 4px;
+                                        .dtl_titulo{
+                                            color: #900;
+                                            font-size: 24px;
+                                        }
+                                        .dtl_descripcion{
+                                            color: #909;
+                                            font-size: 18px;
+                                        }
+                                        .dtl_doctor{
+                                            padding-top: 10px;
+                                            font-size: 12px;
+                                        }
+                                        .dtl_precio{
+                                            font-size: 12px;
+                                        }
+                                        .dtl_tiempo{
+                                            font-size: 12px;
+                                        }
+                                    }
+                                }
+                                .calendario{
+                                    background: #bbb;
+                                    .table_calendar{
+                                        background: #fff;
+                                        padding: 5px 5px 0px 5px;
+                                        .calendar_titulo{
+                                            font-size: 22px;
+                                            text-align: center;
+                                            padding: 8px;
+                                            border-left: 1px solid #000;
+                                            border-right: 1px solid #000;
+                                            border-top: 1px solid #000;
+                                        }
+                                        .row_calendar{
+                                            border-right: 1px solid #000;
+                                            .calendar_semana{
+                                                background: #009;
+                                                width: calc(14.2857% - 1px);
+                                                float: left;
+                                                height: 40px;
+                                                border-top: 1px solid #000;
+                                                border-bottom: 1px solid #000;
+                                                border-left: 1px solid #000;
+                                                position: relative;
+                                                .semana_info{
+                                                    text-align: center;
+                                                    font-size: 18px;
+                                                }
+                                            }
+                                            .calendar_dia{
+                                                border-left: 1px solid #000;
+                                                border-bottom: 1px solid #000;
+                                                width: calc(14.2857% - 1px);
+                                                float: left;
+                                                height: 40px;
+                                                position: relative;
+                                                .dia_info{
+                                                    text-align: center;
+                                                    font-size: 14px;
+                                                    .cont_dia_info{
+                                                        background: #99f;
+                                                        width: 96%;
+                                                        height: 96%;
+                                                    }
+                                                }
+                                            }
+                                            .calendar_dia2{
+                                                width: 14.2857%;
+                                                float: left;
+                                                height: 0px;
+                                            }
+                                            .calendar_dia3{
+                                                border-left: 1px solid #000;
+                                                border-bottom: 1px solid #000;
+                                                width: calc(14.2857% - 1px);
+                                                float: left;
+                                                height: 40px;
+                                            }
+                                            .selected{
+                                                background: #ddd;
+                                                cursor: pointer;
+                                            }
+                                        }
+                                    }
+                                }
+                                .horas{
+                                    background: #990;
+                                    .cont_hrs{
+                                        padding: 10px;
+                                    }
+                                }
+                            }
+                        }
+                        .btn_pre{
+                            height: 85px;
+                            background: #ee9;
+                        }
+                        .info{
+                            min-height: 350px;
+                            background: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width: 768px){
+    #contenedor{
+        background: #f00;
+        .menu{
+            display: none;
+        }
+        .sitio{
+            .logo_pagina_mobile{
+                display: none;
+            }
+            .logo_pagina_web{
+                display: block;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px){
+    #contenedor{
+        background: #f0f;
+        .menu{
+            display: block;
+        }
+        .sitio{
+            .logo_pagina_mobile{
+                display: block;
+            }
+            .logo_pagina_web{
+                display: none;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 500px){
+    .cont_fecha{
+        .detalle{
+            width: 100%;
+        }
+        .calendario{
+            width: 100%;
+        }
+        .horas{
+            width: 100%;
+        }
+    }
+}
+@media only screen and (min-width: 500px){
+    .cont_fecha{
+        .detalle{
+            width: 35%;
+            float: right;
+        }
+        .calendario{
+            width: 65%;
+            float: right;
+        }
+        .horas{
+            width: 65%;
+            float: right;
+        }
+    }
+}
