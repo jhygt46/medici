@@ -1,12 +1,14 @@
 <?php
 
-echo DIR."db.php<br/>";
-echo DIR_BASE."config/config.php";
-exit;
-
 require_once DIR."db.php";
 require_once DIR_BASE."config/config.php";
 date_default_timezone_set("America/Santiago");
+
+echo $db_host[0]."</br>";
+echo $db_user[0]."</br>";
+echo $db_password[0]."</br>";
+echo $db_database[0]."</br>";
+exit;
 
 class Core{
     
