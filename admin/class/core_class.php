@@ -1,5 +1,10 @@
 <?php
 
+echo DIR."db.php<br/>";
+echo DIR_BASE."config/config.php";
+exit;
+
+require_once DIR."db.php";
 require_once DIR_BASE."config/config.php";
 date_default_timezone_set("America/Santiago");
 
