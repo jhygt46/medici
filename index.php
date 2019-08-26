@@ -4,10 +4,11 @@ echo "<pre>";
 print_r($_SERVER["DOCUMENT_ROOT"]);
 echo "</pre>";
 
-
-
-
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
 exit;
+
 require_once "class/core_class.php";
 $core = new Core();
 
