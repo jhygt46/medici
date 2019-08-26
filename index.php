@@ -1,8 +1,8 @@
 <?php
 
 if($_SERVER["HTTP_HOST"] == "localhost"){
-    $dir_base = $_SERVER["DOCUMENT_ROOT"];
-    $dir = $dir_base."/medici/";
+    $dir_base = $_SERVER["DOCUMENT_ROOT"]."/";
+    $dir = $dir_base."medici/";
 }else{
     $dir_base = $_SERVER["DOCUMENT_ROOT"];
     $dir = $dir_base;

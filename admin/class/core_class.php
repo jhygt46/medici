@@ -1,10 +1,8 @@
 <?php
-
-echo $dir."<br/>";
-echo $dir_base."<br/>";
+echo $dir_base."config.php";
 exit;
 
-require_once $dir."config.php";
+require_once $dir_base."config.php";
 date_default_timezone_set("America/Santiago");
 
 class Core{
