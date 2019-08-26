@@ -1,15 +1,12 @@
 <?php
 
-echo "<pre>";
-print_r($_SERVER["DOCUMENT_ROOT"]);
-echo "</pre>";
+if($_SERVER["HTTP_HOST"] == "localhost"){
+    $dir = $_SERVER["DOCUMENT_ROOT"]."/medici";
+}else{
+    $dir = $_SERVER["DOCUMENT_ROOT"]."";
+}
 
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
-exit;
-
-require_once "class/core_class.php";
+require_once $dir."/class/core_class.php";
 $core = new Core();
 
 ?>
