@@ -8,6 +8,9 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR", DIR_BASE."medici/");
 }
 
+echo DIR."<br/>";
+exit;
+
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
