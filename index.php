@@ -1,14 +1,14 @@
 <?php
 
 if($_SERVER["HTTP_HOST"] == "localhost"){
-    $dir_base = $_SERVER["DOCUMENT_ROOT"]."/";
-    $dir = $dir_base."medici/";
+    define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
+    define("DIR", DIR_BASE."medici/");
 }else{
-    $dir_base = $_SERVER["DOCUMENT_ROOT"];
-    $dir = $dir_base;
+    define("DIR_BASE", "/var/www/html");
+    define("DIR", DIR_BASE."medici/");
 }
 
-require_once $dir."admin/class/core_class.php";
+require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
 ?>
