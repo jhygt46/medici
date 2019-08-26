@@ -4,11 +4,11 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");
 }else{
-    define("DIR_BASE", "/var/www/html");
+    define("DIR_BASE", "/var/www/html/");
     define("DIR", DIR_BASE."medici/");
 }
 
-echo DIR."<br/>";
+echo DIR_BASE."<br/>";
 exit;
 
 require_once DIR."admin/class/core_class.php";
