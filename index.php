@@ -1,9 +1,11 @@
 <?php
 
 if($_SERVER["HTTP_HOST"] == "localhost"){
-    $dir = $_SERVER["DOCUMENT_ROOT"]."/medici/";
+    $dir_base = $_SERVER["DOCUMENT_ROOT"];
+    $dir = $dir_base."/medici/";
 }else{
-    $dir = $_SERVER["DOCUMENT_ROOT"]."";
+    $dir_base = $_SERVER["DOCUMENT_ROOT"];
+    $dir = $dir_base;
 }
 
 require_once $dir."admin/class/core_class.php";
