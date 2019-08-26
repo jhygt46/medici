@@ -1,5 +1,5 @@
 <?php
-echo $dir_base."config.php";
+echo $dir_base."config/config.php";
 exit;
 
 require_once $dir_base."config.php";
