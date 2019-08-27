@@ -190,7 +190,8 @@ class Core{
                 $sql->close();
             }
         }
-        return $data;
+        file_put_contents(DIR."js/info.js", "var data=".json_encode($data).";");
+
     }
     public function process_horas($horas){
 

@@ -421,10 +421,39 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
   cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas {
-  background: #990;
+  background: #ddd;
+  overflow-y: scroll;
+  height: 350px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs {
-  padding: 10px;
+  padding: 5px 10px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .titulo_hrs {
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora {
+  margin-bottom: 2px;
+  position: relative;
+  height: 40px;
+  background: #ccc;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .dtl {
+  left: 5px;
+  width: calc(100% - 110px);
+  font-size: 18px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .reserva {
+  right: 5px;
+  padding: 1px 20px 4px 20px;
+  background: #aaa;
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #999;
+  border-left: 1px solid #999;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .btn_pre {
   height: 85px;

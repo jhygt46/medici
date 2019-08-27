@@ -413,9 +413,40 @@ html{
                                     }
                                 }
                                 .horas{
-                                    background: #990;
+                                    background: #ddd;
+                                    overflow-y: scroll;
+                                    height: 350px;
                                     .cont_hrs{
-                                        padding: 10px;
+                                        padding: 5px 10px;
+                                        .titulo_hrs{
+                                            font-size: 22px;
+                                            padding-bottom: 10px;
+                                        }
+                                        .lista_hrs{
+                                            .hora{
+                                                margin-bottom: 2px;
+                                                position: relative;
+                                                height: 40px;
+                                                background: #ccc;
+                                                .dtl{
+                                                    left: 5px;
+                                                    width: calc(100% - 110px);
+                                                    font-size: 18px;
+                                                }
+                                                .reserva{
+                                                    right: 5px;
+                                                    padding: 1px 20px 4px 20px;
+                                                    background: #aaa;
+                                                    text-align: center;
+                                                    font-size: 17px;
+                                                    color: #fff;
+                                                    border-top: 1px solid #ccc;
+                                                    border-right: 1px solid #ccc;
+                                                    border-bottom: 1px solid #999;
+                                                    border-left: 1px solid #999;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }

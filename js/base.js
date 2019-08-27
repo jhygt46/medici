@@ -638,10 +638,20 @@ function html_horas(){
     cont_hrs.appendChild(titulo_hrs);
     var lista_hrs = create_element_class('lista_hrs');
     for(var i=0, ilen=horas.length; i<ilen; i++){
-        html_hora = create_element_class_inner('hora', 'Hora: '+parseInt(horas[i]/60)+':'+parseInt(horas[i]%60));
+        
+        html_hora = create_element_class('hora');
+
+        var cero = (parseInt(horas[i]%60) > 0) ? parseInt(horas[i]%60) : "00" ;
+        var dtl = create_element_class_inner('dtl valign', parseInt(horas[i]/60)+':'+cero);
+        var reserv = create_element_class_inner('reserva valign', 'reservar');
+        
+        html_hora.appendChild(dtl);
+        html_hora.appendChild(reserv);
         html_hora.setAttribute('id', horas[i]);
         html_hora.onclick = function(){ seleccionar_hora(this) };
+
         lista_hrs.appendChild(html_hora);
+
     }
     cont_hrs.appendChild(lista_hrs);
     html_horas.appendChild(cont_hrs);
@@ -734,9 +744,9 @@ function html_calendario(){
     var calendario = create_element_class('calendario');
 
     if(now.getMonth() == then.getMonth()){
-        calendario.innerHTML =  calendario_completo(now);
+        calendario.innerHTML = calendario_completo(now);
     }else{
-        calendario.innerHTML =  calendario_por_mitades(now, then);
+        calendario.innerHTML = calendario_por_mitades(now, then);
     }
     return calendario;
 
@@ -922,4 +932,7 @@ function create_element_class_inner(clase, value){
     Div.className = clase;
     Div.innerHTML = value;
     return Div;
+}
+function send(){
+    return true;
 }

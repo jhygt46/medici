@@ -10,6 +10,9 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
+if($_GET["accion"] == "actualizar"){
+    $core->get_data();
+}
 
 ?>
 
@@ -25,14 +28,12 @@ $core = new Core();
         <link rel="stylesheet" href="css/index.css" media="all" />
 
         <script src="js/base.js" type="text/javascript"></script>
+        <script src="js/info.js" type="text/javascript"></script>
         <script>
-            var n_year = 2019;
-            var n_month = 8;
-            var n_day = 18;
-            var n_hours = 12;
-            var n_minutes = 30;
-            var n_segundos = 0;
-            <?php echo "var data=".json_encode($core->get_data()).";"; ?>
+            var n_year = <?php echo (isset($_GET["y"])) ? $_GET["y"] : date("Y") ; ?>;
+            var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"] + 1) : intval(date("m")) ; ?>;
+            var n_day = <?php echo (isset($_GET["d"])) ? $_GET["d"] : date("d") ; ?>;
+            var n_hours = <?php echo intval(date("H")); echo " + Math.round(".(date("i")/60).") + 1"; ?>;
         </script>
     </head>
     <body onload="inicio()" draggable="true">
@@ -44,7 +45,7 @@ $core = new Core();
                             <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
-                                <form onsubmit="return send()" action="http://35.185.64.95/ajax/index.php" method="post">
+                                <form onsubmit="return send()" action="./ajax/index.php" method="post">
                                     <input type="hidden" name="f_ser" value="" />
                                     <input type="hidden" name="f_doc" value="" />
                                     <input type="hidden" name="f_fec" value="" />
