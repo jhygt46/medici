@@ -12,11 +12,7 @@ require_once DIR."db.php";
 require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
-echo $db_host[0]."/".$db_user[0]."/".$db_password[0]."<br/>";
-
-echo "<pre>";
-print_r($con);
-echo "</pre>";
+//echo $db_host[0]."/".$db_user[0]."/".$db_password[0]."<br/>";
 
 $tablas[0]['nombre'] = 'excepciones';
 $tablas[0]['campos'][0]['nombre'] = 'id_exc';
@@ -267,7 +263,6 @@ for($i=0; $i<count($tablas); $i++){
     }
 
 }
-exit;
 
 if($con->query("CREATE DATABASE IF NOT EXISTS ".$db_database." CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI")){
     echo "BASE CREADA: ".$db_database."<br/><br/>TABLAS<br/><br/>";
@@ -308,7 +303,7 @@ if($con->query("CREATE DATABASE IF NOT EXISTS ".$db_database." CHARACTER SET UTF
         }
     }
 }else{
-    echo "ERROR CREAR BASE: ".$con->error."<br/>";
+    echo "ERROR CREAR BASE: ".$con->connect_error."<br/>";
 }
 
 /*
