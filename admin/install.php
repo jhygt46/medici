@@ -1,6 +1,15 @@
 <?php
 
-require ('class/config.php');
+if($_SERVER["HTTP_HOST"] == "localhost"){
+    define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
+    define("DIR", DIR_BASE."medici/");
+}else{
+    define("DIR_BASE", "/var/www/html/");
+    define("DIR", DIR_BASE."medici/");
+}
+
+require_once DIR."db.php";
+require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
 echo $db_host[0]."/".$db_user[0]."/".$db_password[0]."<br/>";
@@ -258,6 +267,7 @@ for($i=0; $i<count($tablas); $i++){
     }
 
 }
+exit;
 
 if($con->query("CREATE DATABASE IF NOT EXISTS ".$db_database." CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI")){
     echo "BASE CREADA: ".$db_database."<br/><br/>TABLAS<br/><br/>";
