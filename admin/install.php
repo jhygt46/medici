@@ -3,6 +3,10 @@
 require ('class/config.php');
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
+echo "<pre>";
+print_r($con);
+echo "</pre>";
+
 $tablas[0]['nombre'] = 'excepciones';
 $tablas[0]['campos'][0]['nombre'] = 'id_exc';
 $tablas[0]['campos'][0]['tipo'] = 'int(4)';
