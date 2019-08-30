@@ -10,8 +10,8 @@
         <link rel='shortcut icon' type='image/x-icon' href='/images/favicon/<?php echo $info["favicon"]; ?>' />
         <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script type="text/javascript" src="/salud_mental/admin/js/ingreso.js"></script>
-        <link rel="stylesheet" href="/salud_mental/admin/css/login.css" type="text/css" media="all">
+        <script type="text/javascript" src="js/ingreso.js"></script>
+        <link rel="stylesheet" href="css/login.css" type="text/css" media="all">
         <script>
             $(document).on('keypress',function(e){
                 if(e.which == 13){

@@ -1,10 +1,3 @@
-var reserva = {
-    servicio: 0,
-    doctor: 0,
-    sucursal: 0,
-    fecha: 0,
-    hora: 0
-}
 var options = {
     x1: 5,
     y1: 2,
@@ -27,18 +20,10 @@ var config = {
 }
 
 var semana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
-var mes = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+var mes = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 var fecha = new Date().getTime();
 
 function inicio(){
-    
-    /*
-    console.log(data.doctores);
-    console.log(data.servicios);
-    console.log(data.rangos);
-    console.log(data.excepciones);
-    console.log(data.sucursales);
-    */
 
     document.addEventListener('dragstart', dragstart, false);
     document.addEventListener('drag', test, false);
@@ -48,7 +33,37 @@ function inicio(){
     document.addEventListener('touchmove', touchmove, false);
     document.addEventListener('touchend', touchend, false);
     document.getElementById('close').addEventListener('click', close);
-    ver_servicio();
+
+    if(status == 2){
+        ver_error();
+    }
+    if(status == 1){
+        ver_success();
+    }
+    if(status == 0){
+        var reserva = get_reserva();
+        if(reserva.servicio == 0){
+            ver_servicio();
+        }else{
+            seleccionar_servicio_id();
+        }
+        if(reserva.doctor == 0){
+            ver_doctores();
+        }else{
+            seleccionar_doctor_id();
+        }
+        if(reserva.fecha == 0){
+            ver_fechas();
+        }else{
+            seleccionar_fecha_id();
+            if(reserva.hora == 0){
+                ver_horas();
+            }else{
+                seleccionar_hora_id();
+                document.getElementById('pop_up').style.display = 'block';
+            }
+        }
+    }
 
 }
 function touchstart(e){
@@ -311,12 +326,37 @@ function test(e){
 function distacia(x1, y1, x2, y2){
     return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 }
-function close_fecha(){
+function close_hora(){
+    
+    document.getElementById("pre_hora_close").style.display = "none";
+    document.getElementById("pre_hora_h1").innerHTML = "Hora";
+    document.getElementById("pre_hora_h2").innerHTML = "";
+    document.getElementsByName("f_hor")[0].value = 0;
 
+    var reserva = get_reserva();
+    reserva.hora = 0;
+    set_reserva(reserva);
+
+    ver_horas();
+
+}
+function close_fecha(){
+    
     document.getElementById("pre_fecha_close").style.display = "none";
     document.getElementById("pre_fecha_h1").innerHTML = "Fecha";
     document.getElementById("pre_fecha_h2").innerHTML = "";
+    document.getElementsByName("f_fec")[0].value = 0;
+
+    document.getElementById("pre_hora_close").style.display = "none";
+    document.getElementById("pre_hora_h1").innerHTML = "Hora";
+    document.getElementById("pre_hora_h2").innerHTML = "";
+    document.getElementsByName("f_hor")[0].value = 0;
+
+    var reserva = get_reserva();
     reserva.fecha = 0;
+    reserva.hora = 0;
+    set_reserva(reserva);
+
     ver_fechas();
 
 }
@@ -325,7 +365,12 @@ function close_servicio(){
     document.getElementById("pre_serv_close").style.display = "none";
     document.getElementById("pre_serv_h1").innerHTML = "Servicios";
     document.getElementById("pre_serv_h2").innerHTML = "";
+    document.getElementsByName("id_ser")[0].value = 0;
+
+    var reserva = get_reserva();
     reserva.servicio = 0;
+    set_reserva(reserva);
+
     ver_servicio();
 
 }
@@ -334,8 +379,26 @@ function close_doctor(){
     document.getElementById("pre_doc_close").style.display = "none";
     document.getElementById("pre_doc_h1").innerHTML = "Doctor";
     document.getElementById("pre_doc_h2").innerHTML = "";
+    document.getElementsByName("id_usr")[0].value = 0;
+    
+    var reserva = get_reserva();
     reserva.doctor = 0;
+    set_reserva(reserva);
+
     ver_doctores();
+
+}
+function seleccionar_servicio_id(){
+
+    var reserva = get_reserva();
+    for(var i=0, ilen=data.servicios.length; i<ilen; i++){
+        if(data.servicios[i].id == reserva.servicio){
+            document.getElementsByName("id_ser")[0].value = parseInt(reserva.servicio);
+            document.getElementById("pre_serv_h1").innerHTML = data.servicios[i].nombre;
+            document.getElementById("pre_serv_h2").innerHTML = "servicio";
+            document.getElementById("pre_serv_close").style.display = "block";
+        }
+    }
 
 }
 function seleccionar_servicio(that){
@@ -344,8 +407,11 @@ function seleccionar_servicio(that){
     for(var i=0, ilen=data.servicios.length; i<ilen; i++){
         if(data.servicios[i].id == id){
 
-            reserva.servicio = id;
+            var reserva = get_reserva();
+            reserva.servicio = parseInt(id);
+            set_reserva(reserva);
 
+            document.getElementsByName("id_ser")[0].value = parseInt(id);
             document.getElementById("pre_serv_h1").innerHTML = data.servicios[i].nombre;
             document.getElementById("pre_serv_h2").innerHTML = "servicio";
             document.getElementById("pre_serv_close").style.display = "block";
@@ -362,14 +428,30 @@ function seleccionar_servicio(that){
     }
 
 }
+function seleccionar_doctor_id(){
+
+    var reserva = get_reserva();
+    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
+        if(data.doctores[i].id == reserva.doctor){
+            document.getElementsByName("id_usr")[0].value = parseInt(reserva.doctor);
+            document.getElementById("pre_doc_h1").innerHTML = data.doctores[i].nombre;
+            document.getElementById("pre_doc_h2").innerHTML = "doctor";
+            document.getElementById("pre_doc_close").style.display = "block";
+        }
+    }
+    
+}
 function seleccionar_doctor(that){
 
     var id = that.getAttribute('id');
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
         if(data.doctores[i].id == id){
 
-            reserva.doctor = id;
+            var reserva = get_reserva();
+            reserva.doctor = parseInt(id);
+            set_reserva(reserva);
 
+            document.getElementsByName("id_usr")[0].value = parseInt(id);
             document.getElementById("pre_doc_h1").innerHTML = data.doctores[i].nombre;
             document.getElementById("pre_doc_h2").innerHTML = "doctor";
             document.getElementById("pre_doc_close").style.display = "block";
@@ -388,20 +470,143 @@ function seleccionar_doctor(that){
 }
 function seleccionar_fecha(y, m, d){
     
+    var reserva = get_reserva();
+    reserva.fecha = d+"-"+(m+1)+"-"+y;
+    set_reserva(reserva);
+
     document.getElementById("pre_fecha_h1").innerHTML = d+" "+mes[m]+" "+y;
     document.getElementById("pre_fecha_h2").innerHTML = "fecha";
     document.getElementById("pre_fecha_close").style.display = "block";
-    reserva.fecha = d+"/"+(m+1)+"/"+y;
+
+    var aux_mes = (m + 1 < 10) ? "0"+(m+1) : (m+1) ;
+    var aux_dia = (d < 10) ? "0"+d : d ;
+
+    document.getElementsByName("f_fec")[0].value = y+"-"+aux_mes+"-"+aux_dia;
     ver_horas();
 
 }
+function seleccionar_fecha_id(){
+    
+    var reserva = get_reserva();
+    var fecha = reserva.fecha.split("-");
+    var d = parseInt(fecha[0]);
+    var m = parseInt(fecha[1]) - 1;
+    var y = parseInt(fecha[2]);
+
+    document.getElementById("pre_fecha_h1").innerHTML = d+" "+mes[m]+" "+y;
+    document.getElementById("pre_fecha_h2").innerHTML = "fecha";
+    document.getElementById("pre_fecha_close").style.display = "block";
+    document.getElementsByName("f_fec")[0].value = y+"-"+(m+1)+"-"+d;
+
+}
 function seleccionar_hora(that){
-    var id = that.getAttribute('id');
-    reserva.hora = id;
+
+    var hora = that.getAttribute('id');
+
+    var reserva = get_reserva();
+    reserva.hora = parseInt(hora);
+    set_reserva(reserva);
+
+    var cero = (parseInt(reserva.hora%60) < 10) ? "0"+(reserva.hora%60) : (reserva.hora%60) ;
+    document.getElementById("pre_hora_h1").innerHTML = parseInt(reserva.hora/60)+":"+cero;
+    document.getElementById("pre_hora_h2").innerHTML = "Hora";
+    document.getElementById("pre_hora_close").style.display = "block";
+    document.getElementsByName("f_hor")[0].value = parseInt(hora);
     document.getElementById('pop_up').style.display = 'block';
+
+}
+function seleccionar_hora_id(){
+
+    var reserva = get_reserva();
+
+    var cero = (parseInt(reserva.hora%60) < 10) ? "0"+(reserva.hora%60) : (reserva.hora%60) ;
+    document.getElementById("pre_hora_h1").innerHTML = parseInt(reserva.hora/60)+":"+cero;
+    document.getElementById("pre_hora_h2").innerHTML = "Hora";
+    document.getElementById("pre_hora_close").style.display = "block";
+    document.getElementsByName("f_hor")[0].value = parseInt(reserva.hora);
+
 }
 function close(){
     document.getElementById('pop_up').style.display = 'none';
+}
+function sitio_contacto(){
+
+    var sitios = document.getElementsByClassName("sitio_pagina");
+    sitios[0].style.display = 'none';
+    sitios[1].style.display = 'none';
+    sitios[2].style.display = 'none';
+    sitios[3].style.display = 'block';
+
+}
+function sitio_reservar(){
+
+    var sitios = document.getElementsByClassName("sitio_pagina");
+    sitios[0].style.display = 'block';
+    sitios[1].style.display = 'none';
+    sitios[2].style.display = 'none';
+    sitios[3].style.display = 'none';
+
+}
+function sitio_nosotros(){
+
+    var sitios = document.getElementsByClassName("sitio_pagina");
+    sitios[0].style.display = 'none';
+    sitios[1].style.display = 'none';
+    sitios[2].style.display = 'block';
+    sitios[3].style.display = 'none';
+
+}
+function sitio_inicio(){
+
+    var sitios = document.getElementsByClassName("sitio_pagina");
+    sitios[0].style.display = 'none';
+    sitios[1].style.display = 'block';
+    sitios[2].style.display = 'none';
+    sitios[3].style.display = 'none';
+
+}
+function ver_success(){
+
+    var reserva = get_reserva();
+    if(reserva.servicio == 0 && reserva.doctor == 0 && reserva.fecha == 0 && reserva.hora == 0){
+        window.location.href = "./";
+    }
+
+    if(reserva.servicio > 0){ seleccionar_servicio_id(); }
+    if(reserva.doctor > 0){ seleccionar_doctor_id(); }
+    if(reserva.fecha != 0){ seleccionar_fecha_id(); }
+    if(reserva.hora > 0){ seleccionar_hora_id(); }
+
+    set_reserva(reserva_blank());
+
+    document.getElementById("info").innerHTML = "";
+    var aux = create_element_class('cont_info vhalign');
+
+    var st = create_element_class_inner('success_titulo', 'Reserva realizada!');
+    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+reserva.fecha+' a las '+reserva.hora+' con el medico '+reserva.servicio);
+    var sb = create_element_class_inner('success_bajada', 'Le hemos enviado un correo para confirmar reserva');
+
+    aux.appendChild(st);
+    aux.appendChild(sd);
+    aux.appendChild(sb);
+
+    document.getElementById("info").appendChild(aux);
+
+}
+function ver_error(){
+        
+    var reserva = get_reserva();
+    reserva.fecha = 0;
+    reserva.hora = 0;
+    set_reserva(reserva);
+
+    document.getElementsByClassName("m_error")[0].innerHTML = "Lo sentimos, se ha producido un error al reservar la hora, porfavor vuelva a intentarlo";
+    document.getElementsByClassName("m_error")[0].style.display = "block";
+
+    if(reserva.servicio > 0){ seleccionar_servicio_id(); }
+    if(reserva.doctor > 0){ seleccionar_doctor_id(); }
+    if(reserva.fecha > 0){ seleccionar_fecha_id(); ver_horas(); }else{ ver_fechas(); }
+
 }
 function ver_servicio(){
 
@@ -413,6 +618,7 @@ function ver_servicio(){
     var subtitulo = create_element_class_inner('info_subtitulo', 'Elija entre alguna de nuestras alternativas');
     aux.appendChild(subtitulo);
     var lista = create_element_class('list_servicios');
+    var reserva = get_reserva();
 
     if(reserva.doctor == 0){
         var servicios = data.servicios;
@@ -449,17 +655,14 @@ function ver_doctores(){
     var subtitulo = create_element_class_inner('info_subtitulo', 'Elija entre alguna de nuestras alternativas');
     aux.appendChild(subtitulo);
     var lista = create_element_class('list_doctores');
+    var reserva = get_reserva();
 
     if(reserva.servicio == 0){
         var doctores = data.doctores;
-        //console.log("A");
-        //console.log(doctores);
     }else{
         for(var i=0, ilen=data.servicios.length; i<ilen; i++){
             if(data.servicios[i].id == reserva.servicio){
                 var doctores = data.servicios[i].lista_doctores;
-                //console.log("B");
-                //console.log(doctores);
             }
         }
     }
@@ -482,6 +685,7 @@ function ver_doctores(){
 }
 function ver_fechas(){
 
+    var reserva = get_reserva();
     if(reserva.servicio > 0 && reserva.doctor > 0){
 
         document.getElementById("info").innerHTML = "";
@@ -524,6 +728,8 @@ function tiene_excepcion(date){
         excepciones: []
     }
 
+    var reserva = get_reserva();
+
     for(var i=0, ilen=data.excepciones.length; i<ilen; i++){
         if(data.excepciones[i].fecha == y && data.excepciones[i].id_usr == reserva.doctor && in_array(data.excepciones[i].lista_servicios, reserva.servicio)){
             obj.op = true;
@@ -538,6 +744,7 @@ function dia_reglas(regla){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
+    var reserva = get_reserva();
 
     for(var x=0, xlen=regla.length; x<xlen; x++){
 
@@ -587,6 +794,7 @@ function horas_disponibles(y, m, d){
 
     var date = new Date(y, m, d);
     var exc = tiene_excepcion(date);
+    var reserva = get_reserva();
 
     if(exc.op){
         return dia_reglas(exc.excepciones);
@@ -612,8 +820,10 @@ function in_array(arr, x){
 }
 function html_horas(){
 
+    var reserva = get_reserva();
+    console.log(reserva);
     var html_hora = "";
-    var fecha = reserva.fecha.split("/");
+    //var fecha = reserva.fecha.split("/");
     //var date = new Date(fecha[2], fecha[1], fecha[0]);
     var date = new Date(2019, 8, 23);
     var exc = tiene_excepcion(date);
@@ -641,7 +851,7 @@ function html_horas(){
         
         html_hora = create_element_class('hora');
 
-        var cero = (parseInt(horas[i]%60) > 0) ? parseInt(horas[i]%60) : "00" ;
+        var cero = (parseInt(horas[i]%60) < 10) ? "0"+(horas[i]%60) : (horas[i]%60) ;    
         var dtl = create_element_class_inner('dtl valign', parseInt(horas[i]/60)+':'+cero);
         var reserv = create_element_class_inner('reserva valign', 'reservar');
         
@@ -679,6 +889,7 @@ function in_regla(reglas, min, time){
 function horas_reglas(reglas){
 
     var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
+    var reserva = get_reserva();
 
     if(reglas.length > 0){
         for(var x=0, xlen=reglas.length; x<xlen; x++){
@@ -755,6 +966,7 @@ function html_detalle(){
     
     var detalle = create_element_class('detalle');
     var cont_dtl = create_element_class('cont_dtl');
+    var reserva = get_reserva();
 
     for(var i=0, ilen=data.servicios.length; i<ilen; i++){
         if(data.servicios[i].id == reserva.servicio){
@@ -806,7 +1018,11 @@ function calendario_por_mitades(now, then){
                     data += "<div class='calendar_dia3'></div>";
                 }
             }else{
-                data += "<div class='calendar_dia selected' onclick='seleccionar_fecha("+now.getFullYear()+","+now.getMonth()+","+day_count+")'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                if(horas_disponibles(now.getFullYear(), now.getMonth(), day_count)){
+                    data += "<div class='calendar_dia selected' onclick='seleccionar_fecha("+now.getFullYear()+","+now.getMonth()+","+day_count+")'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                }else{
+                    data += "<div class='calendar_dia'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                }
                 total++;
             }
             aux_cont++;
@@ -844,7 +1060,11 @@ function calendario_por_mitades(now, then){
             day_count++;
             if(aux_aux < 2){
                 if(total <= config.total_dias){
-                    data += "<div class='calendar_dia selected' onclick='seleccionar_fecha("+then.getFullYear()+","+then.getMonth()+","+day_count+")'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                    if(horas_disponibles(then.getFullYear(), then.getMonth(), day_count)){
+                        data += "<div class='calendar_dia selected' onclick='seleccionar_fecha("+then.getFullYear()+","+then.getMonth()+","+day_count+")'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                    }else{
+                        data += "<div class='calendar_dia'><div class='dia_info vhalign'>"+day_count+"</div></div>";
+                    }
                 }else{
                     data += "<div class='calendar_dia'><div class='dia_info vhalign'>"+day_count+"</div></div>";
                 }
@@ -935,4 +1155,13 @@ function create_element_class_inner(clase, value){
 }
 function send(){
     return true;
+}
+function get_reserva(){
+    return JSON.parse(localStorage.getItem("reserva")) || reserva_blank();
+}
+function reserva_blank(){
+    return { servicio: 0, doctor: 0, sucursal: 0, fecha: 0, hora: 0 }
+}
+function set_reserva(reserva){
+    localStorage.setItem("reserva", JSON.stringify(reserva));
 }

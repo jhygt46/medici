@@ -10,8 +10,13 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
-if($_GET["accion"] == "actualizar"){
+if($_GET["accion"] == "actualizar" || $_GET["status"] == 2){
     $core->get_data();
+}
+
+$status = 0;
+if(isset($_GET["status"])){
+    $status = $_GET["status"];
 }
 
 ?>
@@ -34,6 +39,7 @@ if($_GET["accion"] == "actualizar"){
             var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"] + 1) : intval(date("m")) ; ?>;
             var n_day = <?php echo (isset($_GET["d"])) ? $_GET["d"] : date("d") ; ?>;
             var n_hours = <?php echo intval(date("H")); echo " + Math.round(".(date("i")/60).") + 1"; ?>;
+            var status = <?php echo $status; ?>;
         </script>
     </head>
     <body onload="inicio()" draggable="true">
@@ -46,8 +52,8 @@ if($_GET["accion"] == "actualizar"){
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
                                 <form onsubmit="return send()" action="./ajax/index.php" method="post">
-                                    <input type="hidden" name="f_ser" value="" />
-                                    <input type="hidden" name="f_doc" value="" />
+                                    <input type="hidden" name="id_ser" value="" />
+                                    <input type="hidden" name="id_usr" value="" />
                                     <input type="hidden" name="f_fec" value="" />
                                     <input type="hidden" name="f_hor" value="" />
                                     <h3>Rut:</h3>
@@ -105,16 +111,17 @@ if($_GET["accion"] == "actualizar"){
                                 <div class="logo valign"></div>
                                 <div class="botones valign">
                                     <div class="btns clearfix">
-                                        <div class="btn btn1">CONTACTO</div>
-                                        <div class="btn btn2">RESERVA TU HORA</div>
-                                        <div class="btn btn3">NOSOTROS</div>
-                                        <div class="btn btn4">INICIO</div>
+                                        <div class="btn btn1" onclick="sitio_contacto()">CONTACTO</div>
+                                        <div class="btn btn2" onclick="sitio_reservar()">RESERVA TU HORA</div>
+                                        <div class="btn btn3" onclick="sitio_nosotros()">NOSOTROS</div>
+                                        <div class="btn btn4" onclick="sitio_inicio()">INICIO</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="sitio_pagina">
+                        <div class="seccion m_error"></div>
                         <div class="seccion btn_pre">
                             <div class="preguntas clearfix">
                                 <div id="pre_servicio" class="pregunta" style="background: #c0c0c0">
@@ -130,12 +137,21 @@ if($_GET["accion"] == "actualizar"){
                                     <div onclick="close_fecha()" class="close" id="pre_fecha_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
                                 <div id="pre_estado" class="pregunta" style="background: #cfcfcf">
-                                    <div onclick="ver_estado()" class="data valign"><h2 id="pre_estado_h2"></h2><h1 id="pre_estado_h1">Hora</h1></div>
-                                    <div onclick="close_estado()" class="close" id="pre_estado_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
+                                    <div class="data valign"><h2 id="pre_hora_h2"></h2><h1 id="pre_hora_h1">Hora</h1></div>
+                                    <div onclick="close_hora()" class="close" id="pre_hora_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
                             </div>
                         </div>
                         <div class="seccion info" id="info"></div>
+                    </div>
+                    <div class="sitio_pagina" style="display: none">
+                        INICIO BUENA NELSON
+                    </div>
+                    <div class="sitio_pagina" style="display: none">
+                        NOSOTROS BUENA NELSON
+                    </div>
+                    <div class="sitio_pagina" style="display: none">
+                        CONTACTO BUENA NELSON
                     </div>
                 </div>
             </div>

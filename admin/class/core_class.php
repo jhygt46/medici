@@ -215,5 +215,134 @@ class Core{
         }
         return $arr;
     }
+    function reservar_hora(){
+
+        /*
+        $data['op'] = 1;
+        $data['rut'] = $_POST["rut"];
+        $data['nombre'] = $_POST["nombre"];
+        $data['correo'] = $_POST["correo"];
+        $data['telefono'] = $_POST["telefono"];
+        $data['id_ser'] = $_POST["id_ser"];
+        $data['id_usr'] = $_POST["id_usr"];
+        $data['fecha'] = $_POST["f_fec"];
+        $data['hora'] = $_POST["f_hor"];
+        return $data;
+        */
+
+        //$res = $_POST["g-recaptcha-response"]; 
+        //if(isset($res) && $res){
+            
+            //$secret = "6Lf8j3sUAAAAAP6pYvdgk9qiWoXCcKKXGsKFQXH4";
+            //$v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$_POST["g-recaptcha-response"]."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
+            //$data = json_decode(($v)); 
+            //if($data->{'success'}){
+                
+                $correo = $_POST["correo"];
+
+                if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+
+                    $id_ser = $_POST["id_ser"];
+                    $id_usr = $_POST["id_usr"];
+
+                    if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
+                        if($sql->bind_param("ii", $id_ser, $id_usr)){
+                            if($sql->execute()){
+                                
+                                $res = $sql->get_result();
+                                if($res->{"num_rows"} == 1){
+
+                                    $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
+                                    $tiempo = $aux_ser["tiempo_min"];
+                                    $valor = $aux_ser["valor"];
+                                    $fecha = $_POST["f_fec"];
+                                    $hora = $_POST["f_hor"];
+
+                                    $now_ini = intval($hora);
+                                    $now_fin = $now_ini + $tiempo;
+
+                                    if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
+                                        if($sqlexc->bind_param("isi", $id_usr, $fecha, $id_ser)){
+                                            if($sqlexc->execute()){
+
+                                                $resexc = $sqlexc->get_result();
+                                                if($resexc->{"num_rows"} == 0){
+
+                                                    $dia = date("w", strtotime($fecha));
+                                                    if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini>=? AND t1.dia_fin<=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
+                                                        if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
+                                                            if($sqlran->execute()){
+                                                                
+                                                                $resran = $sqlran->get_result();
+                                                                while($row = $resran->fetch_assoc()){
+
+                                                                    $hora_ini = explode(":", $row["hora_ini"]);
+                                                                    $hora_fin = explode(":", $row["hora_fin"]);
+
+                                                                    $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
+                                                                    $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
+
+                                                                    if($now_ini > $h_ini && $now_fin < $h_fin){
+                                                                        $data['ran_dentro'] = 1;
+                                                                    }
+
+                                                                }
+                                                            }else{}
+                                                        }else{}
+                                                    }else{}
+
+                                                }
+                                                if($resexc->{"num_rows"} > 0){
+                                                    
+                                                    while($row = $resexc->fetch_assoc()){
+                                                        
+                                                        $hora_ini = explode(":", $row["hora_ini"]);
+                                                        $hora_fin = explode(":", $row["hora_fin"]);
+
+                                                        $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
+                                                        $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
+
+                                                        if($now_ini > $h_ini && $now_fin < $h_fin){
+
+                                                            $data['exc_dentro'] = 1;
+
+                                                            if($sqlhor = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND fecha_1<? AND fecha_2>?")){
+                                                                if($sqlhor->bind_param("isi", $id_usr, $fecha)){
+                                                                    if($sqlhor->execute()){
+
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        }
+
+                                                    }
+                                                    
+                                                }
+                                                $sqlexc->free_result();
+                                                $sqlexc->close();
+                                                
+                                            }else{}
+                                        }else{}
+                                    }else{}
+                                }
+                                if($res->{"num_rows"} == 0){
+                                    // ERROR
+                                }
+                                
+                            }else{}
+                        }else{}
+                    }else{}
+
+                }else{
+                    $data['op'] = 2;
+                    $data['msg'] = "Correo invalido";
+                }
+
+            //}
+
+        //}
+        return $data;
+    }
 
 }
