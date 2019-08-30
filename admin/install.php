@@ -13,8 +13,9 @@ require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
 echo $db_password[0]."<br/>";
-
-
+echo "<pre>";
+print_r($con);
+echo "</pre>";
 
 $tablas[0]['nombre'] = 'excepciones';
 $tablas[0]['campos'][0]['nombre'] = 'id_exc';
