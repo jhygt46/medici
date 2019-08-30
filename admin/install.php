@@ -262,9 +262,9 @@ for($i=0; $i<count($tablas); $i++){
 
 }
 
-if($con->query("CREATE DATABASE IF NOT EXISTS ".$db_database." CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI")){
-    echo "BASE CREADA: ".$db_database."<br/><br/>TABLAS<br/><br/>";
-    $con->select_db($db_database);
+if($con->query("CREATE DATABASE IF NOT EXISTS ".$db_database[0]." CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI")){
+    echo "BASE CREADA: ".$db_database[0]."<br/><br/>TABLAS<br/><br/>";
+    $con->select_db($db_database[0]);
     for($i=0; $i<count($tables); $i++){
         if($con->query($tables[$i])){
             echo "Tabla creada: ".$tables_name[$i]."<br/>";
