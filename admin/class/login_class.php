@@ -210,7 +210,7 @@ class Login {
         if(filter_var($_POST['user'], FILTER_VALIDATE_EMAIL)){
 
             $acciones = $this->acciones($result["id_user"], 1);
-
+            $info['acciones'] = $acciones;
             if($acciones < 5){
 
                 $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
