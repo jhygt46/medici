@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" lang="es-CL">
     <head>
-        <title></title>
+        <title>ArteMedici</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.ico' />
@@ -62,7 +62,7 @@
                             <div class="btn_perfil valign" onclick="open_perfil()"></div> 
                             <div class="logo clearfix">
                                 <div class="logo_img"></div>
-                                <div class="logo_txt">Mi Sitio Delivery</div>
+                                <div class="logo_txt">ArteMedici</div>
                             </div>
                         </div>
                     </div>
