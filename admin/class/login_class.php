@@ -218,12 +218,13 @@ class Login {
                 $sqlu->bind_param("si", $_POST["user"], $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
-                $info['res'] = $res->{"num_rows"};
 
                 if($res->{"num_rows"} == 0){
+
                     $info['op'] = 2;
                     $info['message'] = "Error: Correo o Contraseña invalida";
-                    $this->registrar('12', 0, 0, 0, 'usuario no existe: '.$_POST["user"]);
+                    $this->registrar('12', '0', 'usuario no existe: '.$_POST["user"]);
+
                 }
                 if($res->{"num_rows"} == 1){
                     
