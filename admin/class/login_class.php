@@ -239,7 +239,7 @@ class Login {
                         $ses['info']['tipo'] = $result['tipo'];
                         $_SESSION['user'] = $ses;
 
-                        $this->registrar('9', $result['id_user'], $res_glocal['id_loc'], $res_glocal['id_gir'], '');
+                        $this->registrar('9', $result['id_usr'], '');
 
                     }else{
 
@@ -248,13 +248,13 @@ class Login {
 
                         $tipo = 1;
                         $sqlic = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_user) VALUES (?, now(), ?)");
-                        $sqlic->bind_param("ii", $tipo, $id_user);
+                        $sqlic->bind_param("ii", $tipo, $id_usr);
                         $sqlic->execute();
                         $sqlic->close();  
 
                         $info['op'] = 2;
                         $info['message'] = "Error: Correo o Contraseña invalida";
-                        $this->registrar('12', $id_user, 0, $result['id_gir'], 'pass diferente');
+                        $this->registrar('12', $id_usr, 'pass diferente');
 
                     }
 
