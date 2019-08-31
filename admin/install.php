@@ -54,12 +54,15 @@ $tablas[1]['campos'][0]['ai'] = 1;
 $tablas[1]['campos'][1]['nombre'] = 'nombre';
 $tablas[1]['campos'][1]['tipo'] = 'varchar(100) COLLATE utf8_spanish2_ci';
 $tablas[1]['campos'][1]['null'] = 0;
+$tablas[1]['campos'][1]['values'] = ["Sucursal Providencia"];
 $tablas[1]['campos'][2]['nombre'] = 'direccion';
 $tablas[1]['campos'][2]['tipo'] = 'varchar(255) COLLATE utf8_spanish2_ci';
 $tablas[1]['campos'][2]['null'] = 0;
+$tablas[1]['campos'][2]['values'] = ["Avda Providencia 1206"];
 $tablas[1]['campos'][3]['nombre'] = 'eliminado';
 $tablas[1]['campos'][3]['tipo'] = 'tinyint(1)';
 $tablas[1]['campos'][3]['null'] = 0;
+$tablas[1]['campos'][3]['values'] = [0];
 
 $tablas[2]['nombre'] = 'excepciones';
 $tablas[2]['campos'][0]['nombre'] = 'id_exc';
