@@ -10,13 +10,13 @@
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <script type="text/javascript" src="./admin/js/base_1.js"></script>
-        <script type="text/javascript" src="./admin/js/form_1.js"></script>
-        <script type="text/javascript" src="./admin/js/maps.js"></script>
+        <script type="text/javascript" src="./js/base_1.js"></script>
+        <script type="text/javascript" src="./js/form_1.js"></script>
+        <script type="text/javascript" src="./js/maps.js"></script>
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" type="text/css" media="all">
-        <link rel="stylesheet" href="./admin/css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="./admin/css/layout.css" type="text/css" media="all">
+        <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="./css/layout.css" type="text/css" media="all">
         <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">-->
     </head>
     <body>
