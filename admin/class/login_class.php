@@ -196,7 +196,7 @@ class Login {
     }
     public function acciones($id_user, $tipo){
 
-        $sql = $this->con->prepare("SELECT * FROM fw_acciones WHERE id_usr=? AND tipo=? AND fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
+        $sql = $this->con->prepare("SELECT * FROM usuarios t1, fw_acciones t2 WHERE t1.correo=? AND t1.id_usr=t2.id_usr AND t2.tipo=? AND t2.fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
         $sql->bind_param("ii", $id_user, $tipo);
         $sql->execute();
         $res = $sql->get_result();
@@ -209,7 +209,7 @@ class Login {
 
         if(filter_var($_POST['user'], FILTER_VALIDATE_EMAIL)){
 
-            $acciones = $this->acciones(1, 1);
+            $acciones = $this->acciones($_POST["user"], 1);
             $info['accion'] = $acciones;
 
             if($acciones < 5){
@@ -218,8 +218,7 @@ class Login {
                 $sqlu->bind_param("si", $_POST["user"], $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
-                
-                //$info['res'] = $res->{"num_rows"};
+                $info['res'] = $res->{"num_rows"};
 
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
@@ -250,7 +249,7 @@ class Login {
                         // 2 PEDIR PASSWORD
 
                         $tipo = 1;
-                        $sqlic = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_user) VALUES (?, now(), ?)");
+                        $sqlic = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_usr) VALUES (?, now(), ?)");
                         $sqlic->bind_param("ii", $tipo, $id_usr);
                         $sqlic->execute();
                         $sqlic->close();  
