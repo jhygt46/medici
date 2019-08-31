@@ -1,8 +1,9 @@
 <?php
 session_start();
 
+require_once DIR."db.php";
+require_once DIR_BASE."config/config.php";
 date_default_timezone_set('America/Santiago');
-require_once "config.php";
 
 class Login {
     
@@ -177,10 +178,10 @@ class Login {
         return $info;
 
     }
-    private function registrar($id_des, $id_user, $id_loc, $id_gir, $txt){
+    private function registrar($id_des, $id_user, $txt){
 
-        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_user, id_loc, id_gir, fecha, txt) VALUES (?, ?, ?, ?, now(), ?)");
-        $sqlipd->bind_param("iiiis", $id_des, $id_user, $id_loc, $id_gir, $txt);
+        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_user, fecha, txt) VALUES (?, ?, now(), ?)");
+        $sqlipd->bind_param("iis", $id_des, $id_user, $txt);
         $sqlipd->execute();
         $sqlipd->close();
 
