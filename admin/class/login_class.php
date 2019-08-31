@@ -188,7 +188,7 @@ class Login {
     }
     private function registrar($id_des, $id_user, $txt){
 
-        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_user, fecha, txt) VALUES (?, ?, now(), ?)");
+        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_usr, fecha, txt) VALUES (?, ?, now(), ?)");
         $sqlipd->bind_param("iis", $id_des, $id_user, $txt);
         $sqlipd->execute();
         $sqlipd->close();
