@@ -1,3 +1,6 @@
+<?php
+    
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" lang="es-CL">
     <head>
         <title>ArteMedici</title>
@@ -32,8 +35,8 @@
                                         <li class="foto"><img src="images/no-user.png" alt="" /></li>
                                         <li class="info">
                                             <div class="cont_info">
-                                                <h2><?php echo $inicio['nombre']; ?></h2>
-                                                <h3><?php echo $inicio['correo']; ?></h3>
+                                                <h2><?php echo $_SESSION['user']['info']['nombre']; ?></h2>
+                                                <h3>admin</h3>
                                                 <a href="?accion=logout">Salir</a>
                                             </div>
                                         </li>
