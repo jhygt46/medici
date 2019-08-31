@@ -217,7 +217,8 @@ class Login {
                 $sqlu->execute();
                 $res = $sqlu->get_result();
                 
-                $info['res'] = $res;
+                $info['res'] = $res->{"num_rows"};
+                $info['post'] = $_POST;
 
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
