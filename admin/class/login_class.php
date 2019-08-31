@@ -23,7 +23,7 @@ class Login {
         $user = $_POST['user'];
         if(filter_var($user, FILTER_VALIDATE_EMAIL)){
 
-            $sql = $this->con->prepare("SELECT * FROM fw_usuarios WHERE correo=? AND eliminado=?");
+            $sql = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
             $sql->bind_param("si", $user, $this->eliminado);
             $sql->execute();
             $res = $sql->get_result();
@@ -49,15 +49,17 @@ class Login {
                         $send['code'] = bin2hex(openssl_random_pseudo_bytes(10));
                         $send['id'] = $id_user;
 
-                        $sqluu = $this->con->prepare("UPDATE fw_usuarios SET pass='', mailcode=? WHERE id_user=? AND eliminado=?");
+                        $sqluu = $this->con->prepare("UPDATE usuarios SET pass='', mailcode=? WHERE id_usr=? AND eliminado=?");
                         $sqluu->bind_param("sii", $send["code"], $send["id"], $this->eliminado);
                         if($sqluu->execute()){
-
+                            /*
                             $ch = curl_init();
                             curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_recuperar');
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                             $resp = json_decode(curl_exec($ch));
+                            curl_close($ch);
+                            */
                             if($resp->{'op'} == 1){
                                 $info['op'] = 1;
                                 $info['message'] = "Correo Enviado";
@@ -66,8 +68,6 @@ class Login {
                                 $info['message'] = "Error";
                                 $this->registrar('13', 0, 0, 0, 'email no enviado:');
                             }
-                            curl_close($ch);
-
                         }else{
                             $info['op'] = 2;
                             $info['message'] = "Error:";
@@ -76,11 +76,9 @@ class Login {
                         $sqluu->close();
 
                     }else{
-
                         $info['op'] = 2;
                         $info['message'] = "Error:";
                         $this->registrar('13', 0, 0, 0, 'acciones no ingresado:');
-
                     }
                     $sqlia->close();
 
@@ -115,7 +113,7 @@ class Login {
         $pass_01 = $_POST['pass_01'];
         $pass_02 = $_POST['pass_02'];
 
-        $sqlb = $this->con->prepare("SELECT * FROM fw_usuarios WHERE id_user=? AND mailcode=? AND eliminado=?");
+        $sqlb = $this->con->prepare("SELECT * FROM usuarios WHERE id_usr=? AND mailcode=? AND eliminado=?");
         $sqlb->bind_param("is", $id, $code, $this->eliminado);
         $sqlb->execute();
         $resb = $sqlb->get_result();
@@ -127,7 +125,7 @@ class Login {
                 if(strlen($pass_01) >= 8){
                     if($pass_01 == $pass_02){
 
-                        $sql = $this->con->prepare("UPDATE fw_usuarios SET mailcode='', pass=? WHERE id_user=? AND eliminado=?");
+                        $sql = $this->con->prepare("UPDATE usuarios SET mailcode='', pass=? WHERE id_usr=? AND eliminado=?");
                         $sql->bind_param("sii", md5($pass_01), $id, $this->eliminado);
                         if($sql->execute()){
 
@@ -165,7 +163,7 @@ class Login {
             $info['message'] = "Error: usuario y codigo";
             
             $tipo = 3;
-            $sql = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_user) VALUES (?, now(), ?)");
+            $sql = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_usr) VALUES (?, now(), ?)");
             $sql->bind_param("ii", $tipo, $id);
             $sql->execute();
             $sql->close();
@@ -189,7 +187,7 @@ class Login {
     }
     public function acciones($id_user, $tipo){
 
-        $sql = $this->con->prepare("SELECT * FROM fw_acciones WHERE id_user=? AND tipo=? AND fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
+        $sql = $this->con->prepare("SELECT * FROM fw_acciones WHERE id_usr=? AND tipo=? AND fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
         $sql->bind_param("ii", $id_user, $tipo);
         $sql->execute();
         $res = $sql->get_result();
@@ -206,7 +204,7 @@ class Login {
 
             if($acciones < 5){
 
-                $sqlu = $this->con->prepare("SELECT * FROM fw_usuarios WHERE correo=? AND eliminado=?");
+                $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
                 $sqlu->bind_param("si", $_POST["user"], $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
@@ -219,98 +217,21 @@ class Login {
                 if($res->{"num_rows"} == 1){
                     
                     $result = $res->fetch_all(MYSQLI_ASSOC)[0];
-                    
                     $pass = $result['pass'];
-                    $id_user = $result['id_user'];
+                    $id_usr = $result['id_usr'];
 
                     if($pass == md5($_POST['pass'])){
 
-                        if($result['id_loc'] > 0){
+                        $info['op'] = 1;
+                        $info['message'] = "Ingreso Exitoso";
 
-                            $sqlsg = $this->con->prepare("SELECT t1.code as local_code, t2.code as giro_code, t2.ssl, t2.dominio, t2.dns, t1.id_loc, t2.id_gir FROM locales t1, giros t2 WHERE t1.id_loc=? AND t1.id_gir=t2.id_gir AND t1.eliminado=? AND t2.eliminado=?");
-                            $sqlsg->bind_param("iii", $result['id_loc'], $this->eliminado, $this->eliminado);
-                            $sqlsg->execute();
-                            $res_glocal = $sqlsg->get_result()->fetch_all(MYSQLI_ASSOC)[0];
-                            
-                            if($res_glocal['dns'] == 1 && $res_glocal['ssl'] == 1){
-                                $info['data'] = 'https://'.$res_glocal['dominio'].'/data/'.$res_glocal["giro_code"].'/index.js';
-                            }else{
-                                $info['data'] = 'https://misitiodelivery.cl/data/'.$res_glocal["giro_code"].'.js';
-                            }
+                        $ses['info']['id_usr'] = $id_usr;
+                        $ses['info']['nombre'] = $result['nombre'];
+                        $ses['info']['tipo'] = $result['tipo'];
+                        $_SESSION['user'] = $ses;
 
-                            $sqlsg->free_result();
-                            $sqlsg->close();
+                        $this->registrar('9', $result['id_user'], $res_glocal['id_loc'], $res_glocal['id_gir'], '');
 
-                            if($result['tipo'] == 0){
-                                
-                                // PUNTO DE VENTA
-                                $this->registrar('10', $result['id_user'], $res_glocal['id_loc'], $res_glocal['id_gir'], '');
-                                $info['op'] = 3;
-                                $info['url'] = 'admin/punto_de_venta/';
-                                $info['message'] = "Ingreso Exitoso Punto de Venta";
-                                
-                                $code_cookie_user = bin2hex(openssl_random_pseudo_bytes(30));
-                                $code_cookie_local = bin2hex(openssl_random_pseudo_bytes(30));
-                                
-                                $info['id'] = $result['id_user'];
-                                $info['user_code'] = $code_cookie_user;
-                                $info['local_code'] = $code_cookie_local;
-                                $ip = $this->getUserIpAddr();
-                                $info['code'] = $res_glocal["local_code"];
-
-                                $sqlul = $this->con->prepare("UPDATE locales SET cookie_ip=?, cookie_code=? WHERE id_loc=? AND eliminado=?");
-                                $sqlul->bind_param("ssii", $ip, $code_cookie_local, $res_glocal['id_loc'], $this->eliminado);
-                                $sqlul->execute();
-                                $sqlul->close();
-
-                                $sqluu = $this->con->prepare("UPDATE fw_usuarios SET cookie_code=? WHERE id_user=? AND eliminado=?");
-                                $sqluu->bind_param("sii", $code_cookie_user, $result['id_user'], $this->eliminado);
-                                $sqluu->execute();
-                                $sqluu->close();
-
-                            }
-                            if($result['tipo'] == 1){
-                                
-                                // COCINA
-                                $this->registrar('11', $result['id_user'], $res_glocal['id_loc'], $res_glocal['id_gir'], '');
-                                $info['op'] = 4;
-                                $info['url'] = 'admin/cocina/';
-                                $info['message'] = "Ingreso Exitoso Cocina";
-                                $info['code'] = $res_glocal["local_code"];
-
-                            }
-
-                        }else{
-
-                            $ses['info']['id_user'] = $id_user;
-                            $ses['info']['nombre'] = $result['nombre'];
-                            $ses['info']['admin'] = $result['admin'];
-                            $ses['info']['re_venta'] = $result['re_venta'];
-                            $ses['info']['id_aux_user'] = $result['id_aux_user'];
-                            $ses['id_gir'] = 0;
-                            $ses['id_cat'] = 0;
-
-                            if($result['admin'] == 0){
-
-                                $sqlsug = $this->con->prepare("SELECT id_gir FROM fw_usuarios_giros WHERE id_user=?");
-                                $sqlsug->bind_param("i", $id_user);
-                                $sqlsug->execute();
-                                $ressug = $sqlsug->get_result();
-                                if($ressug->{"num_rows"} == 1){
-                                    $ses['id_gir'] = $ressug->fetch_all(MYSQLI_ASSOC)[0]['id_gir'];
-                                }
-                                $sqlsug->free_result();
-                                $sqlsug->close();
-
-                            }
-
-                            $info['op'] = 1;
-                            $info['message'] = "Ingreso Exitoso";
-                            $_SESSION['user'] = $ses;
-                            $this->registrar('9', $result['id_user'], $res_glocal['id_loc'], $res_glocal['id_gir'], '');
-                            
-                        }
-                        
                     }else{
 
                         // 1 ERRAR

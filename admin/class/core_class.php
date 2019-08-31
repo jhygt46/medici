@@ -193,6 +193,16 @@ class Core{
         file_put_contents(DIR."js/info.js", "var data=".json_encode($data).";");
 
     }
+    public function getrandstring($n){
+        
+        $r = "";
+        $s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for($i=0; $i<$n; $i++){
+            $r .= $s{$i};
+        }
+        return $r;
+
+    }
     public function process_horas($horas){
 
         $arr = [];
