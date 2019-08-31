@@ -216,9 +216,6 @@ class Login {
                 $sqlu->bind_param("si", $_POST["user"], $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
-                
-                $info['res'] = $res->{"num_rows"};
-                $info['post'] = $_POST;
 
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
