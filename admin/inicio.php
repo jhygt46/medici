@@ -87,8 +87,8 @@
                                         <div class="texto">Mi Cuenta</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <?php if($_SESSION['user']['info']['tipo'] == 1){ ?><li onclick="navlink('pages/msd/ver_giro.php')">Inicio<!--<p class="valign">3</p>--></li><?php } ?>
-                                        <?php if($_SESSION['user']['info']['tipo'] == 1){ ?><li onclick="navlink('pages/msd/giros.php')">Giros</li><?php } ?>
+                                        <li onclick="navlink('pages/msd/ver_giro.php')">Inicio<!--<p class="valign">3</p>--></li>
+                                        <li onclick="navlink('pages/msd/giros.php')">Giros</li>
                                     </ul>
                                 </div>
                             </div>                            
