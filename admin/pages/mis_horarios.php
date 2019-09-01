@@ -24,21 +24,16 @@ $eliminarobjeto = "Servicio de Usuario";
 $page_mod = "pages/mis_servicios.php";
 /* CONFIG PAGE */
 
-$id_ser = 0;
+$id_ran = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_servicios();
+$list = $core->get_rangos();
 
 
-if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
+if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
 
-    $id_ser = $_GET["id_ser"];
+    $id_ran = $_GET["id_ran"];
     $sub_titulo = $sub_titulo2;
-    $that = $core->get_servicio_usuario($id_ser);
-    $select = $core->get_no_servicios_2($id_ser);
-
-}else{
-
-    $select = $core->get_no_servicios();
+    $that = $core->get_rango($id_ran);
 
 }
 
@@ -93,11 +88,11 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Hora inicio:</p></span>
-                        <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="" />
+                        <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="08:30" />
                     </label>
                     <label class="clearfix">
                         <span><p>Hora fin:</p></span>
-                        <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="" />
+                        <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30" />
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
@@ -120,7 +115,6 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
                     $nombre = $list[$i]['nombre'];
-                    $dominio = $list[$i]['dominio'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">

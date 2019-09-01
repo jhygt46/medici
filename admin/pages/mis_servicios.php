@@ -103,7 +103,6 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
                     $nombre = $list[$i]['nombre'];
-                    $dominio = $list[$i]['dominio'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">

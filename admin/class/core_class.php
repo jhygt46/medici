@@ -403,4 +403,29 @@ class Core{
 
     }
 
+    public function get_rangos(){
+
+        $id = 1;
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=?")){
+            if($sql->bind_param("i", $id)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
+    public function get_rango($id_ran){
+        
+        $id = 1;
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=?")){
+            if($sql->bind_param("ii", $id, $id_ran)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+        
+    }
+
 }
