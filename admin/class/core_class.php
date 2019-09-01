@@ -357,7 +357,7 @@ class Core{
     public function get_no_servicios(){
 
         $id = 1;
-        if($sqlsu = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT * FROM servicio_usuarios WHERE id_usr=?)")){
+        if($sqlsu = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?)")){
             if($sqlsu->bind_param("i", $id)){
                 if($sqlsu->execute()){
                     return $sqlsu->get_result()->fetch_all(MYSQLI_ASSOC);
