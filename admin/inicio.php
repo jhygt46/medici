@@ -76,7 +76,7 @@
                                         <div class="texto">Administrador</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <li onclick="navlink('pages/ingresar_servicios.php')">Inicio<p class="valign">3</p></li><?php } ?>
+                                        <li onclick="navlink('pages/ingresar_servicios.php')">Inicio<p class="valign">3</p></li>
                                         <li onclick="navlink('pages/ingresar_medicos.php')">Giros</li>
                                     </ul>
                                 </div>
