@@ -19,19 +19,15 @@ $sub_titulo2 = "Modificar Servicio";
 $accion = "crear_servicio_usuario";
 
 $eliminaraccion = "eliminar_servicio_usuario";
-$id_list_1 = "id_usr";
-$id_list_2 = "id_ser";
+$id_list = "id_ser";
 $eliminarobjeto = "Servicio de Usuario";
 $page_mod = "pages/mis_servicios.php";
 /* CONFIG PAGE */
 
 $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_no_servicios();
-
-echo "<pre>";
-print_r($list);
-echo "</pre>";
+$list = $core->get_servicios();
+$select = $core->get_no_servicios();
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
@@ -67,22 +63,23 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                     <label class="clearfix">
-                        <span><p>Nombre:</p></span>
+                        <span><p>Servicio:</p></span>
+                        <select id="tipo">
+                            <option value="0">Seleccionar</option> 
+                            <?php for($i=0; $i<count($select); $i++){ ?>
+                            <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
+                            <?php } ?>
+                        </select>
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Tiempo:</p></span>
                         <input id="nombre" class="inputs" type="text" value="<?php echo $that['nombre']; ?>" require="" placeholder="" />
                     </label>
                     <label class="clearfix">
-                        <span><p>Correo:</p></span>
+                        <span><p>Precio:</p></span>
                         <input id="correo" class="inputs" type="text" value="<?php echo $that['correo']; ?>" require="" placeholder="" />
                     </label>
-                    <?php if($inicio["id_user"] == 1){ ?>
-                    <label class="clearfix">
-                        <span><p>Tipo:</p></span>
-                        <select id="tipo">
-                            <option value="0" <?php if($that['id_aux_user'] > 0){ echo "selected"; } ?>>Vendedor</option> 
-                            <option value="1" <?php if($that['id_aux_user'] == 0){ echo "selected"; } ?>>Reclutador</option>
-                        </select>
-                    </label>
-                    <?php } ?>
+                    
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
