@@ -35,9 +35,6 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio_usuario($id_ser);
     $select = $core->get_no_servicios_2($id_ser);
-    echo "<pre>";
-    print_r($that);
-    echo "</pre>";
 
 }else{
 
@@ -79,13 +76,12 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Tiempo:</p></span>
-                        <input id="nombre" class="inputs" type="text" value="<?php echo $that['nombre']; ?>" require="" placeholder="" />
+                        <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
                     </label>
                     <label class="clearfix">
                         <span><p>Precio:</p></span>
-                        <input id="correo" class="inputs" type="text" value="<?php echo $that['correo']; ?>" require="" placeholder="" />
+                        <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
                     </label>
-                    
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
