@@ -27,7 +27,7 @@ $page_mod = "pages/mis_servicios.php";
 $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_servicios();
-
+$sub_titulo = $sub_titulo1;
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
