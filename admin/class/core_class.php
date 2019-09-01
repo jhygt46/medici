@@ -362,13 +362,13 @@ class Core{
                 if($sqlsu->execute()){
                     return $sqlsu->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{
-                    return htmlspecialchars($sqlsu->error);
+                    return "1: ".htmlspecialchars($sqlsu->error);
                 }
             }else{
-                return htmlspecialchars($sqlsu->error);
+                return "2: ".htmlspecialchars($sqlsu->error);
             }
         }else{
-            return htmlspecialchars($this->con->error);
+            return "3: ".htmlspecialchars($this->con->error);
         }
     }
 
