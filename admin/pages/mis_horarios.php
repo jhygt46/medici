@@ -114,7 +114,7 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $nombre = $list[$i]['nombre'];
+                    $nombre = $list[$i]['dia_ini']." - ".$list[$i]['dia_fin'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
