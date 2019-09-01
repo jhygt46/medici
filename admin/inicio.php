@@ -76,8 +76,8 @@
                                         <div class="texto">Administrador</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <li onclick="navlink('pages/ingresar_servicios.php')">Inicio<p class="valign">3</p></li>
-                                        <li onclick="navlink('pages/ingresar_medicos.php')">Giros</li>
+                                        <li onclick="navlink('pages/ingresar_servicios.php')">Ingresar Servicios</li>
+                                        <li onclick="navlink('pages/ingresar_medicos.php')">Ingresar Medicos</li>
                                     </ul>
                                 </div>
                                 <?php } ?>
@@ -87,8 +87,9 @@
                                         <div class="texto">Mi Cuenta</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <li onclick="navlink('pages/msd/ver_giro.php')">Inicio<!--<p class="valign">3</p>--></li>
-                                        <li onclick="navlink('pages/msd/giros.php')">Giros</li>
+                                        <li onclick="navlink('pages/mis_servicios.php')">Servicios</li>
+                                        <li onclick="navlink('pages/mis_horarios.php')">Horarios</li>
+                                        <li onclick="navlink('pages/misexcepciones.php')">Excepciones</li>
                                     </ul>
                                 </div>
                             </div>                            
