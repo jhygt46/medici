@@ -357,19 +357,26 @@ class Core{
     public function get_no_servicios(){
 
         $id = 1;
-        if($sqlsu = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?)")){
-            if($sqlsu->bind_param("i", $id)){
-                if($sqlsu->execute()){
-                    return $sqlsu->get_result()->fetch_all(MYSQLI_ASSOC);
-                }else{
-                    return "1: ".htmlspecialchars($sqlsu->error);
-                }
-            }else{
-                return "2: ".htmlspecialchars($sqlsu->error);
-            }
-        }else{
-            return "3: ".htmlspecialchars($this->con->error);
-        }
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?)")){
+            if($sql->bind_param("i", $id)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
+    public function get_servicio_usuario($id_ser){
+
+        $id = 1;
+        if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?)")){
+            if($sql->bind_param("ii", $id_ser, $id)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
     }
 
 }

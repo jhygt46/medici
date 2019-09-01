@@ -111,12 +111,15 @@ $tablas[3]['campos'][0]['ai'] = 1;
 $tablas[3]['campos'][1]['nombre'] = 'nombre';
 $tablas[3]['campos'][1]['tipo'] = 'varchar(100) COLLATE utf8_spanish2_ci';
 $tablas[3]['campos'][1]['null'] = 0;
+$tablas[3]['campos'][1]['values'] = ["Tratamiento 01", "Tratamiento 02"];
 $tablas[3]['campos'][2]['nombre'] = 'descripcion';
 $tablas[3]['campos'][2]['tipo'] = 'varchar(255) COLLATE utf8_spanish2_ci';
 $tablas[3]['campos'][2]['null'] = 0;
+$tablas[3]['campos'][2]['values'] = ["Descripcion Tratamiento 01", "Descripcion Tratamiento 02"];
 $tablas[3]['campos'][3]['nombre'] = 'eliminado';
 $tablas[3]['campos'][3]['tipo'] = 'tinyint(1)';
 $tablas[3]['campos'][3]['null'] = 0;
+$tablas[3]['campos'][3]['values'] = [0, 0];
 
 $tablas[4]['nombre'] = 'excepcion_servicios';
 $tablas[4]['campos'][0]['nombre'] = 'id_exc';
