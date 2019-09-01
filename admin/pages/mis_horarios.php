@@ -12,28 +12,31 @@ require_once(DIR."admin/class/core_class.php");
 $core = new Core();
 
 /* CONFIG PAGE */
-$titulo = "Mis Servicios";
-$titulo_list = "Servicios";
-$sub_titulo1 = "Ingresar Servicio";
-$sub_titulo2 = "Modificar Servicio";
-$accion = "crear_servicio_usuario";
+$titulo = "Mis Horarios";
+$titulo_list = "Horarios";
+$sub_titulo1 = "Ingresar Horario";
+$sub_titulo2 = "Modificar Horario";
+$accion = "crear_horario";
 
-$eliminaraccion = "eliminar_servicio_usuario";
-$id_list = "id_ser";
-$eliminarobjeto = "Servicio de Usuario";
-$page_mod = "pages/mis_servicios.php";
+$eliminaraccion = "eliminar_horario";
+$id_list = "id_ran";
+$eliminarobjeto = "Horario";
+$page_mod = "pages/mis_horarios.php";
 /* CONFIG PAGE */
 
 $id_ran = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_rangos();
-$semana = ["", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 
 if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
 
     $id_ran = $_GET["id_ran"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_rango($id_ran);
+    
+    echo "<pre>";
+    print_r($that);
+    echo "</pre>";
 
 }
 
