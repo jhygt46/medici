@@ -28,7 +28,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
         $id_ser = $_GET["id_ser"];
         $sub_titulo = $sub_titulo2;
         $that = $core->get_servicio_usuario($id_usr, $id_ser);
-        
+
     }
 }
 ?>
@@ -106,5 +106,3 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
         </div>
     </div>
 </div>
-
-<?php }else{ die("ERROR: #A908"); } ?>
