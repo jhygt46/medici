@@ -25,19 +25,20 @@ $eliminarobjeto = "Servicio de Usuario";
 $page_mod = "pages/msd/mis_servicios.php";
 /* CONFIG PAGE */
 
-$id_usr = 0;
 $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
+$list = $core->get_no_servicios();
 
-if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0){
-    if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
+echo "<pre>";
+print_r($list);
+echo "</pre>";
 
-        $id_usr = $_GET["id_usr"];
-        $id_ser = $_GET["id_ser"];
-        $sub_titulo = $sub_titulo2;
-        $that = $core->get_servicio_usuario($id_usr, $id_ser);
+if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
-    }
+    $id_ser = $_GET["id_ser"];
+    $sub_titulo = $sub_titulo2;
+    $that = $core->get_servicio_usuario($id_ser);
+ 
 }
 ?>
 
