@@ -381,7 +381,7 @@ class Core{
     public function get_servicio_usuario($id_ser){
 
         $id = 1;
-        if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?)")){
+        if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
             if($sql->bind_param("ii", $id_ser, $id)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
