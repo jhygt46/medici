@@ -378,6 +378,18 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    public function get_no_servicios_2($id_ser){
+
+        $id = 1;
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?) OR id_ser=?")){
+            if($sql->bind_param("ii", $id, $id_ser)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
     public function get_servicio_usuario($id_ser){
 
         $id = 1;

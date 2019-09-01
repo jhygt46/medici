@@ -27,18 +27,24 @@ $page_mod = "pages/mis_servicios.php";
 $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_servicios();
-$select = $core->get_no_servicios();
+
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
     $id_ser = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio_usuario($id_ser);
+    $select = $core->get_no_servicios_2($id_ser);
     echo "<pre>";
     print_r($that);
     echo "</pre>";
 
+}else{
+
+    $select = $core->get_no_servicios();
+
 }
+
 ?>
 
 <div class="pagina">
