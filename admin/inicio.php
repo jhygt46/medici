@@ -1,6 +1,3 @@
-<?php
-    
-?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" lang="es-CL">
     <head>
         <title>ArteMedici</title>
@@ -36,7 +33,7 @@
                                         <li class="info">
                                             <div class="cont_info">
                                                 <h2><?php echo $_SESSION['user']['info']['nombre']; ?></h2>
-                                                <h3>admin</h3>
+                                                <h3>Administrador</h3>
                                                 <a href="?accion=logout">Salir</a>
                                             </div>
                                         </li>
@@ -72,16 +69,26 @@
                     <div class="menu_left">
                         <div class="cont_menu relative">
                             <div class="menu">
+                                <?php if($_SESSION['user']['info']['tipo'] == 1){ ?>
+                                <div class="bloque">
+                                    <div class="titulo" onclick="open_bloque(this)">
+                                        <div class="icono ic1"></div>
+                                        <div class="texto">Administrador</div>
+                                    </div>
+                                    <ul class="bloque_lista">
+                                        <li onclick="navlink('pages/ingresar_servicios.php')">Inicio<p class="valign">3</p></li><?php } ?>
+                                        <li onclick="navlink('pages/ingresar_medicos.php')">Giros</li>
+                                    </ul>
+                                </div>
+                                <?php } ?>
                                 <div class="bloque">
                                     <div class="titulo" onclick="open_bloque(this)">
                                         <div class="icono ic1"></div>
                                         <div class="texto">Mi Cuenta</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <li onclick="navlink('pages/msd/ver_giro.php')">Inicio<!--<p class="valign">3</p>--></li>
-                                        <?php if($inicio['admin'] == 1){ ?><li onclick="navlink('pages/msd/giros.php')">Giros</li><?php } ?>
-                                        <?php if($inicio['re_venta'] == 1 || $inicio['id_user'] == 1){ ?><li onclick="navlink('pages/msd/usuarios.php')">Usuarios</li><?php } ?>
-                                        <?php if($inicio['id_user'] == 1){ ?><li onclick="navlink('pages/msd/panel.php')">Panel de Control</li><?php } ?>
+                                        <?php if($_SESSION['user']['info']['tipo'] == 1){ ?><li onclick="navlink('pages/msd/ver_giro.php')">Inicio<!--<p class="valign">3</p>--></li><?php } ?>
+                                        <?php if($_SESSION['user']['info']['tipo'] == 1){ ?><li onclick="navlink('pages/msd/giros.php')">Giros</li><?php } ?>
                                     </ul>
                                 </div>
                             </div>                            
