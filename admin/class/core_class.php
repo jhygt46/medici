@@ -360,13 +360,13 @@ class Core{
                 if($sqlsu->execute()){
                     return $sqlsu->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{
-                    return "HOLA MUNDO";
+                    return "HOLA MUNDO3";
                 }
             }else{
-                return "HOLA MUNDO";
+                return "HOLA MUNDO2";
             }
         }else{
-            return "HOLA MUNDO";
+            return "HOLA MUNDO1";
         }
     }
 
