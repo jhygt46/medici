@@ -27,7 +27,7 @@ $page_mod = "pages/mis_servicios.php";
 $id_ran = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_rangos();
-
+$semana = ["", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 
 if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
 
@@ -114,7 +114,7 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $nombre = $list[$i]['dia_ini']." - ".$list[$i]['dia_fin'];
+                    $nombre = $semana[$list[$i]['dia_ini']]." - ".$semana[$list[$i]['dia_fin']];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
