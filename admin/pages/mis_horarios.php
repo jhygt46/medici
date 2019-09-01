@@ -66,21 +66,38 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                     <label class="clearfix">
-                        <span><p>Servicio:</p></span>
-                        <select id="tipo">
+                        <span><p>Dia inicio:</p></span>
+                        <select id="dia_ini">
                             <option value="0">Seleccionar</option> 
-                            <?php for($i=0; $i<count($select); $i++){ ?>
-                            <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
-                            <?php } ?>
+                            <option value="1" <?php if($that['dia_ini'] == 1){ echo "selected"; } ?>>Lunes</option>
+                            <option value="2" <?php if($that['dia_ini'] == 2){ echo "selected"; } ?>>Martes</option>
+                            <option value="3" <?php if($that['dia_ini'] == 3){ echo "selected"; } ?>>Miercoles</option>
+                            <option value="4" <?php if($that['dia_ini'] == 4){ echo "selected"; } ?>>Jueves</option>
+                            <option value="5" <?php if($that['dia_ini'] == 5){ echo "selected"; } ?>>Viernes</option>
+                            <option value="6" <?php if($that['dia_ini'] == 6){ echo "selected"; } ?>>Sabado</option>
+                            <option value="7" <?php if($that['dia_ini'] == 7){ echo "selected"; } ?>>Domingo</option>
                         </select>
                     </label>
                     <label class="clearfix">
-                        <span><p>Tiempo:</p></span>
-                        <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
+                        <span><p>Dia fin:</p></span>
+                        <select id="dia_fin">
+                            <option value="0">Seleccionar</option> 
+                            <option value="1" <?php if($that['dia_fin'] == 1){ echo "selected"; } ?>>Lunes</option>
+                            <option value="2" <?php if($that['dia_fin'] == 2){ echo "selected"; } ?>>Martes</option>
+                            <option value="3" <?php if($that['dia_fin'] == 3){ echo "selected"; } ?>>Miercoles</option>
+                            <option value="4" <?php if($that['dia_fin'] == 4){ echo "selected"; } ?>>Jueves</option>
+                            <option value="5" <?php if($that['dia_fin'] == 5){ echo "selected"; } ?>>Viernes</option>
+                            <option value="6" <?php if($that['dia_fin'] == 6){ echo "selected"; } ?>>Sabado</option>
+                            <option value="7" <?php if($that['dia_fin'] == 7){ echo "selected"; } ?>>Domingo</option>
+                        </select>   
                     </label>
                     <label class="clearfix">
-                        <span><p>Precio:</p></span>
-                        <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
+                        <span><p>Hora inicio:</p></span>
+                        <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Hora fin:</p></span>
+                        <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="" />
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
