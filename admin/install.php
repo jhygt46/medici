@@ -13,7 +13,7 @@ require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
 //echo $db_password[0]."<br/>";
-exit;
+//exit;
 
 $tablas[0]['nombre'] = 'usuarios';
 $tablas[0]['campos'][0]['nombre'] = 'id_usr';
@@ -234,7 +234,7 @@ $tablas[8]['campos'][1]['tipo'] = 'int(4)';
 $tablas[8]['campos'][1]['null'] = 0;
 $tablas[8]['campos'][1]['pk'] = 1;
 $tablas[8]['campos'][1]['k'] = 1;
-$tablas[8]['campos'][1]['kt'] = 5;
+$tablas[8]['campos'][1]['kt'] = 3;
 $tablas[8]['campos'][1]['kc'] = 0;
 $tablas[8]['campos'][2]['nombre'] = 'tiempo_min';
 $tablas[8]['campos'][2]['tipo'] = 'smallint(2)';
