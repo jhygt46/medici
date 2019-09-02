@@ -28,9 +28,7 @@ $id_ran = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_rangos();
 $list_servicios = $core->get_servicios();
-echo "<pre>";
-print_r($list_servicios);
-echo "</pre>";
+
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
@@ -39,13 +37,6 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     $sub_titulo = $sub_titulo2;
     $that = $core->get_rango($id_ran);
     $that_list = $core->get_servicios_rango($id_ran);
-
-    echo "<pre>";
-    print_r($that);
-    echo "</pre>";
-    echo "<pre>";
-    print_r($that_list);
-    echo "</pre>";
 
 }
 
@@ -106,6 +97,9 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                         <span><p>Hora fin:</p></span>
                         <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30" />
                     </label>
+                    <?php for($i=0; $i<count($list_servicios); $i++){ ?>
+                        <div>BUENA NELSON</div>
+                    <?php } ?>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
