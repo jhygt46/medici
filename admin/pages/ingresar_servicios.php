@@ -28,6 +28,10 @@ $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_todos_servicios();
 
+echo "<pre>";
+print_r($list);
+echo "<pre>";
+
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
     $id_ser = $_GET["id_ser"];
