@@ -9,6 +9,7 @@ class Core{
     
     public $con = null;
     public $id_user = null;
+    public $eliminado = 0;
 
     public function __construct(){
         
