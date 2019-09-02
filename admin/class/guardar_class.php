@@ -40,16 +40,14 @@ class Guardar{
             if($_POST['accion'] == "eliminar_servicio"){
                 return $this->eliminar_servicio();
             }
+            if($_POST['accion'] == "crear_medico"){
+                return $this->crear_medico();
+            }
+            if($_POST['accion'] == "eliminar_medico"){
+                return $this->eliminar_medico();
+            }
         }
-
-    }
-    private function registrar($id_des, $id_loc, $id_gir, $txt){
-
-        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_user, id_loc, id_gir, fecha, txt) VALUES (?, ?, ?, ?, now(), ?)");
-        $sqlipd->bind_param("iiiis", $id_des, $this->id_user, $id_loc, $id_gir, $txt);
-        $sqlipd->execute();
-        $sqlipd->close();
-
+        
     }
     private function crear_servicio(){
         
@@ -58,29 +56,17 @@ class Guardar{
         $descripcion = $_POST['descripcion'];
 
         if($this->tipo == 1){
-            
-            $sql = $this->con->prepare("SELECT id_gir FROM giros WHERE dominio=?");
-            $sql->bind_param("s", $dominio);
-            $sql->execute();
-            $res = $sql->get_result();
-            $result = $res->fetch_all(MYSQLI_ASSOC)[0];
                 
             if($id == 0){
 
-                $code = bin2hex(openssl_random_pseudo_bytes(10));
                 $sqligir = $this->con->prepare("INSERT INTO servicios (nombre, descripcion, eliminado) VALUES (?, ?, ?)");
                 $sqligir->bind_param("ssi", $nombre, $descripcion, $this->eliminado);
                 if($sqligir->execute()){
-
                     $info['op'] = 1;
                     $info['mensaje'] = "Servicio ingresado exitosamente";
-
                 }else{
-
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: B1";
-                    //$this->registrar(6, 0, 0, 'Giros: err ingreso');
-
                 }
 
             }
@@ -89,27 +75,19 @@ class Guardar{
                 $sqlugi = $this->con->prepare("UPDATE servicios SET nombre=?, descripcion=? WHERE id_ser=? AND eliminado=?");
                 $sqlugi->bind_param("ssii", $nombre, $descripcio, $id_ser, $this->eliminado);
                 if($sqlugi->execute()){
-
                     $info['op'] = 1;
                     $info['mensaje'] = "Servicio modificado exitosamente";
-
                 }else{
-
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: Permisos A2";
-                    //$this->registrar(6, 0, 0, 'update giros');
-
                 }
                 $sqlugi->close();
 
             }
             
         }else{
-
             $info['op'] = 2;
             $info['mensaje'] = "Error: F01";
-            //$this->registrar(4, 0, 0, 'crear giro');
-
         }
 
         $info['reload'] = 1;
@@ -139,7 +117,6 @@ class Guardar{
                 $info['tipo'] = "error";
                 $info['titulo'] = "Error";
                 $info['texto'] = "Servicio ".$nombre." no pudo ser eliminado";
-                //$this->registrar(6, 0, 0, 'borrar giro');
 
             }
             $sqlugi->close();
@@ -149,6 +126,91 @@ class Guardar{
             $info['tipo'] = "error";
             $info['titulo'] = "Error";
             $info['texto'] = "Servicio ".$nombre." no pudo ser eliminado";
+
+        }
+
+        return $info;
+        
+    }
+    private function crear_medico(){
+        
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $correo = $_POST['correo'];
+        $tipo = $_POST['tipo'];
+
+        if($this->tipo == 1){
+             
+            if($id == 0){
+
+                $sqligir = $this->con->prepare("INSERT INTO usuarios (nombre, descripcion, tipo, eliminado) VALUES (?, ?, ?, ?)");
+                $sqligir->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
+                if($sqligir->execute()){
+                    $info['op'] = 1;
+                    $info['mensaje'] = "Medico ingresado exitosamente";
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Error: B1";
+                }
+
+            }
+            if($id > 0){
+
+                $sqlugi = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                $sqlugi->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
+                if($sqlugi->execute()){
+                    $info['op'] = 1;
+                    $info['mensaje'] = "Medico modificado exitosamente";
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Error: Permisos A2";
+                }
+                $sqlugi->close();
+
+            }
+            
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: F01";
+        }
+
+        $info['reload'] = 1;
+        $info['page'] = "ingresar_servicios.php";
+        return $info;
+
+    }
+    private function eliminar_medico(){
+
+        $id_usr = $_POST['id'];
+        $nombre = $_POST['nombre'];
+
+        if($this->tipo == 1){
+
+            $sqlugi = $this->con->prepare("UPDATE usuarios SET eliminado='1' WHERE id_usr=?");
+            $sqlugi->bind_param("i", $id_usr);
+            if($sqlugi->execute()){
+
+                $info['tipo'] = "success";
+                $info['titulo'] = "Eliminado";
+                $info['texto'] = "Medico ".$nombre." Eliminado";
+                $info['reload'] = 1;
+                $info['page'] = "ingresar_servicios.php";
+
+            }else{
+
+                $info['tipo'] = "error";
+                $info['titulo'] = "Error";
+                $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
+                //$this->registrar(6, 0, 0, 'borrar giro');
+
+            }
+            $sqlugi->close();
+            
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
             //$this->registrar(4, 0, 0, 'crear giro');
 
         }
