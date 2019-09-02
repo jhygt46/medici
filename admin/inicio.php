@@ -89,7 +89,7 @@
                                     <ul class="bloque_lista">
                                         <li onclick="navlink('pages/mis_servicios.php')">Servicios</li>
                                         <li onclick="navlink('pages/mis_horarios.php')">Horarios</li>
-                                        <li onclick="navlink('pages/misexcepciones.php')">Excepciones</li>
+                                        <li onclick="navlink('pages/mis_excepciones.php')">Excepciones</li>
                                     </ul>
                                 </div>
                             </div>                            

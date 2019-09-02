@@ -52,43 +52,45 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
         </ul>
     </div>
     <hr>
-    <div class="cont_pagina">
-        <div class="cont_pag">
-            <form action="" method="post">
-                <div class="form_titulo clearfix">
-                    <div class="titulo"><?php echo $sub_titulo; ?></div>
-                    <ul class="opts clearfix">
-                        <li class="opt">1</li>
-                        <li class="opt">2</li>
-                    </ul>
-                </div>
-                <fieldset class="<?php echo $class; ?>">
-                    <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
-                    <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
-                    <label class="clearfix">
-                        <span><p>Servicio:</p></span>
-                        <select id="tipo">
-                            <option value="0">Seleccionar</option> 
-                            <?php for($i=0; $i<count($select); $i++){ ?>
-                            <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
-                            <?php } ?>
-                        </select>
-                    </label>
-                    <label class="clearfix">
-                        <span><p>Tiempo:</p></span>
-                        <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
-                    </label>
-                    <label class="clearfix">
-                        <span><p>Precio:</p></span>
-                        <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
-                    </label>
-                    <label>
-                        <div class="enviar"><a onclick="form(this)">Enviar</a></div>
-                    </label>
-                </fieldset>
-            </form>
+    <?php if(count($select) > 0){ ?>
+        <div class="cont_pagina">
+            <div class="cont_pag">
+                <form action="" method="post">
+                    <div class="form_titulo clearfix">
+                        <div class="titulo"><?php echo $sub_titulo; ?></div>
+                        <ul class="opts clearfix">
+                            <li class="opt">1</li>
+                            <li class="opt">2</li>
+                        </ul>
+                    </div>
+                    <fieldset class="<?php echo $class; ?>">
+                        <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
+                        <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
+                        <label class="clearfix">
+                            <span><p>Servicio:</p></span>
+                            <select id="tipo">
+                                <option value="0">Seleccionar</option> 
+                                <?php for($i=0; $i<count($select); $i++){ ?>
+                                <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </label>
+                        <label class="clearfix">
+                            <span><p>Tiempo:</p></span>
+                            <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
+                        </label>
+                        <label class="clearfix">
+                            <span><p>Precio:</p></span>
+                            <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
+                        </label>
+                        <label>
+                            <div class="enviar"><a onclick="form(this)">Enviar</a></div>
+                        </label>
+                    </fieldset>
+                </form>
+            </div>
         </div>
-    </div>
+    <?php } ?>
     <div class="cont_pagina">
         <div class="cont_pag">
             <div class="list_titulo clearfix">
