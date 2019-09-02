@@ -30,7 +30,9 @@ $list = $core->get_rangos();
 $list_servicios = $core->get_servicios();
 
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-
+echo "<pre>";
+print_r($_GET);
+echo "</pre>";
 if(isset($_GET["fecha"]) && is_numeric($_GET["fecha"]) && $_GET["fecha"] != 0){
     /*
     $id_ran = $_GET["id_ran"];
