@@ -12,16 +12,16 @@ require_once(DIR."admin/class/core_class.php");
 $core = new Core();
 
 /* CONFIG PAGE */
-$titulo = "Mis Servicios";
-$titulo_list = "Servicios";
+$titulo = "Servicios";
+$titulo_list = "Todos los Servicios";
 $sub_titulo = "Ingresar Servicio";
 $sub_titulo2 = "Modificar Servicio";
-$accion = "crear_servicio_usuario";
+$accion = "crear_servicio";
 
-$eliminaraccion = "eliminar_servicio_usuario";
+$eliminaraccion = "eliminar_servicio";
 $id_list = "id_ser";
-$eliminarobjeto = "Servicio de Usuario";
-$page_mod = "pages/mis_servicios.php";
+$eliminarobjeto = "Servicio";
+$page_mod = "pages/ingresar_servicios.php";
 /* CONFIG PAGE */
 
 $id_ser = 0;

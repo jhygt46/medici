@@ -12,16 +12,16 @@ require_once(DIR."admin/class/core_class.php");
 $core = new Core();
 
 /* CONFIG PAGE */
-$titulo = "Mis Servicios";
-$titulo_list = "Servicios";
-$sub_titulo = "Ingresar Servicio";
-$sub_titulo2 = "Modificar Servicio";
-$accion = "crear_servicio_usuario";
+$titulo = "Medicos";
+$titulo_list = "Todos los Medicos";
+$sub_titulo = "Ingresar Medico";
+$sub_titulo2 = "Modificar Medico";
+$accion = "crear_medico";
 
-$eliminaraccion = "eliminar_servicio_usuario";
-$id_list = "id_ser";
-$eliminarobjeto = "Servicio de Usuario";
-$page_mod = "pages/mis_servicios.php";
+$eliminaraccion = "eliminar_medico";
+$id_list = "id_usr";
+$eliminarobjeto = "Medico";
+$page_mod = "pages/ingresar_medicos.php";
 /* CONFIG PAGE */
 
 $id_ser = 0;
@@ -46,45 +46,38 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
         </ul>
     </div>
     <hr>
-    <?php if(count($select) > 0){ ?>
-        <div class="cont_pagina">
-            <div class="cont_pag">
-                <form action="" method="post">
-                    <div class="form_titulo clearfix">
-                        <div class="titulo"><?php echo $sub_titulo; ?></div>
-                        <ul class="opts clearfix">
-                            <li class="opt">1</li>
-                            <li class="opt">2</li>
-                        </ul>
-                    </div>
-                    <fieldset class="<?php echo $class; ?>">
-                        <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
-                        <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
-                        <label class="clearfix">
-                            <span><p>Servicio:</p></span>
-                            <select id="tipo">
-                                <option value="0">Seleccionar</option> 
-                                <?php for($i=0; $i<count($select); $i++){ ?>
-                                <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
-                                <?php } ?>
-                            </select>
-                        </label>
-                        <label class="clearfix">
-                            <span><p>Tiempo:</p></span>
-                            <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
-                        </label>
-                        <label class="clearfix">
-                            <span><p>Precio:</p></span>
-                            <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
-                        </label>
-                        <label>
-                            <div class="enviar"><a onclick="form(this)">Enviar</a></div>
-                        </label>
-                    </fieldset>
-                </form>
-            </div>
+    <div class="cont_pagina">
+        <div class="cont_pag">
+            <form action="" method="post">
+                <div class="form_titulo clearfix">
+                    <div class="titulo"><?php echo $sub_titulo; ?></div>
+                    <ul class="opts clearfix">
+                        <li class="opt">1</li>
+                        <li class="opt">2</li>
+                    </ul>
+                </div>
+                <fieldset class="<?php echo $class; ?>">
+                    <input id="id" type="hidden" value="<?php echo $id; ?>" />
+                    <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
+                    <label class="clearfix">
+                        <span><p>Nombre:</p></span>
+                        <input id="nombre" class="inputs" type="text" value="<?php echo $that['nombre']; ?>" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Correo:</p></span>
+                        <input id="correo" class="inputs" type="text" value="<?php echo $that['correo']; ?>" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Tipo:</p></span>
+                        <select><option value="0" <?php if($that['tipo'] == 0){ echo "selected"; } ?>>Seleccionar</option><option value="1" <?php if($that['tipo'] == 1){ echo "selected"; } ?>>Administrador</option></select>
+                    </label>
+                    <label>
+                        <div class="enviar"><a onclick="form(this)">Enviar</a></div>
+                    </label>
+                </fieldset>
+            </form>
         </div>
-    <?php } ?>
+    </div>
     <div class="cont_pagina">
         <div class="cont_pag">
             <div class="list_titulo clearfix">
