@@ -24,7 +24,7 @@ $eliminarobjeto = "Medico";
 $page_mod = "pages/ingresar_medicos.php";
 /* CONFIG PAGE */
 
-$id_ser = 0;
+$id = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_medicos();
 
@@ -32,7 +32,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
 
     $id = $_GET["id_usr"];
     $sub_titulo = $sub_titulo2;
-    $that = $core->get_medico($id_usr);
+    $that = $core->get_medico($id);
 
 }
 
