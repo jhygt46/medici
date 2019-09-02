@@ -27,13 +27,18 @@ $page_mod = "pages/mis_horarios.php";
 $id_ran = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_rangos();
-$semana = ["", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+$list_servicios = $core->get_servicios();
+echo "<pre>";
+print_r($list_servicios);
+echo "</pre>";
+$semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
 
     $id_ran = $_GET["id_ran"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_rango($id_ran);
+    $that_list = $core->get_servicios_rango($id_ran);
 
     echo "<pre>";
     print_r($that);
