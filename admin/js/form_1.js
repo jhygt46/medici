@@ -262,7 +262,35 @@ function confirm(message){
         showLoaderOnConfirm: true
     }, function(isConfirm){
 
-        
+        if(isConfirm){
+            
+            var send = {accion: message['accion'], id: message['id'], nombre: message['name']};
+            console.log(send);
+            
+            $.ajax({
+                url: "ajax/index.php",
+                type: "POST",
+                data: send,
+                success: function(data){
+                    
+                    setTimeout(function(){
+                        swal({
+                            title: data.titulo,
+                            text: data.texto,
+                            type: data.tipo,
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        if(data.reload)
+                            navlink('pages/'+data.page);
+                    }, 10);
+
+                }, error: function(e){
+                    console.log(e);
+                }
+            });
+ 
+        }
         
     });
     
