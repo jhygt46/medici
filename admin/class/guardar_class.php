@@ -27,13 +27,15 @@ class Guardar{
         global $db_database;
 
         $this->con = new mysqli($db_host[0], $db_user[0], $db_password[0], $db_database[0]);
-        $this->id_user = (isset($_SESSION['user']['info']['id_user'])) ? $_SESSION['user']['info']['id_user'] : 0 ;
+        $this->id_user = (isset($_SESSION['user']['info']['id_usr'])) ? $_SESSION['user']['info']['id_usr'] : 0 ;
         $this->tipo = (isset($_SESSION['user']['info']['tipo'])) ? $_SESSION['user']['info']['admin'] : 0 ;
 
     }
     public function process(){
         
-        return "BUENA NELSON.COM";
+        $a['this'] = $this;
+        $a['post'] = $_POST;
+        return $a;
 
         if($this->id_user > 0){
             if($_POST['accion'] == "crear_servicio"){
