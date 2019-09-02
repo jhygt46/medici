@@ -133,11 +133,11 @@ function mensaje(op, mens){
     
     if(op == 1){
         var type = "success";
-        var timer = 3000;
+        var timer = 2000;
     }
     if(op == 2){
         var type = "error";
-        var timer = 6000;
+        var timer = 5000;
     }
     Swal.fire({
         title: "",

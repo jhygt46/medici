@@ -73,7 +73,7 @@ class Guardar{
             if($id > 0){
 
                 $sqlugi = $this->con->prepare("UPDATE servicios SET nombre=?, descripcion=? WHERE id_ser=? AND eliminado=?");
-                $sqlugi->bind_param("ssii", $nombre, $descripcio, $id_ser, $this->eliminado);
+                $sqlugi->bind_param("ssii", $nombre, $descripcion, $id, $this->eliminado);
                 if($sqlugi->execute()){
                     $info['op'] = 1;
                     $info['mensaje'] = "Servicio modificado exitosamente";
