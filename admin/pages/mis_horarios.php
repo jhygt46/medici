@@ -43,6 +43,9 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     echo "<pre>";
     print_r($that);
     echo "</pre>";
+    echo "<pre>";
+    print_r($that_list);
+    echo "</pre>";
 
 }
 
