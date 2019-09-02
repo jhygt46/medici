@@ -33,6 +33,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
     $id = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio($id_ser);
+    echo "BUENA-NELSON.COM";
     echo "<pre>";
     print_r($that);
     echo "</pre>";
