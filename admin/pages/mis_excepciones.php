@@ -24,10 +24,9 @@ $eliminarobjeto = "Excepcion";
 $page_mod = "pages/mis_excepciones.php";
 /* CONFIG PAGE */
 
-$id_ran = 0;
+$fecha = "";
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_rangos();
-$list_servicios = $core->get_servicios();
+$list = $core->get_excepciones();
 
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 

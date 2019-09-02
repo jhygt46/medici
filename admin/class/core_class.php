@@ -426,7 +426,16 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
-
+    public function get_excepciones(){
+        $id = 1;
+        if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=?")){
+            if($sql->bind_param("i", $id)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+    }
     public function get_rangos(){
 
         $id = 1;
