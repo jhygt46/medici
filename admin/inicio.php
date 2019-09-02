@@ -15,7 +15,7 @@
         <script type="text/javascript" src="./js/maps.js"></script>
         
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" type="text/css" media="all">
+        <link rel="stylesheet" href="./css/sweetalert.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/reset.css" type="text/css" media="all">
         <link rel="stylesheet" href="./css/layout.css" type="text/css" media="all">
         <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">-->
