@@ -143,11 +143,23 @@ class Guardar{
              
             if($id == 0){
 
-                $sqligir = $this->con->prepare("INSERT INTO usuarios (nombre, descripcion, tipo, eliminado) VALUES (?, ?, ?, ?)");
-                $sqligir->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
-                if($sqligir->execute()){
-                    $info['op'] = 1;
-                    $info['mensaje'] = "Medico ingresado exitosamente";
+                $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
+                $sqlu->bind_param("si", $correo, $this->eliminado);
+                $sqlu->execute();
+                $res = $sqlu->get_result();
+
+                if($res->{"num_rows"} == 0){
+
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, descripcion, tipo, eliminado) VALUES (?, ?, ?, ?)");
+                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
+                    if($sql->execute()){
+                        $info['op'] = 1;
+                        $info['mensaje'] = "Medico ingresado exitosamente";
+                    }else{
+                        $info['op'] = 2;
+                        $info['mensaje'] = "Error: B1";
+                    }
+
                 }else{
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: B1";
@@ -156,9 +168,9 @@ class Guardar{
             }
             if($id > 0){
 
-                $sqlugi = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
-                $sqlugi->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
-                if($sqlugi->execute()){
+                $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
+                if($sql->execute()){
                     $info['op'] = 1;
                     $info['mensaje'] = "Medico modificado exitosamente";
                 }else{
@@ -175,7 +187,7 @@ class Guardar{
         }
 
         $info['reload'] = 1;
-        $info['page'] = "ingresar_servicios.php";
+        $info['page'] = "ingresar_medicos.php";
         return $info;
 
     }

@@ -69,7 +69,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Tipo:</p></span>
-                        <select><option value="0" <?php if($that['tipo'] == 0){ echo "selected"; } ?>>Seleccionar</option><option value="1" <?php if($that['tipo'] == 1){ echo "selected"; } ?>>Administrador</option></select>
+                        <select><option value="0" <?php if($that['tipo'] == 0){ echo "selected"; } ?>>Medico</option><option value="1" <?php if($that['tipo'] == 1){ echo "selected"; } ?>>Medico y Administrador</option></select>
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
