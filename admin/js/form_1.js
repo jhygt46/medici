@@ -139,7 +139,7 @@ function mensaje(op, mens){
         var type = "error";
         var timer = 6000;
     }
-    swal({
+    Swal.fire({
         title: "",
         text: mens,
         html: true,
