@@ -43,7 +43,15 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
 ?>
 <script>
     $(function(){
-        $("#datepicker").datepicker();
+        $("#datepicker").datepicker({
+            onSelect: function(dateText) {
+                
+                console.log(dateText);
+                console.log(this.value);
+                navlink('pages/mis_excepciones.php?fecha=');
+                
+            }
+        });
     });
 </script>
 <div class="pagina">
