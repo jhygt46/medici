@@ -48,7 +48,6 @@ if(isset($_GET["fecha"])){
         $("#datepicker").datepicker({
             onSelect: function(dateText){
                 navlink('pages/mis_excepciones.php?fecha='+dateText);
-                console.log("NAVLINK: pages/mis_excepciones.php?fecha=");
             }
         });
     });
