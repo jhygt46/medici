@@ -368,8 +368,14 @@ class Core{
     public function get_fecha($fecha){
 
         $dia = date('w', strtotime($fecha));
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE dia_ini>=? AND dia_fin<=?")){
+            if($sql->bind_param("ii", $dia, $dia)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
 
-        return $dia;
 
     }
     public function get_servicios(){
