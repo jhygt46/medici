@@ -31,12 +31,19 @@ $list_servicios = $core->get_servicios();
 
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
-if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0){
-
+if(isset($_GET["fecha"]) && is_numeric($_GET["fecha"]) && $_GET["fecha"] != 0){
+    /*
     $id_ran = $_GET["id_ran"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_rango($id_ran);
     $that_list = $core->get_servicios_rango($id_ran);
+    */
+    $fecha = $_GET["fecha"];
+    $that = $core->get_fecha($fecha);
+    
+    echo "<pre>";
+    print_r($that);
+    echo "</pre>";
 
 }
 
@@ -45,11 +52,7 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     $(function(){
         $("#datepicker").datepicker({
             onSelect: function(dateText) {
-                
-                console.log(dateText);
-                console.log(this.value);
-                navlink('pages/mis_excepciones.php?fecha=');
-                
+                navlink('pages/mis_excepciones.php?fecha='+dateText);
             }
         });
     });
