@@ -367,7 +367,7 @@ class Core{
     }
     public function get_fecha($fecha){
 
-        return $fecha;
+        return date('w', strtotime($date));
 
     }
     public function get_servicios(){
