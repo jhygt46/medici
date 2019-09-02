@@ -129,7 +129,7 @@ function form(that){
     return false;
     
 }
-function mensaje(op, mens){
+function mensaje(op, msg){
     
     if(op == 1){
         var type = "success";
@@ -141,8 +141,7 @@ function mensaje(op, mens){
     }
     Swal.fire({
         title: "",
-        text: mens,
-        html: true,
+        text: msg,
         timer: timer,
         type: type
     });
