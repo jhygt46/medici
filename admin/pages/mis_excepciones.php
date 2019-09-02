@@ -40,7 +40,7 @@ if(isset($_GET["fecha"]) && is_numeric($_GET["fecha"]) && $_GET["fecha"] != 0){
     */
     $fecha = $_GET["fecha"];
     $that = $core->get_fecha($fecha);
-    
+
     echo "<pre>";
     print_r($that);
     echo "</pre>";
@@ -51,8 +51,9 @@ if(isset($_GET["fecha"]) && is_numeric($_GET["fecha"]) && $_GET["fecha"] != 0){
 <script>
     $(function(){
         $("#datepicker").datepicker({
-            onSelect: function(dateText) {
+            onSelect: function(dateText){
                 navlink('pages/mis_excepciones.php?fecha='+dateText);
+                console.log("NAVLINK: pages/mis_excepciones.php?fecha=");
             }
         });
     });
