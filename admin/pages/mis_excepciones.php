@@ -41,7 +41,11 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
 }
 
 ?>
-
+<script>
+    $(function(){
+        $("#datepicker").datepicker();
+    });
+</script>
 <div class="pagina">
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
@@ -63,6 +67,11 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                 <fieldset class="<?php echo $class; ?>">
                     <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
+                    <label class="clearfix">
+                        <span><p>Hora inicio:</p></span>
+                        <input id="datepicker" class="inputs" type="text" value="" placeholder="27/09/1984" />
+                    </label>
+                    <!--
                     <label class="clearfix">
                         <span><p>Dia inicio:</p></span>
                         <select id="dia_ini">
@@ -108,6 +117,7 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                             <?php } ?>
                         </div>
                     </label>
+                    -->
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
