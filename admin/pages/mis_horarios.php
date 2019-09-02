@@ -97,9 +97,17 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                         <span><p>Hora fin:</p></span>
                         <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30" />
                     </label>
-                    <?php for($i=0; $i<count($list_servicios); $i++){ ?>
-                        <div>BUENA NELSON</div>
-                    <?php } ?>
+                    <label class="clearfix">
+                        <span><p>Servicios:</p></span>
+                        <div class="perfil_preguntas">
+                            <?php foreach($list_servicios as $value){ ?>
+                                <div class="clearfix">
+                                    <input style="margin-top: 4px; width: 18px; height: 18px; float: left" id="pregunta-<?php echo $value['id_pre']; ?>" <?php echo $checked; ?> type="checkbox" value="1" />
+                                    <div style="font-size: 18px; padding-left: 4px; float: left" class='detail'><?php echo $value['nombre']; ?></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
