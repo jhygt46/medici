@@ -33,6 +33,8 @@ class Guardar{
     }
     public function process(){
         
+        return "BUENA NELSON.COM";
+
         if($this->id_user > 0){
             if($_POST['accion'] == "crear_servicio"){
                 return $this->crear_servicio();
@@ -47,7 +49,7 @@ class Guardar{
                 return $this->eliminar_medico();
             }
         }
-        
+
     }
     private function crear_servicio(){
         
