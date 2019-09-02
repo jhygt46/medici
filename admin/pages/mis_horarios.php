@@ -14,7 +14,7 @@ $core = new Core();
 /* CONFIG PAGE */
 $titulo = "Mis Horarios";
 $titulo_list = "Horarios";
-$sub_titulo1 = "Ingresar Horario";
+$sub_titulo = "Ingresar Horario";
 $sub_titulo2 = "Modificar Horario";
 $accion = "crear_horario";
 
@@ -37,6 +37,10 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     $sub_titulo = $sub_titulo2;
     $that = $core->get_rango($id_ran);
     $that_list = $core->get_servicios_rango($id_ran);
+
+    echo "<pre>";
+    print_r($that_list);
+    echo "</pre>";
 
 }
 
