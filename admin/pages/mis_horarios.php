@@ -38,10 +38,6 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     $that = $core->get_rango($id_ran);
     $that_list = $core->get_servicios_rango($id_ran);
 
-    echo "<pre>";
-    print_r($that_list);
-    echo "</pre>";
-
 }
 
 ?>
@@ -104,9 +100,9 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
                     <label class="clearfix">
                         <span><p>Servicios:</p></span>
                         <div class="perfil_preguntas">
-                            <?php foreach($list_servicios as $value){ ?>
+                            <?php foreach($list_servicios as $value){ $checked=""; for($i=0; $i<count($that_list); $i++){ if($that_list[$i]["id_ser"] == $value['id_ser']){ $checked="checked"; } } ?>
                                 <div class="clearfix">
-                                    <input style="margin-top: 4px; width: 18px; height: 18px; float: left" id="pregunta-<?php echo $value['id_pre']; ?>" <?php echo $checked; ?> type="checkbox" value="1" />
+                                    <input style="margin-top: 4px; width: 18px; height: 18px; float: left" id="servicio-<?php echo $value['id_ser']; ?>" <?php echo $checked; ?> type="checkbox" value="1" />
                                     <div style="font-size: 18px; padding-left: 4px; float: left" class='detail'><?php echo $value['nombre']; ?></div>
                                 </div>
                             <?php } ?>
