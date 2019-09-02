@@ -26,13 +26,13 @@ $page_mod = "pages/ingresar_medicos.php";
 
 $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_todos_servicios();
+$list = $core->get_medicos();
 
-if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
+if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0){
 
-    $id_ser = $_GET["id_ser"];
+    $id = $_GET["id_usr"];
     $sub_titulo = $sub_titulo2;
-    $that = $core->get_servicio($id_ser);
+    $that = $core->get_medico($id_usr);
 
 }
 
@@ -97,7 +97,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $nombre; ?></div>
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_ser=<?php echo $id; ?>')"></a>
+                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_usr=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
