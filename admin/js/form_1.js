@@ -252,116 +252,37 @@ function add_ssl(id, dominio){
 function confirm(message){
     
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        type: 'warning',
+        title: message['title'],
+        text: message['text'],
+        type: 'error',
         footer: '',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if(result.value) {
-            Swal.fire({
-                title: 'Deleted!',
-                text: 'Your file has been deleted.',
-                type: 'success',
-                timer: 1000
-            })
-        }
-    })
-
-    /*
-    swal({   
-        title: message['title'],   
-        text: message['text'],   
-        type: "error",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: message['confirm'],   
-        closeOnConfirm: false,
-        showLoaderOnConfirm: true
-    }, function(isConfirm){
-
-        if(isConfirm){
-            
+        confirmButtonText: 'Si, borrarlo!'
+    }).then((result)=>{
+        if(result.value){
             var send = {accion: message['accion'], id: message['id'], nombre: message['name']};
-            console.log(send);
-            
             $.ajax({
                 url: "ajax/index.php",
                 type: "POST",
                 data: send,
                 success: function(data){
-                    
                     setTimeout(function(){
-                        swal({
+                        Swal.fire({
                             title: data.titulo,
                             text: data.texto,
                             type: data.tipo,
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
+                            timer: 2000
+                        })
                         if(data.reload)
                             navlink('pages/'+data.page);
                     }, 10);
-
                 }, error: function(e){
                     console.log(e);
                 }
             });
- 
         }
-        
     });
-    */
-    
-}
 
-function confirm_warning(message){
-    
-    swal({   
-        title: message['title'],   
-        text: message['text'],   
-        type: "warning",   
-        showCancelButton: true,   
-        confirmButtonColor: "#DD6B55",   
-        confirmButtonText: message['confirm'],   
-        closeOnConfirm: false,
-        showLoaderOnConfirm: true
-    }, function(isConfirm){
-
-        if(isConfirm){
-            
-            var send = {accion: message['accion'], id: message['id'], nombre: message['name']};
-            console.log(send);
-            
-            $.ajax({
-                url: "ajax/index.php",
-                type: "POST",
-                data: send,
-                success: function(data){
-                    
-                    console.log(data);
-                    setTimeout(function(){  
-                        swal({
-                            title: data.titulo,
-                            text: data.texto,
-                            type: data.tipo,
-                            timer: 2000,
-                            showConfirmButton: false
-                        });
-                        if(data.reload)
-                            navlink('pages/'+data.page);
-                    }, 10);
-
-                }, error: function(e){
-                    console.log(e);
-                }
-            });
- 
-        }
-        
-    });
-    
 }
