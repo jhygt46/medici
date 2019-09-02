@@ -381,6 +381,17 @@ class Core{
 
 
     }
+    public function get_todos_servicios(){
+
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE eliminado=?")){
+            if($sql->bind_param("i", $this->eliminado)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
     public function get_servicios(){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios t1, servicio_usuarios t2 WHERE t2.id_usr=? AND t2.id_ser=t1.id_ser")){

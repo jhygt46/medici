@@ -29,10 +29,9 @@ function btn_login(){
         data: "accion=login&user="+$('#user').val()+"&pass="+$('#pass').val(),
         success: function(data){
 
-            console.log(data);
             if(data.op == 1){
                 bien(data.message);
-                setTimeout(function () {
+                setTimeout(function(){
                     $(location).attr('href','');
                 }, 2000);
             }
@@ -40,29 +39,7 @@ function btn_login(){
                 mal(data.message);
                 btn.prop("disabled", false);
             }
-            if(data.op == 3){
-                
-                bien(data.message);
-                setCookie('id', data.id, 16);
-                setCookie('user_code', data.user_code, 16);
-                setCookie('local_code', data.local_code, 16);
-                setCookie('data', data.data, 16);
-                localStorage.setItem('code', data.code);
-                setTimeout(function () {
-                    $(location).attr('href','/'+data.url);
-                }, 2000);
-
-            }
-            if(data.op == 4){
-
-                bien(data.message);
-                setCookie('data', data.data, 16);
-                localStorage.setItem('code', data.code);
-                setTimeout(function () {
-                    $(location).attr('href','/'+data.url);
-                }, 2000);
-
-            }
+            
         },
         error: function(e){
             btn.prop("disabled", false);

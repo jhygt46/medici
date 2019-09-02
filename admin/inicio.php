@@ -88,9 +88,10 @@
                                         <div class="texto">Mi Cuenta</div>
                                     </div>
                                     <ul class="bloque_lista">
-                                        <li onclick="navlink('pages/mis_servicios.php')">Servicios</li>
-                                        <li onclick="navlink('pages/mis_horarios.php')">Horarios</li>
-                                        <li onclick="navlink('pages/mis_excepciones.php')">Excepciones</li>
+                                        <li onclick="navlink('pages/mis_horas.php')">Mis Horas</li>
+                                        <li onclick="navlink('pages/mis_servicios.php')">Mis Servicios</li>
+                                        <li onclick="navlink('pages/mis_horarios.php')">Mis Horarios</li>
+                                        <li onclick="navlink('pages/mis_excepciones.php')">Mis Excepciones</li>
                                     </ul>
                                 </div>
                             </div>                            

@@ -113,7 +113,7 @@ class Guardar{
         }
 
         $info['reload'] = 1;
-        $info['page'] = "agregar_servicio.php";
+        $info['page'] = "ingresar_servicios.php";
         return $info;
 
     }
@@ -132,7 +132,7 @@ class Guardar{
                 $info['titulo'] = "Eliminado";
                 $info['texto'] = "Servicio ".$nombre." Eliminado";
                 $info['reload'] = 1;
-                $info['page'] = "agregar_servicio.php";
+                $info['page'] = "ingresar_servicios.php";
 
             }else{
 
