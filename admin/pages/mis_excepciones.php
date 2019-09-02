@@ -143,7 +143,7 @@ if(isset($_GET["fecha"])){
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $nombre = $semana[$list[$i]['dia_ini']]." ".$list[$i]['hora_ini']." - ".$semana[$list[$i]['dia_fin']]." ".$list[$i]['hora_fin'];
+                    $nombre = $list[$i]['fecha'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
