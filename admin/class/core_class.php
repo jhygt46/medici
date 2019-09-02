@@ -357,7 +357,7 @@ class Core{
     public function get_servicios_rango($id_ran){
 
         
-        if($sql = $this->con->prepare("SELECT * FROM rango_servicios t1, servicios t2 WHERE t1.id_ran=? AND t1.id_ran=t2.id_ran")){
+    if($sql = $this->con->prepare("SELECT * FROM rango_servicios t1, servicios t2 WHERE t1.id_ran=? AND t1.id_ser=t2.id_ser")){
             if($sql->bind_param("i", $id)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
