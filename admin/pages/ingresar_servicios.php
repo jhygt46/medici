@@ -30,7 +30,7 @@ $list = $core->get_todos_servicios();
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
-    $id_ser = $_GET["id_ser"];
+    $id = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio($id_ser);
 
@@ -57,7 +57,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                     </ul>
                 </div>
                 <fieldset class="<?php echo $class; ?>">
-                    <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
+                    <input id="id" type="hidden" value="<?php echo $id; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                     <label class="clearfix">
                         <span><p>Nombre:</p></span>

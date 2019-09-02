@@ -32,10 +32,6 @@ class Guardar{
 
     }
     public function process(){
-        
-        $a['this'] = $this;
-        $a['post'] = $_POST;
-        return $a;
 
         if($this->id_user > 0){
             if($_POST['accion'] == "crear_servicio"){
