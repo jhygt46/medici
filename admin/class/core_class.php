@@ -387,7 +387,7 @@ class Core{
         if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser=? AND eliminado=?")){
             if($sql->bind_param("ii", $id_ser, $this->eliminado)){
                 if($sql->execute()){
-                    return $sql->get_result();
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
             }else{ return htmlspecialchars($sql->error); }
         }else{ return htmlspecialchars($this->con->error); }
