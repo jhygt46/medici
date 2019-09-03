@@ -483,7 +483,7 @@ class Core{
     }
     public function exp_servicios($id){
         if($sql = $this->con->prepare("SELECT id_ser FROM excepcion_servicios WHERE id_exc=?")){
-            if($sql->bind_param("iii", $id, $this->id_usr, $this->eliminado)){
+            if($sql->bind_param("i", $id)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
