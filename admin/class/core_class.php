@@ -8,7 +8,7 @@ date_default_timezone_set("America/Santiago");
 class Core{
     
     public $con = null;
-    public $id_user = null;
+    public $id_usr = null;
     public $eliminado = 0;
 
     public function __construct(){
@@ -19,7 +19,7 @@ class Core{
         global $db_database;
 
         $this->con = new mysqli($db_host[0], $db_user[0], $db_password[0], $db_database[0]);
-        $this->id_user = (isset($_SESSION['user']['info']['id_usr'])) ? $_SESSION['user']['info']['id_usr'] : 0 ;
+        $this->id_usr = (isset($_SESSION['user']['info']['id_usr'])) ? $_SESSION['user']['info']['id_usr'] : 0 ;
         
     }
     public function get_data(){
@@ -429,7 +429,7 @@ class Core{
     public function get_servicios(){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios t1, servicio_usuarios t2 WHERE t2.id_usr=? AND t2.id_ser=t1.id_ser")){
-            if($sql->bind_param("i", $this->id_user)){
+            if($sql->bind_param("i", $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -440,7 +440,7 @@ class Core{
     public function get_no_servicios(){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?) AND eliminado=?")){
-            if($sql->bind_param("ii", $this->id_user, $this->eliminado)){
+            if($sql->bind_param("ii", $this->id_usr, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -451,7 +451,7 @@ class Core{
     public function get_no_servicios_2($id_ser){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios WHERE (id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?) OR id_ser=?) AND eliminado=?")){
-            if($sql->bind_param("ii", $this->id_user, $id_ser)){
+            if($sql->bind_param("iii", $this->id_usr, $id_ser, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -462,7 +462,7 @@ class Core{
     public function get_servicio_usuario($id_ser){
 
         if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
-            if($sql->bind_param("ii", $id_ser, $this->id_user)){
+            if($sql->bind_param("ii", $id_ser, $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
                 }else{ return htmlspecialchars($sql->error); }
@@ -473,7 +473,7 @@ class Core{
     public function get_excepciones(){
 
         if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=?")){
-            if($sql->bind_param("i", $this->id_user)){
+            if($sql->bind_param("i", $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -484,7 +484,7 @@ class Core{
     public function get_rangos(){
 
         if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=?")){
-            if($sql->bind_param("i", $this->id_user)){
+            if($sql->bind_param("i", $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -495,7 +495,7 @@ class Core{
     public function get_rango($id_ran){
         
         if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=?")){
-            if($sql->bind_param("ii", $this->id_user, $id_ran)){
+            if($sql->bind_param("ii", $this->id_usr, $id_ran)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
                 }else{ return htmlspecialchars($sql->error); }
