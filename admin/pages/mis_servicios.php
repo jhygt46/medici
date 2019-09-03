@@ -31,10 +31,10 @@ $sub_titulo = $sub_titulo1;
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
-    $id_ser = $_GET["id_ser"];
+    $id = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
-    $that = $core->get_servicio_usuario($id_ser);
-    $select = $core->get_no_servicios_2($id_ser);
+    $that = $core->get_servicio_usuario($id);
+    $select = $core->get_no_servicios_2($id);
 
 }else{
 
@@ -64,7 +64,6 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                         </ul>
                     </div>
                     <fieldset class="<?php echo $class; ?>">
-                        <input id="id" type="hidden" value="<?php echo $id_user; ?>" />
                         <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                         <label class="clearfix">
                             <span><p>Servicio:</p></span>
@@ -77,11 +76,11 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                         </label>
                         <label class="clearfix">
                             <span><p>Tiempo:</p></span>
-                            <input id="nombre" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
+                            <input id="tiempo" class="inputs" type="text" value="<?php echo $that['tiempo_min']; ?>" require="" placeholder="" />
                         </label>
                         <label class="clearfix">
                             <span><p>Precio:</p></span>
-                            <input id="correo" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
+                            <input id="precio" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
                         </label>
                         <label>
                             <div class="enviar"><a onclick="form(this)">Enviar</a></div>

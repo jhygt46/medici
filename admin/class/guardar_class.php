@@ -46,6 +46,9 @@ class Guardar{
             if($_POST['accion'] == "eliminar_medico"){
                 return $this->eliminar_medico();
             }
+            if($_POST['accion'] == "crear_servicio_usuario"){
+                return $this->crear_servicio_usuario();
+            }
         }
 
     }
@@ -263,6 +266,47 @@ class Guardar{
         }
 
         return $info;
+        
+    }
+    private function crear_servicio_usuario(){
+
+        $tiempo = $_POST['tiempo'];
+        $precio = $_POST['precio'];
+        $tipo = $_POST['tipo'];
+
+        $sqlu = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?");
+        $sqlu->bind_param("ii", $tipo, $this->id_usr);
+        $sqlu->execute();
+        $res = $sqlu->get_result();
+
+        if($res->{"num_rows"} == 0){
+
+            $sql = $this->con->prepare("INSERT INTO servicio_usuarios (id_ser, id_usr, tiempo_min, precio, eliminado) VALUES (?, ?, ?, ?, ?)");
+            $sql->bind_param("iiiii", $tipo, $this->id_usr, $tiempo, $precio, $this->eliminado);
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Servicio-Medico ingresado exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B1";
+            }
+
+        }
+
+        if($res->{"num_rows"} == 1){
+            
+            $sql = $this->con->prepare("UPDATE servicio_usuarios SET tiempo_min=?, precio=? WHERE id_ser=? AND id_usr=?");
+            $sql->bind_param("iiii", $tiempo, $precio, $tipo, $this->id_usr);
+            $sql->execute();
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Servicio-Medico modificado exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B2";
+            }
+
+        }
         
     }
 
