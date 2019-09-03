@@ -480,7 +480,7 @@ class Guardar{
                     }else{}
                 }else{
                     $info['op'] = 4;
-                    $info['mensaje'] = "ERROR";
+                    $info['mensaje'] = $sqli;
                 }
             }
         }else{}
