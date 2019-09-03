@@ -162,7 +162,7 @@ class Guardar{
 
                 }else{
                     $info['op'] = 2;
-                    $info['mensaje'] = "Error: B1";
+                    $info['mensaje'] = "Error: B2";
                 }
 
             }
