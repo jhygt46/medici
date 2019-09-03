@@ -481,10 +481,20 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    public function get_todas_excepciones($fecha){
+        if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=? AND fecha=? ORDER BY fecha")){
+            if($sql->bind_param("is", $this->id_usr, $fecha)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+    }
     public function get_excepciones(){
 
-        if($sql = $this->con->prepare("SELECT DISTINCT fecha FROM excepciones WHERE id_usr=? ORDER BY fecha")){
-            if($sql->bind_param("i", $this->id_usr)){
+        $fecha = date("Y-m-d", time() - 60*60*24);
+        if($sql = $this->con->prepare("SELECT DISTINCT fecha FROM excepciones WHERE id_usr=? AND fecha>? ORDER BY fecha")){
+            if($sql->bind_param("is", $this->id_usr, $fecha)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }

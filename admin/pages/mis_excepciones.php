@@ -21,25 +21,12 @@ $accion = "crear_excepcion";
 $eliminaraccion = "eliminar_excepcion";
 $id_list = "id_exc";
 $eliminarobjeto = "Excepcion";
-$page_mod = "pages/mis_excepciones.php";
+$page_detail = "pages/rangos_exepciones.php";
 /* CONFIG PAGE */
 
 $fecha = "";
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_excepciones();
-
-$semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-
-if(isset($_GET["fecha"])){
-
-    $fecha = $_GET["fecha"];
-    $that = $core->get_fecha($fecha);
-
-    echo "<pre>";
-    print_r($that);
-    echo "</pre>";
-
-}
 
 ?>
 <script>
@@ -97,13 +84,13 @@ if(isset($_GET["fecha"])){
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $nombre = $list[$i]['fecha'];
+                    $fecha = $list[$i]['fecha'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre"><?php echo $nombre; ?></div>
-                        <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_ran=<?php echo $id; ?>')"></a>
+                        <div class="nombre"><?php echo $fecha; ?></div>
+                        <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $fecha; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $fecha; ?>')"></a>
+                        <a class="icono ic10" onclick="navlink('<?php echo $page_detail; ?>?fecha=<?php echo $fecha; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
