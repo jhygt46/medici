@@ -537,8 +537,8 @@ class Guardar{
 
         if($id_exc == 0){
 
-            $sql = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $sql->bind_param("iissiii", $fecha, $hora_ini, $hora_fin, $this->eliminado, $id_suc, $this->id_usr);
+            $sql = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
+            $sql->bind_param("sssiii", $fecha, $hora_ini, $hora_fin, $this->eliminado, $id_suc, $this->id_usr);
             if($sql->execute()){
                 $info['op'] = 1;
                 $info['mensaje'] = "Horario ingresado exitosamente";
