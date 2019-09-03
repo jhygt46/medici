@@ -27,11 +27,11 @@ $page_mod = "pages/rangos_excepciones.php";
 
 $id_exc = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_todas_excepciones();
+$list = $core->get_todas_excepciones($fecha);
 
 echo "<pre>";
 print_r($list);
-echo "<pre>";
+echo "</pre>";
 
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
