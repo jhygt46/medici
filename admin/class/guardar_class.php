@@ -522,8 +522,6 @@ class Guardar{
         $lista_servicios = $this->get_servicios();
         $id_suc = 1;
 
-        return $_POST;
-
         if($id_exc > 0){
 
             $sql = $this->con->prepare("UPDATE excepciones SET hora_ini=?, hora_fin=?, id_suc=? WHERE id_exc=? AND id_usr=?");

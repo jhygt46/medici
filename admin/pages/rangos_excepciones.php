@@ -25,7 +25,7 @@ $eliminarobjeto = "Excepcion";
 $page_mod = "pages/rangos_excepciones.php";
 /* CONFIG PAGE */
 
-$id_exc = 0;
+$id = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_todas_excepciones($fecha);
 $list_servicios = $core->get_servicios();
