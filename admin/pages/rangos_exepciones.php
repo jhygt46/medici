@@ -44,7 +44,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
         <ul class="clearfix">
-            <li class="back" onclick="navlink('pages/inicio.php')"></li>
+            <li class="back" onclick="navlink('pages/mis_excepciones.php')"></li>
         </ul>
     </div>
     <hr>
