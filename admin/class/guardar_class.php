@@ -358,12 +358,6 @@ class Guardar{
         $hora_fin = $_POST['hora_fin'];
         $lista_servicios = $this->get_servicios();
 
-        $info['id'] = $id_ran;
-        $info['d_i'] = $dia_ini;
-        $info['d_f'] = $dia_fin;
-        $info['h_i'] = $hora_ini;
-        $info['h_f'] = $hora_fin;
-        
         if($id_ran > 0){
 
             $sql = $this->con->prepare("UPDATE rangos SET dia_ini=?, dia_fin=?, hora_ini=?, hora_fin=?, id_suc=? WHERE id_ran=? AND id_usr=?");
@@ -415,6 +409,9 @@ class Guardar{
             $info['op'] = 2;
             $info['mensaje'] = "Error: D1";
         }
+        
+        $info['reload'] = 1;
+        $info['page'] = "mis_horarios.php";
         return $info;
 
     }
