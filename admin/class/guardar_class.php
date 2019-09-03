@@ -450,6 +450,9 @@ class Guardar{
         $fecha = $_POST['datepicker'];
         $dia = date("w", strtotime($fecha));
 
+        $info['op'] = 2;
+        $info['mensaje'] = "ERROR";
+
         $sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=? AND dia_ini<=? AND dia_fin>=?");
         $sql->bind_param("iiii", $this->id_usr, $this->eliminado, $dia, $dia);
         if($sql->execute()){
@@ -458,6 +461,8 @@ class Guardar{
                 $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
                 $sqli->bind_param("sssiii", $fecha, $row["hora_ini"], $row["hora_fin"], $this->eliminado, $id_suc, $this->id_usr);
                 if($sqli->execute()){
+                    $info['op'] = 1;
+                    $info['mensaje'] = "BUENA NELSON.COM";
                     $sqlrc = $this->con->prepare("SELECT id_ser FROM rango_servicios WHERE id_ran=?");
                     $sqlrc->bind_param("i", $row["id_ran"]);
                     if($sqlrc->execute()){
@@ -475,7 +480,7 @@ class Guardar{
             }
         }else{}
         $sql->close();
-        return $dia;
+        return $info;
         
     }
     private function eliminar_excepcion(){
