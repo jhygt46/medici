@@ -510,6 +510,7 @@ class Guardar{
     }
     private function crear_rango_excepcion(){
 
+        $id_exc = $_POST["id"];
         $hora_ini = $_POST['hora_ini'];
         $hora_fin = $_POST['hora_fin'];
         $lista_servicios = $this->get_servicios();
@@ -566,6 +567,8 @@ class Guardar{
             $info['op'] = 2;
             $info['mensaje'] = "Error: D1";
         }
+
+        return $info;
 
     }
     private function eliminar_rango_excepcion(){
