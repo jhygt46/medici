@@ -450,8 +450,8 @@ class Core{
     }
     public function get_no_servicios_2($id_ser){
 
-        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE (id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?) OR id_ser=?) AND eliminado=?")){
-            if($sql->bind_param("iii", $this->id_usr, $id_ser, $this->eliminado)){
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE (id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=? AND eliminado=?) OR id_ser=?) AND eliminado=?")){
+            if($sql->bind_param("iiii", $this->id_usr, $this->eliminado, $id_ser, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -461,8 +461,8 @@ class Core{
     }
     public function get_servicio_usuario($id_ser){
 
-        if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
-            if($sql->bind_param("ii", $id_ser, $this->id_usr)){
+        if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=? AND eliminado=?")){
+            if($sql->bind_param("iii", $id_ser, $this->id_usr, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
                 }else{ return htmlspecialchars($sql->error); }
