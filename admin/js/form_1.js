@@ -147,6 +147,20 @@ function mensaje(op, msg){
     });
     
 }
+function eliminar(accion, id, tipo, name){
+
+    var msg = {
+        title: "Eliminar "+tipo, 
+        text: "Esta seguro que desea eliminar a "+name, 
+        confirm: "Si, deseo eliminarlo",
+        name: name,
+        accion: accion,
+        id: id,
+    };
+
+    confirm(msg);
+        
+}
 function confirm(message){
     
     Swal.fire({
