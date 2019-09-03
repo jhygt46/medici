@@ -467,7 +467,7 @@ class Guardar{
                     if($sqlrc->execute()){
                         $resrc = $sqlrc->get_result();
                         while($rowrc = $resrc->fetch_assoc()){
-                            $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
+                            $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (id_ser, id_ran) VALUES (?, ?)");
                             $sqlx->bind_param("ii", $rowrc["id_ser"], $row["id_ran"]);
                             if($sqlx->execute()){
                             }else{}
