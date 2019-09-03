@@ -52,6 +52,13 @@ class Guardar{
             if($_POST['accion'] == "eliminar_servicio_usuario"){
                 return $this->eliminar_servicio_usuario();
             }
+            if($_POST['accion'] == "crear_horario"){
+                return $this->crear_horario();
+            }
+            if($_POST['accion'] == "eliminar_horario"){
+                return $this->eliminar_horario();
+            }
+
         }
 
     }
@@ -326,7 +333,7 @@ class Guardar{
 
             $info['tipo'] = "success";
             $info['titulo'] = "Eliminado";
-            $info['texto'] = "Medico ".$nombre." Eliminado";
+            $info['texto'] = "Servicio Usario ".$nombre." Eliminado";
             $info['reload'] = 1;
             $info['page'] = "mis_servicios.php";
 
@@ -334,12 +341,88 @@ class Guardar{
 
             $info['tipo'] = "error";
             $info['titulo'] = "Error";
-            $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
+            $info['texto'] = "Servicio Usuario ".$nombre." no pudo ser eliminado";
 
         }
         $sql->close();
         return $info;
         
+    }
+    private function crear_horario(){
+
+        $id_ran = $_POST['id'];
+        $dia_ini = $_POST['dia_ini'];
+        $dia_fin = $_POST['dia_fin'];
+        $hora_ini = $_POST['hora_ini'];
+        $hora_fin = $_POST['hora_fin'];
+        $lista_servicios = $this->get_servicios();
+
+        $info['id'] = $id_ran;
+        $info['d_i'] = $dia_ini;
+        $info['d_f'] = $dia_fin;
+        $info['h_i'] = $hora_fin;
+        $info['h_f'] = $hora_fin;
+        $info['l_ser'] = $lista_servicios;
+
+        /*
+        if($id_ran > 0){
+
+        }
+
+        if($id_ran == 0){
+
+            $sql = $this->con->prepare("INSERT INTO rangos (id_ser, id_usr, tiempo_min, precio, eliminado) VALUES (?, ?, ?, ?, ?)");
+            $sql->bind_param("iiiii", $tipo, $this->id_usr, $tiempo, $precio, $this->eliminado);
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Servicio-Medico ingresado exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B1";
+            }
+
+        }
+        */
+        
+        return $info;
+
+    }
+    private function eliminar_horario(){
+
+        $id_ran = $_POST['id'];
+        $nombre = $_POST['nombre'];
+
+        $sql = $this->con->prepare("UPDATE rangos SET eliminado='1' WHERE id_ran=?");
+        $sql->bind_param("i", $id_ran);
+        if($sql->execute()){
+
+            $info['tipo'] = "success";
+            $info['titulo'] = "Eliminado";
+            $info['texto'] = "Horario ".$nombre." Eliminado";
+            $info['reload'] = 1;
+            $info['page'] = "mis_servicios.php";
+
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Horario ".$nombre." no pudo ser eliminado";
+
+        }
+        $sql->close();
+        return $info;
+
+    }
+    public function get_servicios(){
+
+        if($sql = $this->con->prepare("SELECT * FROM servicios t1, servicio_usuarios t2 WHERE t2.id_usr=? AND t2.id_ser=t1.id_ser AND t2.eliminado=?")){
+            if($sql->bind_param("ii", $this->id_usr, $this->eliminado)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
     }
 
 }
