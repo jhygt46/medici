@@ -519,7 +519,6 @@ class Guardar{
         $id_exc = $_POST["id"];
         $hora_ini = $_POST['hora_ini'];
         $hora_fin = $_POST['hora_fin'];
-        $lista_servicios = $this->get_servicios();
         $id_suc = 1;
 
         if($id_exc > 0){
@@ -552,6 +551,8 @@ class Guardar{
         }
 
         if($id_exc > 0){
+
+            $lista_servicios = $this->get_servicios();
             $sqld = $this->con->prepare("DELETE FROM excepcion_servicios WHERE id_ser=?");
             $sqld->bind_param("i", $id_exc);
             if($sqld->execute()){
@@ -563,6 +564,7 @@ class Guardar{
                             $info['op'] = 2;
                             $info['mensaje'] = "Error: J1";
                             $info['sqli'] = $sqli;
+                            $info['sqlx'] = $this->con;
                         }else{}
                     }
                 }
