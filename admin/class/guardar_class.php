@@ -577,6 +577,9 @@ class Guardar{
             $info['mensaje'] = "Error: D1";
         }
 
+        $info['reload'] = 1;
+        $info['page'] = "rangos_excepciones.php";
+
         return $info;
 
     }
