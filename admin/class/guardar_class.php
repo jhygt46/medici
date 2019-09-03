@@ -350,6 +350,7 @@ class Guardar{
     }
     private function crear_horario(){
 
+        $id_suc = 1;
         $id_ran = $_POST['id'];
         $dia_ini = $_POST['dia_ini'];
         $dia_fin = $_POST['dia_fin'];
@@ -360,30 +361,60 @@ class Guardar{
         $info['id'] = $id_ran;
         $info['d_i'] = $dia_ini;
         $info['d_f'] = $dia_fin;
-        $info['h_i'] = $hora_fin;
+        $info['h_i'] = $hora_ini;
         $info['h_f'] = $hora_fin;
-        $info['l_ser'] = $lista_servicios;
-
-        /*
+        
         if($id_ran > 0){
+
+            $sql = $this->con->prepare("UPDATE rangos SET dia_ini=?, dia_fin=?, hora_ini=?, hora_fin=?, id_suc=? WHERE id_ran=? AND id_usr=?");
+            $sql->bind_param("iissiii", $dia_ini, $dia_fin, $hora_ini, $hora_fin, $id_suc, $id_ran, $this->id_usr);
+            $sql->execute();
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Horario modificado exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B2";
+            }
 
         }
 
         if($id_ran == 0){
 
-            $sql = $this->con->prepare("INSERT INTO rangos (id_ser, id_usr, tiempo_min, precio, eliminado) VALUES (?, ?, ?, ?, ?)");
-            $sql->bind_param("iiiii", $tipo, $this->id_usr, $tiempo, $precio, $this->eliminado);
+            $sql = $this->con->prepare("INSERT INTO rangos (dia_ini, dia_fin, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $sql->bind_param("iissiii", $dia_ini, $dia_fin, $hora_ini, $hora_fin, $this->eliminado, $id_suc, $this->id_usr);
             if($sql->execute()){
                 $info['op'] = 1;
-                $info['mensaje'] = "Servicio-Medico ingresado exitosamente";
+                $info['mensaje'] = "Horario ingresado exitosamente";
+                $id_ran = $this->con->insert_id;
             }else{
                 $info['op'] = 2;
                 $info['mensaje'] = "Error: B1";
             }
 
         }
-        */
-        
+        if($id_ran > 0){
+            $sqld = $this->con->prepare("DELETE FROM rango_servicios WHERE id_ran=?");
+            $sqld->bind_param("i", $id_ran);
+            if($sqld->execute()){
+                for($i=0; $i<count($lista_servicios); $i++){
+                    if($_POST["servicio-".$lista_servicios[$i]["id_ser"]] == 1){
+                        $sqli = $this->con->prepare("INSERT INTO rango_servicios (id_ran, id_ser) VALUES (?, ?)");
+                        $sqli->bind_param("ii", $id_ran, $lista_servicios[$i]["id_ser"]);
+                        if(!$sqli->execute()){
+                            $info['op'] = 2;
+                            $info['mensaje'] = "Error: J1";
+                        }
+                    }
+                }
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: F1";
+            }
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: D1";
+        }
         return $info;
 
     }
