@@ -449,6 +449,7 @@ class Guardar{
         
         $fecha = $_POST['datepicker'];
         $dia = date("w", strtotime($fecha));
+        $id_suc = 1;
 
         $info['op'] = 2;
         $info['mensaje'] = "ERROR";
