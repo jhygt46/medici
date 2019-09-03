@@ -328,7 +328,7 @@ class Guardar{
             $info['titulo'] = "Eliminado";
             $info['texto'] = "Medico ".$nombre." Eliminado";
             $info['reload'] = 1;
-            $info['page'] = "ingresar_medicos.php";
+            $info['page'] = "mis_servicios.php";
 
         }else{
 
@@ -338,6 +338,7 @@ class Guardar{
 
         }
         $sql->close();
+        return $info;
         
     }
 
