@@ -562,7 +562,8 @@ class Guardar{
                         if(!$sqli->execute()){
                             $info['op'] = 2;
                             $info['mensaje'] = "Error: J1";
-                        }
+                            $info['sqli'] = $sqli;
+                        }else{}
                     }
                 }
             }else{
