@@ -307,6 +307,7 @@ class Guardar{
             }
 
         }
+        return $info;
         
     }
 
