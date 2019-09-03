@@ -307,6 +307,8 @@ class Guardar{
             }
 
         }
+        $info['reload'] = 1;
+        $info['page'] = "mis_servicios.php";
         return $info;
         
     }
