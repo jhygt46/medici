@@ -409,7 +409,7 @@ class Guardar{
             $info['op'] = 2;
             $info['mensaje'] = "Error: D1";
         }
-        
+
         $info['reload'] = 1;
         $info['page'] = "mis_horarios.php";
         return $info;
@@ -428,7 +428,7 @@ class Guardar{
             $info['titulo'] = "Eliminado";
             $info['texto'] = "Horario ".$nombre." Eliminado";
             $info['reload'] = 1;
-            $info['page'] = "mis_servicios.php";
+            $info['page'] = "mis_horarios.php";
 
         }else{
 

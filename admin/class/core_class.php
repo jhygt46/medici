@@ -494,8 +494,8 @@ class Core{
     }
     public function get_rangos(){
 
-        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=?")){
-            if($sql->bind_param("i", $this->id_usr)){
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=?")){
+            if($sql->bind_param("ii", $this->id_usr, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
@@ -505,8 +505,8 @@ class Core{
     }
     public function get_rango($id_ran){
         
-        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=?")){
-            if($sql->bind_param("ii", $this->id_usr, $id_ran)){
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=? AND elimiando=?")){
+            if($sql->bind_param("iii", $this->id_usr, $id_ran, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
                 }else{ return htmlspecialchars($sql->error); }
