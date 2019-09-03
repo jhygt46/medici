@@ -462,21 +462,19 @@ class Guardar{
                 $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
                 $sqli->bind_param("sssiii", $fecha, $row["hora_ini"], $row["hora_fin"], $this->eliminado, $id_suc, $this->id_usr);
                 if($sqli->execute()){
+                    $id_exc = $this->con->insert_id;
                     $sqlrc = $this->con->prepare("SELECT id_ser FROM rango_servicios WHERE id_ran=?");
                     $sqlrc->bind_param("i", $row["id_ran"]);
                     if($sqlrc->execute()){
                         $resrc = $sqlrc->get_result();
                         while($rowrc = $resrc->fetch_assoc()){
-                            $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (id_ser, id_ran) VALUES (?, ?)");
-                            $sqlx->bind_param("ii", $rowrc["id_ser"], $row["id_ran"]);
+                            $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (id_ser, id_exc) VALUES (?, ?)");
+                            $sqlx->bind_param("ii", $rowrc["id_ser"], $id_exc);
                             if($sqlx->execute()){
                             }else{}
                         }
                     }else{}
-                }else{
-                    $info['op'] = 4;
-                    $info['mensaje'] = $sqli;
-                }
+                }else{}
             }
         }else{}
         $sql->close();
