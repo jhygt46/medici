@@ -510,7 +510,10 @@ class Guardar{
     }
     private function crear_rango_excepcion(){
 
-        $id_suc = 0;
+        $hora_ini = $_POST['hora_ini'];
+        $hora_fin = $_POST['hora_fin'];
+        $lista_servicios = $this->get_servicios();
+        $id_suc = 1;
 
         if($id_exc > 0){
 
@@ -533,7 +536,7 @@ class Guardar{
             if($sql->execute()){
                 $info['op'] = 1;
                 $info['mensaje'] = "Horario ingresado exitosamente";
-                $id_ran = $this->con->insert_id;
+                $id_exc = $this->con->insert_id;
             }else{
                 $info['op'] = 2;
                 $info['mensaje'] = "Error: B1";
@@ -541,9 +544,57 @@ class Guardar{
 
         }
 
+        if($id_exc > 0){
+            $sqld = $this->con->prepare("DELETE FROM excepcion_servicios WHERE id_ser=?");
+            $sqld->bind_param("i", $id_exc);
+            if($sqld->execute()){
+                for($i=0; $i<count($lista_servicios); $i++){
+                    if($_POST["servicio-".$lista_servicios[$i]["id_ser"]] == 1){
+                        $sqli = $this->con->prepare("INSERT INTO excepcion_servicios (id_exc, id_ser) VALUES (?, ?)");
+                        $sqli->bind_param("ii", $id_exc, $lista_servicios[$i]["id_ser"]);
+                        if(!$sqli->execute()){
+                            $info['op'] = 2;
+                            $info['mensaje'] = "Error: J1";
+                        }
+                    }
+                }
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: F1";
+            }
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: D1";
+        }
+
     }
     private function eliminar_rango_excepcion(){
         
+        $aux = explode("/", $_POST['id']);
+
+        $id = $aux[0];
+        $fecha = $aux[1];
+
+        $sql = $this->con->prepare("UPDATE excepciones SET eliminado='1' WHERE id_exc=? AND id_usr=?");
+        $sql->bind_param("si", $id, $this->id_usr);
+        if($sql->execute()){
+
+            $info['tipo'] = "success";
+            $info['titulo'] = "Eliminado";
+            $info['texto'] = "Excepcion de ".$fecha." eliminadas exitosamente";
+            $info['reload'] = 1;
+            $info['page'] = "rango_excepciones.php?fecha=".$fecha;
+
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Excepcion de ".$fecha." no pudo ser eliminado";
+
+        }
+        $sql->close();
+        return $info;
+
     }
     private function get_servicios(){
 
