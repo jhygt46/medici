@@ -49,6 +49,9 @@ class Guardar{
             if($_POST['accion'] == "crear_servicio_usuario"){
                 return $this->crear_servicio_usuario();
             }
+            if($_POST['accion'] == "eliminar_servicio_usuario"){
+                return $this->eliminar_servicio_usuario();
+            }
         }
 
     }
@@ -310,6 +313,31 @@ class Guardar{
         $info['reload'] = 1;
         $info['page'] = "mis_servicios.php";
         return $info;
+        
+    }
+    private function eliminar_servicio_usuario(){
+
+        $id_ser = $_POST['id'];
+        $nombre = $_POST['nombre'];
+
+        $sql = $this->con->prepare("UPDATE servicio_usuarios SET eliminado='1' WHERE id_usr=? AND id_ser=?");
+        $sql->bind_param("ii", $this->id_usr, $id_ser);
+        if($sql->execute()){
+
+            $info['tipo'] = "success";
+            $info['titulo'] = "Eliminado";
+            $info['texto'] = "Medico ".$nombre." Eliminado";
+            $info['reload'] = 1;
+            $info['page'] = "ingresar_medicos.php";
+
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
+
+        }
+        $sql->close();
         
     }
 
