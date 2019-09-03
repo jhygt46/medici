@@ -34,6 +34,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
     $id = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio_usuario($id);
+    print_r($that);
     $select = $core->get_no_servicios_2($id);
 
 }else{
