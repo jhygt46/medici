@@ -175,9 +175,28 @@ class Guardar{
                 $sqlu->bind_param("sii", $correo, $id, $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
-                $id_usr = $res->fetch_all(MYSQLI_ASSOC)[0]['id_usr'];
+                
+                if($res->{"num_rows"} == 1){
+                    $id_usr = $res->fetch_all(MYSQLI_ASSOC)[0]['id_usr'];
+                    if($id_usr == $id){
 
-                if($res->{"num_rows"} == 0 || ($res->{"num_rows"} == 1 && $id_usr == $id)){
+                        $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                        $sql->bind_param("ssii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                        if($sql->execute()){
+                            $info['op'] = 1;
+                            $info['mensaje'] = "Medico modificado exitosamente";
+                        }else{
+                            $info['op'] = 2;
+                            $info['mensaje'] = "Error: Permisos e2";
+                        }
+                        $sql->close();
+
+                    }else{
+                        $info['op'] = 2;
+                        $info['mensaje'] = "Error: Permisos e2";
+                    }
+
+                }elseif($res->{"num_rows"} == 0){
 
                     $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
                     $sql->bind_param("ssii", $nombre, $correo, $tipo, $id, $this->eliminado);
@@ -194,6 +213,8 @@ class Guardar{
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: Permisos A3";
                 }
+
+                $sqlu->close();
                 
             }
             
