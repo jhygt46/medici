@@ -28,18 +28,14 @@ $page_mod = "pages/rangos_excepciones.php";
 $id_exc = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_todas_excepciones($fecha);
-
-$semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+$list_servicios = $core->get_servicios();
 
 if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0){
 
     $id = $_GET["id_exc"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_excepcion($id);
-
-    echo "<pre>";
-    print_r($that);
-    echo "</pre>";
+    $exc_servicios = $core->exp_servicios($id);
 
 }
 
