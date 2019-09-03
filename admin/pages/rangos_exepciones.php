@@ -33,9 +33,9 @@ $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Saba
 
 if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0){
 
-    $id_exc = $_GET["id_exc"];
+    $id = $_GET["id_exc"];
     $sub_titulo = $sub_titulo2;
-    $that = $core->get_excepcion($id_ran);
+    $that = $core->get_excepcion($id);
 
 }
 
@@ -60,34 +60,9 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                     </ul>
                 </div>
                 <fieldset class="<?php echo $class; ?>">
-                    <input id="id" type="hidden" value="<?php echo $id_ran; ?>" />
+                    <input id="id" type="hidden" value="<?php echo $id; ?>" />
+                    <input id="fecha" type="hidden" value="<?php echo $fecha; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
-                    <label class="clearfix">
-                        <span><p>Dia inicio:</p></span>
-                        <select id="dia_ini">
-                            <option value="0">Seleccionar</option> 
-                            <option value="1" <?php if($that['dia_ini'] == 1){ echo "selected"; } ?>>Lunes</option>
-                            <option value="2" <?php if($that['dia_ini'] == 2){ echo "selected"; } ?>>Martes</option>
-                            <option value="3" <?php if($that['dia_ini'] == 3){ echo "selected"; } ?>>Miercoles</option>
-                            <option value="4" <?php if($that['dia_ini'] == 4){ echo "selected"; } ?>>Jueves</option>
-                            <option value="5" <?php if($that['dia_ini'] == 5){ echo "selected"; } ?>>Viernes</option>
-                            <option value="6" <?php if($that['dia_ini'] == 6){ echo "selected"; } ?>>Sabado</option>
-                            <option value="7" <?php if($that['dia_ini'] == 7){ echo "selected"; } ?>>Domingo</option>
-                        </select>
-                    </label>
-                    <label class="clearfix">
-                        <span><p>Dia fin:</p></span>
-                        <select id="dia_fin">
-                            <option value="0">Seleccionar</option> 
-                            <option value="1" <?php if($that['dia_fin'] == 1){ echo "selected"; } ?>>Lunes</option>
-                            <option value="2" <?php if($that['dia_fin'] == 2){ echo "selected"; } ?>>Martes</option>
-                            <option value="3" <?php if($that['dia_fin'] == 3){ echo "selected"; } ?>>Miercoles</option>
-                            <option value="4" <?php if($that['dia_fin'] == 4){ echo "selected"; } ?>>Jueves</option>
-                            <option value="5" <?php if($that['dia_fin'] == 5){ echo "selected"; } ?>>Viernes</option>
-                            <option value="6" <?php if($that['dia_fin'] == 6){ echo "selected"; } ?>>Sabado</option>
-                            <option value="7" <?php if($that['dia_fin'] == 7){ echo "selected"; } ?>>Domingo</option>
-                        </select>   
-                    </label>
                     <label class="clearfix">
                         <span><p>Hora inicio:</p></span>
                         <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="08:30" />
@@ -133,7 +108,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $nombre; ?></div>
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_ran=<?php echo $id; ?>')"></a>
+                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_exc=<?php echo $id; ?>&fecha=<?php echo $fecha; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>

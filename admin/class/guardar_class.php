@@ -453,6 +453,8 @@ class Guardar{
 
         $info['op'] = 1;
         $info['mensaje'] = "Excepcion creada exitosamente";
+        $info['reload'] = 1;
+        $info['page'] = "mis_excepciones.php";
 
         $sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=? AND dia_ini<=? AND dia_fin>=?");
         $sql->bind_param("iiii", $this->id_usr, $this->eliminado, $dia, $dia);
@@ -506,6 +508,43 @@ class Guardar{
         return $info;
 
     }
+    private function crear_rango_excepcion(){
+
+        $id_suc = 0;
+
+        if($id_exc > 0){
+
+            $sql = $this->con->prepare("UPDATE excepciones SET hora_ini=?, hora_fin=?, id_suc=? WHERE id_exc=? AND id_usr=?");
+            $sql->bind_param("ssiii", $hora_ini, $hora_fin, $id_suc, $id_exc, $this->id_usr);
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Excepcion modificado exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B2";
+            }
+
+        }
+
+        if($id_exc == 0){
+
+            $sql = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $sql->bind_param("iissiii", $fecha, $hora_ini, $hora_fin, $this->eliminado, $id_suc, $this->id_usr);
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Horario ingresado exitosamente";
+                $id_ran = $this->con->insert_id;
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: B1";
+            }
+
+        }
+
+    }
+    private function eliminar_rango_excepcion(){
+        
+    }
     private function get_servicios(){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios t1, servicio_usuarios t2 WHERE t2.id_usr=? AND t2.id_ser=t1.id_ser AND t2.eliminado=?")){
@@ -517,5 +556,6 @@ class Guardar{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    
 
 }
