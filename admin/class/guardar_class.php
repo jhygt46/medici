@@ -134,13 +134,13 @@ class Guardar{
     }
     private function crear_medico(){
         
-        $id = $_POST['id'];
-        $nombre = $_POST['nombre'];
-        $correo = $_POST['correo'];
-        $tipo = $_POST['tipo'];
-
         if($this->tipo == 1){
-             
+            
+            $id = $_POST['id'];
+            $nombre = $_POST['nombre'];
+            $correo = $_POST['correo'];
+            $tipo = $_POST['tipo'];
+
             if($id == 0){
 
                 $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
@@ -150,7 +150,7 @@ class Guardar{
 
                 if($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, descripcion, tipo, eliminado) VALUES (?, ?, ?, ?)");
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, eliminado) VALUES (?, ?, ?, ?)");
                     $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
