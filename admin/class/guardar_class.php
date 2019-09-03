@@ -64,6 +64,12 @@ class Guardar{
             if($_POST['accion'] == "eliminar_excepcion"){
                 return $this->eliminar_excepcion();
             }
+            if($_POST['accion'] == "crear_rango_excepcion"){
+                return $this->crear_rango_excepcion();
+            }
+            if($_POST['accion'] == "eliminar_rango_excepcion"){
+                return $this->eliminar_rango_excepcion();
+            }
         }
 
     }
