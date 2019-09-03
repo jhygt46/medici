@@ -181,7 +181,7 @@ class Guardar{
                     if($id_usr == $id){
 
                         $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
-                        $sql->bind_param("ssii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                        $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
                         if($sql->execute()){
                             $info['op'] = 1;
                             $info['mensaje'] = "Medico modificado exitosamente";
@@ -199,7 +199,7 @@ class Guardar{
                 }elseif($res->{"num_rows"} == 0){
 
                     $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
-                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                    $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
                         $info['mensaje'] = "Medico modificado exitosamente";
