@@ -58,7 +58,12 @@ class Guardar{
             if($_POST['accion'] == "eliminar_horario"){
                 return $this->eliminar_horario();
             }
-
+            if($_POST['accion'] == "crear_excepcion"){
+                return $this->crear_excepcion();
+            }
+            if($_POST['accion'] == "eliminar_excepcion"){
+                return $this->eliminar_excepcion();
+            }
         }
 
     }
@@ -441,7 +446,39 @@ class Guardar{
         return $info;
 
     }
-    public function get_servicios(){
+    private function crear_excepcion(){
+        
+        $fecha = $_POST['datepicker'];
+        $dia = date("w", strtotime($fecha));
+        return $dia;
+        
+    }
+    private function eliminar_excepcion(){
+        
+        $fecha = $_POST['id'];
+
+        $sql = $this->con->prepare("UPDATE excepciones SET eliminado='1' WHERE fecha=? AND id_usr=?");
+        $sql->bind_param("si", $fecha, $this->id_usr);
+        if($sql->execute()){
+
+            $info['tipo'] = "success";
+            $info['titulo'] = "Eliminado";
+            $info['texto'] = "Excepciones de ".$fecha." fueron eliminados";
+            $info['reload'] = 1;
+            $info['page'] = "mis_excepciones.php";
+
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Excepciones de ".$fecha." no pudo ser eliminado";
+
+        }
+        $sql->close();
+        return $info;
+
+    }
+    private function get_servicios(){
 
         if($sql = $this->con->prepare("SELECT * FROM servicios t1, servicio_usuarios t2 WHERE t2.id_usr=? AND t2.id_ser=t1.id_ser AND t2.eliminado=?")){
             if($sql->bind_param("ii", $this->id_usr, $this->eliminado)){
