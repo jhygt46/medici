@@ -35,7 +35,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
     $id = $_GET["id_ser"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio_usuario($id);
-    $select = $core->get_no_servicios_2($id);
+    $select = $core->get_no_servicios_3($id);
     $disabled = "disabled";
 
 }else{

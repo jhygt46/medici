@@ -459,6 +459,17 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    public function get_no_servicios_3($id_ser){
+
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser=?")){
+            if($sql->bind_param("i", $id_ser)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
     public function get_servicio_usuario($id_ser){
 
         if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=? AND eliminado=?")){
