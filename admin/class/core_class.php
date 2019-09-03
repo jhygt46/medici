@@ -481,6 +481,15 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    public function get_excepcion($id){
+        if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_exc=? AND id_usr=? AND eliminado=?")){
+            if($sql->bind_param("iii", $id, $this->id_usr, $this->eliminado)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+    }
     public function get_todas_excepciones($fecha){
         if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=? AND fecha=? AND eliminado=? ORDER BY fecha")){
             if($sql->bind_param("isi", $this->id_usr, $fecha, $this->eliminado)){
