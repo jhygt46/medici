@@ -298,8 +298,8 @@ class Guardar{
 
         if($res->{"num_rows"} == 1){
             
-            $sql = $this->con->prepare("UPDATE servicio_usuarios SET tiempo_min=?, precio=? WHERE id_ser=? AND id_usr=?");
-            $sql->bind_param("iiii", $tiempo, $precio, $tipo, $this->id_usr);
+            $sql = $this->con->prepare("UPDATE servicio_usuarios SET tiempo_min=?, precio=?, eliminado=? WHERE id_ser=? AND id_usr=?");
+            $sql->bind_param("iiiii", $tiempo, $precio, $this->eliminado, $tipo, $this->id_usr);
             $sql->execute();
             if($sql->execute()){
                 $info['op'] = 1;
