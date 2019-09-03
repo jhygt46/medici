@@ -28,6 +28,7 @@ $id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_servicios();
 $sub_titulo = $sub_titulo1;
+$disabled = "";
 
 if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
 
@@ -35,6 +36,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
     $sub_titulo = $sub_titulo2;
     $that = $core->get_servicio_usuario($id);
     $select = $core->get_no_servicios_2($id);
+    $disabled = "disabled";
 
 }else{
 
@@ -67,7 +69,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                         <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                         <label class="clearfix">
                             <span><p>Servicio:</p></span>
-                            <select id="tipo">
+                            <select id="tipo" <?php echo $disabled; ?>>
                                 <option value="0">Seleccionar</option> 
                                 <?php for($i=0; $i<count($select); $i++){ ?>
                                 <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
