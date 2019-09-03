@@ -517,6 +517,7 @@ class Guardar{
     private function crear_rango_excepcion(){
 
         $id_exc = $_POST["id"];
+        $fecha = $_POST["fecha"];
         $hora_ini = $_POST['hora_ini'];
         $hora_fin = $_POST['hora_fin'];
         $id_suc = 1;
@@ -546,8 +547,6 @@ class Guardar{
             }else{
                 $info['op'] = 2;
                 $info['mensaje'] = "Error: B1";
-                $info['sql'] = $sql;
-                $info['con'] = $this->con;
             }
 
         }
