@@ -553,7 +553,7 @@ class Guardar{
         if($id_exc > 0){
 
             $lista_servicios = $this->get_servicios();
-            $sqld = $this->con->prepare("DELETE FROM excepcion_servicios WHERE id_ser=?");
+            $sqld = $this->con->prepare("DELETE FROM excepcion_servicios WHERE id_exc=?");
             $sqld->bind_param("i", $id_exc);
             if($sqld->execute()){
                 for($i=0; $i<count($lista_servicios); $i++){
