@@ -546,7 +546,7 @@ class Guardar{
                 $id_exc = $this->con->insert_id;
             }else{
                 $info['op'] = 2;
-                $info['mensaje'] = "Error: B1";}
+                $info['mensaje'] = "Error: B1";
                 $info['k'] = 2;
             }
 
