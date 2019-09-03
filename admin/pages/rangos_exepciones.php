@@ -37,6 +37,10 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
     $sub_titulo = $sub_titulo2;
     $that = $core->get_excepcion($id);
 
+    echo "<pre>";
+    print_r($that);
+    echo "</pre>";
+
 }
 
 ?>
