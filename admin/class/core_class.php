@@ -505,7 +505,7 @@ class Core{
     }
     public function get_rango($id_ran){
         
-        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=? AND elimiando=?")){
+        if($sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND id_ran=? AND eliminado=?")){
             if($sql->bind_param("iii", $this->id_usr, $id_ran, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];

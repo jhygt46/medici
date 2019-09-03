@@ -38,10 +38,6 @@ if(isset($_GET["id_ran"]) && is_numeric($_GET["id_ran"]) && $_GET["id_ran"] != 0
     $that = $core->get_rango($id_ran);
     $that_list = $core->get_servicios_rango($id_ran);
 
-    echo "<pre>";
-    print_r($that);
-    echo "</pre>";
-
 }
 
 ?>
