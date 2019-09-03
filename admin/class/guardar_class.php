@@ -180,7 +180,7 @@ class Guardar{
                     $id_usr = $res->fetch_all(MYSQLI_ASSOC)[0]['id_usr'];
                     if($id_usr == $id){
 
-                        $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                        $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_usr=? AND eliminado=?");
                         $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
                         if($sql->execute()){
                             $info['op'] = 1;
@@ -198,7 +198,7 @@ class Guardar{
 
                 }elseif($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                    $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_usr=? AND eliminado=?");
                     $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
