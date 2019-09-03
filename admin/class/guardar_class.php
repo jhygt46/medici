@@ -542,10 +542,12 @@ class Guardar{
             if($sql->execute()){
                 $info['op'] = 1;
                 $info['mensaje'] = "Horario ingresado exitosamente";
+                $info['k'] = 1;
                 $id_exc = $this->con->insert_id;
             }else{
                 $info['op'] = 2;
-                $info['mensaje'] = "Error: B1";
+                $info['mensaje'] = "Error: B1";}
+                $info['k'] = 2;
             }
 
         }
