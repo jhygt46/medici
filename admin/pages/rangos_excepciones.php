@@ -37,10 +37,6 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
     $that = $core->get_excepcion($id);
     $that_list = $core->exp_servicios($id);
 
-    echo "<pre>";
-    print_r($that_list);
-    echo "</pre>";
-
 }
 
 ?>
