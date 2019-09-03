@@ -482,8 +482,8 @@ class Core{
 
     }
     public function get_todas_excepciones($fecha){
-        if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=? AND fecha=? ORDER BY fecha")){
-            if($sql->bind_param("is", $this->id_usr, $fecha)){
+        if($sql = $this->con->prepare("SELECT * FROM excepciones WHERE id_usr=? AND fecha=? AND eliminado=? ORDER BY fecha")){
+            if($sql->bind_param("isi", $this->id_usr, $fecha, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }

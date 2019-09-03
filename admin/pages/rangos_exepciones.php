@@ -29,10 +29,6 @@ $id_exc = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_todas_excepciones($fecha);
 
-echo "<pre>";
-print_r($list);
-echo "</pre>";
-
 $semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0){
@@ -131,6 +127,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
+                    $nombre = $list[$i]["hora_ini"]." - ".$list[$i]["hora_fin"];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
