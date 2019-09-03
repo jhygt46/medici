@@ -439,8 +439,8 @@ class Core{
     }
     public function get_no_servicios(){
 
-        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=?) AND eliminado=?")){
-            if($sql->bind_param("ii", $this->id_usr, $this->eliminado)){
+        if($sql = $this->con->prepare("SELECT * FROM servicios WHERE id_ser NOT IN (SELECT id_ser FROM servicio_usuarios WHERE id_usr=? AND eliminado=?) AND eliminado=?")){
+            if($sql->bind_param("iii", $this->id_usr, $this->eliminado, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
