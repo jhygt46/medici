@@ -68,6 +68,7 @@ class Guardar{
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: B1";
                 }
+                $sqligir->close();
 
             }
             if($id > 0){
@@ -159,26 +160,41 @@ class Guardar{
                         $info['op'] = 2;
                         $info['mensaje'] = "Error: B1";
                     }
+                    $sql->close();
 
                 }else{
                     $info['op'] = 2;
                     $info['mensaje'] = "Error: B2";
                 }
+                $sqlu->close();
 
             }
             if($id > 0){
 
-                $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
-                $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
-                if($sql->execute()){
-                    $info['op'] = 1;
-                    $info['mensaje'] = "Medico modificado exitosamente";
+                $sqlu = $this->con->prepare("SELECT id_usr FROM usuarios WHERE correo=? AND eliminado=?");
+                $sqlu->bind_param("sii", $correo, $id, $this->eliminado);
+                $sqlu->execute();
+                $res = $sqlu->get_result();
+                $id_usr = $res->fetch_all(MYSQLI_ASSOC)[0]['id_usr'];
+
+                if($res->{"num_rows"} == 0 || ($res->{"num_rows"} == 1 && $id_usr == $id)){
+
+                    $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_ser=? AND eliminado=?");
+                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                    if($sql->execute()){
+                        $info['op'] = 1;
+                        $info['mensaje'] = "Medico modificado exitosamente";
+                    }else{
+                        $info['op'] = 2;
+                        $info['mensaje'] = "Error: Permisos A2";
+                    }
+                    $sql->close();
+
                 }else{
                     $info['op'] = 2;
-                    $info['mensaje'] = "Error: Permisos A2";
+                    $info['mensaje'] = "Error: Permisos A3";
                 }
-                $sqlugi->close();
-
+                
             }
             
         }else{
@@ -206,14 +222,13 @@ class Guardar{
                 $info['titulo'] = "Eliminado";
                 $info['texto'] = "Medico ".$nombre." Eliminado";
                 $info['reload'] = 1;
-                $info['page'] = "ingresar_servicios.php";
+                $info['page'] = "ingresar_medicos.php";
 
             }else{
 
                 $info['tipo'] = "error";
                 $info['titulo'] = "Error";
                 $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
-                //$this->registrar(6, 0, 0, 'borrar giro');
 
             }
             $sqlugi->close();
@@ -223,7 +238,6 @@ class Guardar{
             $info['tipo'] = "error";
             $info['titulo'] = "Error";
             $info['texto'] = "Medico ".$nombre." no pudo ser eliminado";
-            //$this->registrar(4, 0, 0, 'crear giro');
 
         }
 
