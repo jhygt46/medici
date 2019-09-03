@@ -456,6 +456,8 @@ class Guardar{
         $sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=? AND dia_ini<=? AND dia_fin>=?");
         $sql->bind_param("iiii", $this->id_usr, $this->eliminado, $dia, $dia);
         if($sql->execute()){
+            $info['op'] = 3;
+            $info['mensaje'] = "ERROR";
             $res = $sql->get_result();
             while($row = $res->fetch_assoc()){
                 $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
@@ -476,7 +478,10 @@ class Guardar{
                             }else{}
                         }
                     }else{}
-                }else{}
+                }else{
+                    $info['op'] = 4;
+                    $info['mensaje'] = "ERROR";
+                }
             }
         }else{}
         $sql->close();
