@@ -35,7 +35,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
     $id = $_GET["id_exc"];
     $sub_titulo = $sub_titulo2;
     $that = $core->get_excepcion($id);
-    $exc_servicios = $core->exp_servicios($id);
+    $that_list = $core->exp_servicios($id);
 
 }
 
