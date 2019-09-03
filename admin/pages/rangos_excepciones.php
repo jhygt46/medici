@@ -39,6 +39,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
 
 }
 
+
 ?>
 
 <div class="pagina">
