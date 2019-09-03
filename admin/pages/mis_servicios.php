@@ -42,10 +42,6 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
 
 }
 
-echo "<pre>";
-print_r($select);
-echo "</pre>";
-
 ?>
 
 <div class="pagina">
