@@ -21,7 +21,7 @@ $accion = "crear_excepcion";
 $eliminaraccion = "eliminar_excepcion";
 $id_list = "id_exc";
 $eliminarobjeto = "Excepcion";
-$page_detail = "pages/rangos_exepciones.php";
+$page_detail = "pages/rangos_excepciones.php";
 /* CONFIG PAGE */
 
 $fecha = "";
