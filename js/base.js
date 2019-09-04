@@ -886,7 +886,7 @@ function in_regla(reglas, min, time){
             hf = reglas[x].hora_fin.split(":");
             h_ini = parseInt(hi[0]) * 60 + parseInt(hi[1]);
             h_fin = parseInt(hf[0]) * 60 + parseInt(hf[1]);
-            if(h_ini < min && h_fin > max){
+            if(h_ini <= min && h_fin >= max){
                 return true;
             }
         }
