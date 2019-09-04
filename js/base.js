@@ -909,7 +909,9 @@ function horas_reglas(reglas){
             if(h_fin > max){ max = h_fin; }
         }
     }
-    //console.log(min+"//"+max);
+    
+    console.log(min+"//"+max);
+    
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
             
