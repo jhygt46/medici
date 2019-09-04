@@ -98,6 +98,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                         <div class="nombre"><?php echo $nombre; ?></div>
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
                         <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_usr=<?php echo $id; ?>')"></a>
+                        <a class="icono ic2" onclick="navlink('pages/mis_servicios.php?id_usr=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
