@@ -289,6 +289,8 @@ class Core{
 
                                                 $resexc = $sqlexc->get_result();
                                                 if($resexc->{"num_rows"} == 0){
+                                                    
+                                                    $data["m"] = "RANGOS";
 
                                                     $dia = date("w", strtotime($fecha));
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini>=? AND t1.dia_fin<=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
@@ -316,6 +318,8 @@ class Core{
                                                 }
                                                 if($resexc->{"num_rows"} > 0){
                                                     
+                                                    $data["m"] = "EXCEPCIONES";
+
                                                     while($row = $resexc->fetch_assoc()){
                                                         
                                                         $hora_ini = explode(":", $row["hora_ini"]);
@@ -328,8 +332,8 @@ class Core{
 
                                                             $data['exc_dentro'] = 1;
 
-                                                            if($sqlhor = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND fecha_1<? AND fecha_2>?")){
-                                                                if($sqlhor->bind_param("isi", $id_usr, $fecha)){
+                                                            if($sqlhor = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND fecha<=? AND fecha_f>=?")){
+                                                                if($sqlhor->bind_param("isi", $id_usr, $fecha1, $fecha2)){
                                                                     if($sqlhor->execute()){
 
                                                                     }
