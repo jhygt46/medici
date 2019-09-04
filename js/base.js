@@ -957,6 +957,11 @@ function horas_reglas(reglas){
                 }
             }else{
                 // MOSTRAR TODAS LAS HORAS
+                console.log("BUE");
+                while(min <= max){
+                    if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
+                    min += tiempo;
+                }
             }
         }
     }
