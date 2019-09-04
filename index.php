@@ -14,6 +14,7 @@ if($_GET["accion"] == "actualizar" || $_GET["status"] == 2){
     echo "<pre>";
     print_r($core->get_data());
     echo "</pre>";
+    exit;
 }
 
 $status = 0;
