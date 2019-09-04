@@ -842,7 +842,7 @@ function html_horas(){
                 rangos.push(data.rangos[i]);
             }
         }
-        console.log("A");
+        console.log("B");
         horas = horas_reglas(rangos);
     }
 
