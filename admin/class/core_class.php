@@ -27,6 +27,7 @@ class Core{
     public function transform($id){
         if($this->tipo == 1){
             $this->id_usr = $id;
+            $_SESSION['user']['info']['id_usr'] = $id;
         }
     }
     public function get_data(){
