@@ -938,7 +938,7 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
-                            if(in_regla(reglas, min, tiempo_servicio)){ console.log("MIN: "+min); res.push(min); }
+                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
                             min += tiempo;
                         }
                     }
