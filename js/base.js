@@ -896,7 +896,7 @@ function in_regla(reglas, min, time){
 }
 function temp(n, m){
     console.log(n);
-    console.log(m/60 + " - " + m%60);
+    console.log(parseInt(m/60) + ":" + m%60);
 }
 function horas_reglas(reglas){
 
