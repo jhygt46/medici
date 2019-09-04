@@ -919,25 +919,22 @@ function horas_reglas(reglas){
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
             
-            /*
             lista_servicios = data.doctores[j].lista_servicios;
             for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
                 if(lista_servicios[i].id == reserva.servicio){
                     tiempo_servicio = parseInt(lista_servicios[i].tiempo_min);
                 }
             }
-            */
 
             if(Array.isArray(data.doctores[j].horas)){
                 for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
 
                     aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
                     hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
-                    tiempo_servicio = parseInt(data.doctores[j].horas[i].tiempo)
-                    hr_fin = hr_ini + tiempo_servicio;
+                    hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
-                        while(min <= hr_ini - tiempo_servicio){
+                        while(min <= hr_ini - tiempo){
                             if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
                             min += tiempo;
                         }
