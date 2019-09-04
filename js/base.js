@@ -764,26 +764,28 @@ function dia_reglas(regla){
                     }
                 }
                 horas = data.doctores[j].horas;
-                for(var i=0, ilen=horas.length; i<ilen; i++){
-                    
-                    aux_ini = horas[i].fecha.split(" ")[1].split(":");
-                    aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
-                    aux_f = aux_i + parseInt(horas[i].tiempo);
+                if(horas.isArray){
+                    for(var i=0, ilen=horas.length; i<ilen; i++){
+                        
+                        aux_ini = horas[i].fecha.split(" ")[1].split(":");
+                        aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
+                        aux_f = aux_i + parseInt(horas[i].tiempo);
 
-                    if(aux_i >= h_ini && aux_f + tiempo <= h_fin){
-                        if(i == 0){
-                            if(aux_i > h_ini + tiempo){ return true }
-                        }
-                        if(i > 0 && i < ilen){
-                            if(aux_i >= last + tiempo){ return true }
-                            if(i == ilen - 1){
-                                if(aux_f + tiempo < h_fin){ return true }
+                        if(aux_i >= h_ini && aux_f + tiempo <= h_fin){
+                            if(i == 0){
+                                if(aux_i > h_ini + tiempo){ return true }
                             }
+                            if(i > 0 && i < ilen){
+                                if(aux_i >= last + tiempo){ return true }
+                                if(i == ilen - 1){
+                                    if(aux_f + tiempo < h_fin){ return true }
+                                }
+                            }
+                            last = aux_f;
                         }
-                        last = aux_f;
-                    }
 
-                }
+                    }
+                }   
             }
         }
     }
