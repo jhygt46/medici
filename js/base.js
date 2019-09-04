@@ -801,13 +801,11 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     console.log(y+"-"+m+"-"+d);
-    console.log(date);
 
     if(exc.op){
-        console.log(1);
+        console.log(exc.excepciones);
         return dia_reglas(exc.excepciones);
     }else{
-        console.log(2);
         var semana = date.getDay();
         var rangos = [];
         for(var i=0, ilen=data.rangos.length; i<ilen; i++){
@@ -815,6 +813,7 @@ function horas_disponibles(y, m, d){
                 rangos.push(data.rangos[i]);
             }
         }
+        console.log(rangos);
         return dia_reglas(rangos);
     }
 
