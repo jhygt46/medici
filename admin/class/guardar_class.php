@@ -579,7 +579,7 @@ class Guardar{
         }
 
         $info['reload'] = 1;
-        $info['page'] = "rangos_excepciones.php";
+        $info['page'] = "rangos_excepciones.php?fecha=".$fecha;
 
         return $info;
 
@@ -599,7 +599,7 @@ class Guardar{
             $info['titulo'] = "Eliminado";
             $info['texto'] = "Excepcion de ".$fecha." eliminadas exitosamente";
             $info['reload'] = 1;
-            $info['page'] = "rango_excepciones.php?fecha=".$fecha;
+            $info['page'] = "rangos_excepciones.php?fecha=".$fecha;
 
         }else{
 
