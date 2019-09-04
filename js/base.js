@@ -796,6 +796,8 @@ function dia_reglas(regla){
 }
 function horas_disponibles(y, m, d){
 
+    console.log(y+"-"+m+"-"+d);
+
     var date = new Date(y, m, d);
     var exc = tiene_excepcion(date);
     var reserva = get_reserva();
@@ -1123,10 +1125,10 @@ function calendario_completo(now){
                     if(horas_disponibles(year, month, day_count + 1)){
                         data += "<div class='calendar_dia selected' onclick='seleccionar_fecha("+year+","+month+","+(day_count + 1)+")'><div class='dia_info vhalign'>"+(day_count + 1)+"</div></div>";
                     }else{
-                        data += "<div class='calendar_dia'><div class='dia_info vhalign'>"+(day_count + 1)+"</div></div>";
+                        data += "<div class='calendar_dia'><div class='dia_info vhalign'>-"+(day_count + 1)+"</div></div>";
                     }
                 }else{
-                    data += "<div class='calendar_dia'><div class='dia_info vhalign'>"+(day_count + 1)+"</div></div>";
+                    data += "<div class='calendar_dia'><div class='dia_info vhalign'>*"+(day_count + 1)+"</div></div>";
                 }
                 total++;
             }
