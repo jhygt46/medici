@@ -248,7 +248,7 @@ class Guardar{
             if($id > 0){
                 if($pass1 == $pass2 && strlen($pass1) >= 8){
                     $sqlup = $this->con->prepare("UPDATE usuarios SET pass=? WHERE id_usr=? AND eliminado=?");
-                    $sqlup->bind_param("ssiii", $pass1, $id, $this->eliminado);
+                    $sqlup->bind_param("sii", md5($pass1), $id, $this->eliminado);
                     if($sqlup->execute()){}
                 }
             }
