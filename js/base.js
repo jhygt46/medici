@@ -935,8 +935,12 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
-                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
-                            min += tiempo;
+                            if(in_regla(reglas, min, tiempo_servicio)){ 
+                                res.push(min);
+                                min += tiempo;
+                            }else{
+                                min += tiempo;
+                            }
                         }
                     }
                     if(i > 0){
