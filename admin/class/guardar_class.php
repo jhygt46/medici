@@ -165,38 +165,13 @@ class Guardar{
             $nombre = $_POST['nombre'];
             $correo = $_POST['correo'];
             $tipo = $_POST['tipo'];
+            $pass1 = $_POST['pass1'];
+            $pass2 = $_POST['pass2'];
 
-            if($id == 0){
-
-                $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
-                $sqlu->bind_param("si", $correo, $this->eliminado);
-                $sqlu->execute();
-                $res = $sqlu->get_result();
-
-                if($res->{"num_rows"} == 0){
-
-                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, eliminado) VALUES (?, ?, ?, ?)");
-                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
-                    if($sql->execute()){
-                        $info['op'] = 1;
-                        $info['mensaje'] = "Medico ingresado exitosamente";
-                    }else{
-                        $info['op'] = 2;
-                        $info['mensaje'] = "Error: B1";
-                    }
-                    $sql->close();
-
-                }else{
-                    $info['op'] = 2;
-                    $info['mensaje'] = "Error: B2";
-                }
-                $sqlu->close();
-
-            }
             if($id > 0){
 
                 $sqlu = $this->con->prepare("SELECT id_usr FROM usuarios WHERE correo=? AND eliminado=?");
-                $sqlu->bind_param("sii", $correo, $id, $this->eliminado);
+                $sqlu->bind_param("sii", $correo, $this->eliminado);
                 $sqlu->execute();
                 $res = $sqlu->get_result();
                 
@@ -240,6 +215,42 @@ class Guardar{
 
                 $sqlu->close();
                 
+            }
+            if($id == 0){
+
+                $sqlu = $this->con->prepare("SELECT * FROM usuarios WHERE correo=? AND eliminado=?");
+                $sqlu->bind_param("si", $correo, $this->eliminado);
+                $sqlu->execute();
+                $res = $sqlu->get_result();
+
+                if($res->{"num_rows"} == 0){
+
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, pass, tipo, eliminado) VALUES (?, ?, ?, ?, ?)");
+                    $sql->bind_param("sssii", $nombre, $correo, $pass, $tipo, $this->eliminado);
+                    if($sql->execute()){
+                        $info['op'] = 1;
+                        $info['mensaje'] = "Medico ingresado exitosamente";
+                        $id = $this->con->insert_id;
+                    }else{
+                        $info['op'] = 2;
+                        $info['mensaje'] = "Error: B1";
+                    }
+                    $sql->close();
+
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Error: B2";
+                }
+                $sqlu->close();
+
+            }
+
+            if($id > 0){
+                if($pass1 == $pass2 && strlen($pass1) >= 8){
+                    $sqlup = $this->con->prepare("UPDATE usuarios SET pass=? WHERE id_usr=? AND eliminado=?");
+                    $sqlup->bind_param("ssiii", $pass1, $id, $this->eliminado);
+                    if($sqlup->execute()){}
+                }
             }
             
         }else{

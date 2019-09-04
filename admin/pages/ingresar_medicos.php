@@ -71,6 +71,14 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                         <span><p>Tipo:</p></span>
                         <select id="tipo"><option value="0" <?php if($that['tipo'] == 0){ echo "selected"; } ?>>Medico</option><option value="1" <?php if($that['tipo'] == 1){ echo "selected"; } ?>>Medico y Administrador</option></select>
                     </label>
+                    <label class="clearfix">
+                        <span><p>Password:</p></span>
+                        <input id="pass1" class="inputs" type="text" value="" require="" placeholder="opcional" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Confirmar Password:</p></span>
+                        <input id="pass2" class="inputs" type="text" value="" require="" placeholder="opcional" />
+                    </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>
