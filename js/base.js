@@ -829,7 +829,6 @@ function in_array(arr, x){
 function html_horas(){
 
     var reserva = get_reserva();
-    console.log(reserva);
     var html_hora = "";
     var fecha = reserva.fecha.split("/");
     var date = new Date(fecha[2], fecha[1], fecha[0]);
