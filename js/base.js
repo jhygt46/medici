@@ -785,7 +785,9 @@ function dia_reglas(regla){
                         }
 
                     }
-                }   
+                }else{
+                    return true;
+                }
             }
         }
     }
