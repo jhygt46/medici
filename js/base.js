@@ -830,7 +830,7 @@ function html_horas(){
     var date = new Date(fecha[2], fecha[1], fecha[0]);
     var exc = tiene_excepcion(date);
     var horas = [];
-
+    console.log(date);
     if(exc.op){
         console.log("A");
         horas = horas_reglas(exc.excepciones);
