@@ -832,6 +832,7 @@ function html_horas(){
     var horas = [];
 
     if(exc.op){
+        console.log("A");
         horas = horas_reglas(exc.excepciones);
     }else{
         var semana = date.getDay();
@@ -841,6 +842,7 @@ function html_horas(){
                 rangos.push(data.rangos[i]);
             }
         }
+        console.log("A");
         horas = horas_reglas(rangos);
     }
 
