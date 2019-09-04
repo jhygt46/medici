@@ -16,7 +16,7 @@ var slidemenu = {
     moved: 0
 }
 var config = {
-    total_dias: 10
+    total_dias: 18
 }
 
 var semana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
