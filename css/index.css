@@ -385,7 +385,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_semana .semana_info {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+  color: #fff;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_dia {
   border-left: 1px solid #000;

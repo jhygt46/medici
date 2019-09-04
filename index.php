@@ -36,7 +36,7 @@ if(isset($_GET["status"])){
         <script src="js/info.js" type="text/javascript"></script>
         <script>
             var n_year = <?php echo (isset($_GET["y"])) ? $_GET["y"] : date("Y") ; ?>;
-            var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"] + 1) : intval(date("m")) ; ?>;
+            var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"] + 1) : intval(date("m")) - 1 ; ?>;
             var n_day = <?php echo (isset($_GET["d"])) ? $_GET["d"] : date("d") ; ?>;
             var n_hours = <?php echo intval(date("H")); echo " + Math.round(".(date("i")/60).") + 1"; ?>;
             var status = <?php echo $status; ?>;
