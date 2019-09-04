@@ -894,6 +894,10 @@ function in_regla(reglas, min, time){
     return false;
 
 }
+function temp(n, m){
+    console.log(n);
+    console.log(m);
+}
 function horas_reglas(reglas){
 
     var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
@@ -931,20 +935,20 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
-                            if(in_regla(reglas, min, tiempo_servicio)){ console.log(min); res.push(min); }
+                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
                             min += tiempo;
                         }
                     }
                     if(i > 0){
                         aux_ini = hr_last;                    
                         while(hr_ini - aux_ini >= tiempo_servicio){
-                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); }
+                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); temp(2, aux_ini); }
                             aux_ini += tiempo;
                         }
                     }
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo_servicio){
-                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); }
+                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); temp(3, hr_fin); }
                             hr_fin += tiempo;
                         }
                     }
