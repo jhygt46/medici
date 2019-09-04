@@ -830,13 +830,12 @@ function html_horas(){
     var date = new Date(fecha[2], (fecha[1] - 1), fecha[0]);
     var exc = tiene_excepcion(date);
     var horas = [];
-    
-    console.log(reserva);
-    console.log(date);
 
     if(exc.op){
-        console.log("A");
         horas = horas_reglas(exc.excepciones);
+        console.log("excepciones");
+        console.log(exc.excepciones);
+        console.log(horas);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -845,8 +844,10 @@ function html_horas(){
                 rangos.push(data.rangos[i]);
             }
         }
-        console.log("B");
         horas = horas_reglas(rangos);
+        console.log("rangos");
+        console.log(rangos);
+        console.log(horas);
     }
 
     var html_horas = create_element_class('horas');
