@@ -195,7 +195,6 @@ class Core{
             }
         }
         file_put_contents(DIR."js/info.js", "var data=".json_encode($data).";");
-        return $data;
 
     }
     public function getrandstring($n){
