@@ -796,15 +796,18 @@ function dia_reglas(regla){
 }
 function horas_disponibles(y, m, d){
 
-    console.log(y+"-"+m+"-"+d);
-
     var date = new Date(y, m, d);
     var exc = tiene_excepcion(date);
     var reserva = get_reserva();
 
+    console.log(y+"-"+m+"-"+d);
+    console.log(date);
+
     if(exc.op){
+        console.log(1);
         return dia_reglas(exc.excepciones);
     }else{
+        console.log(2);
         var semana = date.getDay();
         var rangos = [];
         for(var i=0, ilen=data.rangos.length; i<ilen; i++){
