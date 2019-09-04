@@ -915,37 +915,39 @@ function horas_reglas(reglas){
                     tiempo_servicio = parseInt(lista_servicios[i].tiempo_min);
                 }
             }
-            //console.log(data.doctores[j].horas);
-            for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
+            var horas = data.doctores[j].horas;
+            if(Array.isArray(horas)){
+                for(var i=0, ilen=horas.length; i<ilen; i++){
 
-                aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
-                hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
-                hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
-                
-                if(i == 0){
-                    while(min <= hr_ini - tiempo_servicio){
-                        if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); }
-                        min += tiempo;
-                    }
-                }
-                if(i > 0 && i < ilen){
+                    aux = horas[i].fecha.split(" ")[1].split(":");
+                    hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
+                    hr_fin = hr_ini + parseInt(horas[i].tiempo);
                     
-                    aux_ini = hr_last;                    
-                    while(hr_ini - aux_ini >= tiempo_servicio){
-                        if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); }
-                        aux_ini += tiempo;
-                    }
-                    
-                    if(i == ilen - 1){
-                        while(hr_fin <= max - tiempo_servicio){
-                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); }
-                            hr_fin += tiempo;
+                    if(i == 0){
+                        while(min <= hr_ini - tiempo_servicio){
+                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); }
+                            min += tiempo;
                         }
                     }
+                    if(i > 0 && i < ilen){
+                        
+                        aux_ini = hr_last;                    
+                        while(hr_ini - aux_ini >= tiempo_servicio){
+                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); }
+                            aux_ini += tiempo;
+                        }
+                        
+                        if(i == ilen - 1){
+                            while(hr_fin <= max - tiempo_servicio){
+                                if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); }
+                                hr_fin += tiempo;
+                            }
+                        }
+
+                    }
+                    hr_last = hr_fin;
 
                 }
-                hr_last = hr_fin;
-
             }
         }
     }
