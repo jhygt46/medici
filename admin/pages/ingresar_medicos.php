@@ -73,11 +73,11 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Password:</p></span>
-                        <input id="pass1" class="inputs" type="text" value="" require="" placeholder="opcional" />
+                        <input id="pass1" class="inputs" type="password" value="" require="" placeholder="opcional" />
                     </label>
                     <label class="clearfix">
                         <span><p>Confirmar Password:</p></span>
-                        <input id="pass2" class="inputs" type="text" value="" require="" placeholder="opcional" />
+                        <input id="pass2" class="inputs" type="password" value="" require="" placeholder="opcional" />
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
