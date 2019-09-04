@@ -900,7 +900,7 @@ function temp(n, m){
 }
 function horas_reglas(reglas){
 
-    var min=9999999, max=0, tiempo=15, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
+    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
     var reserva = get_reserva();
 
     if(reglas.length > 0){
