@@ -934,7 +934,7 @@ function horas_reglas(reglas){
                     hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
-                        while(min <= hr_ini - tiempo){
+                        while(min <= hr_ini - tiempo_servicio){
                             if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
                             min += tiempo;
                         }
