@@ -309,6 +309,7 @@ class Core{
                                                                     if($now_ini > $h_ini && $now_fin < $h_fin){
                                                                         $data['ran_dentro'] = 1;
                                                                     }
+                                                                    $data["x"][] = "BUE";
 
                                                                 }
                                                             }else{}
