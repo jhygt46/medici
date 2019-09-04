@@ -764,7 +764,7 @@ function dia_reglas(regla){
                     }
                 }
                 horas = data.doctores[j].horas;
-                if(horas.length){
+                if(Array.isArray(horas)){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
                         aux_ini = horas[i].fecha.split(" ")[1].split(":");
