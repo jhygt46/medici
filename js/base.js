@@ -900,7 +900,7 @@ function temp(n, m){
 }
 function horas_reglas(reglas){
 
-    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
+    var min=9999999, max=0, tiempo=30, lapse=15, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[];
     var reserva = get_reserva();
 
     if(reglas.length > 0){
@@ -936,20 +936,20 @@ function horas_reglas(reglas){
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
                             if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
-                            min += tiempo;
+                            min += lapse;
                         }
                     }
                     if(i > 0){
                         aux_ini = hr_last;                    
                         while(hr_ini - aux_ini >= tiempo_servicio){
                             if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); temp(2, aux_ini); }
-                            aux_ini += tiempo;
+                            aux_ini += lapse;
                         }
                     }
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo_servicio){
                             if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); temp(3, hr_fin); }
-                            hr_fin += tiempo;
+                            hr_fin += lapse;
                         }
                     }
                     hr_last = hr_fin;
