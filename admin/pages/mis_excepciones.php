@@ -64,6 +64,10 @@ $list = $core->get_excepciones();
                         <span><p>Fecha:</p></span>
                         <input id="datepicker" class="inputs" type="text" value="" placeholder="27/09/1984" />
                     </label>
+                    <label class="clearfix">
+                        <span><p>Tipo:</p></span>
+                        <select id="tipo"><option value="0">Copia Horario</option><option value="1">Vacio</option></select>
+                    </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>

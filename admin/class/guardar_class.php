@@ -465,6 +465,7 @@ class Guardar{
     private function crear_excepcion(){
         
         $fecha = $_POST['datepicker'];
+        $tipo = $_POST['tipo'];
         $dia = date("w", strtotime($fecha));
         $id_suc = 1;
 
@@ -473,30 +474,41 @@ class Guardar{
         $info['reload'] = 1;
         $info['page'] = "mis_excepciones.php";
 
-        $sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=? AND dia_ini<=? AND dia_fin>=?");
-        $sql->bind_param("iiii", $this->id_usr, $this->eliminado, $dia, $dia);
-        if($sql->execute()){
-            $res = $sql->get_result();
-            while($row = $res->fetch_assoc()){
-                $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
-                $sqli->bind_param("sssiii", $fecha, $row["hora_ini"], $row["hora_fin"], $this->eliminado, $id_suc, $this->id_usr);
-                if($sqli->execute()){
-                    $id_exc = $this->con->insert_id;
-                    $sqlrc = $this->con->prepare("SELECT id_ser FROM rango_servicios WHERE id_ran=?");
-                    $sqlrc->bind_param("i", $row["id_ran"]);
-                    if($sqlrc->execute()){
-                        $resrc = $sqlrc->get_result();
-                        while($rowrc = $resrc->fetch_assoc()){
-                            $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (id_ser, id_exc) VALUES (?, ?)");
-                            $sqlx->bind_param("ii", $rowrc["id_ser"], $id_exc);
-                            if($sqlx->execute()){
-                            }else{}
-                        }
+        if($tipo == 0){
+
+            $sql = $this->con->prepare("SELECT * FROM rangos WHERE id_usr=? AND eliminado=? AND dia_ini<=? AND dia_fin>=?");
+            $sql->bind_param("iiii", $this->id_usr, $this->eliminado, $dia, $dia);
+            if($sql->execute()){
+                $res = $sql->get_result();
+                while($row = $res->fetch_assoc()){
+                    $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
+                    $sqli->bind_param("sssiii", $fecha, $row["hora_ini"], $row["hora_fin"], $this->eliminado, $id_suc, $this->id_usr);
+                    if($sqli->execute()){
+                        $id_exc = $this->con->insert_id;
+                        $sqlrc = $this->con->prepare("SELECT id_ser FROM rango_servicios WHERE id_ran=?");
+                        $sqlrc->bind_param("i", $row["id_ran"]);
+                        if($sqlrc->execute()){
+                            $resrc = $sqlrc->get_result();
+                            while($rowrc = $resrc->fetch_assoc()){
+                                $sqlx = $this->con->prepare("INSERT INTO excepcion_servicios (id_ser, id_exc) VALUES (?, ?)");
+                                $sqlx->bind_param("ii", $rowrc["id_ser"], $id_exc);
+                                if($sqlx->execute()){
+                                }else{}
+                            }
+                        }else{}
                     }else{}
-                }else{}
-            }
-        }else{}
-        $sql->close();
+                }
+            }else{}
+            $sql->close();
+
+        }
+        if($tipo == 1){
+            $_h = "08:00:00";
+            $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
+            $sqli->bind_param("sssiii", $fecha, $_h, $_h, $this->eliminado, $id_suc, $this->id_usr);
+            if($sqli->execute()){}
+        }
+
         return $info;
         
     }
