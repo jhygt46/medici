@@ -923,7 +923,6 @@ function horas_reglas(reglas){
             }
 
             if(Array.isArray(data.doctores[j].horas)){
-
                 for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
 
                     aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
@@ -932,7 +931,7 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
-                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); }
+                            if(in_regla(reglas, min, tiempo_servicio)){ console.log(min); res.push(min); }
                             min += tiempo;
                         }
                     }
@@ -949,11 +948,9 @@ function horas_reglas(reglas){
                             hr_fin += tiempo;
                         }
                     }
-                    
                     hr_last = hr_fin;
 
                 }
-
             }else{
                 // MOSTRAR TODAS LAS HORAS
             }
