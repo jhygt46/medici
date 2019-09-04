@@ -800,10 +800,7 @@ function horas_disponibles(y, m, d){
     var exc = tiene_excepcion(date);
     var reserva = get_reserva();
 
-    console.log(y+"-"+m+"-"+d);
-
     if(exc.op){
-        console.log(exc.excepciones);
         return dia_reglas(exc.excepciones);
     }else{
         var semana = date.getDay();
@@ -813,7 +810,6 @@ function horas_disponibles(y, m, d){
                 rangos.push(data.rangos[i]);
             }
         }
-        console.log(rangos);
         return dia_reglas(rangos);
     }
 
@@ -917,13 +913,13 @@ function horas_reglas(reglas){
                     tiempo_servicio = parseInt(lista_servicios[i].tiempo_min);
                 }
             }
-            var horas = data.doctores[j].horas;
-            if(Array.isArray(horas)){
-                for(var i=0, ilen=horas.length; i<ilen; i++){
 
-                    aux = horas[i].fecha.split(" ")[1].split(":");
+            if(Array.isArray(data.doctores[j].horas)){
+                for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
+
+                    aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
                     hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
-                    hr_fin = hr_ini + parseInt(horas[i].tiempo);
+                    hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo_servicio){
