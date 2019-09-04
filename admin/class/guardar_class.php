@@ -225,8 +225,8 @@ class Guardar{
 
                 if($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, pass, tipo, eliminado) VALUES (?, ?, ?, ?, ?)");
-                    $sql->bind_param("sssii", $nombre, $correo, $pass, $tipo, $this->eliminado);
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, eliminado) VALUES (?, ?, ?, ?, ?)");
+                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
                         $info['mensaje'] = "Medico ingresado exitosamente";
