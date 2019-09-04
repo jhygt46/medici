@@ -827,7 +827,7 @@ function html_horas(){
     var reserva = get_reserva();
     var html_hora = "";
     var fecha = reserva.fecha.split("-");
-    var date = new Date(fecha[2], fecha[1], fecha[0]);
+    var date = new Date(fecha[2], (fecha[1] - 1), fecha[0]);
     var exc = tiene_excepcion(date);
     var horas = [];
     
