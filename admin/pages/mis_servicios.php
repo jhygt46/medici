@@ -10,6 +10,9 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 
 require_once(DIR."admin/class/core_class.php");
 $core = new Core();
+if(isset($_GET["id_usr_admin"]) && is_numeric($_GET["id_usr_admin"]) && $_GET["id_usr_admin"] != 0){
+    $core->transform($_GET["id_usr_admin"]);
+}
 
 /* CONFIG PAGE */
 $titulo = "Mis Servicios";

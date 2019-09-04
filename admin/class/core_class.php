@@ -10,6 +10,7 @@ class Core{
     public $con = null;
     public $id_usr = null;
     public $eliminado = 0;
+    public $tipo = 0;
 
     public function __construct(){
         
@@ -20,7 +21,13 @@ class Core{
 
         $this->con = new mysqli($db_host[0], $db_user[0], $db_password[0], $db_database[0]);
         $this->id_usr = (isset($_SESSION['user']['info']['id_usr'])) ? $_SESSION['user']['info']['id_usr'] : 0 ;
-        
+        $this->tipo = (isset($_SESSION['user']['info']['tipo'])) ? $_SESSION['user']['info']['tipo'] : 0 ;
+
+    }
+    public function transform($id){
+        if($this->tipo == 1){
+            $this->id_usr = $id;
+        }
     }
     public function get_data(){
 
