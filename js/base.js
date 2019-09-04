@@ -934,22 +934,22 @@ function horas_reglas(reglas){
                     hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
-                        while(min <= hr_ini - tiempo_servicio){
+                        while(min <= hr_ini - tiempo){
                             if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
-                            min += lapse;
+                            min += tiempo;
                         }
                     }
                     if(i > 0){
                         aux_ini = hr_last;                    
-                        while(hr_ini - aux_ini >= tiempo_servicio){
+                        while(hr_ini - aux_ini >= tiempo){
                             if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); temp(2, aux_ini); }
-                            aux_ini += lapse;
+                            aux_ini += tiempo;
                         }
                     }
                     if(i == ilen - 1){
-                        while(hr_fin <= max - tiempo_servicio){
+                        while(hr_fin <= max - tiempo){
                             if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); temp(3, hr_fin); }
-                            hr_fin += lapse;
+                            hr_fin += tiempo;
                         }
                     }
                     hr_last = hr_fin;
