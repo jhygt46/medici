@@ -49,8 +49,8 @@ class Login {
                     // 1 ERRAR
                     // 2 PEDIR PASSWORD
                     $tipo = 2;
-                    $sqlia = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_user) VALUES (?, now(), ?)");
-                    $sqlia->bind_param("ii", $tipo, $id_user);
+                    $sqlia = $this->con->prepare("INSERT INTO fw_acciones (tipo, fecha, id_usr) VALUES (?, now(), ?)");
+                    $sqlia->bind_param("ii", $tipo, $id_usr);
                     if($sqlia->execute()){
 
                         // CURL 
