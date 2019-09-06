@@ -46,6 +46,7 @@ class Login {
 
                 if($res->{"num_rows"} == 1){
 
+                    
                     // 1 ERRAR
                     // 2 PEDIR PASSWORD
                     $tipo = 2;
