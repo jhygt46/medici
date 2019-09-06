@@ -1,24 +1,3 @@
-function setCookie(name, value, hour){
-    var expires = "";
-    if(hour){
-        var date = new Date();
-        date.setTime(date.getTime() + (hour*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-/*
-function getCookie(name){
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++){
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-*/
 function btn_login(){
 
     var btn = $('#login');
@@ -51,16 +30,13 @@ function btn_recuperar(){
                 
     var btn = $('#recuperar');
     btn.prop("disabled", true );
-    console.log("RECUPERAR");
     $.ajax({
-        url: "/admin/ajax/login_back.php",
+        url: "../admin/ajax/login_back.php",
         type: "POST",
         data: "accion=recuperar_password&user="+$('#correo').val(),
         success: function(data){
-            console.log(data);
+
             if(data.op == 1){
-                localStorage.setItem('correo', $('#correo').val());
-                $('#correo').val('');
                 bien(data.message);
                 setTimeout(function () {
                     $(location).attr("href","/admin");
@@ -70,9 +46,37 @@ function btn_recuperar(){
                 mal(data.message);
                 btn.prop("disabled", false);
             }
+
         },
         error: function(e){
-            console.log(e);
+            btn.prop("disabled", false);
+        }
+    });
+
+}
+function btn_nueva(){
+                
+    var btn = $('#nueva');
+    btn.prop("disabled", true );
+    $.ajax({
+        url: "../admin/ajax/login_back.php",
+        type: "POST",
+        data: "accion=nueva_password&pass_01="+$('#pass_01').val()+"&pass_02="+$('#pass_02').val()+"&id_usr="+$('#id_usr').val()+"&code="+$('#code').val(),
+        success: function(data){
+
+            if(data.op == 1){
+                bien(data.message);
+                setTimeout(function () {
+                    $(location).attr("href","/admin");
+                }, 2000);
+            }
+            if(data.op == 2){
+                mal(data.message);
+                btn.prop("disabled", false);
+            }
+
+        },
+        error: function(e){
             btn.prop("disabled", false);
         }
     });

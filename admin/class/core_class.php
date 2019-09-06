@@ -210,7 +210,7 @@ class Core{
         $r = "";
         $s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         for($i=0; $i<$n; $i++){
-            $r .= $s{$i};
+            $r .= $s{rand(0, strlen($s) - 1)};
         }
         return $r;
 

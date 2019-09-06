@@ -37,7 +37,7 @@ class Login {
             $sql->execute();
             $res = $sql->get_result();
             $aux_user = $res->fetch_all(MYSQLI_ASSOC)[0];
-            $id_user = $aux_user["id_user"];
+            $id_usr = $aux_user["id_usr"];
             $correo = $aux_user["correo"];
 
             $acciones = $this->acciones($id_user, 2);
@@ -61,33 +61,37 @@ class Login {
                         $sqluu = $this->con->prepare("UPDATE usuarios SET pass='', mailcode=? WHERE id_usr=? AND eliminado=?");
                         $sqluu->bind_param("sii", $send["code"], $send["id"], $this->eliminado);
                         if($sqluu->execute()){
+
+                            $link = "";
+
                             /*
                             $ch = curl_init();
-                            curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_recuperar');
+                            curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_recuperar_medici');
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                             $resp = json_decode(curl_exec($ch));
                             curl_close($ch);
                             */
+
                             if($resp->{'op'} == 1){
                                 $info['op'] = 1;
                                 $info['message'] = "Correo Enviado";
                             }else{
                                 $info['op'] = 2;
                                 $info['message'] = "Error";
-                                $this->registrar('13', 0, 0, 0, 'email no enviado:');
+                                $this->registrar('13', 0, 'email no enviado:');
                             }
                         }else{
                             $info['op'] = 2;
                             $info['message'] = "Error:";
-                            $this->registrar('13', 0, 0, 0, 'usuario no cambiado:');
+                            $this->registrar('13', 0, 'usuario no cambiado:');
                         }
                         $sqluu->close();
 
                     }else{
                         $info['op'] = 2;
                         $info['message'] = "Error:";
-                        $this->registrar('13', 0, 0, 0, 'acciones no ingresado:');
+                        $this->registrar('13', 0, 'acciones no ingresado:');
                     }
                     $sqlia->close();
 
@@ -95,13 +99,13 @@ class Login {
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
                     $info['message'] = "Error:";
-                    $this->registrar('13', 0, 0, 0, 'usuario no encontrado: '.$user);
+                    $this->registrar('13', 0, 'usuario no encontrado: '.$user);
                 }
 
             }else{
                 $info['op'] = 2;
                 $info['message'] = "Error: El correo ya ha sido enviado";
-                $this->registrar('13', 0, 0, 0, 'demaciadas acciones usuario: '.$user);
+                $this->registrar('13', 0, 'demaciadas acciones usuario: '.$user);
             }
             
             $sql->free_result();
@@ -110,24 +114,24 @@ class Login {
         }else{
             $info['op'] = 2;
             $info['message'] = "Error: debe ingresar correo valido";
-            $this->registrar('13', 0, 0, 0, 'email invalido usuario: '.$user);
+            $this->registrar('13', 0, 'email invalido usuario: '.$user);
         }
         return $info; 
 
     }
     public function nueva_password(){
 
-        $id = $_POST['id'];
+        $id = $_POST['id_usr'];
         $code = $_POST['code'];
         $pass_01 = $_POST['pass_01'];
         $pass_02 = $_POST['pass_02'];
 
         $sqlb = $this->con->prepare("SELECT * FROM usuarios WHERE id_usr=? AND mailcode=? AND eliminado=?");
-        $sqlb->bind_param("is", $id, $code, $this->eliminado);
+        $sqlb->bind_param("isi", $id, $code, $this->eliminado);
         $sqlb->execute();
         $resb = $sqlb->get_result();
 
-        if($resb->{"num_rows"} == 1 && strlen($code) > 10){
+        if($resb->{"num_rows"} == 1 && strlen($code) == 32){
 
             $acciones = $this->acciones($id, 3);
             if($acciones < 5){
@@ -146,7 +150,7 @@ class Login {
 
                             $info['op'] = 2;
                             $info['message'] = "Error:";
-                            $this->registrar('14', 0, 0, 0, 'usuario no modificado: ');
+                            $this->registrar('14', 0, 'usuario no modificado: ');
 
                         }
                         $sql->close();
@@ -162,7 +166,7 @@ class Login {
             }else{
                 $info['op'] = 2;
                 $info['message'] = "Error: Demaciados intentos";
-                $this->registrar('14', 0, 0, 0, 'demaciado intentos: ');
+                $this->registrar('14', 0, 'demaciado intentos: ');
             }
 
         }
@@ -176,7 +180,7 @@ class Login {
             $sql->bind_param("ii", $tipo, $id);
             $sql->execute();
             $sql->close();
-            $this->registrar('14', 0, 0, 0, 'new password id - code diferentes: ');
+            $this->registrar('14', 0, 'new password id - code diferentes: ');
 
         }
 

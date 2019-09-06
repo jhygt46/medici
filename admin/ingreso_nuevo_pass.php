@@ -15,26 +15,34 @@
         <script>
             $(document).on('keypress',function(e){
                 if(e.which == 13){
-                    btn_recuperar();
+                    btn_nueva();
                 }
+            });
+            $(document).ready(function(){
+                document.getElementById('nueva').addEventListener('click', btn_nueva);
             });
         </script>
     </head>
     <body>
         <div class="cont_login">
             <div class='login vhalign'>
-                <div class='titulo'>RECUPERAR</div>
+                <div class='titulo'>NUEVA CONTRASEÑA</div>
                 <div class='contlogin'>
+                    <input type='hidden' id='id_usr' value='<?php echo $_GET['id_usr']; ?>'>
+                    <input type='hidden' id='code' value='<?php echo $_GET['code']; ?>'>
                     <div class='us'>
-                        <div class='txt'>Correo</div>
-                        <div class='input'><input type='text' id='correo' value=''></div>
+                        <div class='txt'>Password</div>
+                        <div class='input'><input type='password' name="pass_01" id='pass_01' value=''></div>
+                    </div>
+                    <div class='us'>
+                        <div class='txt'>Repetir Password</div>
+                        <div class='input'><input type='password' name="pass_02" id='pass_02' value=''></div>
                     </div>
                     <div class='button clearfix'>
                         <div class='msg'></div>
-                        <div class='btn'><input type='button'  onclick="btn_recuperar()" id='recuperar' value='Entrar'></div>
+                        <div class='btn'><input type='button' id='nueva' value='Entrar'></div>
                     </div>
                 </div>
-                <div class='ltpass'><a href='../'>Deseo ingresar</a></div>
             </div>
         </div>
     </body>
