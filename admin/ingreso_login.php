@@ -41,7 +41,7 @@
                         <div class='btn'><input type='button' id='login' value='Entrar'></div>
                     </div>
                 </div>
-                <div class='ltpass'><a href='/ingreso_recuperar.php'>No tiene contrase&ntilde;a?</a></div>
+                <div class='ltpass'><a href='./ingreso_recuperar.php'>No tiene contrase&ntilde;a?</a></div>
             </div>
         </div>
     </body>
