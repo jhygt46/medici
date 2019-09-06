@@ -71,6 +71,8 @@ class Login {
                             $resp = json_decode(curl_exec($ch));
                             curl_close($ch);
 
+                            $info['resp'] = $resp;
+
                             if($resp->{'op'} == 1){
                                 $info['op'] = 1;
                                 $info['message'] = "Correo Enviado";
