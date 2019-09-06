@@ -40,7 +40,7 @@ function btn_recuperar(){
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function () {
-                    $(location).attr("href","/admin");
+                    $(location).attr("href","./admin");
                 }, 5000);
             }
             if(data.op == 2){

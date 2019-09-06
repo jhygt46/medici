@@ -62,7 +62,7 @@ class Login {
                         $sqluu->bind_param("sii", $code, $id_usr, $this->eliminado);
                         if($sqluu->execute()){
 
-                            $send['link'] = "http://35.225.100.155/ingreso_nuevo_pass.php?id_usr=".$id_usr."&code=".$code;
+                            $send['link'] = "http://35.225.100.155/admin/ingreso_nuevo_pass.php?id_usr=".$id_usr."&code=".$code;
 
                             $ch = curl_init();
                             curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_recuperar_medici');
