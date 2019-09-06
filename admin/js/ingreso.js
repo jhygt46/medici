@@ -36,6 +36,7 @@ function btn_recuperar(){
         data: "accion=recuperar_password&user="+$('#correo').val(),
         success: function(data){
 
+            console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function () {

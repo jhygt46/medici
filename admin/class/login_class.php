@@ -40,13 +40,13 @@ class Login {
             $id_usr = $aux_user["id_usr"];
             $correo = $aux_user["correo"];
 
-            $acciones = $this->acciones($id_user, 2);
+            $acciones = $this->acciones($id_usr, 2);
 
             if($acciones < 1){
 
                 if($res->{"num_rows"} == 1){
 
-                    
+
                     // 1 ERRAR
                     // 2 PEDIR PASSWORD
                     $tipo = 2;
@@ -76,24 +76,24 @@ class Login {
                                 $info['message'] = "Correo Enviado";
                             }else{
                                 $info['op'] = 2;
-                                $info['message'] = "Error";
+                                $info['message'] = "Error: 1";
                             }
                         }else{
                             $info['op'] = 2;
-                            $info['message'] = "Error:";
+                            $info['message'] = "Error: 2";
                         }
                         $sqluu->close();
 
                     }else{
                         $info['op'] = 2;
-                        $info['message'] = "Error:";
+                        $info['message'] = "Error: 3";
                     }
                     $sqlia->close();
 
                 }
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
-                    $info['message'] = "Error:";
+                    $info['message'] = "Error: 4";
                 }
 
             }else{
