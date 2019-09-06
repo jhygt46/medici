@@ -80,6 +80,7 @@ class Login {
                                 $info['op'] = 2;
                                 $info['message'] = "Error: 1";
                             }
+                            
                         }else{
                             $info['op'] = 2;
                             $info['message'] = "Error: 2";
