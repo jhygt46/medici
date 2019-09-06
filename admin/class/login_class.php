@@ -55,23 +55,20 @@ class Login {
 
                         // CURL 
                         $send['correo'] = $correo;
-                        $send['code'] = bin2hex(openssl_random_pseudo_bytes(10));
-                        $send['id'] = $id_user;
+                        $code = $this->getrandstring(32);
 
                         $sqluu = $this->con->prepare("UPDATE usuarios SET pass='', mailcode=? WHERE id_usr=? AND eliminado=?");
-                        $sqluu->bind_param("sii", $send["code"], $send["id"], $this->eliminado);
+                        $sqluu->bind_param("sii", $code, $id_usr, $this->eliminado);
                         if($sqluu->execute()){
 
-                            $link = "";
+                            $send['link'] = "http://35.225.100.155/ingreso_nuevo_pass.php?id_usr=".$id_usr."&code=".$code;
 
-                            /*
                             $ch = curl_init();
                             curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_recuperar_medici');
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                             $resp = json_decode(curl_exec($ch));
                             curl_close($ch);
-                            */
 
                             if($resp->{'op'} == 1){
                                 $info['op'] = 1;
@@ -79,19 +76,16 @@ class Login {
                             }else{
                                 $info['op'] = 2;
                                 $info['message'] = "Error";
-                                $this->registrar('13', 0, 'email no enviado:');
                             }
                         }else{
                             $info['op'] = 2;
                             $info['message'] = "Error:";
-                            $this->registrar('13', 0, 'usuario no cambiado:');
                         }
                         $sqluu->close();
 
                     }else{
                         $info['op'] = 2;
                         $info['message'] = "Error:";
-                        $this->registrar('13', 0, 'acciones no ingresado:');
                     }
                     $sqlia->close();
 
@@ -99,13 +93,11 @@ class Login {
                 if($res->{"num_rows"} == 0){
                     $info['op'] = 2;
                     $info['message'] = "Error:";
-                    $this->registrar('13', 0, 'usuario no encontrado: '.$user);
                 }
 
             }else{
                 $info['op'] = 2;
                 $info['message'] = "Error: El correo ya ha sido enviado";
-                $this->registrar('13', 0, 'demaciadas acciones usuario: '.$user);
             }
             
             $sql->free_result();
@@ -114,7 +106,6 @@ class Login {
         }else{
             $info['op'] = 2;
             $info['message'] = "Error: debe ingresar correo valido";
-            $this->registrar('13', 0, 'email invalido usuario: '.$user);
         }
         return $info; 
 
@@ -188,25 +179,6 @@ class Login {
         $sqlb->close();
         
         return $info;
-
-    }
-    private function registrar($id_des, $id_user, $txt){
-
-        $sqlipd = $this->con->prepare("INSERT INTO seguimiento (id_des, id_usr, fecha, txt) VALUES (?, ?, now(), ?)");
-        $sqlipd->bind_param("iis", $id_des, $id_user, $txt);
-        $sqlipd->execute();
-        $sqlipd->close();
-
-    }
-    public function acciones($id_user, $tipo){
-
-        $sql = $this->con->prepare("SELECT * FROM usuarios t1, fw_acciones t2 WHERE t1.correo=? AND t1.id_usr=t2.id_usr AND t2.tipo=? AND t2.fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
-        $sql->bind_param("ii", $id_user, $tipo);
-        $sql->execute();
-        $res = $sql->get_result();
-        $sql->free_result();
-        $sql->close();
-        return $res->{"num_rows"};
 
     }
     public function login_back(){
@@ -284,6 +256,27 @@ class Login {
         
         return $info;  
         
+    }
+    public function acciones($id_user, $tipo){
+
+        $sql = $this->con->prepare("SELECT * FROM usuarios t1, fw_acciones t2 WHERE t1.correo=? AND t1.id_usr=t2.id_usr AND t2.tipo=? AND t2.fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
+        $sql->bind_param("ii", $id_user, $tipo);
+        $sql->execute();
+        $res = $sql->get_result();
+        $sql->free_result();
+        $sql->close();
+        return $res->{"num_rows"};
+
+    }
+    public function getrandstring($n){
+        
+        $r = "";
+        $s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for($i=0; $i<$n; $i++){
+            $r .= $s{rand(0, strlen($s) - 1)};
+        }
+        return $r;
+
     }
     public function getUserIpAddr(){
         if(!empty($_SERVER['HTTP_CLIENT_IP'])){
