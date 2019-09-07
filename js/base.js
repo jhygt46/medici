@@ -743,6 +743,8 @@ function tiene_excepcion(date){
 }
 function dia_reglas(regla){
 
+    console.log(regla);
+
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
     var reserva = get_reserva();
