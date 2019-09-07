@@ -730,13 +730,14 @@ function tiene_excepcion(date){
 
     var reserva = get_reserva();
 
-    for(var i=0, ilen=data.excepciones.length; i<ilen; i++){
-        if(data.excepciones[i].fecha == y && data.excepciones[i].id_usr == reserva.doctor && in_array(data.excepciones[i].lista_servicios, reserva.servicio)){
-            obj.op = true;
-            obj.excepciones.push(data.excepciones[i]);
+    if(Array.isArray(data.excepciones)){
+        for(var i=0, ilen=data.excepciones.length; i<ilen; i++){
+            if(data.excepciones[i].fecha == y && data.excepciones[i].id_usr == reserva.doctor && in_array(data.excepciones[i].lista_servicios, reserva.servicio)){
+                obj.op = true;
+                obj.excepciones.push(data.excepciones[i]);
+            }
         }
     }
-
     return obj;
 
 }
@@ -957,7 +958,7 @@ function horas_reglas(reglas){
                 }
             }else{
                 // MOSTRAR TODAS LAS HORAS
-                console.log("BUE");
+                
                 while(min <= max){
                     if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
                     min += tiempo;
