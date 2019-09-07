@@ -462,7 +462,7 @@ class Guardar{
     }
     private function crear_horario(){
 
-        $id_suc = 1;
+        $id_suc = $_POST['id_suc'];
         $id_ran = $_POST['id'];
         $dia_ini = $_POST['dia_ini'];
         $dia_fin = $_POST['dia_fin'];
@@ -633,7 +633,7 @@ class Guardar{
         $fecha = $_POST["fecha"];
         $hora_ini = $_POST['hora_ini'];
         $hora_fin = $_POST['hora_fin'];
-        $id_suc = 1;
+        $id_suc = $_POST["id_suc"];
 
         if($id_exc > 0){
 

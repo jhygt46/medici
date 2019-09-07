@@ -37,7 +37,26 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
 }
 
 ?>
-
+<script>
+    <?php if(isset($_GET['sortable'])){ ?>
+    $('.listado_items').sortable({
+        stop: function(e, ui){
+            var order = [];
+            $(this).find('.l_item').each(function(){
+                order.push($(this).attr('rel'));
+            });
+            var send = {accion: 'ordermed', values: order};
+            $.ajax({
+                url: "ajax/index.php",
+                type: "POST",
+                data: send,
+                success: function(data){},
+                error: function(e){}
+            });
+        }
+    });
+    <?php } ?>
+</script>
 <div class="pagina">
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
@@ -91,8 +110,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
             <div class="list_titulo clearfix">
                 <div class="titulo"><h1><?php echo $titulo_list; ?></h1></div>
                 <ul class="opts clearfix">
-                    <li class="opt">1</li>
-                    <li class="opt">2</li>
+                    <li class="opt"><div onclick="navlink('pages/ingresar_medicos.php?sortable=1')" class="order"></div></li>
                 </ul>
             </div>
             <div class="listado_items">

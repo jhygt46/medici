@@ -75,7 +75,7 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Sucursal:</p></span>
-                        <select id="sucursal">
+                        <select id="id_suc">
                             <?php for($i=0; $i<count($sucursales); $i++){ ?>
                             <option value="1" <?php if($sucursales[$i]['id_suc'] == $that['id_suc']){ echo "selected"; } ?>><?php echo $sucursales[$i]['nombre']; ?></option>
                             <?php } ?>
