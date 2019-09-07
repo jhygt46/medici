@@ -85,7 +85,7 @@
                                 <div class="bloque">
                                     <div class="titulo" onclick="open_bloque(this)">
                                         <div class="icono ic1"></div>
-                                        <div class="texto">Mi Cuenta</div>
+                                        <div class="texto">Medico</div>
                                     </div>
                                     <ul class="bloque_lista">
                                         <li onclick="navlink('pages/mis_horas.php')">Mis Horas</li>
