@@ -10,8 +10,9 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
+$core->get_data();
 if($_GET["accion"] == "actualizar" || $_GET["status"] == 2){
-    $core->get_data();
+    
 }
 
 $status = 0;
