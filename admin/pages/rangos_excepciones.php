@@ -29,6 +29,7 @@ $id = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_todas_excepciones($fecha);
 $list_servicios = $core->get_servicios();
+$sucursales = $core->get_sucursales();
 
 if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0){
 
@@ -71,6 +72,14 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                     <label class="clearfix">
                         <span><p>Hora fin:</p></span>
                         <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Sucursal:</p></span>
+                        <select id="sucursal">
+                            <?php for($i=0; $i<count($sucursales); $i++){ ?>
+                            <option value="1" <?php if($sucursales[$i]['id_suc'] == $that['id_suc']){ echo "selected"; } ?>><?php echo $sucursales[$i]['nombre']; ?></option>
+                            <?php } ?>
+                        </select>   
                     </label>
                     <label class="clearfix">
                         <span><p>Servicios:</p></span>
