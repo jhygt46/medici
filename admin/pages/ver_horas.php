@@ -12,13 +12,18 @@ require_once(DIR."admin/class/core_class.php");
 $core = new Core();
 
 /* CONFIG PAGE */
-$titulo = "Horas de ".$_GET["fecha"];
+$fecha = $_GET["fecha"];
+$titulo = "Horas de ".$fecha;
 $titulo_list = "Fecha proximas horas";
 $page_mod = "pages/ver_horas.php";
 /* CONFIG PAGE */
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_horas_fecha($_GET["fecha"]);
+$list = $core->get_horas_fecha($fecha);
+
+echo "<pre>";
+print_r($list);
+echo "</pre>";
 
 ?>
 <div class="pagina">
