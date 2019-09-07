@@ -801,6 +801,8 @@ function horas_disponibles(y, m, d){
     var exc = tiene_excepcion(date);
     var reserva = get_reserva();
 
+    console.log(y+"-"+m+"-"+d);
+
     if(exc.op){
         return dia_reglas(exc.excepciones);
     }else{
