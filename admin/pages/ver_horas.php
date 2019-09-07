@@ -21,11 +21,11 @@ $id_list = "id_hor";
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_horas_fecha($fecha);
-
+/*
 echo "<pre>";
 print_r($list);
 echo "</pre>";
-
+*/
 ?>
 <div class="pagina">
     <div class="title">
