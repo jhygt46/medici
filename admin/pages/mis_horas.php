@@ -42,12 +42,12 @@ $list = $core->get_fechas_horas();
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $fecha = $list[$i]['fecha'];
+                    $fecha = explode(" ", $list[$i]['fecha']);
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre"><?php echo $fecha; ?></div>
-                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha; ?>')"></a>
+                        <div class="nombre"><?php echo $fecha[0]; ?></div>
+                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha[0]; ?>/<?php echo $fecha[1]; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
