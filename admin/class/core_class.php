@@ -395,7 +395,7 @@ class Core{
     }
     public function get_horas_fecha($fecha){
 
-        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=? AND eliminado=? ORDER BY fecha")){
+        if($sql = $this->con->prepare("SELECT * FROM horas t1, servicios t2 WHERE t1.id_usr=? AND DATE(t1.fecha)=? AND t1.eliminado=? AND t1.id_ser=t2.id_ser ORDER BY t1.fecha")){
             if($sql->bind_param("isi", $this->id_usr, $fecha, $this->eliminado)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
