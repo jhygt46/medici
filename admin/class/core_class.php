@@ -393,6 +393,11 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    public function get_horas_fecha($fecha){
+
+        
+
+    }
     public function get_fechas_horas(){
 
         $fecha = date("Y-m-d", time() - 60*60*24);
