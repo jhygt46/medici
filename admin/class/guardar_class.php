@@ -98,7 +98,7 @@ class Guardar{
                 }else{}
             }else{}
         }
-        return "BUENA NELSON 1";
+        return $values;
 
     }
     private function orderser(){
@@ -113,7 +113,7 @@ class Guardar{
                 }else{}
             }else{}
         }
-        return "BUENA NELSON 2";
+        return $values;
 
     }
     private function crear_sucursal(){
