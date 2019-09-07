@@ -83,14 +83,14 @@ class Guardar{
         
         $id = $_POST['id'];
         $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        $direccion = $_POST['direccion'];
 
         if($this->tipo == 1){
                 
             if($id == 0){
 
-                $sqligir = $this->con->prepare("INSERT INTO sucursal (nombre, descripcion, eliminado) VALUES (?, ?, ?)");
-                $sqligir->bind_param("ssi", $nombre, $descripcion, $this->eliminado);
+                $sqligir = $this->con->prepare("INSERT INTO sucursal (nombre, direccion, eliminado) VALUES (?, ?, ?)");
+                $sqligir->bind_param("ssi", $nombre, $direccion, $this->eliminado);
                 if($sqligir->execute()){
                     $info['op'] = 1;
                     $info['mensaje'] = "Sucursal ingresada exitosamente";
@@ -103,8 +103,8 @@ class Guardar{
             }
             if($id > 0){
 
-                $sqlugi = $this->con->prepare("UPDATE sucursal SET nombre=?, descripcion=? WHERE id_ssuc=? AND eliminado=?");
-                $sqlugi->bind_param("ssii", $nombre, $descripcion, $id, $this->eliminado);
+                $sqlugi = $this->con->prepare("UPDATE sucursal SET nombre=?, direccion=? WHERE id_ssuc=? AND eliminado=?");
+                $sqlugi->bind_param("ssii", $nombre, $direccion, $id, $this->eliminado);
                 if($sqlugi->execute()){
                     $info['op'] = 1;
                     $info['mensaje'] = "Sucursal modificada exitosamente";
