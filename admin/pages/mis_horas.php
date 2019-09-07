@@ -13,29 +13,16 @@ $core = new Core();
 
 /* CONFIG PAGE */
 $titulo = "Mis Horas";
-$titulo_list = "Servicios";
-$sub_titulo1 = "Ingresar Servicio";
-$sub_titulo2 = "Modificar Servicio";
-$accion = "crear_servicio_usuario";
-
-$eliminaraccion = "eliminar_servicio_usuario";
-$id_list = "id_ser";
-$eliminarobjeto = "Servicio de Usuario";
-$page_mod = "pages/mis_servicios.php";
+$titulo_list = "Fecha proximas horas";
+$page_mod = "pages/ver_horas.php";
 /* CONFIG PAGE */
 
-$id_ser = 0;
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_servicios();
-$sub_titulo = $sub_titulo1;
+$list = $core->get_fechas_horas();
 
-if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0){
-
-    $id_ser = $_GET["id_ser"];
-    $sub_titulo = $sub_titulo2;
-    $that = $core->get_servicio_usuario($id_ser);
-
-}
+echo "<pre>";
+print_r($list);
+echo "</pre>";
 
 ?>
 <div class="pagina">
@@ -59,13 +46,12 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $nombre = $list[$i]['nombre'];
+                    $fecha = $list[$i]['fecha'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $nombre; ?></div>
-                        <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_ser=<?php echo $id; ?>')"></a>
+                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
