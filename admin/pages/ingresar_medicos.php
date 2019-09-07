@@ -119,7 +119,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                     $id = $list[$i][$id_list];
                     $nombre = $list[$i]['nombre'];
                 ?>
-                <div class="l_item">
+                <div class="l_item" rel="<?php echo $id; ?>">
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $nombre; ?></div>
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
