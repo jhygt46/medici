@@ -40,13 +40,12 @@ class Login {
             $id_usr = $aux_user["id_usr"];
             $correo = $aux_user["correo"];
 
-            $acciones = $this->acciones($id_usr, 2);
+            $acciones = $this->getaccionesid($id_usr, 2);
+            $info['accion'] = $acciones;
 
             if($acciones < 1){
 
                 if($res->{"num_rows"} == 1){
-
-
                     // 1 ERRAR
                     // 2 PEDIR PASSWORD
                     $tipo = 2;
@@ -128,7 +127,9 @@ class Login {
 
         if($resb->{"num_rows"} == 1 && strlen($code) == 32){
 
-            $acciones = $this->acciones($id, 3);
+            $acciones = $this->getaccionesid($id, 3);
+            $info['accion'] = $acciones;
+
             if($acciones < 5){
                 if(strlen($pass_01) >= 8){
                     if($pass_01 == $pass_02){
@@ -145,7 +146,6 @@ class Login {
 
                             $info['op'] = 2;
                             $info['message'] = "Error:";
-                            $this->registrar('14', 0, 'usuario no modificado: ');
 
                         }
                         $sql->close();
@@ -161,7 +161,6 @@ class Login {
             }else{
                 $info['op'] = 2;
                 $info['message'] = "Error: Demaciados intentos";
-                $this->registrar('14', 0, 'demaciado intentos: ');
             }
 
         }
@@ -175,7 +174,6 @@ class Login {
             $sql->bind_param("ii", $tipo, $id);
             $sql->execute();
             $sql->close();
-            $this->registrar('14', 0, 'new password id - code diferentes: ');
 
         }
 
@@ -189,7 +187,7 @@ class Login {
 
         if(filter_var($_POST['user'], FILTER_VALIDATE_EMAIL)){
 
-            $acciones = $this->acciones($_POST["user"], 1);
+            $acciones = $this->getaccionesmail($_POST["user"], 1);
             $info['accion'] = $acciones;
 
             if($acciones < 5){
@@ -203,7 +201,6 @@ class Login {
 
                     $info['op'] = 2;
                     $info['message'] = "Error: Correo o Contraseña invalida";
-                    $this->registrar('12', '0', 'usuario no existe: '.$_POST["user"]);
 
                 }
                 if($res->{"num_rows"} == 1){
@@ -222,8 +219,6 @@ class Login {
                         $ses['info']['tipo'] = $result['tipo'];
                         $_SESSION['user'] = $ses;
 
-                        $this->registrar('9', $result['id_usr'], '');
-
                     }else{
 
                         // 1 ERRAR
@@ -237,7 +232,6 @@ class Login {
 
                         $info['op'] = 2;
                         $info['message'] = "Error: Correo o Contraseña invalida";
-                        $this->registrar('12', $id_usr, 'pass diferente');
 
                     }
 
@@ -249,22 +243,31 @@ class Login {
             }else{
                 $info['op'] = 2;
                 $info['message'] = "Error: Demaciados intentos";
-                $this->registrar('12', 0, 0, 0, 'demaciados intentos:');
             }
         
         }else{
             $info['op'] = 2;
             $info['message'] = "Error: Correo o Contraseña invalida";
-            $this->registrar('12', 0, 0, 0, 'correo invalido:');
         }
         
         return $info;  
         
     }
-    public function acciones($id_user, $tipo){
+    public function getaccionesid($id_usr, $tipo){
+
+        $sql = $this->con->prepare("SELECT * FROM fw_acciones WHERE id_usr=? AND tipo=? AND fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
+        $sql->bind_param("ii", $id_usr, $tipo);
+        $sql->execute();
+        $res = $sql->get_result();
+        $sql->free_result();
+        $sql->close();
+        return $res->{"num_rows"};
+
+    }
+    public function getaccionesmail($correo, $tipo){
 
         $sql = $this->con->prepare("SELECT * FROM usuarios t1, fw_acciones t2 WHERE t1.correo=? AND t1.id_usr=t2.id_usr AND t2.tipo=? AND t2.fecha > DATE_ADD(NOW(), INTERVAL -1 DAY)");
-        $sql->bind_param("ii", $id_user, $tipo);
+        $sql->bind_param("si", $correo, $tipo);
         $sql->execute();
         $res = $sql->get_result();
         $sql->free_result();
@@ -283,6 +286,7 @@ class Login {
 
     }
     public function getUserIpAddr(){
+
         if(!empty($_SERVER['HTTP_CLIENT_IP'])){
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
@@ -291,6 +295,7 @@ class Login {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
         return $ip;
+
     }
 
 }
