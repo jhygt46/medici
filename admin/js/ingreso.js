@@ -8,6 +8,7 @@ function btn_login(){
         data: "accion=login&user="+$('#user').val()+"&pass="+$('#pass').val(),
         success: function(data){
 
+            console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function(){
@@ -65,6 +66,7 @@ function btn_nueva(){
         data: "accion=nueva_password&pass_01="+$('#pass_01').val()+"&pass_02="+$('#pass_02').val()+"&id_usr="+$('#id_usr').val()+"&code="+$('#code').val(),
         success: function(data){
 
+            console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function () {
