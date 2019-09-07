@@ -65,7 +65,7 @@ if(isset($_GET["id_suc"]) && is_numeric($_GET["id_suc"]) && $_GET["id_suc"] != 0
                     </label>
                     <label class="clearfix">
                         <span><p>Direccion:</p></span>
-                        <input id="direccion" class="inputs" type="text" value="<?php echo $that['descripcion']; ?>" require="" placeholder="" />
+                        <input id="direccion" class="inputs" type="text" value="<?php echo $that['direccion']; ?>" require="" placeholder="" />
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>

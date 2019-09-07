@@ -103,7 +103,7 @@ class Guardar{
             }
             if($id > 0){
 
-                $sqlugi = $this->con->prepare("UPDATE sucursal SET nombre=?, direccion=? WHERE id_ssuc=? AND eliminado=?");
+                $sqlugi = $this->con->prepare("UPDATE sucursal SET nombre=?, direccion=? WHERE id_suc=? AND eliminado=?");
                 $sqlugi->bind_param("ssii", $nombre, $direccion, $id, $this->eliminado);
                 if($sqlugi->execute()){
                     $info['op'] = 1;
