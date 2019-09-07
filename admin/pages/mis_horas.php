@@ -50,8 +50,8 @@ echo "</pre>";
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre"><?php echo $nombre; ?></div>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha; ?>')"></a>
+                        <div class="nombre"><?php echo $fecha; ?></div>
+                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
