@@ -30,7 +30,7 @@ echo "</pre>";
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
         <ul class="clearfix">
-            <li class="back" onclick="navlink('pages/inicio.php')"></li>
+            <li class="back" onclick="navlink('pages/mis_horas.php')"></li>
         </ul>
     </div>
     <hr>
