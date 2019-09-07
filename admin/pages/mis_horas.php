@@ -20,6 +20,10 @@ $page_mod = "pages/ver_horas.php";
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_fechas_horas();
 
+echo "<pre>";
+print_r($list);
+echo "</pre>";
+
 ?>
 <div class="pagina">
     <div class="title">
