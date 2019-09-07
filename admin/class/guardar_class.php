@@ -105,7 +105,7 @@ class Guardar{
         
         $values = $_POST['values'];
         for($i=0; $i<count($values); $i++){
-            if($sql = $this->con->prepare("UPDATE usuarios SET orders=? WHERE id_usr=? AND eliminado=?")){
+            if($sql = $this->con->prepare("UPDATE servicios SET orders=? WHERE id_ser=? AND eliminado=?")){
                 if($sql->bind_param("iii", $i, $values[$i], $this->eliminado)){
                     if($sql->execute()){
                         $sql->close();

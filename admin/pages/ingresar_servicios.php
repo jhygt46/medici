@@ -50,7 +50,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                 url: "ajax/index.php",
                 type: "POST",
                 data: send,
-                success: function(data){},
+                success: function(data){ console.log(data); },
                 error: function(e){}
             });
         }
