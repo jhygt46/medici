@@ -20,10 +20,6 @@ $page_mod = "pages/ver_horas.php";
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_fechas_horas();
 
-echo "<pre>";
-print_r($list);
-echo "</pre>";
-
 ?>
 <div class="pagina">
     <div class="title">
@@ -45,8 +41,7 @@ echo "</pre>";
             <div class="listado_items">
                 <?php 
                 for($i=0; $i<count($list); $i++){
-                    $id = $list[$i][$id_list];
-                    $fecha = explode(" ", $list[$i]['fecha']);
+                    $fecha = explode(" ", $list[$i]['DATE(fecha)']);
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
