@@ -70,8 +70,98 @@ class Guardar{
             if($_POST['accion'] == "eliminar_rango_excepcion"){
                 return $this->eliminar_rango_excepcion();
             }
+            if($_POST['accion'] == "crear_sucursal"){
+                return $this->crear_sucursal();
+            }
+            if($_POST['accion'] == "eliminar_sucursal"){
+                return $this->eliminar_sucursal();
+            }
         }
 
+    }
+    private function crear_sucursal(){
+        
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+
+        if($this->tipo == 1){
+                
+            if($id == 0){
+
+                $sqligir = $this->con->prepare("INSERT INTO sucursal (nombre, descripcion, eliminado) VALUES (?, ?, ?)");
+                $sqligir->bind_param("ssi", $nombre, $descripcion, $this->eliminado);
+                if($sqligir->execute()){
+                    $info['op'] = 1;
+                    $info['mensaje'] = "Sucursal ingresada exitosamente";
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Error: B1";
+                }
+                $sqligir->close();
+
+            }
+            if($id > 0){
+
+                $sqlugi = $this->con->prepare("UPDATE sucursal SET nombre=?, descripcion=? WHERE id_ssuc=? AND eliminado=?");
+                $sqlugi->bind_param("ssii", $nombre, $descripcion, $id, $this->eliminado);
+                if($sqlugi->execute()){
+                    $info['op'] = 1;
+                    $info['mensaje'] = "Sucursal modificada exitosamente";
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Error: Permisos A2";
+                }
+                $sqlugi->close();
+
+            }
+            
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: F01";
+        }
+
+        $info['reload'] = 1;
+        $info['page'] = "ingresar_sucursales.php";
+        return $info;
+
+    }
+    private function eliminar_sucursal(){
+
+        $id_ser = $_POST['id'];
+        $nombre = $_POST['nombre'];
+
+        if($this->tipo == 1){
+
+            $sqlugi = $this->con->prepare("UPDATE sucursal SET eliminado='1' WHERE id_suc=?");
+            $sqlugi->bind_param("i", $id_ser);
+            if($sqlugi->execute()){
+
+                $info['tipo'] = "success";
+                $info['titulo'] = "Eliminado";
+                $info['texto'] = "Sucursal ".$nombre." Eliminado";
+                $info['reload'] = 1;
+                $info['page'] = "ingresar_sucursales.php";
+
+            }else{
+
+                $info['tipo'] = "error";
+                $info['titulo'] = "Error";
+                $info['texto'] = "Sucursal ".$nombre." no pudo ser eliminado";
+
+            }
+            $sqlugi->close();
+            
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Sucursal ".$nombre." no pudo ser eliminado";
+
+        }
+
+        return $info;
+        
     }
     private function crear_servicio(){
         
@@ -646,6 +736,5 @@ class Guardar{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
-    
 
 }

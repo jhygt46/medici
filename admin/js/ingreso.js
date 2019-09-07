@@ -8,7 +8,7 @@ function btn_login(){
         data: "accion=login&user="+$('#user').val()+"&pass="+$('#pass').val(),
         success: function(data){
 
-            console.log(data);
+            //console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function(){
@@ -37,11 +37,11 @@ function btn_recuperar(){
         data: "accion=recuperar_password&user="+$('#correo').val(),
         success: function(data){
 
-            console.log(data);
+            //console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function () {
-                    $(location).attr("href","./admin");
+                    $(location).attr("href","/admin");
                 }, 5000);
             }
             if(data.op == 2){
@@ -66,7 +66,7 @@ function btn_nueva(){
         data: "accion=nueva_password&pass_01="+$('#pass_01').val()+"&pass_02="+$('#pass_02').val()+"&id_usr="+$('#id_usr').val()+"&code="+$('#code').val(),
         success: function(data){
 
-            console.log(data);
+            //console.log(data);
             if(data.op == 1){
                 bien(data.message);
                 setTimeout(function () {

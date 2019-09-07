@@ -371,6 +371,28 @@ class Core{
         //}
         return $data;
     }
+    public function get_sucursales(){
+
+        if($sql = $this->con->prepare("SELECT * FROM sucursal WHERE eliminado=?")){
+            if($sql->bind_param("i", $this->eliminado)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
+    public function get_sucursal($id){
+        
+        if($sql = $this->con->prepare("SELECT * FROM sucursal WHERE id_suc=? AND eliminado=?")){
+            if($sql->bind_param("ii", $id, $this->eliminado)){
+                if($sql->execute()){
+                    return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+                }else{ return htmlspecialchars($sql->error); }
+            }else{ return htmlspecialchars($sql->error); }
+        }else{ return htmlspecialchars($this->con->error); }
+
+    }
     public function get_servicios_rango($id_ran){
 
         if($sql = $this->con->prepare("SELECT * FROM rango_servicios t1, servicios t2 WHERE t1.id_ran=? AND t1.id_ser=t2.id_ser")){

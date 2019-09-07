@@ -78,6 +78,7 @@
                                     <ul class="bloque_lista">
                                         <li onclick="navlink('pages/ingresar_servicios.php')">Ingresar Servicios</li>
                                         <li onclick="navlink('pages/ingresar_medicos.php')">Ingresar Medicos</li>
+                                        <li onclick="navlink('pages/ingresar_sucursales.php')">Ingresar Sucursal</li>
                                     </ul>
                                 </div>
                                 <?php } ?>
