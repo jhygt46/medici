@@ -94,7 +94,7 @@ if(isset($_GET["id_suc"]) && is_numeric($_GET["id_suc"]) && $_GET["id_suc"] != 0
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $nombre; ?></div>
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
-                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_ser=<?php echo $id; ?>')"></a>
+                        <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_suc=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
