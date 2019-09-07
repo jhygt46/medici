@@ -778,11 +778,11 @@ function dia_reglas(regla){
                             if(i == 0){
                                 if(aux_i > h_ini + tiempo){ return true }
                             }
-                            if(i > 0 && i < ilen){
+                            if(i > 0){
                                 if(aux_i >= last + tiempo){ return true }
-                                if(i == ilen - 1){
-                                    if(aux_f + tiempo < h_fin){ return true }
-                                }
+                            }
+                            if(i == ilen - 1){
+                                if(aux_f + tiempo < h_fin){ return true }
                             }
                             last = aux_f;
                         }
