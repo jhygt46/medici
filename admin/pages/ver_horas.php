@@ -15,7 +15,8 @@ $core = new Core();
 $fecha = $_GET["fecha"];
 $titulo = "Horas de ".$fecha;
 $titulo_list = "Fecha proximas horas";
-$page_mod = "pages/ver_horas.php";
+$page_mod = "pages/detalle_horas.php";
+$id_list = "id_hor";
 /* CONFIG PAGE */
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
@@ -52,7 +53,7 @@ echo "</pre>";
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $fecha; ?></div>
-                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha; ?>')"></a>
+                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>

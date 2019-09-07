@@ -47,7 +47,7 @@ $list = $core->get_fechas_horas();
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $fecha[0]; ?></div>
-                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha[0]; ?>')"></a>
+                        <a class="icono ic8" onclick="navlink('<?php echo $page_mod; ?>?fecha=<?php echo $fecha[0]; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
