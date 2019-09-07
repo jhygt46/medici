@@ -12,9 +12,6 @@ require_once DIR."db.php";
 require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
 
-//echo $db_password[0]."<br/>";
-//exit;
-
 $tablas[0]['nombre'] = 'usuarios';
 $tablas[0]['campos'][0]['nombre'] = 'id_usr';
 $tablas[0]['campos'][0]['tipo'] = 'int(4)';
@@ -45,6 +42,10 @@ $tablas[0]['campos'][6]['nombre'] = 'eliminado';
 $tablas[0]['campos'][6]['tipo'] = 'tinyint(1)';
 $tablas[0]['campos'][6]['null'] = 0;
 $tablas[0]['campos'][6]['values'] = [0];
+$tablas[0]['campos'][7]['nombre'] = 'orders';
+$tablas[0]['campos'][7]['tipo'] = 'smallint(2)';
+$tablas[0]['campos'][7]['null'] = 0;
+$tablas[0]['campos'][7]['values'] = [0];
 
 $tablas[1]['nombre'] = 'sucursal';
 $tablas[1]['campos'][0]['nombre'] = 'id_suc';
@@ -113,10 +114,14 @@ $tablas[3]['campos'][2]['nombre'] = 'descripcion';
 $tablas[3]['campos'][2]['tipo'] = 'varchar(255) COLLATE utf8_spanish2_ci';
 $tablas[3]['campos'][2]['null'] = 0;
 $tablas[3]['campos'][2]['values'] = ["Descripcion Tratamiento 01", "Descripcion Tratamiento 02"];
-$tablas[3]['campos'][3]['nombre'] = 'eliminado';
-$tablas[3]['campos'][3]['tipo'] = 'tinyint(1)';
+$tablas[3]['campos'][3]['nombre'] = 'orders';
+$tablas[3]['campos'][3]['tipo'] = 'smallint(2)';
 $tablas[3]['campos'][3]['null'] = 0;
-$tablas[3]['campos'][3]['values'] = [0, 0];
+$tablas[3]['campos'][3]['values'] = [0, 1];
+$tablas[3]['campos'][4]['nombre'] = 'eliminado';
+$tablas[3]['campos'][4]['tipo'] = 'tinyint(1)';
+$tablas[3]['campos'][4]['null'] = 0;
+$tablas[3]['campos'][4]['values'] = [0, 0];
 
 $tablas[4]['nombre'] = 'excepcion_servicios';
 $tablas[4]['campos'][0]['nombre'] = 'id_exc';

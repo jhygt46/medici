@@ -76,7 +76,44 @@ class Guardar{
             if($_POST['accion'] == "eliminar_sucursal"){
                 return $this->eliminar_sucursal();
             }
+            if($_POST['accion'] == "ordermed"){
+                return $this->ordermed();
+            }
+            if($_POST['accion'] == "orderser"){
+                return $this->orderser();
+            }
+
         }
+
+    }
+    private function ordermed(){
+
+        $values = $_POST['values'];
+        for($i=0; $i<count($values); $i++){
+            if($sql = $this->con->prepare("UPDATE usuarios SET orders=? WHERE id_usr=? AND eliminado=?")){
+                if($sql->bind_param("iii", $i, $values[$i], $this->eliminado)){
+                    if($sql->execute()){
+                        $sql->close();
+                    }else{}
+                }else{}
+            }else{}
+        }
+        return "BUENA NELSON 1";
+
+    }
+    private function orderser(){
+        
+        $values = $_POST['values'];
+        for($i=0; $i<count($values); $i++){
+            if($sql = $this->con->prepare("UPDATE usuarios SET orders=? WHERE id_usr=? AND eliminado=?")){
+                if($sql->bind_param("iii", $i, $values[$i], $this->eliminado)){
+                    if($sql->execute()){
+                        $sql->close();
+                    }else{}
+                }else{}
+            }else{}
+        }
+        return "BUENA NELSON 2";
 
     }
     private function crear_sucursal(){
