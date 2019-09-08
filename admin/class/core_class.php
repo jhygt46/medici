@@ -134,7 +134,7 @@ class Core{
                         $user['lista_servicios'][] = $aux_serv;
                         unset($aux_serv);
 
-                        if($sqlh = $this->con->prepare("SELECT t1.id_hor, t1.fecha, t3.tiempo_min as tiempo FROM horas t1, servicios t2, servicio_usuarios t3  WHERE t1.id_usr=? AND t1.id_ser=t2.id_ser AND t1.id_ser=t3.id_ser AND t3.id_usr=? ORDER BY t1.fecha")){
+                        if($sqlh = $this->con->prepare("SELECT t1.id_hor, t1.fecha, t3.tiempo_min as tiempo FROM horas t1, servicios t2, servicio_usuarios t3  WHERE t1.id_usr=? AND t1.id_ser=t2.id_ser AND t1.id_ser=t3.id_ser AND t3.id_usr=? AND t1.eliminado='0' ORDER BY t1.fecha")){
                             $sqlh->bind_param("ii", $row['id_usr'], $row['id_usr']);
                             if($sqlh->execute()){
                                 $resulth = $sqlh->get_result();
