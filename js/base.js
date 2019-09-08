@@ -760,7 +760,8 @@ function dia_reglas(regla){
         for(var j=0, jlen=data.doctores.length; j<jlen; j++){
             if(data.doctores[j].id == reserva.doctor){
 
-                console.log("DOCTOR: ");
+                console.log("DOCTOR:");
+                console.log(data.doctores[j]);
 
                 lista_servicios = data.doctores[j].lista_servicios;
                 for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
