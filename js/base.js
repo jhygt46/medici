@@ -778,7 +778,7 @@ function dia_reglas(regla){
                         console.log(aux_i + "/" + aux_f);
                         console.log(h_ini + "/" + h_fin);
 
-                        if(aux_i >= h_ini && aux_f + tiempo <= h_fin){
+                        if(aux_i >= h_ini && aux_f <= h_fin){
                             console.log("A");
                             if(i == 0){
                                 if(aux_i > h_ini + tiempo){ return true }
