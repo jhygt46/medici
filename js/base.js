@@ -775,8 +775,8 @@ function dia_reglas(regla){
                         aux_f = aux_i + parseInt(horas[i].tiempo);
 
                         console.log("Horas");
-                        console.log(aux_i + "/" + aux_f);
-                        console.log(aux_i + "/" + aux_f);
+                        console.log("aux_i: "+aux_i + "/ aux_f: " + aux_f);
+                        console.log("h_ini: "+h_ini + "/ h_fin: " + h_fin);
 
                         if(aux_i >= h_ini && aux_f + tiempo <= h_fin){
                             console.log("A");
