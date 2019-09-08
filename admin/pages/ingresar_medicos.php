@@ -22,7 +22,7 @@ $eliminaraccion = "eliminar_medico";
 $id_list = "id_usr";
 $eliminarobjeto = "Medico";
 $page_mod = "pages/ingresar_medicos.php";
-$page_mod = "pages/ingresar_medicos_img.php";
+$page_img = "pages/ingresar_medicos_img.php";
 /* CONFIG PAGE */
 
 $id = 0;
