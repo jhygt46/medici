@@ -38,7 +38,7 @@ class Core{
         $arr_rangos = [];
         $arr_sucursales = [];
 
-        if($sqlsu = $this->con->prepare("SELECT t1.id_suc, t1.nombre, t1.direccion FROM sucursal t1, rangos t2 WHERE t2.id_suc=t1.id_suc")){
+        if($sqlsu = $this->con->prepare("SELECT t1.id_suc, t1.nombre, t1.direccion FROM sucursal t1, rangos t2 WHERE t2.id_suc=t1.id_suc AND t1.eliminado='0'")){
             if($sqlsu->execute()){
                 $result = $sqlsu->get_result();
                 while($row = $result->fetch_assoc()){
@@ -55,7 +55,7 @@ class Core{
                 $sqlsu->close();
             }
         }
-        if($sqlra = $this->con->prepare("SELECT t1.id_ran, t1.dia_ini, t1.hora_ini, t1.dia_fin, t1.hora_fin, t1.id_suc, t1.id_usr, t2.id_ser FROM rangos t1, rango_servicios t2 WHERE t1.id_ran=t2.id_ran")){
+        if($sqlra = $this->con->prepare("SELECT t1.id_ran, t1.dia_ini, t1.hora_ini, t1.dia_fin, t1.hora_fin, t1.id_suc, t1.id_usr, t2.id_ser FROM rangos t1, rango_servicios t2 WHERE t1.id_ran=t2.id_ran AND t1.eliminado='0'")){
             if($sqlra->execute()){
                 $result = $sqlra->get_result();
                 while($row = $result->fetch_assoc()){
@@ -86,7 +86,7 @@ class Core{
                 $sqlra->close();
             }
         }
-        if($sqlex = $this->con->prepare("SELECT t1.id_exc, t1.fecha, t1.hora_ini, t1.hora_fin, t1.id_usr, t1.id_suc, t2.id_ser FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_exc=t2.id_exc")){
+        if($sqlex = $this->con->prepare("SELECT t1.id_exc, t1.fecha, t1.hora_ini, t1.hora_fin, t1.id_usr, t1.id_suc, t2.id_ser FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_exc=t2.id_exc AND t1.eliminado='0'")){
             if($sqlex->execute()){
                 $result = $sqlex->get_result();
                 while($row = $result->fetch_assoc()){
@@ -112,7 +112,7 @@ class Core{
                 $sqlex->close();
             }
         }
-        if($sql = $this->con->prepare("SELECT t3.id_usr, t3.nombre as doctor_nombre, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr")){
+        if($sql = $this->con->prepare("SELECT t3.id_usr, t3.nombre as doctor_nombre, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr AND t1.eliminado='0' AND t2.eliminado='0' AND t3.eliminado='0'")){
             if($sql->execute()){
                 $result = $sql->get_result();
                 while($row = $result->fetch_assoc()){

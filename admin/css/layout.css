@@ -321,6 +321,12 @@ body .relative {
 .pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .ic17 {
   background-position: -54px -335px;
 }
+.pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .ic18 {
+  background-position: 5px -577px;
+}
+.pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .ic19 {
+  background-position: -55px -577px;
+}
 .pagina .cont_pagina .cont_pag .list_data .data {
   float: left;
 }

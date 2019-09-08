@@ -743,8 +743,6 @@ function tiene_excepcion(date){
 }
 function dia_reglas(regla){
 
-    console.log(regla);
-
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
     var reserva = get_reserva();
@@ -774,12 +772,7 @@ function dia_reglas(regla){
                         aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
                         aux_f = aux_i + parseInt(horas[i].tiempo);
 
-                        console.log("Horas");
-                        console.log("aux_i: "+aux_i + "/ aux_f: " + aux_f);
-                        console.log("h_ini: "+h_ini + "/ h_fin: " + h_fin);
-
-                        if(aux_i >= h_ini && aux_f + tiempo <= h_fin){
-                            console.log("A");
+                        if(aux_i >= h_ini && aux_f <= h_fin){
                             if(i == 0){
                                 if(aux_i > h_ini + tiempo){ return true }
                             }
