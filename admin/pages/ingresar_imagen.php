@@ -22,7 +22,7 @@ $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 if(isset($_GET["id"]) && is_numeric($_GET["id"]) && $_GET["id"] != 0){
 
     $id = $_GET["id"];
-    $tabla = $_GET["tabla"];
+    $tabla = $_GET["t"];
 
     echo $id."//".$tabla."<br/>";
 
