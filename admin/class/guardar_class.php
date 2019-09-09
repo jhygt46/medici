@@ -90,8 +90,36 @@ class Guardar{
     }
     private function subir_imagen(){
 
-        $image = $this->upload('/var/www/html/medici/images/', null);
-        return $image;
+        if($this->tipo == 1){
+
+            $id = $_POST['id'];
+            $t = $_POST['t'];
+            
+            $image = $this->upload('/var/www/html/medici/images/', null);
+            $info['img'] = $image;
+
+            if($t == "medicos"){
+                $sql = $this->con->prepare("UPDATE usuarios SET imagen=? WHERE id_usr=? AND eliminado=?");
+            }else if($t == "servicios"){
+                $sql = $this->con->prepare("UPDATE servicios SET imagen=? WHERE id_ser=? AND eliminado=?");
+            }else{
+                // REPORTAR ERROR
+            }
+            $sql->bind_param("sii", $image['image'], $id, $this->eliminado);
+            if($sql->execute()){
+                $info['op'] = 1;
+                $info['mensaje'] = "Sucursal modificada exitosamente";
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Error: Permisos A2";
+            }
+            $sql->close();
+
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: F01";
+        }
+        return $info;
 
     }
     private function ordermed(){

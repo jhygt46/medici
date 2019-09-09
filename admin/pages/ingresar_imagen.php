@@ -52,7 +52,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]) && $_GET["id"] != 0){
                     <input id="t" type="hidden" value="<?php echo $t; ?>" />
                     <label class="clearfix">
                         <span><p>Imagen:</p></span>
-                        <input id="nombre" class="inputs" type="file" />
+                        <input id="file_image" class="inputs" type="file" />
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
