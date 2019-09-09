@@ -22,7 +22,7 @@ $eliminaraccion = "eliminar_medico";
 $id_list = "id_usr";
 $eliminarobjeto = "Medico";
 $page_mod = "pages/ingresar_medicos.php";
-$page_img = "pages/ingresar_medicos_img.php";
+$page_img = "pages/ingresar_imagen.php?t=medicos";
 /* CONFIG PAGE */
 
 $id = 0;
@@ -126,7 +126,7 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                         <a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a>
                         <a class="icono ic1" onclick="navlink('<?php echo $page_mod; ?>?id_usr=<?php echo $id; ?>')"></a>
                         <a class="icono ic2" onclick="navlink('pages/mis_servicios.php?id_usr_admin=<?php echo $id; ?>')"></a>
-                        <a class="icono ic19" onclick="navlink('<?php echo $page_img; ?>?id_usr=<?php echo $id; ?>')"></a>
+                        <a class="icono ic19" onclick="navlink('<?php echo $page_img; ?>&id=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
