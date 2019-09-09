@@ -90,7 +90,8 @@ class Guardar{
     }
     private function subir_imagen(){
 
-        $image = $this->uploadPagina('/var/www/html/medici/images/', null);
+        $image = $this->upload('/var/www/html/medici/images/', null);
+        return $image;
 
     }
     private function ordermed(){
