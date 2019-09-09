@@ -22,9 +22,7 @@ $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 if(isset($_GET["id"]) && is_numeric($_GET["id"]) && $_GET["id"] != 0){
 
     $id = $_GET["id"];
-    $tabla = $_GET["t"];
-
-    echo $id."//".$tabla."<br/>";
+    $t = $_GET["t"];
 
 }
 
@@ -51,7 +49,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]) && $_GET["id"] != 0){
                 <fieldset class="<?php echo $class; ?>">
                     <input id="id" type="hidden" value="<?php echo $id; ?>" />
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
-                    <input id="tabla" type="hidden" value="<?php echo $tabla; ?>" />
+                    <input id="t" type="hidden" value="<?php echo $t; ?>" />
                     <label class="clearfix">
                         <span><p>Imagen:</p></span>
                         <input id="nombre" class="inputs" type="file" />

@@ -82,8 +82,15 @@ class Guardar{
             if($_POST['accion'] == "orderser"){
                 return $this->orderser();
             }
-
+            if($_POST['accion'] == "subir_imagen"){
+                return $this->subir_imagen();
+            }
         }
+
+    }
+    private function subir_imagen(){
+
+        $image = $this->uploadPagina('/var/www/html/medici/images/', null);
 
     }
     private function ordermed(){
@@ -775,5 +782,62 @@ class Guardar{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
+    private function upload($filepath, $filename){
 
+        $filename = ($filename !== null) ? $filename : $this->getrandstring(20) ;
+        $file_formats = array("jpg", "jpeg", "JPG", "JPEG");
+        $name = $_FILES['file_image0']['name']; // filename to get file's extension
+        $size = $_FILES['file_image0']['size'];
+        if (strlen($name)){
+            $extension = substr($name, strrpos($name, '.') + 1);
+            if (in_array($extension, $file_formats)) { // check it if it's a valid format or not
+                if ($size < (200 * 1024)) { // check it if it's bigger than 2 mb or no
+                    $imagename = $filename.".".$extension;
+                    $imagename_new = $filename."x.".$extension;
+                    $tmp = $_FILES['file_image0']['tmp_name'];
+                    if(move_uploaded_file($tmp, $filepath.$imagename)){
+                            $data = getimagesize($filepath.$imagename);
+                            if($data['mime'] == "image/jpeg"){
+                                $destino = imagecreatetruecolor($data[0], $data[1]);
+                                $origen = imagecreatefromjpeg($filepath.$imagename);
+                                imagecopy($destino, $origen, 0, 0, 0, 0, $data[0], $data[1]);
+                                imagejpeg($destino, $filepath.$imagename_new);
+                                imagedestroy($destino);
+                                $info['op'] = 1;
+                                $info['mensaje'] = "Imagen subida";
+                                $info['image'] = $imagename_new;
+                            }else{
+                                $info['op'] = 2;
+                                $info['mensaje'] = "La imagen no es jpg";
+                            }
+                            unlink($filepath.$imagename);
+                    }else{
+                        $info['op'] = 2;
+                        $info['mensaje'] = "No se pudo subir la imagen";
+                    }
+                }else{
+                    $info['op'] = 2;
+                    $info['mensaje'] = "Imagen sobrepasa los 2MB establecidos";
+                }
+            }else{
+                $info['op'] = 2;
+                $info['mensaje'] = "Formato Invalido";
+            }
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] =  "No ha seleccionado una imagen";
+        }
+        return $info;
+
+    }
+    private function getrandstring($n){
+        
+        $r = "";
+        $s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for($i=0; $i<$n; $i++){
+            $r .= $s{rand(0, strlen($s) - 1)};
+        }
+        return $r;
+
+    }
 }
