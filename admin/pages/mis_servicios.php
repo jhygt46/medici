@@ -72,7 +72,7 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                         <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                         <label class="clearfix">
                             <span><p>Servicio:</p></span>
-                            <select id="tipo" <?php echo $disabled; ?>>
+                            <select id="id_ser" <?php echo $disabled; ?>>
                                 <option value="0">Seleccionar</option> 
                                 <?php for($i=0; $i<count($select); $i++){ ?>
                                 <option value="<?php echo $select[$i]["id_ser"]; ?>" <?php if($that['id_ser'] == $select[$i]["id_ser"]){ echo "selected"; } ?>><?php echo $select[$i]["nombre"]; ?></option>
@@ -89,11 +89,11 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                         </label>
                         <label class="clearfix">
                             <span><p>HTML 1:</p></span>
-                            <TEXTAREA id="html_1"></TEXTAREA>
+                            <TEXTAREA id="html_1"><?php echo $that['html_1']; ?></TEXTAREA>
                         </label>
                         <label class="clearfix">
                             <span><p>HTML 2:</p></span>
-                            <TEXTAREA id="html_2"></TEXTAREA>
+                            <TEXTAREA id="html_2"><?php echo $that['html_2']; ?></TEXTAREA>
                         </label>
                         <label>
                             <div class="enviar"><a onclick="form(this)">Enviar</a></div>

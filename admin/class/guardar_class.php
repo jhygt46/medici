@@ -431,17 +431,19 @@ class Guardar{
 
         $tiempo = $_POST['tiempo'];
         $precio = $_POST['precio'];
-        $tipo = $_POST['tipo'];
+        $id_ser = $_POST['id_ser'];
+        $html_1 = $_POST['html_1'];
+        $html_2 = $_POST['html_2'];
 
         $sqlu = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?");
-        $sqlu->bind_param("ii", $tipo, $this->id_usr);
+        $sqlu->bind_param("ii", $id_ser, $this->id_usr);
         $sqlu->execute();
         $res = $sqlu->get_result();
 
         if($res->{"num_rows"} == 0){
 
-            $sql = $this->con->prepare("INSERT INTO servicio_usuarios (id_ser, id_usr, tiempo_min, precio, eliminado) VALUES (?, ?, ?, ?, ?)");
-            $sql->bind_param("iiiii", $tipo, $this->id_usr, $tiempo, $precio, $this->eliminado);
+            $sql = $this->con->prepare("INSERT INTO servicio_usuarios (id_ser, id_usr, tiempo_min, precio, html_1, html_2, eliminado) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $sql->bind_param("iiiissi", $id_ser, $this->id_usr, $tiempo, $precio, $html_1, $html_2, $this->eliminado);
             if($sql->execute()){
                 $info['op'] = 1;
                 $info['mensaje'] = "Servicio-Medico ingresado exitosamente";
@@ -454,8 +456,8 @@ class Guardar{
 
         if($res->{"num_rows"} == 1){
             
-            $sql = $this->con->prepare("UPDATE servicio_usuarios SET tiempo_min=?, precio=?, eliminado=? WHERE id_ser=? AND id_usr=?");
-            $sql->bind_param("iiiii", $tiempo, $precio, $this->eliminado, $tipo, $this->id_usr);
+            $sql = $this->con->prepare("UPDATE servicio_usuarios SET tiempo_min=?, precio=?, html_1=?, html_2=? WHERE id_ser=? AND id_usr=?");
+            $sql->bind_param("iissii", $tiempo, $precio, $html_1, $html_2, $id_ser, $this->id_usr);
             $sql->execute();
             if($sql->execute()){
                 $info['op'] = 1;

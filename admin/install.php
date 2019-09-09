@@ -168,7 +168,6 @@ $tablas[5]['campos'][4]['null'] = 0;
 $tablas[5]['campos'][5]['nombre'] = 'eliminado';
 $tablas[5]['campos'][5]['tipo'] = 'tinyint(1)';
 $tablas[5]['campos'][5]['null'] = 0;
-
 $tablas[5]['campos'][6]['nombre'] = 'rut';
 $tablas[5]['campos'][6]['tipo'] = 'varchar(15) COLLATE utf8_spanish2_ci';
 $tablas[5]['campos'][6]['null'] = 0;
@@ -178,7 +177,6 @@ $tablas[5]['campos'][7]['null'] = 0;
 $tablas[5]['campos'][8]['nombre'] = 'telefono';
 $tablas[5]['campos'][8]['tipo'] = 'varchar(14) COLLATE utf8_spanish2_ci';
 $tablas[5]['campos'][8]['null'] = 0;
-
 $tablas[5]['campos'][9]['nombre'] = 'id_ser';
 $tablas[5]['campos'][9]['tipo'] = 'int(4)';
 $tablas[5]['campos'][9]['null'] = 0;
