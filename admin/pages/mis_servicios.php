@@ -87,6 +87,14 @@ if(isset($_GET["id_ser"]) && is_numeric($_GET["id_ser"]) && $_GET["id_ser"] != 0
                             <span><p>Precio:</p></span>
                             <input id="precio" class="inputs" type="text" value="<?php echo $that['precio']; ?>" require="" placeholder="" />
                         </label>
+                        <label class="clearfix">
+                            <span><p>HTML 1:</p></span>
+                            <TEXTAREA id="html_1"></TEXTAREA>
+                        </label>
+                        <label class="clearfix">
+                            <span><p>HTML 2:</p></span>
+                            <TEXTAREA id="html_2"></TEXTAREA>
+                        </label>
                         <label>
                             <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                         </label>
