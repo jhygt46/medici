@@ -154,10 +154,10 @@ if(isset($_GET["status"])){
                             <div class="linea"></div>
                             <div class="sec_cont">
                                 <ul class="clearfix">
-                                    <li>1</li>
-                                    <li>2</li>
-                                    <li>3</li>
-                                    <li>4</li>
+                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
+                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
+                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
+                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
                                 </ul>
                             </div>
                         </div>

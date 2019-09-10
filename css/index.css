@@ -515,6 +515,16 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li
   width: 50%;
   float: left;
   min-width: 200px;
+  height: 260px;
+  position: relative;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatafoto {
+  width: 200px;
+  height: 200px;
+  background: #ddd;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatainfo {
+  text-align: center;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
@@ -536,6 +546,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
   padding: 25px 10px 25px 10px;
 }
 
+@media only screen and (max-width: 480px) {
+  .nosotros .sec_cont ul {
+    width: 200px;
+    margin: 0 auto;
+  }
+}
 @media only screen and (min-width: 768px) {
   #contenedor {
     background: #f00;
