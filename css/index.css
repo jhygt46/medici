@@ -501,7 +501,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .titulo_seccion
   padding: 10px 0px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .linea {
-  width: 60px;
+  width: 50px;
   height: 4px;
   background: #000;
   margin: 0 auto;
@@ -509,6 +509,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .linea {
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont {
   display: block;
   padding: 25px 10px 25px 10px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li {
+  float: left;
+  width: 50%;
+  float: left;
+  min-width: 200px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
@@ -520,7 +526,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .titulo_seccion
   padding: 10px 0px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .linea {
-  width: 60px;
+  width: 50px;
   height: 4px;
   background: #000;
   margin: 0 auto;
