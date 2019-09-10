@@ -500,6 +500,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .titulo_seccion
   text-align: center;
   padding: 10px 0px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .linea {
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin: 0 auto;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
 }
@@ -508,6 +514,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .titulo_seccion
   font-size: 32px;
   text-align: center;
   padding: 10px 0px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .linea {
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
