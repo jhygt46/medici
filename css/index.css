@@ -491,8 +491,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info .success
 html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio {
   background: #eee;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros {
   background: #eee;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .titulo_seccion {
+  display: block;
+  font-size: 28px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {

@@ -149,7 +149,9 @@ if(isset($_GET["status"])){
                         <div class="seccion inicio">INICIO</div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
-                        <div class="seccion nosotros">NOSOTROS</div>
+                        <div class="seccion nosotros">
+                            <div class="titulo_seccion">NOSOTROS</div>
+                        </div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
                         <div class="seccion contacto">CONTACTO</div>

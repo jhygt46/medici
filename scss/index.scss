@@ -487,8 +487,13 @@ html{
                         .inicio{
                             background: #eee;
                         }
-                        .inicio{
+                        .nosotros{
                             background: #eee;
+                            .titulo_seccion{
+                                display: block;
+                                font-size: 28px;
+                                text-align: center;
+                            }
                         }
                     }
                 }
