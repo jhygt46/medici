@@ -146,7 +146,7 @@ if(isset($_GET["status"])){
                         <div class="seccion info" id="info"></div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
-                        INICIO
+                        <div class="seccion inicio">INICIO</div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
                         NOSOTROS

@@ -385,8 +385,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_semana .semana_info {
   text-align: center;
-  font-size: 20px;
-  color: #fff;
+  font-size: 18px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_dia {
   border-left: 1px solid #000;
@@ -488,6 +487,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info .success
   text-align: center;
   font-size: 16px;
   padding: 0px 15px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio {
+  background: #eee;
 }
 
 @media only screen and (min-width: 768px) {
