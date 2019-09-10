@@ -491,6 +491,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info .success
 html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio {
   background: #eee;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio {
+  background: #eee;
+}
 
 @media only screen and (min-width: 768px) {
   #contenedor {
