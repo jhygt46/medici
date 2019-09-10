@@ -226,7 +226,7 @@ html{
                         margin: 10px 0px;
                         .seccion{
                             width: 96%;
-                            max-width: 749px;
+                            max-width: 750px;
                             margin: 0px auto;
                             .preguntas{
                                 width: 100%;
@@ -491,8 +491,18 @@ html{
                             background: #eee;
                             .titulo_seccion{
                                 display: block;
-                                font-size: 28px;
+                                font-size: 32px;
                                 text-align: center;
+                                padding: 10px 0px;
+                            }
+                        }
+                        .contacto{
+                            background: #eee;
+                            .titulo_seccion{
+                                display: block;
+                                font-size: 32px;
+                                text-align: center;
+                                padding: 10px 0px;
                             }
                         }
                     }
