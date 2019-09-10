@@ -506,6 +506,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .linea {
   background: #000;
   margin: 0 auto;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont {
+  display: block;
+  padding: 25px 10px 25px 10px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
 }
@@ -520,6 +524,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .linea {
   height: 4px;
   background: #000;
   margin: 0 auto;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
+  display: block;
+  padding: 25px 10px 25px 10px;
 }
 
 @media only screen and (min-width: 768px) {
