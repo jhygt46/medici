@@ -574,7 +574,7 @@ html{
                                     li{
                                         padding-bottom: 20px;
                                         .ser_img{
-                                            width: 216px;
+                                            width: 236px;
                                             height: 260px;
                                             float: left;
                                             background: #f00;
@@ -584,6 +584,9 @@ html{
                                                 padding-top: 6px;
                                             }
                                             .ser_foto{
+                                                padding: 10px;
+                                                border-radius: 118px;
+                                                background: #fff;
                                                 img{
                                                     width: 216px;
                                                     height: 216px;
@@ -592,7 +595,7 @@ html{
                                             }
                                         }
                                         .ser_data{
-                                            width: calc(100% - 216px);
+                                            width: calc(100% - 236px);
                                             height: 260px;
                                             float: left;
                                             background: #f0f;
