@@ -572,7 +572,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont {
   display: block;
   padding: 25px 10px 25px 10px;
 }
-
 @media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
     width: 200px;
