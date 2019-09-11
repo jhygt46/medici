@@ -589,6 +589,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   width: calc(100% - 216px);
   height: 260px;
   float: left;
+  background: #f0f;
 }
 
 @media only screen and (max-width: 500px) {

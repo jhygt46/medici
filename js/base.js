@@ -1200,8 +1200,8 @@ function create_servicios_li(doctor){
     var img = create_element_class("ser_img");
     var foto = create_element_class_inner("ser_foto", "<img src='/images/"+doctor.imagen+"' alt='' />");
     var nombre = create_element_class_inner("ser_nombre", doctor.nombre);
-    img.appendChild(nombre);
     img.appendChild(foto);
+    img.appendChild(nombre);
     li.appendChild(img);
 
     var data = create_element_class("ser_data");
