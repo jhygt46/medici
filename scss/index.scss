@@ -574,13 +574,23 @@ html{
                                     li{
                                         padding-bottom: 20px;
                                         .ser_img{
-                                            width: 200px;
+                                            width: 216px;
                                             height: 200px;
                                             float: left;
                                             background: #f00;
+                                            .ser_nombre{
+
+                                            }
+                                            .ser_foto{
+
+                                                img{
+                                                    width: 216px;
+                                                    height: 216px;
+                                                }
+                                            }
                                         }
                                         .ser_data{
-                                            width: calc(100% - 200px);
+                                            width: calc(100% - 216px);
                                             height: 200px;
                                             float: left;
                                             background: #00f;

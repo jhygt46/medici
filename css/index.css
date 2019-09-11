@@ -576,13 +576,17 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   padding-bottom: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
-  width: 200px;
+  width: 216px;
   height: 200px;
   float: left;
   background: #f00;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_foto img {
+  width: 216px;
+  height: 216px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
-  width: calc(100% - 200px);
+  width: calc(100% - 216px);
   height: 200px;
   float: left;
   background: #00f;
