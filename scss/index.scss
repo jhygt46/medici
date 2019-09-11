@@ -579,13 +579,16 @@ html{
                                             float: left;
                                             background: #f00;
                                             .ser_nombre{
-
+                                                font-size: 20px;
+                                                text-align: center;
+                                                padding-top: 6px;
                                             }
                                             .ser_foto{
 
                                                 img{
                                                     width: 216px;
                                                     height: 216px;
+                                                    border-radius: 108px;
                                                 }
                                             }
                                         }

@@ -581,9 +581,15 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   float: left;
   background: #f00;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_nombre {
+  font-size: 20px;
+  text-align: center;
+  padding-top: 6px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_foto img {
   width: 216px;
   height: 216px;
+  border-radius: 108px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
   width: calc(100% - 216px);
