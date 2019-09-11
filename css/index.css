@@ -572,6 +572,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont {
   display: block;
   padding: 25px 10px 25px 10px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li {
+  padding-bottom: 20px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
   width: 200px;
   height: 200px;
