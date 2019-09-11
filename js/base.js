@@ -69,7 +69,9 @@ function inicio(){
 
 }
 function render_web(){
-    console.log(data);
+    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
+        console.log(data.doctores[i]);
+    }
 }
 function touchstart(e){
     var touches = e.touches.length;
