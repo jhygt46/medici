@@ -523,8 +523,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li
   height: 217px;
   background: #ddd;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatafoto img {
+  border-radius: 108px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatainfo {
   text-align: center;
+  padding-top: 20px;
+  font-size: 24px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
