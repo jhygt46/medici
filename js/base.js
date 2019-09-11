@@ -1179,8 +1179,8 @@ function create_nosotros_li(doctor){
 
     var li = document.createElement("LI");
     var ndata = create_element_class("ndata vhalign");
-    var ndatafoto = create_element_class_inner("ndatafoto", "FOTO");
-    var ndatainfo = create_element_class_inner("ndatainfo", "NOMBRE");
+    var ndatafoto = create_element_class_inner("ndatafoto", "");
+    var ndatainfo = create_element_class_inner("ndatainfo", doctor.nombre);
     ndata.appendChild(ndatafoto);
     ndata.appendChild(ndatainfo);
     li.appendChild(ndata);
