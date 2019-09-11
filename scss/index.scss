@@ -574,7 +574,7 @@ html{
                                     li{
                                         padding-bottom: 20px;
                                         .ser_img{
-                                            width: 186px;
+                                            width: 200px;
                                             height: 290px;
                                             float: left;
                                             position: relative;
@@ -599,10 +599,21 @@ html{
                                             }
                                         }
                                         .ser_data{
-                                            width: calc(100% - 186px);
+                                            width: calc(100% - 200px);
                                             height: 290px;
                                             float: left;
-                                            background: #f0f;
+                                            position: relative;
+                                            .cont_ser_data{
+                                                .ser_titulo{
+                                                    display: block;
+                                                    text-align: center;
+                                                    font-size: 24px;
+                                                    padding: 20px 10px 5px 10px;
+                                                }
+                                                .ser_servicios{
+                                                    display: block;
+                                                }
+                                            }
                                         }
                                     }
                                 }

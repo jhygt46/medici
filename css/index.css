@@ -576,7 +576,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   padding-bottom: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
-  width: 186px;
+  width: 200px;
   height: 290px;
   float: left;
   position: relative;
@@ -598,10 +598,19 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   border-radius: 108px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
-  width: calc(100% - 186px);
+  width: calc(100% - 200px);
   height: 290px;
   float: left;
-  background: #f0f;
+  position: relative;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .ser_titulo {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px 10px 5px 10px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .ser_servicios {
+  display: block;
 }
 
 @media only screen and (max-width: 500px) {

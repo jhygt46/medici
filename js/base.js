@@ -1207,6 +1207,10 @@ function create_servicios_li(doctor){
     li.appendChild(img);
 
     var data = create_element_class("ser_data");
+    var cont_data = create_element_class("cont_ser_data vhalign");
+    var titulo = create_element_class_inner("ser_titulo", "&AACUTE;REA PSIQUIATRICA");
+    cont_data.appendChild(titulo);
+    data.appendChild(cont_data);
     li.appendChild(data);
     
     return li;
