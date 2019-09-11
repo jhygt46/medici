@@ -1211,9 +1211,9 @@ function create_servicios_li(doctor){
     var titulo = create_element_class_inner("ser_titulo", "ÁREA PSIQUIATRICA");
     var cont_ser_doc = create_element_class("cont_ser_doc");
 
-    console.log(doctor);
-    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
-        console.log(data.doctores[i]);
+    for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
+        console.log(doctor.lista_servicios[i].nombre);
+        console.log(doctor.lista_servicios[i].imagen);
     }
 
     cont_data.appendChild(titulo);
