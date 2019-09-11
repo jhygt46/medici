@@ -1195,6 +1195,7 @@ function calendario_completo(now){
 function create_servicios_li(doctor){
 
     var li = document.createElement("LI");
+    return li;
 
 }
 function create_nosotros_li(doctor){
