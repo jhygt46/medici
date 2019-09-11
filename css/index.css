@@ -612,7 +612,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   font-size: 24px;
   padding: 20px 10px 5px 10px;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .ser_servicios {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc {
   display: block;
 }
 

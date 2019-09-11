@@ -1214,6 +1214,8 @@ function create_servicios_li(doctor){
     for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
         console.log(doctor.lista_servicios[i].nombre);
         console.log(doctor.lista_servicios[i].imagen);
+        var aux = create_element_class_inner("ser_doc_titulo", doctor.lista_servicios[i].nombre);
+        cont_ser_doc.appendChild(aux);
     }
 
     cont_data.appendChild(titulo);
