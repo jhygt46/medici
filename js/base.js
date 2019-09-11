@@ -1195,6 +1195,8 @@ function calendario_completo(now){
 function create_servicios_li(doctor){
 
     var li = document.createElement("LI");
+    var ndata = create_element_class("ndata vhalign");
+    li.appendChild(ndata);
     return li;
 
 }

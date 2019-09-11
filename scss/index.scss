@@ -553,6 +553,25 @@ html{
                                 padding: 25px 10px 25px 10px;
                             }
                         }
+                        .servicios{
+                            background: #eee;
+                            .titulo_seccion{
+                                display: block;
+                                font-size: 32px;
+                                text-align: center;
+                                padding: 10px 0px;
+                            }
+                            .linea{
+                                width: 50px;
+                                height: 4px;
+                                background: #000;
+                                margin: 0 auto;
+                            }
+                            .sec_cont{
+                                display: block;
+                                padding: 25px 10px 25px 10px;
+                            }
+                        }
                     }
                 }
             }
