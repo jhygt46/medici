@@ -1198,11 +1198,12 @@ function create_servicios_li(doctor){
     li.className = "clearfix";
     
     var img = create_element_class("ser_img");
+    var cont_img = create_element_class("cont_ser_img valign");
     var foto = create_element_class_inner("ser_foto", "<img src='/images/"+doctor.imagen+"' alt='' />");
     var nombre = create_element_class_inner("ser_nombre", doctor.nombre);
-    img.appendChild(foto);
-    img.appendChild(nombre);
-    li.appendChild(img);
+    cont_img.appendChild(foto);
+    cont_img.appendChild(nombre);
+    li.appendChild(cont_img);
 
     var data = create_element_class("ser_data");
     li.appendChild(data);

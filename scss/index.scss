@@ -574,28 +574,31 @@ html{
                                     li{
                                         padding-bottom: 20px;
                                         .ser_img{
-                                            width: 236px;
+                                            width: 186px;
                                             height: 290px;
                                             float: left;
-                                            .ser_nombre{
-                                                font-size: 24px;
-                                                text-align: center;
-                                                padding-top: 6px;
-                                            }
-                                            .ser_foto{
-                                                padding: 10px;
-                                                border-radius: 118px;
-                                                background: #fff;
-                                                border: 1px solid #ddd;
-                                                img{
-                                                    width: 216px;
-                                                    height: 216px;
-                                                    border-radius: 108px;
+                                            position: relative;
+                                            .cont_ser_img{
+                                                .ser_nombre{
+                                                    font-size: 24px;
+                                                    text-align: center;
+                                                    padding: 6px 0px;
+                                                }
+                                                .ser_foto{
+                                                    padding: 10px;
+                                                    border-radius: 118px;
+                                                    background: #fff;
+                                                    border: 1px solid #ddd;
+                                                    img{
+                                                        width: 166px;
+                                                        height: 166px;
+                                                        border-radius: 108px;
+                                                    }
                                                 }
                                             }
                                         }
                                         .ser_data{
-                                            width: calc(100% - 236px);
+                                            width: calc(100% - 186px);
                                             height: 290px;
                                             float: left;
                                             background: #f0f;

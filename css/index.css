@@ -576,28 +576,29 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   padding-bottom: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
-  width: 236px;
+  width: 186px;
   height: 290px;
   float: left;
+  position: relative;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_nombre {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .cont_ser_img .ser_nombre {
   font-size: 24px;
   text-align: center;
-  padding-top: 6px;
+  padding: 6px 0px;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_foto {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .cont_ser_img .ser_foto {
   padding: 10px;
   border-radius: 118px;
   background: #fff;
   border: 1px solid #ddd;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_foto img {
-  width: 216px;
-  height: 216px;
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .cont_ser_img .ser_foto img {
+  width: 166px;
+  height: 166px;
   border-radius: 108px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
-  width: calc(100% - 236px);
+  width: calc(100% - 186px);
   height: 290px;
   float: left;
   background: #f0f;
