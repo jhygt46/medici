@@ -613,8 +613,12 @@ html{
                                                 }
                                                 .cont_ser_doc{
                                                     display: block;
+                                                    margin: 0 auto;
                                                     .ser_doc_titulo{
                                                         float: left;
+                                                        width: 120px;
+                                                        height: 120px;
+                                                        background: #f00;
                                                     }
                                                 }
                                             }
