@@ -70,9 +70,12 @@ function inicio(){
 }
 function render_web(){
 
-    var list = document.getElementById("nosotros");
+    var nosotros = document.getElementById("nosotros");
+    var servicios = document.getElementById("servicios");
+
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
-        list.appendChild(create_nosotros_li(data.doctores[i]));
+        nosotros.appendChild(create_nosotros_li(data.doctores[i]));
+        servicios.appendChild(create_servicios_li(data.doctores[i]));
     }
 
 }
@@ -1187,6 +1190,11 @@ function calendario_completo(now){
     }
     data += "</div></div>";
     return data;
+
+}
+function create_servicios_li(doctor){
+
+    var li = document.createElement("LI");
 
 }
 function create_nosotros_li(doctor){

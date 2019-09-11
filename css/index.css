@@ -519,11 +519,15 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li
   position: relative;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatafoto {
-  width: 217px;
-  height: 217px;
+  padding: 8px;
+  background: #fff;
+  border-radius: 114px;
+  border: 1px solid #ddd;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatafoto img {
   border-radius: 108px;
+  width: 216px;
+  height: 216px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatainfo {
   text-align: center;

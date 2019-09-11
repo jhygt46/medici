@@ -514,10 +514,14 @@ html{
                                         position: relative;
                                         .ndata{
                                             .ndatafoto{
-                                                width: 217px;
-                                                height: 217px;
+                                                padding: 8px;
+                                                background: #fff;
+                                                border-radius: 114px;
+                                                border: 1px solid #ddd;
                                                 img{
                                                     border-radius: 108px;
+                                                    width: 216px;
+                                                    height: 216px;
                                                 }
                                             }
                                             .ndatainfo{
