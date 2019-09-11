@@ -577,12 +577,11 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
   width: 236px;
-  height: 260px;
+  height: 290px;
   float: left;
-  background: #f00;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_nombre {
-  font-size: 20px;
+  font-size: 24px;
   text-align: center;
   padding-top: 6px;
 }
@@ -590,6 +589,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   padding: 10px;
   border-radius: 118px;
   background: #fff;
+  border: 1px solid #ddd;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img .ser_foto img {
   width: 216px;
@@ -598,7 +598,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
   width: calc(100% - 236px);
-  height: 260px;
+  height: 290px;
   float: left;
   background: #f0f;
 }
