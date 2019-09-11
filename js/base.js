@@ -70,7 +70,8 @@ function inicio(){
 }
 function render_web(){
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
-        console.log(data.doctores[i]);
+        console.log(data.doctores[i].nombre);
+        console.log(data.doctores[i].imagen);
     }
 }
 function touchstart(e){
