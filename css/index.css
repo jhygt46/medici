@@ -582,7 +582,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   background: #f00;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
-  width: calc(100% - 220px);
+  width: calc(100% - 200px);
   height: 200px;
   float: left;
   background: #00f;
