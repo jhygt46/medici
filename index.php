@@ -109,13 +109,13 @@ if(isset($_GET["status"])){
                         <div class="logo_pagina_mobile vhalign"></div>
                         <div class="logo_pagina_web vhalign">
                             <div class="cont_logo">
-                                <div class="logo valign"></div>
+                                <div onclick="sitio_inicio()" class="logo valign"></div>
                                 <div class="botones valign">
                                     <div class="btns clearfix">
                                         <div class="btn btn1" onclick="sitio_contacto()">CONTACTO</div>
                                         <div class="btn btn2" onclick="sitio_reservar()">RESERVA TU HORA</div>
                                         <div class="btn btn3" onclick="sitio_nosotros()">NOSOTROS</div>
-                                        <div class="btn btn4" onclick="sitio_inicio()">INICIO</div>
+                                        <div class="btn btn4" onclick="sitio_servicios()">SERVICIOS</div>
                                     </div>
                                 </div>
                             </div>
@@ -153,15 +153,20 @@ if(isset($_GET["status"])){
                             <div class="titulo_seccion">Nosotros</div>
                             <div class="linea"></div>
                             <div class="sec_cont">
-                                <ul id="nosotros" class="clearfix">
-                                    
-                                </ul>
+                                <ul id="nosotros" class="clearfix"></ul>
                             </div>
                         </div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
                         <div class="seccion contacto">
                             <div class="titulo_seccion">Contacto</div>
+                            <div class="linea"></div>
+                            <div class="sec_cont"></div>
+                        </div>
+                    </div>
+                    <div class="sitio_pagina" style="display: none">
+                        <div class="seccion contacto">
+                            <div class="titulo_seccion">SERVICIOS</div>
                             <div class="linea"></div>
                             <div class="sec_cont"></div>
                         </div>

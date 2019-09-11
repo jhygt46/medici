@@ -546,6 +546,7 @@ function sitio_contacto(){
     sitios[1].style.display = 'none';
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'block';
+    sitios[4].style.display = 'none';
 
 }
 function sitio_reservar(){
@@ -555,6 +556,7 @@ function sitio_reservar(){
     sitios[1].style.display = 'none';
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
+    sitios[4].style.display = 'none';
 
 }
 function sitio_nosotros(){
@@ -564,6 +566,7 @@ function sitio_nosotros(){
     sitios[1].style.display = 'none';
     sitios[2].style.display = 'block';
     sitios[3].style.display = 'none';
+    sitios[4].style.display = 'none';
 
 }
 function sitio_inicio(){
@@ -573,6 +576,17 @@ function sitio_inicio(){
     sitios[1].style.display = 'block';
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
+    sitios[4].style.display = 'none';
+
+}
+function sitio_servicios(){
+
+    var sitios = document.getElementsByClassName("sitio_pagina");
+    sitios[0].style.display = 'none';
+    sitios[1].style.display = 'none';
+    sitios[2].style.display = 'none';
+    sitios[3].style.display = 'none';
+    sitios[4].style.display = 'block';
 
 }
 function ver_success(){
