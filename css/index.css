@@ -572,6 +572,19 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont {
   display: block;
   padding: 25px 10px 25px 10px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_img {
+  width: 200px;
+  height: 200px;
+  float: left;
+  background: #f00;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
+  width: calc(100% - 220px);
+  height: 200px;
+  float: left;
+  background: #00f;
+}
+
 @media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
     width: 200px;

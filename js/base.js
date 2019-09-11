@@ -1195,6 +1195,7 @@ function calendario_completo(now){
 function create_servicios_li(doctor){
 
     var li = document.createElement("LI");
+    li.className = "clearfix";
     var img = create_element_class("ser_img");
     var data = create_element_class("ser_data");
     li.appendChild(data);
