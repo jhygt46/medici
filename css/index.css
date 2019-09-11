@@ -519,8 +519,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li
   position: relative;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatafoto {
-  width: 200px;
-  height: 200px;
+  width: 217px;
+  height: 217px;
   background: #ddd;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul li .ndata .ndatainfo {
@@ -546,7 +546,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
   padding: 25px 10px 25px 10px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
     width: 200px;
     margin: 0 auto;

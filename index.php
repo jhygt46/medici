@@ -156,8 +156,6 @@ if(isset($_GET["status"])){
                                 <ul class="clearfix">
                                     <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
                                     <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
-                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
-                                    <li><div class="ndata vhalign"><div class="ndatafoto">FOTO</div><div class="ndatainfo">NOMBRE</div></div></li>
                                 </ul>
                             </div>
                         </div>

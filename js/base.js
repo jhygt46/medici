@@ -25,6 +25,8 @@ var fecha = new Date().getTime();
 
 function inicio(){
 
+    render_web();
+
     document.addEventListener('dragstart', dragstart, false);
     document.addEventListener('drag', test, false);
     document.addEventListener('dragend', dragend, false);
@@ -65,6 +67,9 @@ function inicio(){
         }
     }
 
+}
+function render_web(){
+    console.log(data);
 }
 function touchstart(e){
     var touches = e.touches.length;
