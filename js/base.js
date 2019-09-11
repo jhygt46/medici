@@ -1207,9 +1207,16 @@ function create_servicios_li(doctor){
     li.appendChild(img);
 
     var data = create_element_class("ser_data");
-    var cont_data = create_element_class("cont_ser_data vhalign");
-    var titulo = create_element_class_inner("ser_titulo", "&AACUTE;REA PSIQUIATRICA");
+    var cont_data = create_element_class("cont_ser_data valign");
+    var titulo = create_element_class_inner("ser_titulo", "ÁREA PSIQUIATRICA");
+    var cont_ser_doc = create_element_class("cont_ser_doc");
+
+    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
+        console.log(data.doctores[i]);
+    }
+
     cont_data.appendChild(titulo);
+    cont_data.appendChild(cont_ser_doc);
     data.appendChild(cont_data);
     li.appendChild(data);
     
