@@ -615,6 +615,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc {
   display: block;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .ser_doc_titulo {
+  float: left;
+}
 
 @media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
