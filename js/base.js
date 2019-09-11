@@ -69,10 +69,12 @@ function inicio(){
 
 }
 function render_web(){
+
+    var list = document.getElementById("nosotros");
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
-        console.log(data.doctores[i].nombre);
-        console.log(data.doctores[i].imagen);
+        list.appendChild(create_nosotros_li(data.doctores[i]));
     }
+
 }
 function touchstart(e){
     var touches = e.touches.length;
@@ -1171,6 +1173,18 @@ function calendario_completo(now){
     }
     data += "</div></div>";
     return data;
+
+}
+function create_nosotros_li(doctor){
+
+    var li = document.createElement("LI");
+    var ndata = create_element_class("ndata vhalign");
+    var ndatafoto = create_element_class_inner("ndatafoto", "FOTO");
+    var ndatainfo = create_element_class_inner("ndatainfo", "NOMBRE");
+    ndata.appendChild(ndatafoto);
+    ndata.appendChild(ndatainfo);
+    li.appendChild(ndata);
+    return li;
 
 }
 function create_element_class(clase){
