@@ -576,10 +576,8 @@ html{
                                         .ser_img{
                                             width: 200px;
                                             height: 290px;
-                                            float: left;
                                             position: relative;
                                             .cont_ser_img{
-                                                
                                                 .ser_nombre{
                                                     font-size: 24px;
                                                     text-align: center;
@@ -601,7 +599,6 @@ html{
                                         .ser_data{
                                             width: calc(100% - 200px);
                                             height: 290px;
-                                            float: left;
                                             position: relative;
                                             .cont_ser_data{
                                                 width: 100%;
@@ -634,7 +631,26 @@ html{
         }
     }
 }
+@media only screen and (min-width: 600px){
 
+    .ser_img{
+        margin: 0 auto;
+    }
+    .ser_data{
+        margin: 0 auto;
+    }
+
+}
+@media only screen and (max-width: 600px){
+
+    .ser_img{
+        float: left;
+    }
+    .ser_data{
+        float: left;
+    }
+
+}
 @media only screen and (min-width: 500px){
 
     .nosotros{
