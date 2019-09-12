@@ -620,12 +620,16 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   background: #f00;
   position: relative;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .ser_doc_titulo .ser_doc_img {
+  text-align: center;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .ser_doc_titulo .ser_doc_img img {
   width: 100px;
   height: 100px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .ser_doc_titulo .ser_doc_nm {
   text-align: center;
+  font-size: 18px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .w1 {
   width: 100%;
