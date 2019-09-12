@@ -618,7 +618,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   float: left;
   height: 120px;
   background: #f00;
-  margin: 0px 3px;
   position: relative;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .ser_doc_titulo .ser_doc_img img {
