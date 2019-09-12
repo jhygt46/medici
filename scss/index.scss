@@ -613,10 +613,28 @@ html{
                                                     margin: 0 auto;
                                                     .ser_doc_titulo{
                                                         float: left;
-                                                        width: 100px;
                                                         height: 120px;
                                                         background: #f00;
                                                         margin: 0px 3px;
+                                                        position: relative;
+                                                    }
+                                                    .w1{
+                                                        width: 100%;
+                                                    }
+                                                    .w2{
+                                                        width: 50%;
+                                                    }
+                                                    .w3{
+                                                        width: 33.33%;
+                                                    }
+                                                    .w4{
+                                                        width: 25%;
+                                                    }
+                                                    .w5{
+                                                        width: 10%;
+                                                    }
+                                                    .w6{
+                                                        width: 16.66%;
                                                     }
                                                 }
                                             }
