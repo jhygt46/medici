@@ -1210,13 +1210,15 @@ function create_servicios_li(doctor){
     var cont_data = create_element_class("cont_ser_data valign");
     var titulo = create_element_class_inner("ser_titulo", "ÁREA PSIQUIATRICA");
     var cont_ser_doc = create_element_class("cont_ser_doc clearfix");
-    cont_ser_doc.style.width = parseInt(doctor.lista_servicios.length * 106)+"px";
-
     for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
-        //console.log(doctor.lista_servicios[i].nombre);
-        //console.log(doctor.lista_servicios[i].imagen);
-        var aux = create_element_class_inner("ser_doc_titulo w"+doctor.lista_servicios.length, doctor.lista_servicios[i].nombre);
+
+        var aux = create_element_class("ser_doc_titulo w"+doctor.lista_servicios.length);
+        var aux1 = create_element_class_inner("ser_doc_img", "<img src='/images/"+doctor.lista_servicios[i].imagen+"' alt='' />");
+        var aux2 = create_element_class_inner("ser_doc_img", doctor.lista_servicios[i].nombre);
+        aux.appendChild(aux1);
+        aux.appendChild(aux2);
         cont_ser_doc.appendChild(aux);
+
     }
 
     cont_data.appendChild(titulo);
