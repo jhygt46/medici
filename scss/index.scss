@@ -617,6 +617,15 @@ html{
                                                         background: #f00;
                                                         margin: 0px 3px;
                                                         position: relative;
+                                                        .ser_doc_img{
+                                                            img{
+                                                                width: 100px;
+                                                                height: 100px;
+                                                            }
+                                                        }
+                                                        .ser_doc_nm{
+                                                            text-align: center;
+                                                        }
                                                     }
                                                     .w1{
                                                         width: 100%;

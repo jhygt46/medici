@@ -1214,7 +1214,7 @@ function create_servicios_li(doctor){
 
         var aux = create_element_class("ser_doc_titulo w"+doctor.lista_servicios.length);
         var aux1 = create_element_class_inner("ser_doc_img", "<img src='/images/"+doctor.lista_servicios[i].imagen+"' alt='' />");
-        var aux2 = create_element_class_inner("ser_doc_img", doctor.lista_servicios[i].nombre);
+        var aux2 = create_element_class_inner("ser_doc_nm", doctor.lista_servicios[i].nombre);
         aux.appendChild(aux1);
         aux.appendChild(aux2);
         cont_ser_doc.appendChild(aux);
