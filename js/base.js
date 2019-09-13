@@ -1214,7 +1214,7 @@ function create_servicios_li(doctor){
     var titulo = create_element_class_inner("ser_titulo", "ÁREA PSIQUIATRICA");
     var cont_ser_doc = create_element_class("cont_ser_doc clearfix");
     for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
-
+        console.log(doctor.lista_servicios[i]);
         var aux = create_element_class("ser_doc_titulo w"+doctor.lista_servicios.length);
         aux.onclick = function(){ ver_servicio(doctor.id_usr, doctor.lista_servicios[i].id_ser) };
         var aux1 = create_element_class_inner("ser_doc_img", "<img src='/images/"+doctor.lista_servicios[i].imagen+"' alt='' />");
