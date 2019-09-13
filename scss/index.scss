@@ -537,9 +537,10 @@ html{
                                         height: 320px;
                                         position: relative;
                                         .nos{
+                                            padding-right: 20px;
                                             .nos_foto{
                                                 float: right;
-                                                padding: 8px 18px 8px 8px;
+                                                padding: 8px;
                                                 background: #fff;
                                                 border-radius: 114px;
                                                 border: 1px solid #ddd;
@@ -550,7 +551,7 @@ html{
                                                 }
                                             }
                                             .nos_desc{
-                                                width: calc(100% - 244px);
+                                                width: calc(100% - 254px);
                                                 float: right;
                                                 text-align: center;
                                                 padding-top: 20px;

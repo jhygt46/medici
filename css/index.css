@@ -538,9 +538,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   height: 320px;
   position: relative;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos {
+  padding-right: 20px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_foto {
   float: right;
-  padding: 8px 18px 8px 8px;
+  padding: 8px;
   background: #fff;
   border-radius: 114px;
   border: 1px solid #ddd;
@@ -551,7 +554,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   height: 216px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc {
-  width: calc(100% - 244px);
+  width: calc(100% - 254px);
   float: right;
   text-align: center;
   padding-top: 20px;
