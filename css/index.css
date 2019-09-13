@@ -232,7 +232,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina {
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion {
   width: 96%;
-  max-width: 750px;
+  max-width: 900px;
   margin: 0px auto;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .preguntas {
