@@ -597,7 +597,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   border-radius: 108px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
-  width: calc(100% - 200px);
   position: relative;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data {
@@ -646,27 +645,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   width: 16.66%;
 }
 
-@media only screen and (min-width: 768px) {
-  .ser_img {
-    float: left;
-  }
-
-  .ser_data {
-    float: left;
-    height: 290px;
-    width: calc(100% - 200px);
-  }
-}
-@media only screen and (max-width: 768px) {
-  .ser_img {
-    margin: 0 auto;
-  }
-
-  .ser_data {
-    height: 220px;
-    width: 100%;
-  }
-}
 @media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
     width: 200px;
@@ -686,6 +664,14 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   #contenedor .sitio .logo_pagina_web {
     display: block;
   }
+  #contenedor .ser_img {
+    float: left;
+  }
+  #contenedor .ser_data {
+    float: left;
+    height: 290px;
+    width: calc(100% - 200px);
+  }
 }
 @media only screen and (max-width: 768px) {
   #contenedor {
@@ -699,6 +685,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   }
   #contenedor .sitio .logo_pagina_web {
     display: none;
+  }
+  #contenedor .ser_img {
+    margin: 0 auto;
+  }
+  #contenedor .ser_data {
+    height: 220px;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {

@@ -597,7 +597,6 @@ html{
                                             }
                                         }
                                         .ser_data{
-                                            width: calc(100% - 200px);
                                             position: relative;
                                             .cont_ser_data{
                                                 width: 100%;
@@ -655,30 +654,6 @@ html{
         }
     }
 }
-@media only screen and (min-width: 768px){
-
-    .ser_img{
-        float: left;
-    }
-    .ser_data{
-        float: left;
-        height: 290px;
-        width: calc(100% - 200px);
-    }
-
-}
-@media only screen and (max-width: 768px){
-
-    .ser_img{
-        margin: 0 auto;
-    }
-    .ser_data{
-        //margin: 0 auto;
-        height: 220px;
-        width: 100%;
-    }
-
-}
 @media only screen and (min-width: 500px){
 
     .nosotros{
@@ -715,6 +690,14 @@ html{
                 display: block;
             }
         }
+        .ser_img{
+            float: left;
+        }
+        .ser_data{
+            float: left;
+            height: 290px;
+            width: calc(100% - 200px);
+        }
     }
 }
 @media only screen and (max-width: 768px){
@@ -730,6 +713,14 @@ html{
             .logo_pagina_web{
                 display: none;
             }
+        }
+        .ser_img{
+            margin: 0 auto;
+        }
+        .ser_data{
+            //margin: 0 auto;
+            height: 220px;
+            width: 100%;
         }
     }
 }
