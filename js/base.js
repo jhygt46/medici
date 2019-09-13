@@ -75,6 +75,7 @@ function render_web(){
 
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
         nosotros.appendChild(create_nosotros_li(data.doctores[i]));
+        nosotros.appendChild(create_nosotros2_li(data.doctores[i]));
         servicios.appendChild(create_servicios_li(data.doctores[i]));
     }
 
@@ -1246,6 +1247,18 @@ function create_servicios_li(doctor){
 
 }
 function create_nosotros_li(doctor){
+
+    var li = document.createElement("LI");
+    var ndata = create_element_class("ndata vhalign");
+    var ndatafoto = create_element_class_inner("ndatafoto", "<img src='/images/"+doctor.imagen+"' alt='' />");
+    var ndatainfo = create_element_class_inner("ndatainfo", doctor.nombre);
+    ndata.appendChild(ndatafoto);
+    ndata.appendChild(ndatainfo);
+    li.appendChild(ndata);
+    return li;
+
+}
+function create_nosotros2_li(doctor){
 
     var li = document.createElement("LI");
     var ndata = create_element_class("ndata vhalign");
