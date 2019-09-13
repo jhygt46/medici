@@ -71,11 +71,12 @@ function inicio(){
 function render_web(){
 
     var nosotros = document.getElementById("nosotros");
+    var nosotros2 = document.getElementById("nosotros2");
     var servicios = document.getElementById("servicios");
 
     for(var i=0, ilen=data.doctores.length; i<ilen; i++){
         nosotros.appendChild(create_nosotros_li(data.doctores[i]));
-        nosotros.appendChild(create_nosotros2_li(data.doctores[i]));
+        nosotros2.appendChild(create_nosotros2_li(data.doctores[i]));
         servicios.appendChild(create_servicios_li(data.doctores[i]));
     }
 

@@ -154,6 +154,7 @@ if(isset($_GET["status"])){
                             <div class="linea"></div>
                             <div class="sec_cont">
                                 <ul id="nosotros" class="clearfix"></ul>
+                                <ul id="nosotros2" class="clearfix"></ul>
                             </div>
                         </div>
                     </div>
