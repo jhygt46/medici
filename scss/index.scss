@@ -538,6 +538,7 @@ html{
                                         position: relative;
                                         .ndata{
                                             .ndatafoto{
+                                                float: left;
                                                 padding: 8px;
                                                 background: #fff;
                                                 border-radius: 114px;
@@ -549,6 +550,7 @@ html{
                                                 }
                                             }
                                             .ndatainfo{
+                                                float: left;
                                                 text-align: center;
                                                 padding-top: 20px;
                                                 font-size: 24px;
