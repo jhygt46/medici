@@ -538,8 +538,8 @@ html{
                                         position: relative;
                                         .nos{
                                             .nos_foto{
-                                                float: left;
-                                                padding: 8px;
+                                                float: right;
+                                                padding: 8px 18px 8px 8px;
                                                 background: #fff;
                                                 border-radius: 114px;
                                                 border: 1px solid #ddd;
@@ -550,8 +550,8 @@ html{
                                                 }
                                             }
                                             .nos_desc{
-                                                width: calc(100% - 234px);
-                                                float: left;
+                                                width: calc(100% - 244px);
+                                                float: right;
                                                 text-align: center;
                                                 padding-top: 20px;
                                                 font-size: 24px;
