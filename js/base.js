@@ -1192,6 +1192,9 @@ function calendario_completo(now){
     return data;
 
 }
+function ver_servicio(doc_id, ser_id){
+    console.log(doc_id + " - " + ser_id);
+}
 function create_servicios_li(doctor){
 
     var li = document.createElement("LI");
@@ -1213,6 +1216,7 @@ function create_servicios_li(doctor){
     for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
 
         var aux = create_element_class("ser_doc_titulo w"+doctor.lista_servicios.length);
+        aux.onclick = function(){ ver_servicio(doctor.id_usr, doctor.lista_servicios[i].id_ser) };
         var aux1 = create_element_class_inner("ser_doc_img", "<img src='/images/"+doctor.lista_servicios[i].imagen+"' alt='' />");
         var aux2 = create_element_class_inner("ser_doc_nm", doctor.lista_servicios[i].nombre);
         aux.appendChild(aux1);
