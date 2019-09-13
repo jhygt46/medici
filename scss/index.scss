@@ -504,58 +504,54 @@ html{
                             .sec_cont{
                                 display: block;
                                 padding: 25px 10px 25px 10px;
-                                #nosotros{
-                                    ul{
-                                        li{
-                                            float: left;
-                                            width: 50%;
-                                            min-width: 200px;
-                                            height: 320px;
-                                            position: relative;
-                                            .ndata{
-                                                .ndatafoto{
-                                                    padding: 8px;
-                                                    background: #fff;
-                                                    border-radius: 114px;
-                                                    border: 1px solid #ddd;
-                                                    img{
-                                                        border-radius: 108px;
-                                                        width: 216px;
-                                                        height: 216px;
-                                                    }
+                                ul#nosotros{
+                                    li{
+                                        float: left;
+                                        width: 50%;
+                                        min-width: 200px;
+                                        height: 320px;
+                                        position: relative;
+                                        .ndata{
+                                            .ndatafoto{
+                                                padding: 8px;
+                                                background: #fff;
+                                                border-radius: 114px;
+                                                border: 1px solid #ddd;
+                                                img{
+                                                    border-radius: 108px;
+                                                    width: 216px;
+                                                    height: 216px;
                                                 }
-                                                .ndatainfo{
-                                                    text-align: center;
-                                                    padding-top: 20px;
-                                                    font-size: 24px;
-                                                }
+                                            }
+                                            .ndatainfo{
+                                                text-align: center;
+                                                padding-top: 20px;
+                                                font-size: 24px;
                                             }
                                         }
                                     }
                                 }
-                                #nosotros2{
-                                    ul{
-                                        li{
-                                            width: 100%;
-                                            height: 320px;
-                                            position: relative;
-                                            .ndata{
-                                                .ndatafoto{
-                                                    padding: 8px;
-                                                    background: #fff;
-                                                    border-radius: 114px;
-                                                    border: 1px solid #ddd;
-                                                    img{
-                                                        border-radius: 108px;
-                                                        width: 216px;
-                                                        height: 216px;
-                                                    }
+                                ul#nosotros2{
+                                    li{
+                                        width: 100%;
+                                        height: 320px;
+                                        position: relative;
+                                        .ndata{
+                                            .ndatafoto{
+                                                padding: 8px;
+                                                background: #fff;
+                                                border-radius: 114px;
+                                                border: 1px solid #ddd;
+                                                img{
+                                                    border-radius: 108px;
+                                                    width: 216px;
+                                                    height: 216px;
                                                 }
-                                                .ndatainfo{
-                                                    text-align: center;
-                                                    padding-top: 20px;
-                                                    font-size: 24px;
-                                                }
+                                            }
+                                            .ndatainfo{
+                                                text-align: center;
+                                                padding-top: 20px;
+                                                font-size: 24px;
                                             }
                                         }
                                     }
