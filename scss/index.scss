@@ -538,6 +538,7 @@ html{
                                         position: relative;
                                         .ndata{
                                             .ndatafoto{
+                                                width: 234px;
                                                 float: left;
                                                 padding: 8px;
                                                 background: #fff;
@@ -550,6 +551,7 @@ html{
                                                 }
                                             }
                                             .ndatainfo{
+                                                width: calc(100% - 234px);
                                                 float: left;
                                                 text-align: center;
                                                 padding-top: 20px;
