@@ -1262,9 +1262,9 @@ function create_nosotros_li(doctor){
 function create_nosotros2_li(doctor){
 
     var li = document.createElement("LI");
-    var ndata = create_element_class("ndata vhalign");
-    var ndatafoto = create_element_class_inner("ndatafoto", "<img src='/images/"+doctor.imagen+"' alt='' />");
-    var ndatainfo = create_element_class_inner("ndatainfo", doctor.nombre);
+    var ndata = create_element_class("nos clearfix");
+    var ndatafoto = create_element_class_inner("nos_foto", "<img src='/images/"+doctor.imagen+"' alt='' />");
+    var ndatainfo = create_element_class_inner("nos_desc", doctor.nombre);
     ndata.appendChild(ndatafoto);
     ndata.appendChild(ndatainfo);
     li.appendChild(ndata);

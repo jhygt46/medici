@@ -538,20 +538,19 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   height: 320px;
   position: relative;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .ndata .ndatafoto {
-  width: 234px;
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_foto {
   float: left;
   padding: 8px;
   background: #fff;
   border-radius: 114px;
   border: 1px solid #ddd;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .ndata .ndatafoto img {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_foto img {
   border-radius: 108px;
   width: 216px;
   height: 216px;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .ndata .ndatainfo {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc {
   width: calc(100% - 234px);
   float: left;
   text-align: center;
