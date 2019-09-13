@@ -1213,6 +1213,8 @@ function create_servicios_li(doctor){
     img.appendChild(cont_img);
     li.appendChild(img);
 
+    console.log(doctor);
+
     var data = create_element_class("ser_data");
     var cont_data = create_element_class("cont_ser_data valign");
     var titulo = create_element_class_inner("ser_titulo", "ÁREA PSIQUIATRICA");
