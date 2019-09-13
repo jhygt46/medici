@@ -1196,7 +1196,16 @@ function ver_servicio_pop(that){
 
     var ver = that.getAttribute('id');
     var valores = ver.split(" ");
-    console.log(valores[0] + "-" + valores[1]);
+
+    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
+        if(data.doctores[i].id == valores[0]){
+            for(var j=0, jlen=data.doctores[i].lista_servicios.length; j<jlen; j++){
+                if(data.doctores[i].lista_servicios[j].id == valores[1]){
+                    console.log(data.doctores[i].lista_servicios[j]);
+                }
+            }
+        }
+    }
 
 }
 function create_servicios_li(doctor){
