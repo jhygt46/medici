@@ -1195,9 +1195,8 @@ function calendario_completo(now){
 function ver_servicio_pop(that){
 
     var ver = that.getAttribute('id');
-    console.log(ver);
-    //var valores = that.getAttribute("id").explode(" ");
-    //console.log(valores[0] + "-" + valores[1]);
+    var valores = ver.split(" ");
+    console.log(valores[0] + "-" + valores[1]);
 
 }
 function create_servicios_li(doctor){
