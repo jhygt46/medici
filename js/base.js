@@ -1194,7 +1194,7 @@ function calendario_completo(now){
 }
 function ver_servicio(that){
 
-    console.log(that.getAttribute("id"));
+    console.log(that);
     var valores = that.getAttribute("id").explode(" ");
     console.log(valores[0] + "-" + valores[1]);
 
