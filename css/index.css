@@ -598,7 +598,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data {
   width: calc(100% - 200px);
-  height: 290px;
   position: relative;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data {
@@ -654,6 +653,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 
   .ser_data {
     float: left;
+    height: 290px;
+    width: calc(100% - 200px);
   }
 }
 @media only screen and (max-width: 768px) {
@@ -662,7 +663,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   }
 
   .ser_data {
-    margin: 0 auto;
+    height: 220px;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 500px) {

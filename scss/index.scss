@@ -598,7 +598,6 @@ html{
                                         }
                                         .ser_data{
                                             width: calc(100% - 200px);
-                                            height: 290px;
                                             position: relative;
                                             .cont_ser_data{
                                                 width: 100%;
@@ -663,6 +662,8 @@ html{
     }
     .ser_data{
         float: left;
+        height: 290px;
+        width: calc(100% - 200px);
     }
 
 }
@@ -672,7 +673,9 @@ html{
         margin: 0 auto;
     }
     .ser_data{
-        margin: 0 auto;
+        //margin: 0 auto;
+        height: 220px;
+        width: 100%;
     }
 
 }
