@@ -558,7 +558,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   float: right;
   text-align: center;
   padding-top: 20px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc .nos_tit {
   font-size: 24px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc .nos_info {
+  font-size: 16px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;

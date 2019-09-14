@@ -1264,7 +1264,14 @@ function create_nosotros2_li(doctor){
     var li = document.createElement("LI");
     var ndata = create_element_class("nos clearfix");
     var ndatafoto = create_element_class_inner("nos_foto", "<img src='/images/"+doctor.imagen+"' alt='' />");
-    var ndatainfo = create_element_class_inner("nos_desc", doctor.nombre);
+    var ndatainfo = create_element_class("nos_desc");
+
+    var ndatadocn = create_element_class_inner("nos_tit", doctor.nombre);
+    var ndatadocd = create_element_class_inner("nos_info", doctor.descripcion);
+
+    ndatainfo.appendChild(ndatadocn);
+    ndatainfo.appendChild(ndatadocd);
+
     ndata.appendChild(ndatafoto);
     ndata.appendChild(ndatainfo);
     li.appendChild(ndata);
