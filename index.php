@@ -162,7 +162,12 @@ if(isset($_GET["status"])){
                         <div class="seccion contacto">
                             <div class="titulo_seccion">Contacto</div>
                             <div class="linea"></div>
-                            <div class="sec_cont"></div>
+                            <div class="sec_cont">
+                                <div class="cont_cont clearfix">
+                                    <div class="cont_form">A</div>
+                                    <div class="cont_map">B</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="sitio_pagina" style="display: none">

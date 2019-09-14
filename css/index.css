@@ -563,6 +563,16 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc .nos_info {
   font-size: 16px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont .cont_cont .cont_form {
+  width: 50%;
+  float: left;
+  height: 200px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont .cont_cont .cont_map {
+  width: 50%;
+  float: left;
+  height: 200px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto {
   background: #eee;
 }
