@@ -18,7 +18,7 @@ var slidemenu = {
 var config = {
     total_dias: 14
 }
-
+var imap = false;
 var semana = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 var mes = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 var fecha = new Date().getTime();
@@ -552,6 +552,23 @@ function sitio_contacto(){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'block';
     sitios[4].style.display = 'none';
+
+    if(!imap){
+        
+        var myLatLng = { lat: 0, lng: 0 };
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: myLatLng
+        });
+    
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+        imap = true;
+        
+    }
 
 }
 function sitio_reservar(){
