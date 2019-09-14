@@ -542,7 +542,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   padding-right: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_foto {
-  float: right;
   padding: 8px;
   background: #fff;
   border-radius: 114px;
@@ -554,8 +553,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   height: 216px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_desc {
-  width: calc(100% - 254px);
-  float: right;
   text-align: center;
   padding-top: 20px;
 }
@@ -636,8 +633,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .ser_titulo {
   display: block;
   text-align: center;
-  font-size: 24px;
-  padding: 20px 10px 5px 10px;
+  font-size: 30px;
+  padding: 0px 10px 25px 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc {
   display: block;
@@ -703,6 +700,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
     height: 290px;
     width: calc(100% - 200px);
   }
+  #contenedor .nos_foto {
+    float: right;
+  }
+  #contenedor .nos_desc {
+    float: right;
+    width: calc(100% - 254px);
+  }
 }
 @media only screen and (max-width: 768px) {
   #contenedor {
@@ -721,6 +725,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
     margin: 0 auto;
   }
   #contenedor .ser_data {
+    height: 220px;
+    width: 100%;
+  }
+  #contenedor .nos_foto {
+    margin: 0 auto;
+  }
+  #contenedor .nos_desc {
     height: 220px;
     width: 100%;
   }

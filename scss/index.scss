@@ -539,7 +539,6 @@ html{
                                         .nos{
                                             padding-right: 20px;
                                             .nos_foto{
-                                                float: right;
                                                 padding: 8px;
                                                 background: #fff;
                                                 border-radius: 114px;
@@ -551,8 +550,6 @@ html{
                                                 }
                                             }
                                             .nos_desc{
-                                                width: calc(100% - 254px);
-                                                float: right;
                                                 text-align: center;
                                                 padding-top: 20px;
                                                 .nos_tit{
@@ -636,8 +633,8 @@ html{
                                                 .ser_titulo{
                                                     display: block;
                                                     text-align: center;
-                                                    font-size: 24px;
-                                                    padding: 20px 10px 5px 10px;
+                                                    font-size: 30px;
+                                                    padding: 0px 10px 25px 10px;
                                                 }
                                                 .cont_ser_doc{
                                                     display: block;
@@ -731,6 +728,13 @@ html{
             height: 290px;
             width: calc(100% - 200px);
         }
+        .nos_foto{
+            float: right;
+        }
+        .nos_desc{
+            float: right;
+            width: calc(100% - 254px);
+        }
     }
 }
 @media only screen and (max-width: 768px){
@@ -752,6 +756,13 @@ html{
         }
         .ser_data{
             //margin: 0 auto;
+            height: 220px;
+            width: 100%;
+        }
+        .nos_foto{
+            margin: 0 auto;
+        }
+        .nos_desc{
             height: 220px;
             width: 100%;
         }
