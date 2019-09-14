@@ -124,7 +124,7 @@ class Core{
                         $user['nombre'] = $row['doctor_nombre'];
                         $user['imagen'] = $row['imagen_user'];
                         $user['titulo'] = $row['titulo'];
-                        $user['descripcion'] = $row['descripcion'];
+                        $user['html_descripcion'] = $row['html_descripcion'];
                         $user['min'] = 30;
                         $user['lista_servicios'] = [];
 
