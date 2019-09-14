@@ -176,7 +176,7 @@ if(isset($_GET["status"])){
                                             <TEXTAREA class="txta" id="mensaje"></TEXTAREA>
                                         </div>
                                     </div>
-                                    <div class="cont_map">B</div>
+                                    <div class="cont_map" id="map">B</div>
                                 </div>
                             </div>
                         </div>

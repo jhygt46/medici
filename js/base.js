@@ -556,11 +556,10 @@ function sitio_contacto(){
     if(!imap){
         
         var myLatLng = { lat: 0, lng: 0 };
-        map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
             center: myLatLng
         });
-    
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
