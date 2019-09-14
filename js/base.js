@@ -1268,7 +1268,7 @@ function create_nosotros2_li(doctor){
     var ndatainfo = create_element_class("nos_desc");
 
     var ndatadocn = create_element_class_inner("nos_tit", doctor.nombre);
-    var ndatadocd = create_element_class_inner("nos_info", doctor.descripcion);
+    var ndatadocd = create_element_class_inner("nos_info", doctor.html_descripcion);
 
     ndatainfo.appendChild(ndatadocn);
     ndatainfo.appendChild(ndatadocd);
