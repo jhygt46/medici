@@ -164,7 +164,12 @@ if(isset($_GET["status"])){
                             <div class="linea"></div>
                             <div class="sec_cont">
                                 <div class="cont_cont clearfix">
-                                    <div class="cont_form">A</div>
+                                    <div class="cont_form">
+                                        <span>Nombre</span>
+                                        <input type="text" id="nombre" />
+                                        <span>Correo</span>
+                                        <input type="text" id="correo" />
+                                    </div>
                                     <div class="cont_map">B</div>
                                 </div>
                             </div>
