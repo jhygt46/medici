@@ -563,18 +563,6 @@ html{
                                         }
                                     }
                                 }
-                                .cont_cont{
-                                    .cont_form{
-                                        width: 50%;
-                                        float: left;
-                                        height: 200px;
-                                    }
-                                    .cont_map{
-                                        width: 50%;
-                                        float: left;
-                                        height: 200px;
-                                    }
-                                }
                             }
                         }
                         .contacto{
@@ -594,6 +582,18 @@ html{
                             .sec_cont{
                                 display: block;
                                 padding: 25px 10px 25px 10px;
+                                .cont_cont{
+                                    .cont_form{
+                                        width: 50%;
+                                        float: left;
+                                        height: 200px;
+                                    }
+                                    .cont_map{
+                                        width: 50%;
+                                        float: left;
+                                        height: 200px;
+                                    }
+                                }
                             }
                         }
                         .servicios{
