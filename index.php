@@ -165,10 +165,12 @@ if(isset($_GET["status"])){
                             <div class="sec_cont">
                                 <div class="cont_cont clearfix">
                                     <div class="cont_form">
-                                        <div class="titulo">Nombre</div>
-                                        <input class="input" type="text" id="nombre" />
-                                        <div class="titulo">Correo</div>
-                                        <input class="input" type="text" id="correo" />
+                                        <div class="cont_forms">
+                                            <div class="titulo">Nombre</div>
+                                            <input class="input" type="text" id="nombre" />
+                                            <div class="titulo">Correo</div>
+                                            <input class="input" type="text" id="correo" />
+                                        </div>
                                     </div>
                                     <div class="cont_map">B</div>
                                 </div>
