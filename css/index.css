@@ -590,8 +590,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
   font-size: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .input {
-  width: 100%;
-  height: 40px;
+  width: 90%;
+  height: 35px;
+  border: 0px;
+  margin: 0 auto;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_map {
   height: 200px;
