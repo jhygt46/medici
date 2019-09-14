@@ -170,6 +170,10 @@ if(isset($_GET["status"])){
                                             <input class="input" type="text" id="nombre" />
                                             <div class="titulo">Correo</div>
                                             <input class="input" type="text" id="correo" />
+                                            <div class="titulo">Asunto</div>
+                                            <input class="input" type="text" id="asunto" />
+                                            <div class="titulo">Mensaje</div>
+                                            <TEXTAREA class="txta" id="mensaje"></TEXTAREA>
                                         </div>
                                     </div>
                                     <div class="cont_map">B</div>
