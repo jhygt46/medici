@@ -600,8 +600,14 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
   height: 65px;
   border: 0px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .enviar {
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  padding: 2px 20px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_map {
-  height: 300px;
+  height: 400px;
   background: #ccc;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios {

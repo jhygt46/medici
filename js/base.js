@@ -555,7 +555,7 @@ function sitio_contacto(){
 
     if(!imap){
         
-        var myLatLng = { lat: 0, lng: 0 };
+        var myLatLng = { lat: -77, lng: 33 };
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
             center: myLatLng

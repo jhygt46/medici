@@ -174,6 +174,7 @@ if(isset($_GET["status"])){
                                             <input class="input" type="text" id="asunto" />
                                             <div class="titulo">Mensaje</div>
                                             <TEXTAREA class="txta" id="mensaje"></TEXTAREA>
+                                            <input class="enviar" type="submit" value="Enviar" />
                                         </div>
                                     </div>
                                     <div class="cont_map" id="map">B</div>
