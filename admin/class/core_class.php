@@ -158,6 +158,7 @@ class Core{
                                 $aux_serv['descripcion'] = $row['servicio_descripcion'];
                                 $aux_serv['tiempo_min'] = $row['tiempo_min'];
                                 $aux_serv['precio'] = $row['precio'];
+                                $aux_serv['imagen'] = $row['imagen'];
                                 
                                 $data['doctores'][$i]['lista_servicios'][] = $aux_serv;
                                 unset($aux_serv);
