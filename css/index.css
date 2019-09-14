@@ -542,6 +542,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   padding-right: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos .nos_foto {
+  width: 220px;
   padding: 8px;
   background: #fff;
   border-radius: 114px;
