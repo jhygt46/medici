@@ -32,7 +32,7 @@ if(isset($_GET["id"]) && is_numeric($_GET["id"]) && $_GET["id"] != 0){
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
         <ul class="clearfix">
-            <li class="back" onclick="navlink('pages/inicio.php')"></li>
+            <li class="back" onclick="navlink('pages/ingresar_servicios.php')"></li>
         </ul>
     </div>
     <hr>
