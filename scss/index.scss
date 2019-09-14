@@ -584,13 +584,9 @@ html{
                                 padding: 25px 10px 25px 10px;
                                 .cont_cont{
                                     .cont_form{
-                                        width: 50%;
-                                        float: left;
                                         height: 200px;
                                     }
                                     .cont_map{
-                                        width: 50%;
-                                        float: left;
                                         height: 200px;
                                     }
                                 }
@@ -704,6 +700,20 @@ html{
             ul{}
         }
     }
+    .contacto{
+        .sec_cont{
+            .cont_cont{
+                .cont_form{
+                    width: 50%;
+                    float: left;
+                }
+                .cont_map{
+                    width: 50%;
+                    float: left;
+                }
+            }
+        }
+    }
 
 }
 @media only screen and (max-width: 500px){
@@ -713,6 +723,18 @@ html{
             ul{
                 width: 200px;
                 margin: 0 auto;
+            }
+        }
+    }
+    .contacto{
+        .sec_cont{
+            .cont_cont{
+                .cont_form{
+                    width: 100%;
+                }
+                .cont_map{
+                    width: 100%;
+                }
             }
         }
     }

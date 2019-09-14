@@ -583,13 +583,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
   padding: 25px 10px 25px 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form {
-  width: 50%;
-  float: left;
   height: 200px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_map {
-  width: 50%;
-  float: left;
   height: 200px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios {
@@ -684,10 +680,27 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   width: 16.66%;
 }
 
+@media only screen and (min-width: 500px) {
+  .contacto .sec_cont .cont_cont .cont_form {
+    width: 50%;
+    float: left;
+  }
+  .contacto .sec_cont .cont_cont .cont_map {
+    width: 50%;
+    float: left;
+  }
+}
 @media only screen and (max-width: 500px) {
   .nosotros .sec_cont ul {
     width: 200px;
     margin: 0 auto;
+  }
+
+  .contacto .sec_cont .cont_cont .cont_form {
+    width: 100%;
+  }
+  .contacto .sec_cont .cont_cont .cont_map {
+    width: 100%;
   }
 }
 @media only screen and (min-width: 768px) {
