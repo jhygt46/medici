@@ -92,10 +92,6 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                         <select id="tipo"><option value="0" <?php if($that['tipo'] == 0){ echo "selected"; } ?>>Medico</option><option value="1" <?php if($that['tipo'] == 1){ echo "selected"; } ?>>Medico y Administrador</option></select>
                     </label>
                     <label class="clearfix">
-                        <span><p>Titulo Servicios:</p></span>
-                        <input id="titulo" class="inputs" type="text" value="<?php echo $that['titulo']; ?>" require="" placeholder="" />
-                    </label>
-                    <label class="clearfix">
                         <span><p>Password:</p></span>
                         <input id="pass1" class="inputs" type="password" value="" require="" placeholder="opcional" />
                     </label>
