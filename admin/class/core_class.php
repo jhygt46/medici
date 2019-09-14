@@ -158,7 +158,7 @@ class Core{
                                 $aux_serv['descripcion'] = $row['servicio_descripcion'];
                                 $aux_serv['tiempo_min'] = $row['tiempo_min'];
                                 $aux_serv['precio'] = $row['precio'];
-                                $aux_serv['imagen'] = $row['imagen'];
+                                $aux_serv['imagen'] = $row['imagen_serv'];
                                 
                                 $data['doctores'][$i]['lista_servicios'][] = $aux_serv;
                                 unset($aux_serv);
@@ -173,7 +173,7 @@ class Core{
                         $serv['id'] = $row['id_ser'];
                         $serv['nombre'] = $row['servicio_nombre'];
                         $serv['descripcion'] = $row['servicio_descripcion'];
-                        $serv['imagen'] = $row['imagen'];
+                        $serv['imagen'] = $row['imagen_serv'];
                         $serv['lista_doctores'] = [];
 
                         $aux_user['id'] = $row['id_usr'];
