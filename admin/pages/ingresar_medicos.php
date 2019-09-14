@@ -103,6 +103,14 @@ if(isset($_GET["id_usr"]) && is_numeric($_GET["id_usr"]) && $_GET["id_usr"] != 0
                         <span><p>Confirmar Password:</p></span>
                         <input id="pass2" class="inputs" type="password" value="" require="" placeholder="opcional" />
                     </label>
+                    <label class="clearfix">
+                        <span><p>Titulo Servicios:</p></span>
+                        <input id="titulo" class="inputs" type="text" value="<?php echo $that['titulo']; ?>" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                            <span><p>HTML descripcion:</p></span>
+                            <TEXTAREA id="html_descripcion"><?php echo $that['html_descripcion']; ?></TEXTAREA>
+                        </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>
                     </label>

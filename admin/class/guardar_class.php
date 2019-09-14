@@ -331,6 +331,7 @@ class Guardar{
             $correo = $_POST['correo'];
             $tipo = $_POST['tipo'];
             $titulo = $_POST['titulo'];
+            $html_descripcion = $_POST['html_descripcion'];
             $pass1 = $_POST['pass1'];
             $pass2 = $_POST['pass2'];
 
@@ -345,8 +346,8 @@ class Guardar{
                     $id_usr = $res->fetch_all(MYSQLI_ASSOC)[0]['id_usr'];
                     if($id_usr == $id){
 
-                        $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=? WHERE id_usr=? AND eliminado=?");
-                        $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                        $sql = $this->con->prepare("UPDATE usuarios SET nombre=?, correo=?, tipo=?, titulo=?, html_descripcion=? WHERE id_usr=? AND eliminado=?");
+                        $sql->bind_param("ssissii", $nombre, $correo, $tipo, $titulo, $html_descripcion, $id, $this->eliminado);
                         if($sql->execute()){
                             $info['op'] = 1;
                             $info['mensaje'] = "Medico modificado exitosamente";
@@ -363,8 +364,8 @@ class Guardar{
 
                 }elseif($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("INSERT INTO usuarios SET nombre=?, correo=?, tipo=? WHERE id_usr=? AND eliminado=?");
-                    $sql->bind_param("ssiii", $nombre, $correo, $tipo, $id, $this->eliminado);
+                    $sql = $this->con->prepare("INSERT INTO usuarios SET nombre=?, correo=?, tipo=?, titulo=?, html_descripcion=? WHERE id_usr=? AND eliminado=?");
+                    $sql->bind_param("ssissii", $nombre, $correo, $tipo, $titulo, $html_descripcion, $id, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
                         $info['mensaje'] = "Medico ingresado exitosamente";
@@ -391,8 +392,8 @@ class Guardar{
 
                 if($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, eliminado) VALUES (?, ?, ?, ?)");
-                    $sql->bind_param("ssii", $nombre, $correo, $tipo, $this->eliminado);
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, titulo, html_descripcion, eliminado) VALUES (?, ?, ?, ?, ?, ?)");
+                    $sql->bind_param("ssissi", $nombre, $correo, $tipo, $titulo, $html_descripcion, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
                         $info['mensaje'] = "Medico ingresado exitosamente";
