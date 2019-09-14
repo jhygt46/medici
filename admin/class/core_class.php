@@ -173,6 +173,7 @@ class Core{
                         $serv['id'] = $row['id_ser'];
                         $serv['nombre'] = $row['servicio_nombre'];
                         $serv['descripcion'] = $row['servicio_descripcion'];
+                        $serv['imagen'] = $row['imagen'];
                         $serv['lista_doctores'] = [];
 
                         $aux_user['id'] = $row['id_usr'];
