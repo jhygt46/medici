@@ -699,11 +699,11 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   .contacto .sec_cont .cont_cont .cont_form {
     width: 100%;
   }
-  .contacto .sec_cont .cont_cont .cont_form span {
+  .contacto .sec_cont .cont_cont .cont_form .titulo {
     display: block;
     font-size: 20px;
   }
-  .contacto .sec_cont .cont_cont .cont_form input {
+  .contacto .sec_cont .cont_cont .cont_form .input {
     width: 100%;
     height: 40px;
   }
