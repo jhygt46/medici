@@ -109,6 +109,8 @@ class Guardar{
             if($sql->execute()){
                 $info['op'] = 1;
                 $info['mensaje'] = "Sucursal modificada exitosamente";
+                $info['reload'] = 1;
+                $info['page'] = "ingresar_servicios.php";
             }else{
                 $info['op'] = 2;
                 $info['mensaje'] = "Error: Permisos A2";
@@ -119,8 +121,6 @@ class Guardar{
             $info['op'] = 2;
             $info['mensaje'] = "Error: F01";
         }
-        $info['reload'] = 1;
-        $info['page'] = "ingresar_servicios.php";
         return $info;
 
     }
