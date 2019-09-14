@@ -108,7 +108,7 @@ class Guardar{
             $sql->bind_param("sii", $image['image'], $id, $this->eliminado);
             if($sql->execute()){
                 $info['op'] = 1;
-                $info['mensaje'] = "Sucursal modificada exitosamente";
+                $info['mensaje'] = "Imagen agregada exitosamente";
                 $info['reload'] = 1;
                 $info['page'] = "ingresar_servicios.php";
             }else{
