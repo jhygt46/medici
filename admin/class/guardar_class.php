@@ -119,6 +119,8 @@ class Guardar{
             $info['op'] = 2;
             $info['mensaje'] = "Error: F01";
         }
+        $info['reload'] = 1;
+        $info['page'] = "ingresar_servicios.php";
         return $info;
 
     }
