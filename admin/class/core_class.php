@@ -112,7 +112,7 @@ class Core{
                 $sqlex->close();
             }
         }
-        if($sql = $this->con->prepare("SELECT t3.id_usr, t3.nombre as doctor_nombre, t3.imagen as imagen_user, t1.imagen as imagen_serv, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr AND t1.eliminado='0' AND t2.eliminado='0' AND t3.eliminado='0'")){
+        if($sql = $this->con->prepare("SELECT t3.id_usr, t3.nombre as doctor_nombre, t3.titulo, t3.html_descripcion, t3.imagen as imagen_user, t1.imagen as imagen_serv, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr AND t1.eliminado='0' AND t2.eliminado='0' AND t3.eliminado='0'")){
             if($sql->execute()){
                 $result = $sql->get_result();
                 while($row = $result->fetch_assoc()){
@@ -123,6 +123,8 @@ class Core{
                         $user['id'] = $row['id_usr'];
                         $user['nombre'] = $row['doctor_nombre'];
                         $user['imagen'] = $row['imagen_user'];
+                        $user['titulo'] = $row['titulo'];
+                        $user['descripcion'] = $row['descripcion'];
                         $user['min'] = 30;
                         $user['lista_servicios'] = [];
 
