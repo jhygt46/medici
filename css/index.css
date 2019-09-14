@@ -583,7 +583,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
   padding: 25px 10px 25px 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form {
-  height: 200px;
+  padding: 0px 5% 20px 5%;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .titulo {
   display: block;
