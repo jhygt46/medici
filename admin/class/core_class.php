@@ -369,6 +369,7 @@ class Core{
                     $i = 0;
                     $res = $sql->get_result();
                     $horas = $res->fetch_all(MYSQLI_ASSOC);
+                    $data['hrs'] = $horas;
                     for($i=0; $i<count($horas); $i++){
                         if($i > 0){
 
@@ -379,9 +380,9 @@ class Core{
                             $data['fy2'] = $this->get_horas_fechas($horas[$i]['fecha_f']);
 
                         }
-                        $data['et'] = 1;
+                        
                     }
-                    $data['en'] = 1;
+
                 }else{ $data['err'] = 3; }
             }else{ $data['err'] = 2; }
         }else{ $data['err'] = 1; }
