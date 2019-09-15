@@ -166,6 +166,21 @@ if(isset($_GET["status"])){
                                 <div class="cont_cont clearfix">
                                     <div class="cont_form">
                                         <div class="cont_forms">
+                                            <!--
+                                            <form onsubmit="return send2()" action="./ajax/contacto.php" method="post">
+                                                <h3>Nombre:</h3>
+                                                <div class="input"><input type="text" name="rut" placeholder="" /></div>
+                                                <h3>Nombre completo:</h3>
+                                                <div class="input"><input type="text" name="nombre" placeholder="" /></div>
+                                                <h3>Correo electronico:</h3>
+                                                <div class="input"><input type="text" name="correo" placeholder="" /></div>
+                                                <h3>Telefono:</h3>
+                                                <div class="input"><input type="text" name="telefono" placeholder="" /></div>
+                                                <h6>reCAPTCHA:</h6>
+                                                <div class="g-recaptcha" data-sitekey="6Lf8j3sUAAAAAFEPARLhuiWamomIvm35UBCqf65R"></div>
+                                                <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
+                                            </form>
+                                            -->
                                             <div class="titulo">Nombre</div>
                                             <input class="input" type="text" id="nombre" />
                                             <div class="titulo">Correo</div>

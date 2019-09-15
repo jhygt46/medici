@@ -11,11 +11,8 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
-if($_POST["accion"] == "reserva"){
-    echo json_encode($core->reservar_hora());
-}
-if($_POST["accion"] == "contacto"){
-    echo json_encode($core->contacto());
-}
+echo "<pre>";
+print_r($core->insertar_horas(1, '2019-09-09', 630, 660));
+echo "<pre>";
 
 ?>

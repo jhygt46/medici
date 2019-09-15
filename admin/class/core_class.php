@@ -245,19 +245,6 @@ class Core{
     }
     public function reservar_hora(){
 
-        /*
-        $data['op'] = 1;
-        $data['rut'] = $_POST["rut"];
-        $data['nombre'] = $_POST["nombre"];
-        $data['correo'] = $_POST["correo"];
-        $data['telefono'] = $_POST["telefono"];
-        $data['id_ser'] = $_POST["id_ser"];
-        $data['id_usr'] = $_POST["id_usr"];
-        $data['fecha'] = $_POST["f_fec"];
-        $data['hora'] = $_POST["f_hor"];
-        return $data;
-        */
-
         //$res = $_POST["g-recaptcha-response"]; 
         //if(isset($res) && $res){
             
@@ -336,17 +323,7 @@ class Core{
                                                         $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
 
                                                         if($now_ini > $h_ini && $now_fin < $h_fin){
-
                                                             $data['exc_dentro'] = 1;
-
-                                                            if($sqlhor = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND fecha<=? AND fecha_f>=?")){
-                                                                if($sqlhor->bind_param("isi", $id_usr, $fecha1, $fecha2)){
-                                                                    if($sqlhor->execute()){
-
-                                                                    }
-                                                                }
-                                                            }
-
                                                         }
 
                                                     }
@@ -370,6 +347,79 @@ class Core{
                 }else{
                     $data['op'] = 2;
                     $data['msg'] = "Correo invalido";
+                }
+
+            //}
+
+        //}
+        return $data;
+    }
+
+    public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin){
+
+        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=?")){
+            if($sql->bind_param("is", $id_usr, $fecha)){
+                if($sql->execute()){
+
+                    $i = 0;
+                    $res = $sql->get_result();
+                    $horas = $res->fetch_all(MYSQLI_ASSOC);
+                    for($i=0; $i<count($horas); $i++){
+                        if($i > 0){
+
+                            $data['fx1'] = $this->get_horas_fechas($horas[$i-1]['fecha']);
+                            $data['fx2'] = $this->get_horas_fechas($horas[$i-1]['fecha_f']);
+
+                            $data['fy1'] = $this->get_horas_fechas($horas[$i]['fecha']);
+                            $data['fy2'] = $this->get_horas_fechas($horas[$i]['fecha_f']);
+
+                        }
+                    }
+
+                }
+            }
+        }
+        return $data;
+
+    }
+    private function get_horas_fechas($fecha){
+
+        $aux = explode(" ", $fecha);
+        $horas = explode(":", $aux);
+        return intval($horas[0]) * 60 + intval($horas[1]);
+
+    }
+    public function contacto(){
+
+        //$res = $_POST["g-recaptcha-response"]; 
+        //if(isset($res) && $res){
+            
+            //$secret = "6Lf8j3sUAAAAAP6pYvdgk9qiWoXCcKKXGsKFQXH4";
+            //$v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$_POST["g-recaptcha-response"]."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
+            //$data = json_decode(($v)); 
+            //if($data->{'success'}){
+                
+                $correo = $_POST["correo"];
+
+                if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+
+                    $send['correo'] = $correo;
+                    $send['nombre'] = $_POST["nombre"];
+                    $send['asunto'] = $_POST["asunto"];
+                    $send['mensaje'] = $_POST["mensaje"];
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_contacto_medici');
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                    $resp = json_decode(curl_exec($ch));
+                    curl_close($ch);
+
+                }else{
+
+                    $data['op'] = 2;
+                    $data['msg'] = "Correo invalido";
+
                 }
 
             //}
