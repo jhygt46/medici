@@ -357,6 +357,11 @@ class Core{
 
     public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin){
 
+        $data['id'] = $id_usr;
+        $data['fecha'] = $fecha;
+        $data['now_ini'] = $now_ini;
+        $data['now_fin'] = $now_fin;
+
         if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=?")){
             if($sql->bind_param("is", $id_usr, $fecha)){
                 if($sql->execute()){
@@ -376,9 +381,9 @@ class Core{
                         }
                     }
 
-                }
-            }
-        }
+                }else{ $data['err'] = 3; }
+            }else{ $data['err'] = 2; }
+        }else{ $data['err'] = 1; }
         return $data;
 
     }
