@@ -291,7 +291,7 @@ class Core{
                                                             if($sqlran->execute()){
                                                                 
                                                                 $resran = $sqlran->get_result();
-                                                                $data["res"] = $resran->fetch_all(MYSQLI_ASSOC);
+                                                                //$data["res"] = $resran->fetch_all(MYSQLI_ASSOC);
                                                                 
                                                                 $data["id_usr"] = $id_usr;
                                                                 $data["dia"] = $dia;
