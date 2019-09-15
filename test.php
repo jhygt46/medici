@@ -12,7 +12,7 @@ require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
 echo "<pre>";
-print_r($core->insertar_horas(2, '2019-09-09', 630, 660));
+print_r($core->insertar_horas(2, '2019-09-09', 630, 660, 600, 900));
 echo "<pre>";
 
 ?>

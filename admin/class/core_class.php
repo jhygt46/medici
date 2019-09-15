@@ -301,8 +301,12 @@ class Core{
 
                                                                     if($now_ini > $h_ini && $now_fin < $h_fin){
                                                                         $data['ran_dentro'] = 1;
+                                                                        if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
+                                                                            $data['op'] = 1;
+                                                                            $data['msg'] = "Hora Insertada";
+                                                                            return $data;
+                                                                        }
                                                                     }
-                                                                    $data["x"][] = "BUE";
 
                                                                 }
                                                             }else{}
@@ -324,6 +328,12 @@ class Core{
 
                                                         if($now_ini > $h_ini && $now_fin < $h_fin){
                                                             $data['exc_dentro'] = 1;
+                                                            if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
+                                                                // INSERTAR HORA
+                                                                $data['op'] = 1;
+                                                                $data['msg'] = "Hora Insertada";
+                                                                return $data;
+                                                            }
                                                         }
 
                                                     }
@@ -355,34 +365,51 @@ class Core{
         return $data;
     }
 
-    public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin){
-
-        $data['id'] = $id_usr;
-        $data['fecha'] = $fecha;
-        $data['now_ini'] = $now_ini;
-        $data['now_fin'] = $now_fin;
+    public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $min_ran, $max_ran){
 
         if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=?")){
             if($sql->bind_param("is", $id_usr, $fecha)){
                 if($sql->execute()){
 
-                    $i = 0;
                     $res = $sql->get_result();
                     $horas = $res->fetch_all(MYSQLI_ASSOC);
-                    $data['hrs'] = $horas;
-                    for($i=0; $i<count($horas); $i++){
-                        if($i > 0){
-                            $data['fx1'] = $this->get_horas_fechas($horas[$i-1]['fecha']);
-                            $data['fx2'] = $this->get_horas_fechas($horas[$i-1]['fecha_f']);
-                            $data['fy1'] = $this->get_horas_fechas($horas[$i]['fecha']);
-                            $data['fy2'] = $this->get_horas_fechas($horas[$i]['fecha_f']);
+                    $count_hrs = count($horas);
+
+                    if($count_hrs == 0){
+                        if($now_ini >= $min_ran && $now_fin <= $max_ran){
+                            return true;
+                        }else{
+                            return false;
                         }
+                    }else{
+                        for($i=0; $i<$count_hrs; $i++){
+                            if($i == 0){
+                                $fe_ini = $this->get_horas_fechas($horas[$i]['fecha']);
+                                if($now_ini >= $min_ran && $now_fin <= $fe_ini){
+                                    return true;
+                                }
+                            }
+                            if($i > 0){
+                                $antf = $this->get_horas_fechas($horas[$i-1]['fecha_f']);
+                                $acti = $this->get_horas_fechas($horas[$i]['fecha']);
+                                if($now_ini >= $antf && $now_fin <= $acti){
+                                    return true;
+                                }
+                            }
+                            if($i == $count_hrs - 1){
+                                $fe_fin = $this->get_horas_fechas($horas[$i]['fecha_f']);
+                                if($now_ini >= $fecha_fin && $now_fin <= $max_ran){
+                                    return true;
+                                }
+                                
+                            }
+                        }
+                        return false;
                     }
 
-                }else{ $data['err'] = 3; }
-            }else{ $data['err'] = 2; }
-        }else{ $data['err'] = 1; }
-        return $data;
+                }else{ return false; }
+            }else{ return false; }
+        }else{ return false; }
 
     }
     private function get_horas_fechas($fecha){
