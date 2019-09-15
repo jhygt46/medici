@@ -57,6 +57,7 @@ if(isset($_GET["status"])){
                                     <input type="hidden" name="id_usr" value="" />
                                     <input type="hidden" name="f_fec" value="" />
                                     <input type="hidden" name="f_hor" value="" />
+                                    <input type="hidden" name="accion" value="reserva" />
                                     <h3>Rut:</h3>
                                     <div class="input"><input type="text" name="rut" placeholder="" /></div>
                                     <h3>Nombre completo:</h3>
@@ -167,7 +168,8 @@ if(isset($_GET["status"])){
                                     <div class="cont_form">
                                         <div class="cont_forms">
                                             <!--
-                                            <form onsubmit="return send2()" action="./ajax/contacto.php" method="post">
+                                            <form onsubmit="return send2()" action="./ajax/index.php" method="post">
+                                                <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
                                                 <div class="input"><input type="text" name="rut" placeholder="" /></div>
                                                 <h3>Nombre completo:</h3>
