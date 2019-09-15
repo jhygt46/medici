@@ -372,15 +372,11 @@ class Core{
                     $data['hrs'] = $horas;
                     for($i=0; $i<count($horas); $i++){
                         if($i > 0){
-
                             $data['fx1'] = $this->get_horas_fechas($horas[$i-1]['fecha']);
                             $data['fx2'] = $this->get_horas_fechas($horas[$i-1]['fecha_f']);
-
                             $data['fy1'] = $this->get_horas_fechas($horas[$i]['fecha']);
                             $data['fy2'] = $this->get_horas_fechas($horas[$i]['fecha_f']);
-
                         }
-                        
                     }
 
                 }else{ $data['err'] = 3; }
