@@ -289,7 +289,7 @@ class Core{
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini>=? AND t1.dia_fin<=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                         if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
                                                             if($sqlran->execute()){
-                                                                
+                                                                $data["d"] = "RANGOS";
                                                                 $resran = $sqlran->get_result();
                                                                 while($row = $resran->fetch_assoc()){
 
@@ -298,7 +298,7 @@ class Core{
 
                                                                     $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
                                                                     $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
-
+                                                                    $data["f"][] = "RANGOS";
                                                                     if($now_ini > $h_ini && $now_fin < $h_fin){
                                                                         $data['ran_dentro'] = 1;
                                                                         if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
