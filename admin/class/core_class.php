@@ -292,7 +292,7 @@ class Core{
                                                                 
                                                                 $resran = $sqlran->get_result();
                                                                 $data["d"] = $resran->fetch_all(MYSQLI_ASSOC);
-                                                                
+                                                                $data["w"] = $dia;
                                                                 while($row = $resran->fetch_assoc()){
 
                                                                     $hora_ini = explode(":", $row["hora_ini"]);
