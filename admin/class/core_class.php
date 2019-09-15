@@ -286,7 +286,7 @@ class Core{
                                                     $data["m"] = "RANGOS";
 
                                                     $dia = date("w", strtotime($fecha));
-                                                    if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini>=? AND t1.dia_fin<=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
+                                                    if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                         if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
                                                             if($sqlran->execute()){
                                                                 
