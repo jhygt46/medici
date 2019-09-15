@@ -388,7 +388,7 @@ class Core{
     private function get_horas_fechas($fecha){
 
         $aux = explode(" ", $fecha);
-        $horas = explode(":", $aux);
+        $horas = explode(":", $aux[1]);
         return intval($horas[0]) * 60 + intval($horas[1]);
 
     }
