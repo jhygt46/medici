@@ -964,7 +964,7 @@ function in_regla(reglas, min, time){
             }
         }
         if(reglas.length == aux){
-            return reglas.length+"-"+aux;
+            return 2;
         }
     }
     return ret;
@@ -1023,7 +1023,7 @@ function horas_reglas(reglas){
                     if(i == 0){
                         while(min <= hr_ini - tiempo){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
-                            console.log("inregla: "+inregla);
+                            console.log("min: "+min+" /inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: min, p: 1 }); }
                             if(inregla == 1){ res.push({ m: min, p: 0 }); }
                             //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
