@@ -1021,6 +1021,7 @@ function horas_reglas(reglas){
                     hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
+                        console.log("min: "+min+" /hr_ini: "+hr_ini+" /tiempo: "+tiempo);
                         while(min <= hr_ini - tiempo){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
                             console.log("min: "+min+" /inregla: "+inregla);
