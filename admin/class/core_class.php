@@ -259,6 +259,7 @@ class Core{
 
                     $id_ser = $_POST["id_ser"];
                     $id_usr = $_POST["id_usr"];
+                    $id_suc = 1;
 
                     if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
                         if($sql->bind_param("ii", $id_ser, $id_usr)){
