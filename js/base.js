@@ -627,8 +627,12 @@ function ver_success(){
     document.getElementById("info").innerHTML = "";
     var aux = create_element_class('cont_info vhalign');
 
+    var fecha = reserva.fecha.split("-");
+    var dia = (parseInt(fecha[0]) < 10) ? "0"+parseInt(fecha[0]) : parseInt(fecha[0]) ;
+    var m = mes[fecha[1]];
+
     var st = create_element_class_inner('success_titulo', 'Reserva realizada!');
-    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+reserva.fecha+' a las '+str_hora(reserva.hora)+' con el medico '+reserva.servicio);
+    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+dia+' de '+m+' de '+fecha[2]+' a las '+str_hora(reserva.hora)+' con el medico '+reserva.servicio);
     var sb = create_element_class_inner('success_bajada', 'Le hemos enviado un correo para confirmar reserva');
 
     aux.appendChild(st);
