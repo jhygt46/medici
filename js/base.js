@@ -485,16 +485,16 @@ function seleccionar_doctor(that){
 }
 function seleccionar_fecha(y, m, d){
     
-    var reserva = get_reserva();
-    reserva.fecha = d+"-"+(m+1)+"-"+y;
-    set_reserva(reserva);
-
     document.getElementById("pre_fecha_h1").innerHTML = d+" "+mes[m]+" "+y;
     document.getElementById("pre_fecha_h2").innerHTML = "fecha";
     document.getElementById("pre_fecha_close").style.display = "block";
 
     var aux_mes = (m + 1 < 10) ? "0"+(m+1) : (m+1) ;
     var aux_dia = (d < 10) ? "0"+d : d ;
+
+    var reserva = get_reserva();
+    reserva.fecha = y+"-"+aux_mes+"-"+aux_dia;
+    set_reserva(reserva);
 
     document.getElementsByName("f_fec")[0].value = y+"-"+aux_mes+"-"+aux_dia;
     ver_horas();
@@ -628,7 +628,7 @@ function ver_success(){
     var aux = create_element_class('cont_info vhalign');
 
     var st = create_element_class_inner('success_titulo', 'Reserva realizada!');
-    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+reserva.fecha+' a las '+reserva.hora+' con el medico '+reserva.servicio);
+    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+reserva.fecha+' a las '+str_hora(reserva.hora)+' con el medico '+reserva.servicio);
     var sb = create_element_class_inner('success_bajada', 'Le hemos enviado un correo para confirmar reserva');
 
     aux.appendChild(st);
@@ -941,6 +941,11 @@ function in_regla(reglas, min, time){
     }
     return false;
 
+}
+function str_hora(hora){
+    var hr = (parseInt(hora/60) < 10) ? "0"+(hora/60) : (hora/60) ;
+    var min = (parseInt(hora%60) < 10) ? "0"+(hora%60) : (hora%60) ;
+    return hr+":"+min;
 }
 function temp(n, m){
     console.log(n);
