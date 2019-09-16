@@ -276,7 +276,7 @@ class Core{
 
                                     $now_ini = intval($hora);
                                     $now_fin = $now_ini + $tiempo;
-                                    $str_hora = $now_ini/60 + "/" + $now_ini%60;
+                                    $str_hora = intval($now_ini/60) + "/" + intval($now_ini%60);
 
                                     if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
                                         if($sqlexc->bind_param("isi", $id_usr, $fecha, $id_ser)){
