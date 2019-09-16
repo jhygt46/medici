@@ -303,16 +303,21 @@ class Core{
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                         if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
                                                             if($sqlran->execute()){
-                                                                $data["s"] = "Rangos";
+                                                                
                                                                 $resran = $sqlran->get_result();
                                                                 while($row = $resran->fetch_assoc()){
-                                                                    $data["t"][] = "Rangos";
+                                                                    
                                                                     $hora_ini = explode(":", $row["hora_ini"]);
                                                                     $hora_fin = explode(":", $row["hora_fin"]);
 
                                                                     $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
                                                                     $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
                                                                     
+                                                                    $data["ni"][] = $now_ini;
+                                                                    $data["nf"][] = $now_fin;
+                                                                    $data["hi"][] = $h_ini;
+                                                                    $data["hf"][] = $h_fin;
+
                                                                     if($now_ini > $h_ini && $now_fin < $h_fin){
 
                                                                         $data['ran_dentro'] = 1;
@@ -330,7 +335,7 @@ class Core{
                                                                             
                                                                         }else{ $data["err"] = "Error: 2"; }
 
-                                                                    }
+                                                                    }else{ $data["err"] = "Error: 3"; }
 
                                                                 }
                                                             }else{}
