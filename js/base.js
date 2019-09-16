@@ -1030,6 +1030,7 @@ function horas_reglas(reglas){
                             //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
                             min += tiempo;
                         }
+                        res.push({ m: hr_ini, p: 1 });
                     }
                     if(i > 0){
                         aux_ini = hr_last;
