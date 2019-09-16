@@ -310,6 +310,7 @@ class Core{
                                                                             $fi_f = $fi + $tiempo;
 
                                                                             $data["fecha"] = $fecha." ".$str_hora;
+                                                                            $data["now_ini"] = $now_ini;
                                                                             $data["fi"] = $fi;
                                                                             $data["fi_f"] = $fi_f;
 
