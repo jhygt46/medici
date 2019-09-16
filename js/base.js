@@ -1019,6 +1019,7 @@ function horas_reglas(reglas){
                     if(i == 0){
                         while(min <= hr_ini - tiempo){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
+                            console.log("inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: min, p: 1 }); }
                             if(inregla == 1){ res.push({ m: min, p: 0 }); }
                             //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
@@ -1029,6 +1030,7 @@ function horas_reglas(reglas){
                         aux_ini = hr_last;                    
                         while(hr_ini - aux_ini >= tiempo){
                             var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
+                            console.log("inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: aux_ini, p: 1 }); }
                             if(inregla == 1){ res.push({ m: aux_ini, p: 0 }); }
                             //if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
@@ -1038,6 +1040,7 @@ function horas_reglas(reglas){
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo){
                             var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
+                            console.log("inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: hr_fin, p: 1 }); }
                             if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
                             //if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push({ m: hr_fin, p: 0 }); }else{ res.push({ m: hr_fin, p: 1 }); }
@@ -1053,6 +1056,7 @@ function horas_reglas(reglas){
                 // MOSTRAR TODAS LAS HORAS
                 while(min <= max){
                     var inregla = in_regla(reglas, min, tiempo_servicio);
+                    console.log("inregla: "+inregla);
                     if(inregla == 0){ res.push({ m: min, p: 1 }); }
                     if(inregla == 1){ res.push({ m: min, p: 0 }); }
                     //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
