@@ -954,8 +954,8 @@ function str_doctor(id){
     }
 }
 function str_hora(hora){
-    var hr = (parseInt(hora/60) < 10) ? "0"+(hora/60) : (hora/60) ;
-    var min = (parseInt(hora%60) < 10) ? "0"+(hora%60) : (hora%60) ;
+    var hr = (parseInt(hora/60) < 10) ? "0"+parseInt(hora/60) : parseInt(hora/60) ;
+    var min = (parseInt(hora%60) < 10) ? "0"+parseInt(hora%60) : parseInt(hora%60) ;
     return hr+":"+min;
 }
 function temp(n, m){
