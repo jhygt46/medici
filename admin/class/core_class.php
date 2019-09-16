@@ -318,7 +318,7 @@ class Core{
                                                                     $data["hi"][] = $h_ini;
                                                                     $data["hf"][] = $h_fin;
 
-                                                                    if($now_ini > $h_ini && $now_fin < $h_fin){
+                                                                    if($now_ini >= $h_ini && $now_fin <= $h_fin){
 
                                                                         $data['ran_dentro'] = 1;
                                                                         if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
