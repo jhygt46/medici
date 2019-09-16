@@ -629,10 +629,10 @@ function ver_success(){
 
     var fecha = reserva.fecha.split("-");
     var dia = (parseInt(fecha[0]) < 10) ? "0"+parseInt(fecha[0]) : parseInt(fecha[0]) ;
-    var m = mes[fecha[1]];
+    var m = mes[fecha[1]-1];
 
     var st = create_element_class_inner('success_titulo', 'Reserva realizada!');
-    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+dia+' de '+m+' de '+fecha[2]+' a las '+str_hora(reserva.hora)+' con el medico '+reserva.servicio);
+    var sd = create_element_class_inner('success_descripcion', 'Reserva para la fecha: '+dia+' de '+m+' de '+fecha[2]+' a las '+str_hora(reserva.hora)+' con el medico '+str_doctor(reserva.doctor));
     var sb = create_element_class_inner('success_bajada', 'Le hemos enviado un correo para confirmar reserva');
 
     aux.appendChild(st);
@@ -945,6 +945,13 @@ function in_regla(reglas, min, time){
     }
     return false;
 
+}
+function str_doctor(id){
+    for(var i=0, ilen=data.doctores.length; i<ilen; i++){
+        if(data.doctores[i].id == id){
+            return data.doctores[i].nombre;
+        }
+    }
 }
 function str_hora(hora){
     var hr = (parseInt(hora/60) < 10) ? "0"+(hora/60) : (hora/60) ;
