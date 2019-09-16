@@ -1042,6 +1042,7 @@ function horas_reglas(reglas){
                             //if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
                             aux_ini += tiempo;
                         }
+                        res.push({ m: hr_ini, p: 1 });
                     }
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo){
