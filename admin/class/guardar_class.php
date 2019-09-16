@@ -154,6 +154,9 @@ class Guardar{
         return $values;
 
     }
+    private function actualizar(){
+        file_get_contents("http://35.225.100.155?accion=actualizar")
+    }
     private function crear_sucursal(){
         
         $id = $_POST['id'];
