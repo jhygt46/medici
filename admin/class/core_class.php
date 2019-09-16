@@ -308,13 +308,16 @@ class Core{
                                                                             $fi = strtotime($fecha." ".$hora);
                                                                             $fi_f = $fi + $tiempo;
 
+                                                                            $data["fecha"] = $fecha." ".$hora;
+                                                                            $data["fi"] = $fi;
+                                                                            $data["fi_f"] = $fi_f;
+
                                                                             $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                                                                             $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
                                                                             if($sqli->execute()){
                                                                                 $idi = $this->con->insert_id;
-                                                                                header("Location: http://35.225.100.155/?status=1");
-                                                                            }else{
-                                                                                $data['ni'] = $sqli;
+                                                                                //header("Location: http://35.225.100.155/?status=1");
+                                                                                return $data;
                                                                             }
                                                                             
                                                                         }
@@ -353,8 +356,6 @@ class Core{
                                                                     header("Location: http://35.225.100.155/?status=1");
                                                                 }
                                                                 
-                                                            }else{
-                                                                $data['ni'] = 1;
                                                             }
                                                         }
 
