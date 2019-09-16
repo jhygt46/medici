@@ -312,10 +312,10 @@ class Core{
                                                                             if($sqli->execute()){
                                                                                 $idi = $this->con->insert_id;
                                                                                 header("Location: http://35.225.100.155/?status=1");
+                                                                            }else{
+                                                                                $data['ni'] = 1;
                                                                             }
                                                                             
-                                                                        }else{
-                                                                            $data['ni'] = 1;
                                                                         }
 
                                                                     }
