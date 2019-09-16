@@ -950,6 +950,7 @@ function in_regla(reglas, min, time){
     var min = min;
     var max = min + time;
     var ret = 0;
+    var aux = 0;
     if(reglas.length > 0){
         for(var x=0, xlen=reglas.length; x<xlen; x++){
             hi = reglas[x].hora_ini.split(":");
@@ -959,8 +960,11 @@ function in_regla(reglas, min, time){
             if(h_ini <= min && h_fin >= max){
                 return 1;
             }else{
-                ret = 2;
+                aux = aux + 1;
             }
+        }
+        if(reglas.length == aux){
+            return 2;
         }
     }
     return ret;
