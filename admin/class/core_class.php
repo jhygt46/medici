@@ -303,10 +303,10 @@ class Core{
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                         if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
                                                             if($sqlran->execute()){
-                                                                
+                                                                $data["s"] = "Rangos";
                                                                 $resran = $sqlran->get_result();
                                                                 while($row = $resran->fetch_assoc()){
-
+                                                                    $data["t"][] = "Rangos";
                                                                     $hora_ini = explode(":", $row["hora_ini"]);
                                                                     $hora_fin = explode(":", $row["hora_fin"]);
 
