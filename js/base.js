@@ -910,22 +910,36 @@ function html_horas(){
     var lista_hrs = create_element_class('lista_hrs');
 
     for(var i=0, ilen=horas.length; i<ilen; i++){
-        console.log(horas[i]);
-        /*
-        html_hora = create_element_class('hora');
-
-        var cero = (parseInt(horas[i]%60) < 10) ? "0"+(horas[i]%60) : (horas[i]%60) ;    
-        var dtl = create_element_class_inner('dtl valign', parseInt(horas[i]/60)+':'+cero);
-        var reserv = create_element_class_inner('reserva valign', 'reservar');
         
-        html_hora.appendChild(dtl);
-        html_hora.appendChild(reserv);
-        html_hora.setAttribute('id', horas[i]);
-        html_hora.onclick = function(){ seleccionar_hora(this) };
+        var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
+        var hr = (parseInt(horas[i].m/60) < 10) ? "0"+parseInt(horas[i].m/60) : parseInt(horas[i].m/60) ;       
+        
+        if(horas[i].p == 0){
+            
+            html_hora = create_element_class('hora');
+            var dtl = create_element_class_inner('dtl valign', hr+':'+min);
+            var reserv = create_element_class_inner('reserva valign', 'reservar');
+            
+            html_hora.appendChild(dtl);
+            html_hora.appendChild(reserv);
+            html_hora.setAttribute('id', horas[i].m);
+            html_hora.onclick = function(){ seleccionar_hora(this) };
 
-        lista_hrs.appendChild(html_hora);
-        */
+            lista_hrs.appendChild(html_hora);
+
+        }else{
+
+            html_hora = create_element_class('hora');
+            var dtl = create_element_class_inner('dtl valign', hr+':'+min);
+            var reserv = create_element_class_inner('reserva valign', 'NO PUEDE RESERVAR');
+            
+            html_hora.appendChild(dtl);
+            html_hora.appendChild(reserv);
+            lista_hrs.appendChild(html_hora);
+
+        }
     }
+
     cont_hrs.appendChild(lista_hrs);
     html_horas.appendChild(cont_hrs);
     return html_horas;
