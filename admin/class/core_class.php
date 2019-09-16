@@ -282,8 +282,8 @@ class Core{
 
                                                 $resexc = $sqlexc->get_result();
                                                 if($resexc->{"num_rows"} == 0){
-                                                    
-                                                    $data["m"] = "RANGOS";
+
+                                                    $data["m"] = "Rangos";
 
                                                     $dia = date("w", strtotime($fecha));
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
@@ -291,12 +291,6 @@ class Core{
                                                             if($sqlran->execute()){
                                                                 
                                                                 $resran = $sqlran->get_result();
-                                                                //$data["res"] = $resran->fetch_all(MYSQLI_ASSOC);
-                                                                
-                                                                $data["id_usr"] = $id_usr;
-                                                                $data["dia"] = $dia;
-                                                                $data["id_ser"] = $id_ser;
-
                                                                 while($row = $resran->fetch_assoc()){
 
                                                                     $hora_ini = explode(":", $row["hora_ini"]);
@@ -306,12 +300,22 @@ class Core{
                                                                     $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
                                                                     
                                                                     if($now_ini > $h_ini && $now_fin < $h_fin){
+
                                                                         $data['ran_dentro'] = 1;
                                                                         if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
-                                                                            $data['op'] = 1;
-                                                                            $data['msg'] = "Hora Insertada";
-                                                                            return $data;
+                                                                            
+                                                                            $fi = strtotime($fecha." ".$hora);
+                                                                            $fi_f = $fi + $tiempo;
+
+                                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                                                                            $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $valor, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                            if($sqli->execute()){
+                                                                                $idi = $this->con->insert_id;
+                                                                                header("Location: http://35.225.100.155/?status=1");
+                                                                            }
+                                                                            
                                                                         }
+
                                                                     }
 
                                                                 }
@@ -335,10 +339,17 @@ class Core{
                                                         if($now_ini > $h_ini && $now_fin < $h_fin){
                                                             $data['exc_dentro'] = 1;
                                                             if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
-                                                                // INSERTAR HORA
-                                                                $data['op'] = 1;
-                                                                $data['msg'] = "Hora Insertada";
-                                                                return $data;
+                                                                
+                                                                $fi = strtotime($fecha." ".$hora);
+                                                                $fi_f = $fi + $tiempo;
+
+                                                                $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                                                                $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $valor, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                if($sqli->execute()){
+                                                                    $idi = $this->con->insert_id;
+                                                                    header("Location: http://35.225.100.155/?status=1");
+                                                                }
+                                                                
                                                             }
                                                         }
 
