@@ -988,7 +988,7 @@ function temp(n, m){
 }
 function horas_reglas(reglas){
 
-    var min=9999999, max=0, tiempo=30, lapse=15, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0;
+    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0;
     var reserva = get_reserva();
 
     if(reglas.length > 0){
@@ -1022,7 +1022,7 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         console.log("min: "+min+" /hr_ini: "+hr_ini+" /tiempo: "+tiempo);
-                        while(min <= hr_ini - tiempo){
+                        while(min <= hr_ini){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
                             console.log("min: "+min+" /inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: min, p: 1 }); }
@@ -1032,7 +1032,7 @@ function horas_reglas(reglas){
                         }
                     }
                     if(i > 0){
-                        aux_ini = hr_last;                    
+                        aux_ini = hr_last;
                         while(hr_ini - aux_ini >= tiempo){
                             var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
                             console.log("aux_ini: "+aux_ini+" /inregla: "+inregla);
