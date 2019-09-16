@@ -964,7 +964,7 @@ function in_regla(reglas, min, time){
             }
         }
         if(reglas.length == aux){
-            return 2;
+            return reglas.length+"-"+aux;
         }
     }
     return ret;
