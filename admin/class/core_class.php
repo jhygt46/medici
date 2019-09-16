@@ -321,17 +321,11 @@ class Core{
                                                                             $fi = strtotime($fecha." ".$str_hora);
                                                                             $fi_f = $fi + ($tiempo * 60);
 
-                                                                            $data["fecha"] = $fecha." ".$str_hora;
-                                                                            $data["now_ini"] = $now_ini;
-                                                                            $data["fi"] = $fi;
-                                                                            $data["fi_f"] = $fi_f;
-
                                                                             $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                                                                             $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
                                                                             if($sqli->execute()){
                                                                                 $idi = $this->con->insert_id;
-                                                                                //header("Location: http://35.225.100.155/?status=1");
-                                                                                return $data;
+                                                                                header("Location: http://35.225.100.155/?status=1");
                                                                             }
                                                                             
                                                                         }
