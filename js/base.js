@@ -908,8 +908,10 @@ function html_horas(){
     var titulo_hrs = create_element_class_inner('titulo_hrs', 'Seleccione hora');
     cont_hrs.appendChild(titulo_hrs);
     var lista_hrs = create_element_class('lista_hrs');
+
     for(var i=0, ilen=horas.length; i<ilen; i++){
-        
+        console.log(horas[i]);
+        /*
         html_hora = create_element_class('hora');
 
         var cero = (parseInt(horas[i]%60) < 10) ? "0"+(horas[i]%60) : (horas[i]%60) ;    
@@ -922,7 +924,7 @@ function html_horas(){
         html_hora.onclick = function(){ seleccionar_hora(this) };
 
         lista_hrs.appendChild(html_hora);
-
+        */
     }
     cont_hrs.appendChild(lista_hrs);
     html_horas.appendChild(cont_hrs);
@@ -978,9 +980,7 @@ function horas_reglas(reglas){
             if(h_fin > max){ max = h_fin; }
         }
     }
-    
     console.log(min+"//"+max);
-    
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
             
@@ -992,6 +992,7 @@ function horas_reglas(reglas){
             }
 
             if(Array.isArray(data.doctores[j].horas)){
+
                 for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
 
                     aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
@@ -1000,26 +1001,27 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo){
-                            if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
+                            if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
                             min += tiempo;
                         }
                     }
                     if(i > 0){
                         aux_ini = hr_last;                    
                         while(hr_ini - aux_ini >= tiempo){
-                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push(aux_ini); temp(2, aux_ini); }
+                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
                             aux_ini += tiempo;
                         }
                     }
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo){
-                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push(hr_fin); temp(3, hr_fin); }
+                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push({ m: hr_fin, p: 0 }); }else{ res.push({ m: hr_fin, p: 1 }); }
                             hr_fin += tiempo;
                         }
                     }
                     hr_last = hr_fin;
 
                 }
+
             }else{
                 // MOSTRAR TODAS LAS HORAS
                 
