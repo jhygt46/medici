@@ -493,7 +493,7 @@ function seleccionar_fecha(y, m, d){
     var aux_dia = (d < 10) ? "0"+d : d ;
 
     var reserva = get_reserva();
-    reserva.fecha = y+"-"+aux_mes+"-"+aux_dia;
+    reserva.fecha = d+"-"+(m+1)+"-"+y;
     set_reserva(reserva);
 
     document.getElementsByName("f_fec")[0].value = y+"-"+aux_mes+"-"+aux_dia;
