@@ -314,6 +314,8 @@ class Core{
                                                                                 header("Location: http://35.225.100.155/?status=1");
                                                                             }
                                                                             
+                                                                        }else{
+                                                                            $data['ni'] = 1;
                                                                         }
 
                                                                     }
@@ -350,6 +352,8 @@ class Core{
                                                                     header("Location: http://35.225.100.155/?status=1");
                                                                 }
                                                                 
+                                                            }else{
+                                                                $data['ni'] = 1;
                                                             }
                                                         }
 
