@@ -276,8 +276,18 @@ class Core{
 
                                     $now_ini = intval($hora);
                                     $now_fin = $now_ini + $tiempo;
-                                    $str_hr1 = (intval($now_ini/60) < 10) ? intval($now_ini/60) : "0".intval($now_ini/60) ;
-                                    $str_hr2 = (intval($now_ini%60) < 10) ? intval($now_ini%60) : "0".intval($now_ini%60) ;
+
+                                    if(intval($now_ini/60) < 10){
+                                        $str_hr1 = "0".intval($now_ini/60);
+                                    }else{
+                                        $str_hr1 = intval($now_ini/60);
+                                    }
+                                    if(intval($now_ini%60) < 10){
+                                        $str_hr2 = "0".intval($now_ini%60);
+                                    }else{
+                                        $str_hr2 = intval($now_ini%60);
+                                    }
+                                    
                                     $str_hora = $str_hr1."*".$str_hr2.":00";
 
                                     if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
