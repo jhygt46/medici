@@ -931,7 +931,7 @@ function html_horas(){
 
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
-            var reserv = create_element_class_inner('reserva valign', 'NO PUEDE RESERVAR');
+            var reserv = create_element_class_inner('reserva valign', 'Reservado..');
             
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
@@ -949,6 +949,7 @@ function in_regla(reglas, min, time){
 
     var min = min;
     var max = min + time;
+    var ret = 0;
     if(reglas.length > 0){
         for(var x=0, xlen=reglas.length; x<xlen; x++){
             hi = reglas[x].hora_ini.split(":");
@@ -956,11 +957,13 @@ function in_regla(reglas, min, time){
             h_ini = parseInt(hi[0]) * 60 + parseInt(hi[1]);
             h_fin = parseInt(hf[0]) * 60 + parseInt(hf[1]);
             if(h_ini <= min && h_fin >= max){
-                return true;
+                return 1;
+            }else{
+                ret = 2;
             }
         }
     }
-    return false;
+    return ret;
 
 }
 function str_doctor(id){
@@ -1015,20 +1018,29 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         while(min <= hr_ini - tiempo){
-                            if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
+                            var inregla = in_regla(reglas, min, tiempo_servicio);
+                            if(inregla == 0){ res.push({ m: min, p: 1 }); }
+                            if(inregla == 1){ res.push({ m: min, p: 0 }); }
+                            //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
                             min += tiempo;
                         }
                     }
                     if(i > 0){
                         aux_ini = hr_last;                    
                         while(hr_ini - aux_ini >= tiempo){
-                            if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
+                            var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
+                            if(inregla == 0){ res.push({ m: aux_ini, p: 1 }); }
+                            if(inregla == 1){ res.push({ m: aux_ini, p: 0 }); }
+                            //if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
                             aux_ini += tiempo;
                         }
                     }
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo){
-                            if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push({ m: hr_fin, p: 0 }); }else{ res.push({ m: hr_fin, p: 1 }); }
+                            var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
+                            if(inregla == 0){ res.push({ m: hr_fin, p: 1 }); }
+                            if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
+                            //if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push({ m: hr_fin, p: 0 }); }else{ res.push({ m: hr_fin, p: 1 }); }
                             hr_fin += tiempo;
                         }
                     }
@@ -1037,12 +1049,16 @@ function horas_reglas(reglas){
                 }
 
             }else{
+
                 // MOSTRAR TODAS LAS HORAS
-                
                 while(min <= max){
-                    if(in_regla(reglas, min, tiempo_servicio)){ res.push(min); temp(1, min); }
+                    var inregla = in_regla(reglas, min, tiempo_servicio);
+                    if(inregla == 0){ res.push({ m: min, p: 1 }); }
+                    if(inregla == 1){ res.push({ m: min, p: 0 }); }
+                    //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
                     min += tiempo;
                 }
+
             }
         }
     }
