@@ -276,6 +276,7 @@ class Core{
 
                                     $now_ini = intval($hora);
                                     $now_fin = $now_ini + $tiempo;
+                                    $str_hora = $now_ini/60 + "/" + $now_ini%60;
 
                                     if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
                                         if($sqlexc->bind_param("isi", $id_usr, $fecha, $id_ser)){
@@ -305,10 +306,10 @@ class Core{
                                                                         $data['ran_dentro'] = 1;
                                                                         if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
                                                                             
-                                                                            $fi = strtotime($fecha." ".$hora);
+                                                                            $fi = strtotime($fecha." ".$str_hora);
                                                                             $fi_f = $fi + $tiempo;
 
-                                                                            $data["fecha"] = $fecha." ".$hora;
+                                                                            $data["fecha"] = $fecha." ".$str_hora;
                                                                             $data["fi"] = $fi;
                                                                             $data["fi_f"] = $fi_f;
 
@@ -346,7 +347,7 @@ class Core{
                                                             $data['exc_dentro'] = 1;
                                                             if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
                                                                 
-                                                                $fi = strtotime($fecha." ".$hora);
+                                                                $fi = strtotime($fecha." ".$str_hora);
                                                                 $fi_f = $fi + $tiempo;
 
                                                                 $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
