@@ -269,7 +269,7 @@ class Core{
 
                                     $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
                                     $tiempo = $aux_ser["tiempo_min"];
-                                    $valor = $aux_ser["valor"];
+                                    $precio = $aux_ser["precio"];
                                     $fecha = $_POST["f_fec"];
                                     $hora = $_POST["f_hor"];
 
@@ -308,7 +308,7 @@ class Core{
                                                                             $fi_f = $fi + $tiempo;
 
                                                                             $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                            $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $valor, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                            $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
                                                                             if($sqli->execute()){
                                                                                 $idi = $this->con->insert_id;
                                                                                 header("Location: http://35.225.100.155/?status=1");
@@ -346,7 +346,7 @@ class Core{
                                                                 $fi_f = $fi + $tiempo;
 
                                                                 $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $valor, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
                                                                 if($sqli->execute()){
                                                                     $idi = $this->con->insert_id;
                                                                     header("Location: http://35.225.100.155/?status=1");
