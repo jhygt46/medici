@@ -1022,7 +1022,7 @@ function horas_reglas(reglas){
                     
                     if(i == 0){
                         console.log("min: "+min+" /hr_ini: "+hr_ini+" /tiempo: "+tiempo);
-                        while(min <= hr_ini){
+                        while(min <= hr_ini - tiempo){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
                             console.log("min: "+str_hora(min)+" /inregla: "+inregla);
                             if(inregla == 0){ res.push({ m: min, p: 1 }); }
