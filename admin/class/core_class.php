@@ -319,7 +319,7 @@ class Core{
                                                                         if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
                                                                             
                                                                             $fi = strtotime($fecha." ".$str_hora);
-                                                                            $fi_f = $fi + $tiempo;
+                                                                            $fi_f = $fi + ($tiempo * 60);
 
                                                                             $data["fecha"] = $fecha." ".$str_hora;
                                                                             $data["now_ini"] = $now_ini;
