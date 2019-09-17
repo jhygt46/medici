@@ -886,7 +886,7 @@ function html_horas(){
     var horas = [];
 
     if(exc.op){
-        horas = horas_reglas(exc.excepciones);
+        horas = horas_reglas(exc.excepciones, fecha);
         console.log("excepciones");
         console.log(exc.excepciones);
         console.log(horas);
@@ -898,7 +898,7 @@ function html_horas(){
                 rangos.push(data.rangos[i]);
             }
         }
-        horas = horas_reglas(rangos);
+        horas = horas_reglas(rangos, fecha);
         console.log("rangos");
         console.log(rangos);
         console.log(horas);
@@ -998,7 +998,7 @@ function temp(n, m){
     console.log(n);
     console.log(parseInt(m/60) + ":" + m%60);
 }
-function horas_reglas(reglas){
+function horas_reglas(reglas, fecha){
 
     var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
     var reserva = get_reserva();
@@ -1013,7 +1013,7 @@ function horas_reglas(reglas){
             if(h_fin > max){ max = h_fin; }
         }
     }
-    console.log(min+"//"+max);
+    //console.log(min+"//"+max);
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
             
@@ -1032,6 +1032,7 @@ function horas_reglas(reglas){
                     dia = data.doctores[j].horas[i].fecha.split(" ")[0].split("-");
                     console.log("dia");
                     console.log(dia);
+                    console.log(fecha);
                     hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
                     hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
