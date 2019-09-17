@@ -155,7 +155,7 @@ class Guardar{
 
     }
     private function actualizar(){
-        file_get_contents("http://35.225.100.155?accion=actualizar")
+        file_get_contents("http://35.225.100.155?accion=actualizar");
     }
     private function crear_sucursal(){
         
