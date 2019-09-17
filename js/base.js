@@ -996,6 +996,8 @@ function str_hora(hora){
 }
 function horas_dia(horas, fecha){
 
+    console.log(horas);
+
     var ret = [];
     if(Array.isArray(horas)){
         var dia = horas.fecha.split(" ")[0].split("-");
