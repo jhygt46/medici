@@ -189,7 +189,7 @@ if(isset($_GET["status"])){
                                                 <h3>Telefono:</h3>
                                                 <div class="input"><input type="text" name="telefono" placeholder="" /></div>
                                                 <h3>Telefono:</h3>
-                                                <div class="input"><TEXTAREA name="asunto"></TEXTAREA></div>
+                                                <div class="input"><TEXTAREA class="txta" name="asunto"></TEXTAREA></div>
                                                 <h6>reCAPTCHA:</h6>
                                                 <div class="g-recaptcha" data-sitekey="6Lf8j3sUAAAAAFEPARLhuiWamomIvm35UBCqf65R"></div>
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
