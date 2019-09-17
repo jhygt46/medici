@@ -182,30 +182,16 @@ if(isset($_GET["status"])){
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
                                                 <div class="input"><input type="text" name="rut" placeholder="" /></div>
-                                                <h3>Nombre completo:</h3>
-                                                <div class="input"><input type="text" name="nombre" placeholder="" /></div>
                                                 <h3>Correo electronico:</h3>
                                                 <div class="input"><input type="text" name="correo" placeholder="" /></div>
-                                                <h3>Telefono:</h3>
+                                                <h3>Asunto:</h3>
                                                 <div class="input"><input type="text" name="telefono" placeholder="" /></div>
-                                                <h3>Telefono:</h3>
+                                                <h3>Mensaje:</h3>
                                                 <div class="input"><TEXTAREA class="txta" name="asunto"></TEXTAREA></div>
-                                                <h6>reCAPTCHA:</h6>
+                                                <h3>reCAPTCHA:</h3>
                                                 <div class="g-recaptcha" data-sitekey="6Lf8j3sUAAAAAFEPARLhuiWamomIvm35UBCqf65R"></div>
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                             </form>
-                                            
-                                            <!--
-                                            <div class="titulo">Nombre</div>
-                                            <input class="input" type="text" id="nombre" />
-                                            <div class="titulo">Correo</div>
-                                            <input class="input" type="text" id="correo" />
-                                            <div class="titulo">Asunto</div>
-                                            <input class="input" type="text" id="asunto" />
-                                            <div class="titulo">Mensaje</div>
-                                            <TEXTAREA class="txta" id="mensaje"></TEXTAREA>
-                                            <input class="enviar" type="submit" value="Enviar" />
-                                            -->
 
                                         </div>
                                     </div>
