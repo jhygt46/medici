@@ -75,6 +75,17 @@ if(isset($_GET["status"])){
                     </div>
                 </div>
             </div>
+            <div class="pop_up" id="pop_up2">
+                <div class="cont_pop">
+                    <div class="pop vhalign">
+                        <div class="cp">
+                            <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
+                            <div class="titulo">Ingresa tus datos</div>
+                            <div class="ser_usr_html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="menu m1" style="top: 0px; left: -280px; z-index: 5">
                 <div class="cont_menu">
                     <div class="data_menu">

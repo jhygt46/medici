@@ -1289,6 +1289,7 @@ function calendario_completo(now){
 }
 function ver_servicio_pop(that){
 
+    document.getElementById('pop_up2').style.display = 'block';
     var ver = that.getAttribute('id');
     var valores = ver.split(" ");
 
