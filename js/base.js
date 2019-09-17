@@ -1072,7 +1072,7 @@ function horas_reglas(reglas, fecha){
             }else{
 
                 // MOSTRAR TODAS LAS HORAS
-                while(min <= max){
+                while(min <= max - tiempo){
                     var inregla = in_regla(reglas, min, tiempo_servicio);
                     if(inregla == 1){ res.push({ m: min, p: 0 }); }
                     if(inregla == 2){ res.push({ m: min, p: 2 }); }
