@@ -587,27 +587,31 @@ html{
                                         .cont_forms{
                                             display: block;
                                             padding: 0px 3% 40px 3%;
-                                            .titulo{
+                                            .h3{
                                                 display: block;
                                                 font-size: 18px;
                                             }
                                             .input{
-                                                width: 100%;
-                                                height: 35px;
-                                                border: 0px;
+                                                input{
+                                                    width: 100%;
+                                                    height: 35px;
+                                                    border: 0px;
+                                                }
+                                                .txta{
+                                                    width: 100%;
+                                                    height: 65px;
+                                                    border: 0px;
+                                                    margin-bottom: 10px;
+                                                }
                                             }
-                                            .txta{
-                                                width: 100%;
-                                                height: 65px;
-                                                border: 0px;
-                                                margin-bottom: 10px;
-                                            }
-                                            .enviar{
-                                                background: #333;
-                                                color: #fff;
-                                                font-size: 14px;
-                                                padding: 8px 28px;
-                                                border: 0px;
+                                            .acciones{
+                                                input{
+                                                    background: #333;
+                                                    color: #fff;
+                                                    font-size: 14px;
+                                                    padding: 8px 28px;
+                                                    border: 0px;
+                                                }
                                             }
                                         }
                                     }
