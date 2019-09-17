@@ -81,7 +81,7 @@ if(isset($_GET["status"])){
                         <div class="cp">
                             <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
                             <div class="titulo">Ingresa tus datos</div>
-                            <div class="ser_usr_html"></div>
+                            <div class="ser_usr_html" id="p2_html"></div>
                         </div>
                     </div>
                 </div>
