@@ -584,7 +584,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms {
   display: block;
-  padding: 0px 3% 40px 3%;
+  padding: 0px 4% 0px 4%;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms h3 {
   display: block;
@@ -600,6 +600,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
   height: 65px;
   border: 0px;
   margin-bottom: 10px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .acciones {
+  padding-top: 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .acciones input {
   background: #333;
