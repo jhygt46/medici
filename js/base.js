@@ -560,7 +560,7 @@ function sitio_contacto(){
         
         var myLatLng = { lat: -33.439834, lng: -70.616914 };
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
+            zoom: 10,
             center: myLatLng
         });
         var marker = new google.maps.Marker({
