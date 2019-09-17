@@ -996,13 +996,13 @@ function str_hora(hora){
 }
 function horas_dia(horas, fecha){
 
-    console.log(horas);
-
     var ret = [];
     if(Array.isArray(horas)){
-        var dia = horas.fecha.split(" ")[0].split("-");
-        if(dia[0] == fecha[2] && dia[1] == fecha[1] && dia[2] == fecha[0]){
-            ret.push(horas[i]);
+        for(var i=0, ilen=horas.length; i<ilen; i++){
+            var dia = horas[i].fecha.split(" ")[0].split("-");
+            if(dia[0] == fecha[2] && dia[1] == fecha[1] && dia[2] == fecha[0]){
+                ret.push(horas[i]);
+            }
         }
     }
     return ret;
