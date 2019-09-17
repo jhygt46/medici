@@ -1059,7 +1059,7 @@ function horas_reglas(reglas, fecha){
                             while(hr_fin <= max - tiempo){
                                 var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
                                 if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
-                                if(inregla == 0){ res.push({ m: hr_fin, p: 2 }); }
+                                if(inregla == 2){ res.push({ m: hr_fin, p: 2 }); }
                                 hr_fin += tiempo;
                             }
                         }
