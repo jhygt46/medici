@@ -79,8 +79,7 @@ if(isset($_GET["status"])){
                 <div class="cont_pop">
                     <div class="pop vhalign">
                         <div class="cp">
-                            <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
-                            <div class="titulo">Ingresa tus datos</div>
+                            <div class="close" id="close" onclick="close2()"><div class="cc c1"></div><div class="cc c2"></div></div>
                             <div class="ser_usr_html" id="p2_html"></div>
                         </div>
                     </div>

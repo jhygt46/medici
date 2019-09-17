@@ -544,6 +544,9 @@ function seleccionar_hora_id(){
 function close(){
     document.getElementById('pop_up').style.display = 'none';
 }
+function close2(){
+    document.getElementById('pop_up2').style.display = 'none';
+}
 function sitio_contacto(){
 
     var sitios = document.getElementsByClassName("sitio_pagina");
