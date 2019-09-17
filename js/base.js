@@ -927,7 +927,8 @@ function html_horas(){
 
             lista_hrs.appendChild(html_hora);
 
-        }else{
+        }
+        if(horas[i].p == 1){
 
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
@@ -938,6 +939,18 @@ function html_horas(){
             lista_hrs.appendChild(html_hora);
 
         }
+        if(horas[i].p == 2){
+
+            html_hora = create_element_class('hora');
+            var dtl = create_element_class_inner('dtl valign', hr+':'+min);
+            var reserv = create_element_class_inner('reserva valign', 'Fuera de Rango..');
+            
+            html_hora.appendChild(dtl);
+            html_hora.appendChild(reserv);
+            lista_hrs.appendChild(html_hora);
+
+        }
+
     }
 
     cont_hrs.appendChild(lista_hrs);
@@ -949,7 +962,6 @@ function in_regla(reglas, min, time){
 
     var min = min;
     var max = min + time;
-    var ret = 0;
     var aux = 0;
     if(reglas.length > 0){
         for(var x=0, xlen=reglas.length; x<xlen; x++){
@@ -967,7 +979,6 @@ function in_regla(reglas, min, time){
             return 2;
         }
     }
-    return ret;
 
 }
 function str_doctor(id){
@@ -988,7 +999,7 @@ function temp(n, m){
 }
 function horas_reglas(reglas){
 
-    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0;
+    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
     var reserva = get_reserva();
 
     if(reglas.length > 0){
@@ -1017,17 +1028,17 @@ function horas_reglas(reglas){
                 for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
 
                     aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
+                    dia = data.doctores[j].horas[i].fecha.split(" ")[0].split("-");
+                    console.log("dia");
+                    console.log(dia);
                     hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
                     hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
                     
                     if(i == 0){
-                        console.log("min: "+min+" /hr_ini: "+hr_ini+" /tiempo: "+tiempo);
                         while(min <= hr_ini - tiempo){
                             var inregla = in_regla(reglas, min, tiempo_servicio);
-                            console.log("min: "+str_hora(min)+" /inregla: "+inregla);
-                            if(inregla == 0){ res.push({ m: min, p: 1 }); }
                             if(inregla == 1){ res.push({ m: min, p: 0 }); }
-                            //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
+                            if(inregla == 2){ res.push({ m: min, p: 2 }); }
                             min += tiempo;
                         }
                         res.push({ m: hr_ini, p: 1 });
@@ -1036,10 +1047,8 @@ function horas_reglas(reglas){
                         aux_ini = hr_last;
                         while(hr_ini - aux_ini >= tiempo){
                             var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
-                            console.log("aux_ini: "+str_hora(aux_ini)+" /inregla: "+inregla);
-                            if(inregla == 0){ res.push({ m: aux_ini, p: 1 }); }
                             if(inregla == 1){ res.push({ m: aux_ini, p: 0 }); }
-                            //if(in_regla(reglas, aux_ini, tiempo_servicio)){ res.push({ m: aux_ini, p: 0 }); }else{ res.push({ m: aux_ini, p: 1 }); }
+                            if(inregla == 2){ res.push({ m: aux_ini, p: 2 }); }
                             aux_ini += tiempo;
                         }
                         res.push({ m: hr_ini, p: 1 });
@@ -1047,10 +1056,8 @@ function horas_reglas(reglas){
                     if(i == ilen - 1){
                         while(hr_fin <= max - tiempo){
                             var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
-                            console.log("hr_fin: "+str_hora(hr_fin)+" /inregla: "+inregla);
-                            if(inregla == 0){ res.push({ m: hr_fin, p: 1 }); }
                             if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
-                            //if(in_regla(reglas, hr_fin, tiempo_servicio)){ res.push({ m: hr_fin, p: 0 }); }else{ res.push({ m: hr_fin, p: 1 }); }
+                            if(inregla == 0){ res.push({ m: hr_fin, p: 2 }); }
                             hr_fin += tiempo;
                         }
                     }
@@ -1063,10 +1070,8 @@ function horas_reglas(reglas){
                 // MOSTRAR TODAS LAS HORAS
                 while(min <= max){
                     var inregla = in_regla(reglas, min, tiempo_servicio);
-                    console.log("minx: "+str_hora(min)+" /inregla: "+inregla);
-                    if(inregla == 0){ res.push({ m: min, p: 1 }); }
                     if(inregla == 1){ res.push({ m: min, p: 0 }); }
-                    //if(in_regla(reglas, min, tiempo_servicio)){ res.push({ m: min, p: 0 }); }else{ res.push({ m: min, p: 1 }); }
+                    if(inregla == 2){ res.push({ m: min, p: 2 }); }
                     min += tiempo;
                 }
 
