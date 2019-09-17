@@ -994,9 +994,17 @@ function str_hora(hora){
     var min = (parseInt(hora%60) < 10) ? "0"+parseInt(hora%60) : parseInt(hora%60) ;
     return hr+":"+min;
 }
-function temp(n, m){
-    console.log(n);
-    console.log(parseInt(m/60) + ":" + m%60);
+function horas_dia(horas, fecha){
+
+    var ret = [];
+    if(Array.isArray(horas)){
+        var dia = horas[i].fecha.split(" ")[0].split("-");
+        if(dia[0] == fecha[2] && dia[1] == fecha[1] && dia[2] == fecha[0]){
+            ret.push(horas[i]);
+        }
+    }
+    return ret;
+
 }
 function horas_reglas(reglas, fecha){
 
@@ -1013,7 +1021,7 @@ function horas_reglas(reglas, fecha){
             if(h_fin > max){ max = h_fin; }
         }
     }
-    //console.log(min+"//"+max);
+
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
             
@@ -1024,48 +1032,46 @@ function horas_reglas(reglas, fecha){
                 }
             }
 
-            if(Array.isArray(data.doctores[j].horas)){
+            var horas = horas_dia(data.doctores[j].horas, fecha);
+            console.log("HORAS");
+            console.log(horas);
+            if(horas.length > 0){
 
-                for(var i=0, ilen=data.doctores[j].horas.length; i<ilen; i++){
+                for(var i=0, ilen=horas.length; i<ilen; i++){
 
-                    aux = data.doctores[j].horas[i].fecha.split(" ")[1].split(":");
-                    dia = data.doctores[j].horas[i].fecha.split(" ")[0].split("-");
+                    aux = horas[i].fecha.split(" ")[1].split(":");
 
-                    if(dia[0] == fecha[2] && dia[1] == fecha[1] && dia[2] == fecha[0]){
-
-                        hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
-                        hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
-                        
-                        if(i == 0){
-                            while(min <= hr_ini - tiempo){
-                                var inregla = in_regla(reglas, min, tiempo_servicio);
-                                if(inregla == 1){ res.push({ m: min, p: 0 }); }
-                                if(inregla == 2){ res.push({ m: min, p: 2 }); }
-                                min += tiempo;
-                            }
-                            res.push({ m: hr_ini, p: 1 });
+                    hr_ini = parseInt(aux[0] * 60) + parseInt(aux[1]);
+                    hr_fin = hr_ini + parseInt(data.doctores[j].horas[i].tiempo);
+                    
+                    if(i == 0){
+                        while(min <= hr_ini - tiempo){
+                            var inregla = in_regla(reglas, min, tiempo_servicio);
+                            if(inregla == 1){ res.push({ m: min, p: 0 }); }
+                            if(inregla == 2){ res.push({ m: min, p: 2 }); }
+                            min += tiempo;
                         }
-                        if(i > 0){
-                            aux_ini = hr_last;
-                            while(hr_ini - aux_ini >= tiempo){
-                                var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
-                                if(inregla == 1){ res.push({ m: aux_ini, p: 0 }); }
-                                if(inregla == 2){ res.push({ m: aux_ini, p: 2 }); }
-                                aux_ini += tiempo;
-                            }
-                            res.push({ m: hr_ini, p: 1 });
-                        }
-                        if(i == ilen - 1){
-                            while(hr_fin <= max - tiempo){
-                                var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
-                                if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
-                                if(inregla == 2){ res.push({ m: hr_fin, p: 2 }); }
-                                hr_fin += tiempo;
-                            }
-                        }
-                        hr_last = hr_fin;
-
+                        res.push({ m: hr_ini, p: 1 });
                     }
+                    if(i > 0){
+                        aux_ini = hr_last;
+                        while(hr_ini - aux_ini >= tiempo){
+                            var inregla = in_regla(reglas, aux_ini, tiempo_servicio);
+                            if(inregla == 1){ res.push({ m: aux_ini, p: 0 }); }
+                            if(inregla == 2){ res.push({ m: aux_ini, p: 2 }); }
+                            aux_ini += tiempo;
+                        }
+                        res.push({ m: hr_ini, p: 1 });
+                    }
+                    if(i == ilen - 1){
+                        while(hr_fin <= max - tiempo){
+                            var inregla = in_regla(reglas, hr_fin, tiempo_servicio);
+                            if(inregla == 1){ res.push({ m: hr_fin, p: 0 }); }
+                            if(inregla == 2){ res.push({ m: hr_fin, p: 2 }); }
+                            hr_fin += tiempo;
+                        }
+                    }
+                    hr_last = hr_fin;
 
                 }
 
