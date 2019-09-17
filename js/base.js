@@ -998,7 +998,7 @@ function horas_dia(horas, fecha){
 
     var ret = [];
     if(Array.isArray(horas)){
-        var dia = horas[i].fecha.split(" ")[0].split("-");
+        var dia = horas.fecha.split(" ")[0].split("-");
         if(dia[0] == fecha[2] && dia[1] == fecha[1] && dia[2] == fecha[0]){
             ret.push(horas[i]);
         }
