@@ -177,7 +177,7 @@ if(isset($_GET["status"])){
                                 <div class="cont_cont clearfix">
                                     <div class="cont_form">
                                         <div class="cont_forms">
-                                            <!--
+                                            
                                             <form onsubmit="return send2()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
@@ -192,7 +192,8 @@ if(isset($_GET["status"])){
                                                 <div class="g-recaptcha" data-sitekey="6Lf8j3sUAAAAAFEPARLhuiWamomIvm35UBCqf65R"></div>
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                             </form>
-                                            -->
+                                            
+                                            <!--
                                             <div class="titulo">Nombre</div>
                                             <input class="input" type="text" id="nombre" />
                                             <div class="titulo">Correo</div>
@@ -202,6 +203,8 @@ if(isset($_GET["status"])){
                                             <div class="titulo">Mensaje</div>
                                             <TEXTAREA class="txta" id="mensaje"></TEXTAREA>
                                             <input class="enviar" type="submit" value="Enviar" />
+                                            -->
+
                                         </div>
                                     </div>
                                     <div class="cont_map" id="map">B</div>
