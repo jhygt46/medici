@@ -171,7 +171,7 @@ html body #contenedor .sitio .cont_sitio .titulo_pagina {
   position: fixed;
   width: 100%;
   height: 140px;
-  background: #66A;
+  background: #fff;
   z-index: 2;
   border-bottom: 1px solid #999;
 }
@@ -207,7 +207,7 @@ html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_l
   float: right;
   font-size: 18px;
   text-align: right;
-  color: #fff;
+  color: #999;
   font-weight: bold;
 }
 html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_logo .botones .btns .btn1 {
