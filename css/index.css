@@ -586,7 +586,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
   display: block;
   padding: 0px 3% 40px 3%;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .h3 {
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms h3 {
   display: block;
   font-size: 18px;
 }
