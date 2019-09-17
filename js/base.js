@@ -1300,6 +1300,7 @@ function ver_servicio_pop(that){
         if(data.doctores[i].id == valores[0]){
             for(var j=0, jlen=data.doctores[i].lista_servicios.length; j<jlen; j++){
                 if(data.doctores[i].lista_servicios[j].id == valores[1]){
+                    console.log(data.doctores[i].lista_servicios[j]);
                     document.getElementById('p2_html').innerHTML = data.doctores[i].lista_servicios[j].html_2;
                 }
             }
