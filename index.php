@@ -151,7 +151,7 @@ if(isset($_GET["status"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina">
+                    <div class="sitio_pagina" style="display: none">
                         <div class="seccion m_error"></div>
                         <div class="seccion btn_pre">
                             <div class="preguntas clearfix">
@@ -175,7 +175,7 @@ if(isset($_GET["status"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina" style="display: none">
+                    <div class="sitio_pagina">
                         <div class="seccion inicio">INICIO</div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
