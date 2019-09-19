@@ -512,6 +512,57 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info .success
   font-size: 16px;
   padding: 0px 15px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .inicio_titulo {
+  display: block;
+  text-align: center;
+  font-size: 46px;
+  padding-top: 60px;
+  font-family: "Cinzel", serif;
+  line-height: 46px;
+  height: 600px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .inicio_fotos {
+  width: 96%;
+  max-width: 850px;
+  height: 400px;
+  background: #000;
+  margin: 20px auto 0px auto;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info {
+  width: 90%;
+  max-width: 800px;
+  height: 260px;
+  margin: 0px auto 0px auto;
+  position: relative;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info .inicio_info {
+  width: 100%;
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  height: 300px;
+  background: #fff;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info .inicio_info .inicio_info_titulo {
+  display: block;
+  text-align: center;
+  font-size: 32px;
+  font-family: "Cinzel", serif;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info .inicio_info .linea {
+  width: 50px;
+  height: 4px;
+  background: #000;
+  margin: 0px auto 30px auto;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info .inicio_info .inicio_info_data {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Cinzel", serif;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .titulo_seccion {
   display: block;
   font-size: 32px;
@@ -717,6 +768,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul li .ser_data .cont_ser_data .cont_ser_doc .w6 {
   width: 16.66%;
+}
+html body #contenedor .sitio .cont_sitio .back_inicio {
+  background: url("../images/background.jpg") repeat-x;
 }
 
 @media only screen and (min-width: 500px) {

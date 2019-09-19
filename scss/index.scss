@@ -509,7 +509,57 @@ html{
                             }
                         }
                         .inicio{
-
+                            .inicio_titulo{
+                                display: block;
+                                text-align: center;
+                                font-size: 46px;
+                                padding-top: 60px;
+                                font-family: 'Cinzel', serif;
+                                line-height : 46px;
+                                height: 600px;
+                            }
+                            .inicio_fotos{
+                                width: 96%;
+                                max-width: 850px;
+                                height: 400px;
+                                background: #000;
+                                margin: 20px auto 0px auto;
+                            }
+                            .cont_inicio_info{
+                                width: 90%;
+                                max-width: 800px;
+                                height: 260px;
+                                margin: 0px auto 0px auto;
+                                position: relative;
+                                .inicio_info{
+                                    width: 100%;
+                                    position: absolute;
+                                    top: -40px;
+                                    left: 0px;
+                                    height: 300px;
+                                    background: #fff;
+                                    .inicio_info_titulo{
+                                        display: block;
+                                        text-align: center;
+                                        font-size: 32px;
+                                        font-family: 'Cinzel', serif;
+                                        padding-top: 30px;
+                                        padding-bottom: 20px;
+                                    }
+                                    .linea{
+                                        width: 50px;
+                                        height: 4px;
+                                        background: #000;
+                                        margin: 0px auto 30px auto;
+                                    }
+                                    .inicio_info_data{
+                                        display: block;
+                                        text-align: center;
+                                        font-size: 18px;
+                                        font-family: 'Cinzel', serif;
+                                    }
+                                }
+                            }
                         }
                         .nosotros{
                             .titulo_seccion{
@@ -739,6 +789,9 @@ html{
                                 }
                             }
                         }
+                    }
+                    .back_inicio{
+                        background: url('../images/background.jpg') repeat-x;
                     }
                 }
             }

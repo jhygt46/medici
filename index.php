@@ -29,7 +29,7 @@ if(isset($_GET["status"])){
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Cinzel&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/base.css" media="all" />
         <link rel="stylesheet" href="css/index.css" media="all" />
 
@@ -175,8 +175,20 @@ if(isset($_GET["status"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina">
-                        <div class="seccion inicio">INICIO</div>
+                    <div class="sitio_pagina back_inicio">
+                        <div class="seccion inicio">
+                            <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
+                            <div class="inicio_fotos"></div>
+                            <div class="cont_inicio_info">
+                                <div class="inicio_info">
+                                    <div class="inicio_info_titulo">Nuestra direcci&oacute;n</div>
+                                    <div class="linea"></div>
+                                    <div class="inicio_info_data">Avenida Apoquindo # 6410</div>
+                                    <div class="inicio_info_data">Oficina: 309</div>
+                                    <div class="inicio_info_data">Las Condes</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="sitio_pagina" style="display: none">
                         <div class="seccion nosotros">
