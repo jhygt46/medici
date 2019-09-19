@@ -259,15 +259,18 @@ class Core{
             //$data = json_decode(($v)); 
             //if($data->{'success'}){
                 
-                $correo = $_POST["correo"];
+                $correo = $_POST["telefono"];
 
                 if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
                     $id_ser = $_POST["id_ser"];
                     $id_usr = $_POST["id_usr"];
+                    $rut = $_POST["rut"];
+                    $nombre = $_POST["nombre"];
+                    $telefono = $_POST["telefono"];
                     $id_suc = 1;
 
-                    if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios WHERE id_ser=? AND id_usr=?")){
+                    if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios t1, usuarios t2 WHERE t1.id_ser=? AND t1.id_usr=? AND t1.id_usr=t2.id_usr")){
                         if($sql->bind_param("ii", $id_ser, $id_usr)){
                             if($sql->execute()){
                                 
@@ -276,6 +279,7 @@ class Core{
 
                                     $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
                                     $tiempo = $aux_ser["tiempo_min"];
+                                    $correo_doc = $aux_ser["correo"];
                                     $precio = $aux_ser["precio"];
                                     $fecha = $_POST["f_fec"];
                                     $hora = $_POST["f_hor"];
@@ -303,8 +307,6 @@ class Core{
                                                 $resexc = $sqlexc->get_result();
                                                 if($resexc->{"num_rows"} == 0){
 
-                                                    $data["m"] = "Rangos";
-
                                                     $dia = date("w", strtotime($fecha));
                                                     if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                         if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
@@ -331,12 +333,31 @@ class Core{
                                                                             
                                                                             $fi = strtotime($fecha." ".$str_hora);
                                                                             $fi_f = $fi + ($tiempo * 60);
+                                                                            $code = $this->getrandstring(32);
 
-                                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                            $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                                            $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
                                                                             if($sqli->execute()){
-                                                                                $idi = $this->con->insert_id;
+
+                                                                                $send['accion'] = "reserva";
+                                                                                $send['rut'] = $rut;
+                                                                                $send['nombre'] = $nombre;
+                                                                                $send['correo'] = $correo;
+                                                                                $send['telefono'] = $telefono;
+                                                                                $send['mensaje'] = $mensaje;
+                                                                                $send['code'] = $code;
+                                                                                $send['correo_doc'] = $correo_doc;
+
+                                                                                $ch = curl_init();
+                                                                                curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                                $resp = json_decode(curl_exec($ch));
+                                                                                curl_close($ch);
+
+                                                                                $id = $this->con->insert_id;
                                                                                 header("Location: http://35.225.100.155/?status=1");
+
                                                                             }else{ $data["err"] = "Error: 1"; }
                                                                             
                                                                         }else{ $data["err"] = "Error: 2"; }
@@ -350,8 +371,6 @@ class Core{
 
                                                 }
                                                 if($resexc->{"num_rows"} > 0){
-                                                    
-                                                    $data["m"] = "EXCEPCIONES";
 
                                                     while($row = $resexc->fetch_assoc()){
                                                         
@@ -367,11 +386,29 @@ class Core{
                                                                 
                                                                 $fi = strtotime($fecha." ".$str_hora);
                                                                 $fi_f = $fi + $tiempo;
+                                                                $code = $this->getrandstring(32);
 
-                                                                $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                $sqli->bind_param("ssiiiiii", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc);
+                                                                $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                                $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
                                                                 if($sqli->execute()){
-                                                                    $idi = $this->con->insert_id;
+
+                                                                    $send['accion'] = "reserva";
+                                                                    $send['rut'] = $rut;
+                                                                    $send['nombre'] = $nombre;
+                                                                    $send['correo'] = $correo;
+                                                                    $send['telefono'] = $telefono;
+                                                                    $send['mensaje'] = $mensaje;
+                                                                    $send['code'] = $code;
+                                                                    $send['correo_doc'] = $correo_doc;
+
+                                                                    $ch = curl_init();
+                                                                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                    $resp = json_decode(curl_exec($ch));
+                                                                    curl_close($ch);
+
+                                                                    $id = $this->con->insert_id;
                                                                     header("Location: http://35.225.100.155/?status=1");
                                                                 }
                                                                 
@@ -406,7 +443,6 @@ class Core{
         //}
         return $data;
     }
-
     public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $min_ran, $max_ran){
 
         if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=?")){
@@ -475,13 +511,14 @@ class Core{
 
                 if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
+                    $send['accion'] = "contacto";
                     $send['correo'] = $correo;
                     $send['nombre'] = $_POST["nombre"];
                     $send['asunto'] = $_POST["asunto"];
                     $send['mensaje'] = $_POST["mensaje"];
 
                     $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_contacto_medici');
+                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                     $resp = json_decode(curl_exec($ch));

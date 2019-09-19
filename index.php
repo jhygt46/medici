@@ -34,7 +34,8 @@ if(isset($_GET["status"])){
         <link rel="stylesheet" href="css/index.css" media="all" />
 
         <script src="js/base.js" type="text/javascript"></script>
-        <script src="js/info.js" type="text/javascript"></script>
+        <!--<script src="js/info.js" type="text/javascript"></script>-->
+        <script src="http://35.225.100.155/js/info.js" type="text/javascript"></script>
         <script>
             var n_year = <?php echo (isset($_GET["y"])) ? $_GET["y"] : date("Y") ; ?>;
             var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"]) : intval(date("m")) - 1 ; ?>;
@@ -85,12 +86,27 @@ if(isset($_GET["status"])){
                     </div>
                 </div>
             </div>
+
+
             <div class="menu m1" style="top: 0px; left: -280px; z-index: 5">
                 <div class="cont_menu">
                     <div class="data_menu">
-                        <div class="cont_data_menu"></div>
+                        <div class="cont_data_menu">
+                            <ul>
+                                <li onclick="sitio_inicio_(this)">Inicio</li>
+                                <li onclick="sitio_servicios_(this)">Servicios</li>
+                                <li onclick="sitio_nosotros_(this)">Nosotros</li>
+                                <li onclick="sitio_reservar_(this)">Reserva tu Hora</li>
+                                <li onclick="sitio_contacto_(this)">Contacto</li>
+                            </ul>
+                            <div class="info_bottom">
+                                <div class="info_dtl">Avenida Apoquindo # 6410</div>
+                                <div class="info_dtl">Oficina: 309</div>
+                                <div class="info_dtl">Las Condes</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="btn_menu" id="men" onclick="btn_menu()">
+                    <div class="btn_menu" id="men" onclick="btn_menu(this)">
                         <div class="cont_btn_menu">
                             <div class="linea l1"></div>
                             <div class="linea valign"></div>
@@ -99,6 +115,9 @@ if(isset($_GET["status"])){
                     </div>
                 </div>
             </div>
+
+
+
             <div class="menu m1" style="top: 0px; right: -280px; z-index: 4">
                 <div class="cont_menu">
                     <div class="data_menu"></div>
