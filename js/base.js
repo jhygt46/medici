@@ -62,8 +62,8 @@ function inicio(){
             if(reserva.hora == 0){
                 ver_horas();
             }else{
-                seleccionar_hora_id();
-                document.getElementById('pop_up').style.display = 'block';
+                //seleccionar_hora_id();
+                //document.getElementById('pop_up').style.display = 'block';
             }
         }
     }
