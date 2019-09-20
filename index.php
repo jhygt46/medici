@@ -178,7 +178,11 @@ if(isset($_GET["status"])){
                     <div class="sitio_pagina back_inicio">
                         <div class="seccion inicio">
                             <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
-                            <div class="inicio_fotos"></div>
+                            <div class="inicio_fotos" id="fotos">
+                                <div class="foto" style="left: 0px"><img src="images/slide1.jpg" alt="" /></div>
+                                <div class="foto" style="left: 850px"><img src="images/slide2.jpg" alt="" /></div>
+                                <div class="foto" style="left: 850px"><img src="images/slide3.jpg" alt="" /></div>
+                            </div>
                             <div class="cont_inicio_info">
                                 <div class="inicio_info">
                                     <div class="inicio_info_titulo">Nuestra direcci&oacute;n</div>

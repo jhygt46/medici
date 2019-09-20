@@ -26,14 +26,15 @@ var fecha = new Date().getTime();
 function inicio(){
 
     render_web();
+    setTimeout(function(){ slider(0); }, 4000);
 
     document.addEventListener('dragstart', dragstart, false);
     document.addEventListener('drag', test, false);
     document.addEventListener('dragend', dragend, false);
-    document.addEventListener('dragover', dragover, false);
-    document.addEventListener('touchstart', touchstart, false);
-    document.addEventListener('touchmove', touchmove, false);
-    document.addEventListener('touchend', touchend, false);
+    //document.addEventListener('dragover', dragover, false);
+    document.addEventListener('touchstart', dragstart, false);
+    document.addEventListener('touchmove', test, false);
+    document.addEventListener('touchend', dragend, false);
     document.getElementById('close').addEventListener('click', close);
 
     if(status == 2){
@@ -78,6 +79,50 @@ function render_web(){
         nosotros.appendChild(create_nosotros_li(data.doctores[i]));
         nosotros2.appendChild(create_nosotros2_li(data.doctores[i]));
         servicios.appendChild(create_servicios_li(data.doctores[i]));
+    }
+
+}
+function slider(n){
+
+    var fotos = document.getElementById('fotos');
+    var d = n % fotos.children.length;
+    var j = (n + 1) % fotos.children.length;
+
+    moveslider1(fotos.children[d], 15);
+    moveslider2(fotos.children[j], 15);
+
+    setTimeout(function(){ slider(j); }, 6000);
+
+}
+function moveslider1(div, v){
+
+    var left = parseInt(div.style.left.replace("px", ""));
+    if(left >= -850){
+
+        var nleft = left - v;
+        div.style.left = nleft + "px";
+        setTimeout(function(){
+            moveslider1(div, v);
+        }, 10);
+
+    }else{
+        div.style.left = "850px";
+    }
+
+}
+function moveslider2(div, v){
+    
+    var left = parseInt(div.style.left.replace("px", ""));
+    if(left >= 0){
+
+        var nleft = left - v;
+        div.style.left = nleft + "px";
+        setTimeout(function(){
+            moveslider2(div, v);
+        }, 10);
+
+    }else{
+        div.style.left = "0px";
     }
 
 }

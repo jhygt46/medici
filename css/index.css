@@ -522,11 +522,19 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .inicio_titulo {
   height: 600px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .inicio_fotos {
-  width: 96%;
+  width: 100%;
   max-width: 850px;
-  height: 400px;
+  height: 447px;
   background: #000;
   margin: 20px auto 0px auto;
+  overflow: hidden;
+  position: relative;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .inicio_fotos .foto {
+  width: 850px;
+  height: 447px;
+  position: absolute;
+  top: 0px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .inicio .cont_inicio_info {
   width: 90%;

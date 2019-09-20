@@ -519,11 +519,19 @@ html{
                                 height: 600px;
                             }
                             .inicio_fotos{
-                                width: 96%;
+                                width: 100%;
                                 max-width: 850px;
-                                height: 400px;
+                                height: 447px;
                                 background: #000;
                                 margin: 20px auto 0px auto;
+                                overflow: hidden;
+                                position: relative;
+                                .foto{
+                                    width: 850px;
+                                    height: 447px;
+                                    position: absolute;
+                                    top: 0px;
+                                }
                             }
                             .cont_inicio_info{
                                 width: 90%;
