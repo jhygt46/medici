@@ -31,7 +31,7 @@ function inicio(){
     document.addEventListener('dragstart', dragstart, false);
     document.addEventListener('drag', test, false);
     document.addEventListener('dragend', dragend, false);
-    //document.addEventListener('dragover', dragover, false);
+    document.addEventListener('dragover', dragover, false);
     document.addEventListener('touchstart', dragstart, false);
     document.addEventListener('touchmove', test, false);
     document.addEventListener('touchend', dragend, false);
@@ -144,8 +144,14 @@ function dragstart(e){
 
     slidemenu.activo = 1;
     slidemenu.tiempo = new Date().getTime();
-    slidemenu.startx = e.clientX;
-    slidemenu.starty = e.clientY;
+
+    if(e.touches){
+        slidemenu.startx = e.touches[0].pageX;
+        slidemenu.starty = e.touches[0].pageY;
+    }else{
+        slidemenu.startx = e.clientX;
+        slidemenu.starty = e.clientY;
+    }
 
 }
 function drag(e){
@@ -196,9 +202,15 @@ function dragend(){
 }
 function test(e){
 
-    slidemenu.posicionx = e.clientX;
-    slidemenu.posiciony = e.clientY;
-    slidemenu.velx = parseInt(Math.abs((slidemenu.startx - e.clientX)*10/(new Date().getTime() - slidemenu.tiempo)));
+    if(e.touches){
+        slidemenu.posicionx = e.touches[0].pageX;
+        slidemenu.posiciony = e.touches[0].pageY;
+    }else{
+        slidemenu.posicionx = e.clientX;
+        slidemenu.posiciony = e.clientY;
+    }
+
+    slidemenu.velx = parseInt(Math.abs((slidemenu.startx - slidemenu.posicionx)*10/(new Date().getTime() - slidemenu.tiempo)));
 
     var searchEles = document.getElementById("contenedor").children;
     var move = 0;
