@@ -1525,6 +1525,9 @@ function create_element_class_inner(clase, value){
 function send(){
     return true;
 }
+function send2(){
+    return true;
+}
 function get_reserva(){
     return JSON.parse(localStorage.getItem("reserva")) || reserva_blank();
 }
