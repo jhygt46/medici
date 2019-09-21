@@ -168,6 +168,11 @@ html body #contenedor .pop_up .cont_pop .pop .cp .formulario form .input input {
   height: 35px;
   border: 1px solid #999;
 }
+html body #contenedor .pop_up .cont_pop .pop .cp .formulario form .input textarea {
+  width: calc(100% - 2px);
+  height: 60px;
+  border: 1px solid #999;
+}
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario form h6 {
   font-size: 16px;
 }
