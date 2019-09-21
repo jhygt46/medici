@@ -499,13 +499,13 @@ class Core{
     }
     public function contacto(){
 
-        //$res = $_POST["g-recaptcha-response"]; 
-        //if(isset($res) && $res){
+        $res = $_POST["token_contacto"]; 
+        if(isset($res) && $res){
             
-            //$secret = "6Lf8j3sUAAAAAP6pYvdgk9qiWoXCcKKXGsKFQXH4";
-            //$v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$_POST["g-recaptcha-response"]."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
-            //$data = json_decode(($v)); 
-            //if($data->{'success'}){
+            $secret = "6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0";
+            $v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$res."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
+            $data = json_decode(($v)); 
+            if($data->{'success'}){
                 
                 $correo = $_POST["correo"];
 
@@ -516,13 +516,16 @@ class Core{
                     $send['nombre'] = $_POST["nombre"];
                     $send['asunto'] = $_POST["asunto"];
                     $send['mensaje'] = $_POST["mensaje"];
-
+                    /*
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                     $resp = json_decode(curl_exec($ch));
                     curl_close($ch);
+                    */
+                    $data['op'] = 1;
+                    $data['msg'] = "Contacto";
 
                 }else{
 
@@ -531,9 +534,9 @@ class Core{
 
                 }
 
-            //}
+            }
 
-        //}
+        }
         return $data;
     }
     public function get_sucursales(){
