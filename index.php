@@ -67,8 +67,9 @@ if(isset($_GET["status"])){
                                     <div class="input"><input type="text" name="correo" placeholder="" /></div>
                                     <h3>Telefono:</h3>
                                     <div class="input"><input type="text" name="telefono" placeholder="" /></div>
-                                    <h6>reCAPTCHA:</h6>
-                                    <div class="g-recaptcha" data-sitekey="6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v"></div>
+                                    <h3>Mensaje:</h3>
+                                    <div class="input"><TEXTAREA class="txta" name="mensaje"></TEXTAREA></div>
+                                    <input type="hidden" name="token" id="token_reserva" />
                                     <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                 </form>
                             </div>
@@ -223,8 +224,7 @@ if(isset($_GET["status"])){
                                                 <div class="input"><input type="text" name="asunto" placeholder="" /></div>
                                                 <h3>Mensaje:</h3>
                                                 <div class="input"><TEXTAREA class="txta" name="mensaje"></TEXTAREA></div>
-                                                <h3>reCAPTCHA:</h3>
-                                                <div class="g-recaptcha" data-sitekey="6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v"></div>
+                                                <input type="hidden" name="token" id="token_contacto" />
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                             </form>
 
