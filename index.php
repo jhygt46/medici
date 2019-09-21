@@ -247,7 +247,7 @@ if(isset($_GET["status"])){
                 </div>
             </div>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbKlHezhqgy7z57ipcJk8mDK4rf6drvjY&libraries=places" async defer></script>
     </body>
 </html>

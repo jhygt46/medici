@@ -25,12 +25,9 @@ var fecha = new Date().getTime();
 
 function inicio(){
 
-    grecaptcha.ready(function(){
-        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', {action: 'homepage'}).then(function(token){
-            console.log("EXEC");
-        });
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', {action: 'homepage'});
     });
-
 
     render_web();
     setTimeout(function(){ slider(0); }, 4000);
