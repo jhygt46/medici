@@ -667,13 +667,14 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .input input {
   width: 100%;
   height: 35px;
-  border: 0px;
+  border: 1px solid #333;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .input .txta {
   width: 100%;
   height: 65px;
   border: 0px;
   margin-bottom: 10px;
+  border: 1px solid #333;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .acciones {
   padding-top: 10px;

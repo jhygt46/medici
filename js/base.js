@@ -126,17 +126,6 @@ function moveslider2(div, v){
     }
 
 }
-function touchstart(e){
-    var touches = e.touches.length;
-    console.log(e);
-}
-function touchmove(e){
-    var x = event.touches[0].clientX;
-    var y = event.touches[0].clientY;
-}
-function touchend(e){
-    console.log("TouchEnd");
-}
 function dragover(e){
     e.preventDefault();
 }
@@ -1004,8 +993,6 @@ function horas_disponibles(y, m, d){
     var exc = tiene_excepcion(date);
     var reserva = get_reserva();
 
-    console.log(y+"-"+m+"-"+d);
-
     if(exc.op){
         return dia_reglas(exc.excepciones);
     }else{
@@ -1041,9 +1028,6 @@ function html_horas(){
 
     if(exc.op){
         horas = horas_reglas(exc.excepciones, fecha);
-        console.log("excepciones");
-        console.log(exc.excepciones);
-        console.log(horas);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -1053,9 +1037,6 @@ function html_horas(){
             }
         }
         horas = horas_reglas(rangos, fecha);
-        console.log("rangos");
-        console.log(rangos);
-        console.log(horas);
     }
 
     var html_horas = create_element_class('horas');
@@ -1068,7 +1049,6 @@ function html_horas(){
         
         var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
         var hr = (parseInt(horas[i].m/60) < 10) ? "0"+parseInt(horas[i].m/60) : parseInt(horas[i].m/60) ;       
-        console.log(horas[i]);
         if(horas[i].p == 0){
             
             html_hora = create_element_class('hora');
@@ -1189,8 +1169,6 @@ function horas_reglas(reglas, fecha){
             }
 
             var horas = horas_dia(data.doctores[j].horas, fecha);
-            console.log("HORAS");
-            console.log(horas);
             if(horas.length > 0){
 
                 for(var i=0, ilen=horas.length; i<ilen; i++){
@@ -1451,7 +1429,6 @@ function ver_servicio_pop(that){
         if(data.doctores[i].id == valores[0]){
             for(var j=0, jlen=data.doctores[i].lista_servicios.length; j<jlen; j++){
                 if(data.doctores[i].lista_servicios[j].id == valores[1]){
-                    console.log(data.doctores[i].lista_servicios[j]);
                     document.getElementById('p2_html').innerHTML = data.doctores[i].lista_servicios[j].html_2;
                 }
             }
@@ -1478,7 +1455,6 @@ function create_servicios_li(doctor){
     var titulo = create_element_class_inner("ser_titulo", doctor.titulo);
     var cont_ser_doc = create_element_class("cont_ser_doc clearfix");
     for(var i=0, ilen=doctor.lista_servicios.length; i<ilen; i++){
-        console.log(doctor.lista_servicios[i]);
         var aux = create_element_class("ser_doc_titulo w"+doctor.lista_servicios.length);
         aux.setAttribute("id", doctor.id+" "+doctor.lista_servicios[i].id);
         aux.onclick = function(){ ver_servicio_pop(this); };

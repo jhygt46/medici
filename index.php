@@ -216,13 +216,13 @@ if(isset($_GET["status"])){
                                             <form onsubmit="return send2()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
-                                                <div class="input"><input type="text" name="rut" placeholder="" /></div>
+                                                <div class="input"><input type="text" name="nombre" placeholder="" /></div>
                                                 <h3>Correo electronico:</h3>
                                                 <div class="input"><input type="text" name="correo" placeholder="" /></div>
                                                 <h3>Asunto:</h3>
-                                                <div class="input"><input type="text" name="telefono" placeholder="" /></div>
+                                                <div class="input"><input type="text" name="asunto" placeholder="" /></div>
                                                 <h3>Mensaje:</h3>
-                                                <div class="input"><TEXTAREA class="txta" name="asunto"></TEXTAREA></div>
+                                                <div class="input"><TEXTAREA class="txta" name="mensaje"></TEXTAREA></div>
                                                 <h3>reCAPTCHA:</h3>
                                                 <div class="g-recaptcha" data-sitekey="6Lf8j3sUAAAAAFEPARLhuiWamomIvm35UBCqf65R"></div>
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
