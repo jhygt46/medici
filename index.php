@@ -1,7 +1,7 @@
 <?php
 
 	if(isset($_POST['token'])) {
-        
+
 		$url = 'https://www.google.com/recaptcha/api/siteverify';
 		$data = [
 			'secret' => '6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v',
@@ -13,7 +13,7 @@
                 'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
                 'method'  => 'POST',
                 'content' => http_build_query($data)
-            );
+            )
         );
 		$context  = stream_context_create($options);
   		$response = file_get_contents($url, false, $context);
