@@ -1,5 +1,12 @@
 <?php
 
+if(isset($_POST)){
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+}
+
+
 if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");

@@ -516,6 +516,7 @@ class Core{
                     $send['nombre'] = $_POST["nombre"];
                     $send['asunto'] = $_POST["asunto"];
                     $send['mensaje'] = $_POST["mensaje"];
+
                     /*
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
@@ -524,6 +525,7 @@ class Core{
                     $resp = json_decode(curl_exec($ch));
                     curl_close($ch);
                     */
+                    
                     $data['op'] = 1;
                     $data['msg'] = "Contacto";
 
