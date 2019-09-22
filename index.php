@@ -18,6 +18,11 @@ if(isset($_POST['token'])) {
     $context  = stream_context_create($options);
     $response = file_get_contents($url, false, $context);
     $res = json_decode($response, true);
+
+    echo "<pre>";
+    print_r($res);
+    echo "</pre>";
+
     if($res['success'] == true){
         echo '<div class="alert alert-success"><strong>Success!</strong> Your inquiry successfully submitted.</div>';
     }else{
