@@ -787,6 +787,10 @@ html body #contenedor .sitio .cont_sitio .back_inicio {
   background: url("../images/background.jpg") repeat-x;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 @media only screen and (min-width: 500px) {
   .contacto .sec_cont .cont_cont .cont_form {
     width: 50%;

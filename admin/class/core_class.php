@@ -249,200 +249,6 @@ class Core{
         }
         return $arr;
     }
-    public function reservar_hora(){
-
-        //$res = $_POST["g-recaptcha-response"]; 
-        //if(isset($res) && $res){
-            
-            //$secret = "6Lf8j3sUAAAAAP6pYvdgk9qiWoXCcKKXGsKFQXH4";
-            //$v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$_POST["g-recaptcha-response"]."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
-            //$data = json_decode(($v)); 
-            //if($data->{'success'}){
-                
-                $correo = $_POST["telefono"];
-
-                if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
-
-                    $id_ser = $_POST["id_ser"];
-                    $id_usr = $_POST["id_usr"];
-                    $rut = $_POST["rut"];
-                    $nombre = $_POST["nombre"];
-                    $telefono = $_POST["telefono"];
-                    $id_suc = 1;
-
-                    if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios t1, usuarios t2 WHERE t1.id_ser=? AND t1.id_usr=? AND t1.id_usr=t2.id_usr")){
-                        if($sql->bind_param("ii", $id_ser, $id_usr)){
-                            if($sql->execute()){
-                                
-                                $res = $sql->get_result();
-                                if($res->{"num_rows"} == 1){
-
-                                    $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
-                                    $tiempo = $aux_ser["tiempo_min"];
-                                    $correo_doc = $aux_ser["correo"];
-                                    $precio = $aux_ser["precio"];
-                                    $fecha = $_POST["f_fec"];
-                                    $hora = $_POST["f_hor"];
-
-                                    $now_ini = intval($hora);
-                                    $now_fin = $now_ini + $tiempo;
-
-                                    if(intval($now_ini/60) < 10){
-                                        $str_hr1 = "0".intval($now_ini/60);
-                                    }else{
-                                        $str_hr1 = intval($now_ini/60);
-                                    }
-                                    if(intval($now_ini%60) < 10){
-                                        $str_hr2 = "0".intval($now_ini%60);
-                                    }else{
-                                        $str_hr2 = intval($now_ini%60);
-                                    }
-                                    
-                                    $str_hora = $str_hr1.":".$str_hr2.":00";
-
-                                    if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
-                                        if($sqlexc->bind_param("isi", $id_usr, $fecha, $id_ser)){
-                                            if($sqlexc->execute()){
-
-                                                $resexc = $sqlexc->get_result();
-                                                if($resexc->{"num_rows"} == 0){
-
-                                                    $dia = date("w", strtotime($fecha));
-                                                    if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
-                                                        if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
-                                                            if($sqlran->execute()){
-                                                                
-                                                                $resran = $sqlran->get_result();
-                                                                while($row = $resran->fetch_assoc()){
-                                                                    
-                                                                    $hora_ini = explode(":", $row["hora_ini"]);
-                                                                    $hora_fin = explode(":", $row["hora_fin"]);
-
-                                                                    $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
-                                                                    $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
-                                                                    
-                                                                    $data["ni"][] = $now_ini;
-                                                                    $data["nf"][] = $now_fin;
-                                                                    $data["hi"][] = $h_ini;
-                                                                    $data["hf"][] = $h_fin;
-
-                                                                    if($now_ini >= $h_ini && $now_fin <= $h_fin){
-
-                                                                        $data['ran_dentro'] = 1;
-                                                                        if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
-                                                                            
-                                                                            $fi = strtotime($fecha." ".$str_hora);
-                                                                            $fi_f = $fi + ($tiempo * 60);
-                                                                            $code = $this->getrandstring(32);
-
-                                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                            $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
-                                                                            if($sqli->execute()){
-
-                                                                                $send['accion'] = "reserva";
-                                                                                $send['rut'] = $rut;
-                                                                                $send['nombre'] = $nombre;
-                                                                                $send['correo'] = $correo;
-                                                                                $send['telefono'] = $telefono;
-                                                                                $send['mensaje'] = $mensaje;
-                                                                                $send['code'] = $code;
-                                                                                $send['correo_doc'] = $correo_doc;
-
-                                                                                $ch = curl_init();
-                                                                                curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
-                                                                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                                                                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
-                                                                                $resp = json_decode(curl_exec($ch));
-                                                                                curl_close($ch);
-
-                                                                                $id = $this->con->insert_id;
-                                                                                header("Location: http://35.225.100.155/?status=1");
-
-                                                                            }else{ $data["err"] = "Error: 1"; }
-                                                                            
-                                                                        }else{ $data["err"] = "Error: 2"; }
-
-                                                                    }else{ $data["err"] = "Error: 3"; }
-
-                                                                }
-                                                            }else{}
-                                                        }else{}
-                                                    }else{}
-
-                                                }
-                                                if($resexc->{"num_rows"} > 0){
-
-                                                    while($row = $resexc->fetch_assoc()){
-                                                        
-                                                        $hora_ini = explode(":", $row["hora_ini"]);
-                                                        $hora_fin = explode(":", $row["hora_fin"]);
-
-                                                        $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
-                                                        $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
-
-                                                        if($now_ini > $h_ini && $now_fin < $h_fin){
-                                                            $data['exc_dentro'] = 1;
-                                                            if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
-                                                                
-                                                                $fi = strtotime($fecha." ".$str_hora);
-                                                                $fi_f = $fi + $tiempo;
-                                                                $code = $this->getrandstring(32);
-
-                                                                $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
-                                                                if($sqli->execute()){
-
-                                                                    $send['accion'] = "reserva";
-                                                                    $send['rut'] = $rut;
-                                                                    $send['nombre'] = $nombre;
-                                                                    $send['correo'] = $correo;
-                                                                    $send['telefono'] = $telefono;
-                                                                    $send['mensaje'] = $mensaje;
-                                                                    $send['code'] = $code;
-                                                                    $send['correo_doc'] = $correo_doc;
-
-                                                                    $ch = curl_init();
-                                                                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
-                                                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                                                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
-                                                                    $resp = json_decode(curl_exec($ch));
-                                                                    curl_close($ch);
-
-                                                                    $id = $this->con->insert_id;
-                                                                    header("Location: http://35.225.100.155/?status=1");
-                                                                }
-                                                                
-                                                            }
-                                                        }
-
-                                                    }
-                                                    
-                                                }
-                                                $sqlexc->free_result();
-                                                $sqlexc->close();
-                                                
-                                            }else{}
-                                        }else{}
-                                    }else{}
-                                }
-                                if($res->{"num_rows"} == 0){
-                                    // ERROR
-                                }
-                                
-                            }else{}
-                        }else{}
-                    }else{}
-
-                }else{
-                    $data['op'] = 2;
-                    $data['msg'] = "Correo invalido";
-                }
-
-            //}
-
-        //}
-        return $data;
-    }
     public function insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $min_ran, $max_ran){
 
         if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_usr=? AND DATE(fecha)=?")){
@@ -497,49 +303,259 @@ class Core{
         return intval($horas[0]) * 60 + intval($horas[1]);
 
     }
-    public function contacto(){
+    public function reservar_hora(){
 
-        $res = $_POST["token_contacto"]; 
-        if(isset($res) && $res){
-            
-            $secret = "6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0";
-            $v = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$res."&remoteip=".$_SERVER["REMOTE_ADDR"]); 
-            $data = json_decode(($v)); 
-            if($data->{'success'}){
-                
-                $correo = $_POST["correo"];
+        $correo = $_POST["correo"];
+        if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
-                if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $data = [
+                'secret' => '6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0',
+                'response' => $_POST['token'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ];
 
-                    $send['accion'] = "contacto";
-                    $send['correo'] = $correo;
-                    $send['nombre'] = $_POST["nombre"];
-                    $send['asunto'] = $_POST["asunto"];
-                    $send['mensaje'] = $_POST["mensaje"];
+            $options = array(
+                'http' => array(
+                    'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
+                    'method'  => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
 
-                    /*
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
-                    $resp = json_decode(curl_exec($ch));
-                    curl_close($ch);
-                    */
-                    
-                    $data['op'] = 1;
-                    $data['msg'] = "Contacto";
+            $context  = stream_context_create($options);
+            $response = file_get_contents($url, false, $context);
+            $res = json_decode($response, true);
 
-                }else{
+            if($res['success'] == true){
 
-                    $data['op'] = 2;
-                    $data['msg'] = "Correo invalido";
+                $id_ser = $_POST["id_ser"];
+                $id_usr = $_POST["id_usr"];
+                $rut = $_POST["rut"];
+                $nombre = $_POST["nombre"];
+                $telefono = $_POST["telefono"];
+                $id_suc = 1;
 
-                }
+                if($sql = $this->con->prepare("SELECT * FROM servicio_usuarios t1, usuarios t2 WHERE t1.id_ser=? AND t1.id_usr=? AND t1.id_usr=t2.id_usr")){
+                    if($sql->bind_param("ii", $id_ser, $id_usr)){
+                        if($sql->execute()){
+                            
+                            $res = $sql->get_result();
+                            if($res->{"num_rows"} == 1){
+
+                                $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
+                                $tiempo = $aux_ser["tiempo_min"];
+                                $correo_doc = $aux_ser["correo"];
+                                $precio = $aux_ser["precio"];
+                                $fecha = $_POST["f_fec"];
+                                $hora = $_POST["f_hor"];
+
+                                $now_ini = intval($hora);
+                                $now_fin = $now_ini + $tiempo;
+
+                                if(intval($now_ini/60) < 10){
+                                    $str_hr1 = "0".intval($now_ini/60);
+                                }else{
+                                    $str_hr1 = intval($now_ini/60);
+                                }
+                                if(intval($now_ini%60) < 10){
+                                    $str_hr2 = "0".intval($now_ini%60);
+                                }else{
+                                    $str_hr2 = intval($now_ini%60);
+                                }
+                                
+                                $str_hora = $str_hr1.":".$str_hr2.":00";
+
+                                if($sqlexc = $this->con->prepare("SELECT * FROM excepciones t1, excepcion_servicios t2 WHERE t1.id_usr=? AND t1.fecha=? AND t1.id_exc=t2.id_exc AND t2.id_ser=?")){
+                                    if($sqlexc->bind_param("isi", $id_usr, $fecha, $id_ser)){
+                                        if($sqlexc->execute()){
+
+                                            $resexc = $sqlexc->get_result();
+                                            if($resexc->{"num_rows"} == 0){
+
+                                                $dia = date("w", strtotime($fecha));
+                                                if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
+                                                    if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
+                                                        if($sqlran->execute()){
+                                                            
+                                                            $resran = $sqlran->get_result();
+                                                            while($row = $resran->fetch_assoc()){
+                                                                
+                                                                $hora_ini = explode(":", $row["hora_ini"]);
+                                                                $hora_fin = explode(":", $row["hora_fin"]);
+
+                                                                $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
+                                                                $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
+                                                                
+                                                                $data["ni"][] = $now_ini;
+                                                                $data["nf"][] = $now_fin;
+                                                                $data["hi"][] = $h_ini;
+                                                                $data["hf"][] = $h_fin;
+
+                                                                if($now_ini >= $h_ini && $now_fin <= $h_fin){
+
+                                                                    $data['ran_dentro'] = 1;
+                                                                    if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
+                                                                        
+                                                                        $fi = strtotime($fecha." ".$str_hora);
+                                                                        $fi_f = $fi + ($tiempo * 60);
+                                                                        $code = $this->getrandstring(32);
+
+                                                                        $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                                        $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
+                                                                        if($sqli->execute()){
+
+                                                                            $send['accion'] = "reserva";
+                                                                            $send['rut'] = $rut;
+                                                                            $send['nombre'] = $nombre;
+                                                                            $send['correo'] = $correo;
+                                                                            $send['telefono'] = $telefono;
+                                                                            $send['mensaje'] = $mensaje;
+                                                                            $send['code'] = $code;
+                                                                            $send['correo_doc'] = $correo_doc;
+
+                                                                            $ch = curl_init();
+                                                                            curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                            $resp = json_decode(curl_exec($ch));
+                                                                            curl_close($ch);
+
+                                                                            $id = $this->con->insert_id;
+                                                                            header("Location: http://www.draescorza.cl/?status=1");
+
+                                                                        }else{ $data["err"] = "Error: 1"; }
+                                                                        
+                                                                    }else{ $data["err"] = "Error: 2"; }
+
+                                                                }else{ $data["err"] = "Error: 3"; }
+
+                                                            }
+                                                        }else{}
+                                                    }else{}
+                                                }else{}
+
+                                            }
+                                            if($resexc->{"num_rows"} > 0){
+
+                                                while($row = $resexc->fetch_assoc()){
+                                                    
+                                                    $hora_ini = explode(":", $row["hora_ini"]);
+                                                    $hora_fin = explode(":", $row["hora_fin"]);
+
+                                                    $h_ini = intval($hora_ini[0]) * 60 + intval($hora_ini[1]);
+                                                    $h_fin = intval($hora_fin[0]) * 60 + intval($hora_fin[1]);
+
+                                                    if($now_ini > $h_ini && $now_fin < $h_fin){
+                                                        $data['exc_dentro'] = 1;
+                                                        if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
+                                                            
+                                                            $fi = strtotime($fecha." ".$str_hora);
+                                                            $fi_f = $fi + $tiempo;
+                                                            $code = $this->getrandstring(32);
+
+                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                            $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
+                                                            if($sqli->execute()){
+
+                                                                $send['accion'] = "reserva";
+                                                                $send['rut'] = $rut;
+                                                                $send['nombre'] = $nombre;
+                                                                $send['correo'] = $correo;
+                                                                $send['telefono'] = $telefono;
+                                                                $send['mensaje'] = $mensaje;
+                                                                $send['code'] = $code;
+                                                                $send['correo_doc'] = $correo_doc;
+
+                                                                $ch = curl_init();
+                                                                curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                $resp = json_decode(curl_exec($ch));
+                                                                curl_close($ch);
+
+                                                                $id = $this->con->insert_id;
+                                                                header("Location: http://www.draescorza.cl/?status=1");
+                                                            }
+                                                            
+                                                        }
+                                                    }
+
+                                                }
+                                                
+                                            }
+                                            $sqlexc->free_result();
+                                            $sqlexc->close();
+                                            
+                                        }else{}
+                                    }else{}
+                                }else{}
+                            }
+                            if($res->{"num_rows"} == 0){
+                                // ERROR
+                            }
+                            
+                        }else{}
+                    }else{}
+                }else{}
 
             }
-
         }
-        return $data;
+
+    }
+    public function contacto(){
+
+        $correo = $_POST["correo"];
+        if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+            
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $data = [
+                'secret' => '6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0',
+                'response' => $_POST['token'],
+                'remoteip' => $_SERVER['REMOTE_ADDR']
+            ];
+
+            $options = array(
+                'http' => array(
+                    'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
+                    'method'  => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
+
+            $context  = stream_context_create($options);
+            $response = file_get_contents($url, false, $context);
+            $res = json_decode($response, true);
+
+            if($res['success'] == true){
+
+                $send['accion'] = "contacto";
+                $send['correo'] = $correo;
+                $send['nombre'] = $_POST["nombre"];
+                $send['asunto'] = $_POST["asunto"];
+                $send['mensaje'] = $_POST["mensaje"];
+                
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                $resp = json_decode(curl_exec($ch));
+                curl_close($ch);
+
+                if($resp['op'] == 1){
+                    header("Location: http://www.draescorza.cl/?contacto=1");
+                }else{
+                    header("Location: http://www.draescorza.cl/?contacto=2");
+                }
+
+            }else{
+                header("Location: http://www.draescorza.cl/?contacto=2");
+            }
+
+        }else{
+            header("Location: http://www.draescorza.cl/?contacto=3");
+        }
+
     }
     public function get_sucursales(){
 

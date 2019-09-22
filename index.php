@@ -1,40 +1,5 @@
 <?php
 
-
-if(isset($_POST['token'])) {
-
-    $url = 'https://www.google.com/recaptcha/api/siteverify';
-    
-    $data = [
-        'secret' => '6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0',
-        'response' => $_POST['token'],
-        'remoteip' => $_SERVER['REMOTE_ADDR']
-    ];
-
-    $options = array(
-        'http' => array(
-            'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-
-    $context  = stream_context_create($options);
-    $response = file_get_contents($url, false, $context);
-    $res = json_decode($response, true);
-
-    echo "<pre>";
-    print_r($res);
-    echo "</pre>";
-
-    if($res['success'] == true){
-        echo '<div class="alert alert-success"><strong>Success!</strong> Your inquiry successfully submitted.</div>';
-    }else{
-        echo '<div class="alert alert-warning"><strong>Error!</strong> You are not a human.</div>';
-    }
-
-}
-
 if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");
@@ -53,6 +18,10 @@ if($_GET["accion"] == "actualizar" || isset($_GET["status"])){
 $status = 0;
 if(isset($_GET["status"])){
     $status = $_GET["status"];
+}
+$contacto = 0;
+if(isset($_GET["contacto"])){
+    $contacto = $_GET["contacto"];
 }
 
 ?>
@@ -249,7 +218,7 @@ if(isset($_GET["status"])){
                                     <div class="cont_form">
                                         <div class="cont_forms">
                                             
-                                            <form onsubmit="return send2()" action="" method="post">
+                                            <form onsubmit="return send2()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
                                                 <div class="input"><input type="text" name="nombre" placeholder="" /></div>
