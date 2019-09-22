@@ -4,7 +4,7 @@ if(isset($_POST['token'])) {
 
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $data = [
-        'secret' => '6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v',
+        'secret' => '6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0',
         'response' => $_POST['token'],
         'remoteip' => $_SERVER['REMOTE_ADDR']
     ];
