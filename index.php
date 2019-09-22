@@ -1,10 +1,30 @@
 <?php
 
-if(isset($_POST)){
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-}
+	if(isset($_POST['token'])) {
+        
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
+		$data = [
+			'secret' => '6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v',
+			'response' => $_POST['token'],
+			'remoteip' => $_SERVER['REMOTE_ADDR']
+		];
+		$options = array(
+		    'http' => array(
+                'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            );
+        );
+		$context  = stream_context_create($options);
+  		$response = file_get_contents($url, false, $context);
+		$res = json_decode($response, true);
+		if($res['success'] == true){
+  			echo '<div class="alert alert-success"><strong>Success!</strong> Your inquiry successfully submitted.</div>';
+		}else{
+			echo '<div class="alert alert-warning"><strong>Error!</strong> You are not a human.</div>';
+		}
+	}
+ ?>
 
 
 if($_SERVER["HTTP_HOST"] == "localhost"){
