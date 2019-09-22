@@ -221,7 +221,7 @@ if(isset($_GET["status"])){
                                     <div class="cont_form">
                                         <div class="cont_forms">
                                             
-                                            <form onsubmit="return send2()" action="./ajax/index.php" method="post">
+                                            <form onsubmit="return send2()" action="" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
                                                 <div class="input"><input type="text" name="nombre" placeholder="" /></div>
