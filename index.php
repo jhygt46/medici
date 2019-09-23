@@ -47,6 +47,7 @@ if(isset($_GET["contacto"])){
             var n_day = <?php echo (isset($_GET["d"])) ? $_GET["d"] : date("d") ; ?>;
             var n_hours = <?php echo intval(date("H")); echo " + Math.round(".(date("i")/60).") + 1"; ?>;
             var status = <?php echo $status; ?>;
+            var contacto = <?php echo $contacto; ?>;
         </script>
     </head>
     <body onload="inicio()" draggable="true">

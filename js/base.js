@@ -44,6 +44,10 @@ function inicio(){
     document.addEventListener('touchend', dragend, false);
     document.getElementById('close').addEventListener('click', close);
 
+    if(contacto > 0){
+        show_map();
+    }
+
     if(status == 2){
         ver_error();
     }
@@ -69,7 +73,7 @@ function inicio(){
             if(reserva.hora == 0){
                 ver_horas();
             }else{
-                //seleccionar_hora_id();
+                seleccionar_hora_id();
                 //document.getElementById('pop_up').style.display = 'block';
             }
         }
@@ -626,6 +630,10 @@ function sitio_contacto(){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'block';
     sitios[4].style.display = 'none';
+    show_map();
+
+}
+function show_map(){
 
     if(!imap){
         
