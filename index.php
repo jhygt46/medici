@@ -218,7 +218,7 @@ if(isset($_GET["contacto"])){
                                 <div class="cont_cont clearfix">
                                     <div class="cont_form">
                                         <div class="cont_forms">
-                                            <?php if($contacto == 0){ ?>
+                                            <?php if($contacto == 0 || $contacto == 2){ ?>
                                             <form onsubmit="return send2()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
@@ -233,7 +233,9 @@ if(isset($_GET["contacto"])){
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                             </form>
                                             <?php }else{ ?>
-                                                INFO CONTACTO
+                                            <div class="felicitaciones">
+                                                Su solictud fue enviado con exito, pronto nos contactaremos con usted
+                                            </div>
                                             <?php } ?>
                                         </div>
                                     </div>
