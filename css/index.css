@@ -661,6 +661,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont {
   display: block;
   padding: 25px 10px 25px 10px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form {
+  padding-bottom: 20px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms {
   display: block;
   padding: 0px 4% 0px 4%;
@@ -693,11 +696,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .felicitaciones {
   display: block;
-  font-size: 30px;
+  font-size: 28px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_map {
   height: 400px;
   background: #ccc;
+  padding-bottom: 20px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .titulo_seccion {
   display: block;
