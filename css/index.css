@@ -691,6 +691,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont
   padding: 8px 28px;
   border: 0px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_form .cont_forms .felicitaciones {
+  display: block;
+  font-size: 30px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .contacto .sec_cont .cont_cont .cont_map {
   height: 400px;
   background: #ccc;
