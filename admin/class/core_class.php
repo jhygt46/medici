@@ -542,18 +542,22 @@ class Core{
                 $resp = json_decode(curl_exec($ch));
                 curl_close($ch);
 
+                echo "<pre>";
+                print_r($resp);
+                echo "</pre>";
+                
                 if($resp['op'] == 1){
-                    header("Location: http://www.draescorza.cl/?contacto=1");
+                    //header("Location: http://www.draescorza.cl/?contacto=1");
                 }else{
-                    header("Location: http://www.draescorza.cl/?contacto=2");
+                    //header("Location: http://www.draescorza.cl/?contacto=2");
                 }
 
             }else{
-                header("Location: http://www.draescorza.cl/?contacto=2");
+                //header("Location: http://www.draescorza.cl/?contacto=2");
             }
 
         }else{
-            header("Location: http://www.draescorza.cl/?contacto=3");
+            //header("Location: http://www.draescorza.cl/?contacto=3");
         }
 
     }
