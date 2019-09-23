@@ -16,12 +16,13 @@ if($_GET["accion"] == "actualizar" || isset($_GET["status"])){
 }
 
 $status = 0;
-if(isset($_GET["status"])){
-    $status = $_GET["status"];
-}
 $contacto = 0;
 if(isset($_GET["contacto"])){
     $contacto = $_GET["contacto"];
+}else{
+    if(isset($_GET["status"])){
+        $status = $_GET["status"];
+    }
 }
 
 ?>
@@ -180,7 +181,7 @@ if(isset($_GET["contacto"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina back_inicio">
+                    <div class="sitio_pagina back_inicio" <?php if($contacto > 0){ ?>style="display: none"<?php } ?>>
                         <div class="seccion inicio">
                             <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
                             <div class="inicio_fotos" id="fotos">
@@ -209,7 +210,7 @@ if(isset($_GET["contacto"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina" style="display: none">
+                    <div class="sitio_pagina" <?php if($contacto > 0){ ?>style="display: block"<?php }else{ ?>style="display: none" <?php } ?>>
                         <div class="seccion contacto">
                             <div class="titulo_seccion">Contacto</div>
                             <div class="linea"></div>
@@ -217,7 +218,7 @@ if(isset($_GET["contacto"])){
                                 <div class="cont_cont clearfix">
                                     <div class="cont_form">
                                         <div class="cont_forms">
-                                            
+                                            <?php if($contacto == 0){ ?>
                                             <form onsubmit="return send2()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
@@ -231,10 +232,12 @@ if(isset($_GET["contacto"])){
                                                 <input type="hidden" name="token" id="token_contacto" />
                                                 <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
                                             </form>
-
+                                            <?php }else{ ?>
+                                                INFO CONTACTO
+                                            <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="cont_map" id="map">B</div>
+                                    <div class="cont_map" id="map"></div>
                                 </div>
                             </div>
                         </div>
