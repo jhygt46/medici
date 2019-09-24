@@ -403,37 +403,37 @@ class Core{
                                                                         $fi_f = $fi + ($tiempo * 60);
                                                                         $code = $this->getrandstring(32);
 
-                                                                        $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                                        $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
-                                                                        if($sqli->execute()){
+                                                                        if($sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code, rut, correo, telefono, nombre, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")){
+                                                                            if($sqli->bind_param("ssiiiiiissssss", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code, $rut, $correo, $telefono, $nombre, $mensaje)){
+                                                                                if($sqli->execute()){
 
-                                                                            $send['rut'] = $rut;
-                                                                            $send['nombre'] = $nombre;
-                                                                            $send['correo'] = $correo;
-                                                                            $send['telefono'] = $telefono;
-                                                                            $send['mensaje'] = $mensaje;
-                                                                            $send['code'] = $code;
-                                                                            $send['correo_doc'] = $correo_doc;
-                                                                            $send['id'] = $this->con->insert_id;
+                                                                                    $send['rut'] = $rut;
+                                                                                    $send['nombre'] = $nombre;
+                                                                                    $send['correo'] = $correo;
+                                                                                    $send['telefono'] = $telefono;
+                                                                                    $send['mensaje'] = $mensaje;
+                                                                                    $send['code'] = $code;
+                                                                                    $send['correo_doc'] = $correo_doc;
+                                                                                    $send['id'] = $this->con->insert_id;
 
-                                                                            $ch = curl_init();
-                                                                            curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
-                                                                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                                                            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
-                                                                            $resp = json_decode(curl_exec($ch));
-                                                                            curl_close($ch);
+                                                                                    $ch = curl_init();
+                                                                                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                                    $resp = json_decode(curl_exec($ch));
+                                                                                    curl_close($ch);
 
-                                                                            if($resp->{'op'} == 1){
-                                                                                header("Location: http://www.draescorza.cl/?status=1");
-                                                                            }else{
-                                                                                header("Location: http://www.draescorza.cl/?status=2");
-                                                                            }
+                                                                                    if($resp->{'op'} == 1){
+                                                                                        header("Location: http://www.draescorza.cl/?status=1");
+                                                                                    }else{
+                                                                                        header("Location: http://www.draescorza.cl/?status=2&err=1");
+                                                                                    }
 
-                                                                        }else{ $data["err"] = "Error: 1"; }
-                                                                        
-                                                                    }else{ $data["err"] = "Error: 2"; }
-
-                                                                }else{ $data["err"] = "Error: 3"; }
+                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=2"); }
+                                                                            }else{ header("Location: http://www.draescorza.cl/?status=2&err=3"); }
+                                                                        }else{ header("Location: http://www.draescorza.cl/?status=2&err=4"); }
+                                                                    }else{ header("Location: http://www.draescorza.cl/?status=2&err=5"); }
+                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=6"); }
 
                                                             }
                                                         }else{}
