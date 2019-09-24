@@ -221,7 +221,7 @@ if(isset($_GET["contacto"])){
                                     <div class="cont_form">
                                         <div class="cont_forms">
                                             <?php if($contacto == 0 || $contacto == 2){ ?>
-                                            <form onsubmit="return send2()" action="./ajax/index.php" method="post">
+                                            <form onsubmit="return recaptcha_contacto()" action="./ajax/index.php" method="post">
                                                 <input type="hidden" name="accion" value="contacto" />
                                                 <h3>Nombre:</h3>
                                                 <div class="input"><input type="text" name="nombre" placeholder="" /></div>
