@@ -335,6 +335,7 @@ class Core{
                 $id_usr = $_POST["id_usr"];
                 $rut = $_POST["rut"];
                 $nombre = $_POST["nombre"];
+                $mensaje = $_POST["mensaje"];
                 $telefono = $_POST["telefono"];
                 $id_suc = 1;
 
