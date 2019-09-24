@@ -305,13 +305,11 @@ class Core{
     }
     public function reservar_hora(){
 
-        $data['buena'] = 'Buena';
-
         $correo = $_POST["correo"];
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
             $url = 'https://www.google.com/recaptcha/api/siteverify';
-            $data = [
+            $datas = [
                 'secret' => '6Lfor7kUAAAAAH-BQ5sqjnCyvBlBWSgNZ-ec8rx0',
                 'response' => $_POST['token'],
                 'remoteip' => $_SERVER['REMOTE_ADDR']
@@ -321,7 +319,7 @@ class Core{
                 'http' => array(
                     'header'  => 'Content-type: application/x-www-form-urlencoded\r\n',
                     'method'  => 'POST',
-                    'content' => http_build_query($data)
+                    'content' => http_build_query($datas)
                 )
             );
 
