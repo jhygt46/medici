@@ -624,27 +624,10 @@ function sitio_contacto(){
     sitios[3].style.display = 'block';
     sitios[4].style.display = 'none';
     show_map();
+    recaptcha_contacto();
 
 }
-function show_map(){
 
-    if(!imap){
-        
-        var myLatLng = { lat: -33.439834, lng: -70.616914 };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 14,
-            center: myLatLng
-        });
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Hello World!'
-        });
-        imap = true;
-        
-    }
-
-}
 function sitio_contacto_(that){
 
     var menu = that.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -655,6 +638,11 @@ function sitio_contacto_(that){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'block';
     sitios[4].style.display = 'none';
+    show_map();
+    recaptcha_contacto();
+
+}
+function show_map(){
 
     if(!imap){
         
@@ -681,6 +669,7 @@ function sitio_reservar(){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
     sitios[4].style.display = 'none';
+    recaptcha_reserva();
 
 }
 function sitio_reservar_(that){
@@ -693,6 +682,7 @@ function sitio_reservar_(that){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
     sitios[4].style.display = 'none';
+    recaptcha_reserva();
 
 }
 function sitio_nosotros(){
@@ -1527,7 +1517,7 @@ function recaptcha_contacto(){
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
             document.getElementById('token_contacto').value = token;
-            return true;
+            console.log("TOKEN CONTACTO: "+token);
         });
     });
 }
@@ -1535,15 +1525,15 @@ function recaptcha_reserva(){
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
             document.getElementById('token_reserva').value = token;
-            return true;
+            console.log("TOKEN RESERVA: "+token);
         });
     });
 }
 function send(){
-    recaptcha_reserva();
+    return true;
 }
 function send2(){
-    recaptcha_contacto();
+    return true;
 }
 function get_reserva(){
     return JSON.parse(localStorage.getItem("reserva")) || reserva_blank();
