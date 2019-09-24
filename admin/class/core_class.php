@@ -305,6 +305,8 @@ class Core{
     }
     public function reservar_hora(){
 
+        $data['buena'] = 'Buena';
+
         $correo = $_POST["correo"];
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
@@ -421,9 +423,7 @@ class Core{
                                                                             $resp = json_decode(curl_exec($ch));
                                                                             curl_close($ch);
 
-                                                                            echo "<pre>";
-                                                                            print_r($resp);
-                                                                            echo "</pre>";
+                                                                            $data['resp'] = $resp;
 
                                                                             //header("Location: http://www.draescorza.cl/?status=1");
 
@@ -477,9 +477,7 @@ class Core{
                                                                 $resp = json_decode(curl_exec($ch));
                                                                 curl_close($ch);
 
-                                                                echo "<pre>";
-                                                                print_r($resp);
-                                                                echo "</pre>";
+                                                                $data['resp'] = $resp;
                                                                 
                                                                 //header("Location: http://www.draescorza.cl/?status=1");
                                                             
@@ -508,6 +506,8 @@ class Core{
 
             }
         }
+
+        return $data;
 
     }
     public function contacto(){
