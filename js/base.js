@@ -25,13 +25,6 @@ var fecha = new Date().getTime();
 
 function inicio(){
 
-    grecaptcha.ready(function(){
-        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'homepage' }).then(function(token){            
-            //document.getElementById('token_contacto').value = token;
-            document.getElementById('token_reserva').value = token;
-        });
-    });
-
     render_web();
     setTimeout(function(){ slider(0); }, 4000);
 
@@ -1530,11 +1523,27 @@ function create_element_class_inner(clase, value){
     Div.innerHTML = value;
     return Div;
 }
+function recaptcha_contacto(){
+    grecaptcha.ready(function(){
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
+            document.getElementById('token_contacto').value = token;
+            return true;
+        });
+    });
+}
+function recaptcha_reserva(){
+    grecaptcha.ready(function(){
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
+            document.getElementById('token_reserva').value = token;
+            return true;
+        });
+    });
+}
 function send(){
-    return true;
+    recaptcha_reserva();
 }
 function send2(){
-    return true;
+    recaptcha_contacto();
 }
 function get_reserva(){
     return JSON.parse(localStorage.getItem("reserva")) || reserva_blank();
