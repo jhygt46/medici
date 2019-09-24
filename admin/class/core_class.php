@@ -306,8 +306,6 @@ class Core{
     public function reservar_hora(){
 
         $correo = $_POST["correo"];
-        $data['b'] = "uena";
-
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
             $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -329,8 +327,7 @@ class Core{
             $response = file_get_contents($url, false, $context);
             $res = json_decode($response, true);
 
-            $data['res'] = $res;
-            /*
+
             if($res['success'] == true){
 
                 $data['recatcha'] = "1";
@@ -426,9 +423,11 @@ class Core{
                                                                             $resp = json_decode(curl_exec($ch));
                                                                             curl_close($ch);
 
-                                                                            $data['resp'] = $resp;
-
-                                                                            //header("Location: http://www.draescorza.cl/?status=1");
+                                                                            if($resp->{'op'} == 1){
+                                                                                header("Location: http://www.draescorza.cl/?status=1");
+                                                                            }else{
+                                                                                header("Location: http://www.draescorza.cl/?status=2");
+                                                                            }
 
                                                                         }else{ $data["err"] = "Error: 1"; }
                                                                         
@@ -480,15 +479,15 @@ class Core{
                                                                 $resp = json_decode(curl_exec($ch));
                                                                 curl_close($ch);
 
-                                                                $data['resp'] = $resp;
-                                                                
-                                                                //header("Location: http://www.draescorza.cl/?status=1");
+                                                                if($resp->{'op'} == 1){
+                                                                    header("Location: http://www.draescorza.cl/?status=1");
+                                                                }else{
+                                                                    header("Location: http://www.draescorza.cl/?status=2");
+                                                                }
                                                             
                                                             }
-                                                            
                                                         }
                                                     }
-
                                                 }
                                                 
                                             }
@@ -508,13 +507,12 @@ class Core{
                 }else{}
 
             }else{
-                $data['recatcha'] = "2";
+                header("Location: http://www.draescorza.cl/?status=2");
             }
-            */
 
+        }else{
+            header("Location: http://www.draescorza.cl/?status=2");
         }
-
-        return $data;
 
     }
     public function contacto(){
