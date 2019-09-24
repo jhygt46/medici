@@ -331,6 +331,7 @@ class Core{
 
             if($res['success'] == true){
 
+                $data['recatcha'] = "1";
                 $id_ser = $_POST["id_ser"];
                 $id_usr = $_POST["id_usr"];
                 $rut = $_POST["rut"];
@@ -504,6 +505,8 @@ class Core{
                     }else{}
                 }else{}
 
+            }else{
+                $data['recatcha'] = "2";
             }
         }
 
