@@ -596,6 +596,7 @@ function seleccionar_hora(that){
     document.getElementById("pre_hora_close").style.display = "block";
     document.getElementsByName("f_hor")[0].value = parseInt(hora);
     document.getElementById('pop_up').style.display = 'block';
+    recaptcha_reserva();
 
 }
 function seleccionar_hora_id(){
@@ -607,6 +608,7 @@ function seleccionar_hora_id(){
     document.getElementById("pre_hora_h2").innerHTML = "Hora";
     document.getElementById("pre_hora_close").style.display = "block";
     document.getElementsByName("f_hor")[0].value = parseInt(reserva.hora);
+    recaptcha_reserva();
 
 }
 function close(){
@@ -627,7 +629,6 @@ function sitio_contacto(){
     recaptcha_contacto();
 
 }
-
 function sitio_contacto_(that){
 
     var menu = that.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -669,7 +670,6 @@ function sitio_reservar(){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
     sitios[4].style.display = 'none';
-    recaptcha_reserva();
 
 }
 function sitio_reservar_(that){
@@ -682,7 +682,6 @@ function sitio_reservar_(that){
     sitios[2].style.display = 'none';
     sitios[3].style.display = 'none';
     sitios[4].style.display = 'none';
-    recaptcha_reserva();
 
 }
 function sitio_nosotros(){
@@ -1517,7 +1516,6 @@ function recaptcha_contacto(){
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
             document.getElementById('token_contacto').value = token;
-            console.log("TOKEN CONTACTO: "+token);
         });
     });
 }
@@ -1525,7 +1523,6 @@ function recaptcha_reserva(){
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
             document.getElementById('token_reserva').value = token;
-            console.log("TOKEN RESERVA: "+token);
         });
     });
 }
