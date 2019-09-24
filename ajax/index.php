@@ -11,6 +11,10 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
+echo "<pre>";
+echo print_r($_POST);
+echo "</pre>";
+
 if($_POST["accion"] == "reserva"){
     echo "<pre>";
     echo print_r($core->reservar_hora());
