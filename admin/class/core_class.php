@@ -330,7 +330,7 @@ class Core{
             $res = json_decode($response, true);
 
             $data['res'] = $res;
-
+            /*
             if($res['success'] == true){
 
                 $data['recatcha'] = "1";
@@ -510,6 +510,8 @@ class Core{
             }else{
                 $data['recatcha'] = "2";
             }
+            */
+            
         }
 
         return $data;

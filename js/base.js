@@ -26,8 +26,8 @@ var fecha = new Date().getTime();
 function inicio(){
 
     grecaptcha.ready(function(){
-        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', {action: 'homepage'}).then(function(token){            
-            document.getElementById('token_contacto').value = token;
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'homepage' }).then(function(token){            
+            //document.getElementById('token_contacto').value = token;
             document.getElementById('token_reserva').value = token;
         });
     });
