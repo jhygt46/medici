@@ -396,7 +396,6 @@ class Core{
 
                                                                 if($now_ini >= $h_ini && $now_fin <= $h_fin){
 
-                                                                    $data['ran_dentro'] = 1;
                                                                     if($this->insertar_horas($id_usr, $fecha, $now_ini, $now_fin, $h_ini, $h_fin)){
                                                                         
                                                                         $fi = strtotime($fecha." ".$str_hora);
@@ -433,7 +432,7 @@ class Core{
                                                                             }else{ header("Location: http://www.draescorza.cl/?status=2&err=3"); }
                                                                         }else{ header("Location: http://www.draescorza.cl/?status=2&err=4"); }
                                                                     }else{ header("Location: http://www.draescorza.cl/?status=2&err=5"); }
-                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=6"); }
+                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=6&ni=".$now_ini."&nf=".$now_fin."&hi=".$h_ini."&hf=".$h_fin); }
 
                                                             }
                                                         }else{}
