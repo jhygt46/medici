@@ -405,7 +405,6 @@ class Core{
                                                                         $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
                                                                         if($sqli->execute()){
 
-                                                                            $send['accion'] = "reserva";
                                                                             $send['rut'] = $rut;
                                                                             $send['nombre'] = $nombre;
                                                                             $send['correo'] = $correo;
@@ -413,6 +412,7 @@ class Core{
                                                                             $send['mensaje'] = $mensaje;
                                                                             $send['code'] = $code;
                                                                             $send['correo_doc'] = $correo_doc;
+                                                                            $send['id'] = $this->con->insert_id;
 
                                                                             $ch = curl_init();
                                                                             curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
@@ -421,8 +421,11 @@ class Core{
                                                                             $resp = json_decode(curl_exec($ch));
                                                                             curl_close($ch);
 
-                                                                            $id = $this->con->insert_id;
-                                                                            header("Location: http://www.draescorza.cl/?status=1");
+                                                                            echo "<pre>";
+                                                                            print_r($resp);
+                                                                            echo "</pre>";
+
+                                                                            //header("Location: http://www.draescorza.cl/?status=1");
 
                                                                         }else{ $data["err"] = "Error: 1"; }
                                                                         
@@ -544,23 +547,17 @@ class Core{
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                 $resp = json_decode(curl_exec($ch));
                 curl_close($ch);
-
-                echo "<pre>";
-                print_r($resp);
-                echo "</pre>";
                 
                 if($resp['op'] == 1){
-                    //header("Location: http://www.draescorza.cl/?contacto=1");
+                    header("Location: http://www.draescorza.cl/?contacto=1");
                 }else{
-                    //header("Location: http://www.draescorza.cl/?contacto=2");
+                    header("Location: http://www.draescorza.cl/?contacto=2");
                 }
-
             }else{
-                //header("Location: http://www.draescorza.cl/?contacto=2");
+                header("Location: http://www.draescorza.cl/?contacto=2");
             }
-
         }else{
-            //header("Location: http://www.draescorza.cl/?contacto=3");
+            header("Location: http://www.draescorza.cl/?contacto=3");
         }
 
     }
