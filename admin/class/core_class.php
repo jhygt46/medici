@@ -306,6 +306,8 @@ class Core{
     public function reservar_hora(){
 
         $correo = $_POST["correo"];
+        $data['b'] = "uena";
+
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
             $url = 'https://www.google.com/recaptcha/api/siteverify';
