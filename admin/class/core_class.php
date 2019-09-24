@@ -428,7 +428,7 @@ class Core{
                                                                                         header("Location: http://www.draescorza.cl/?status=2&err=1");
                                                                                     }
 
-                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=2"); }
+                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=".htmlspecialchars($sqli->error)); }
                                                                             }else{ header("Location: http://www.draescorza.cl/?status=2&err=3"); }
                                                                         }else{ header("Location: http://www.draescorza.cl/?status=2&err=4"); }
                                                                     }else{}
