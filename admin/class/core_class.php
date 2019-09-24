@@ -335,7 +335,7 @@ class Core{
                 $id_usr = $_POST["id_usr"];
                 $rut = $_POST["rut"];
                 $nombre = $_POST["nombre"];
-                $mensaje = $_POST["mensaje"];
+                $mensaje  = $_POST["mensaje"];
                 $telefono = $_POST["telefono"];
                 $id_suc = 1;
 
@@ -417,7 +417,7 @@ class Core{
                                                                                     $send['id'] = $this->con->insert_id;
 
                                                                                     $ch = curl_init();
-                                                                                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_medici');
+                                                                                    curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
                                                                                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                                                                                     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                                                                                     $resp = json_decode(curl_exec($ch));
