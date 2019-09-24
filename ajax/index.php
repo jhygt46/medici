@@ -12,15 +12,10 @@ require_once DIR."admin/class/core_class.php";
 $core = new Core();
 
 if($_POST["accion"] == "reserva"){
-    echo "RESERVA";
-    echo "<pre>";
-    echo print_r($core->reservar_hora());
-    echo "</pre>";
+    $core->reservar_hora();
 }
 if($_POST["accion"] == "contacto"){
-    echo "<pre>";
-    echo print_r($core->contacto());
-    echo "</pre>";
+    $core->contacto();
 }
 
 ?>
