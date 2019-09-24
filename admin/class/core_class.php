@@ -431,8 +431,8 @@ class Core{
                                                                                 }else{ header("Location: http://www.draescorza.cl/?status=2&err=2"); }
                                                                             }else{ header("Location: http://www.draescorza.cl/?status=2&err=3"); }
                                                                         }else{ header("Location: http://www.draescorza.cl/?status=2&err=4"); }
-                                                                    }else{ header("Location: http://www.draescorza.cl/?status=2&err=5"); }
-                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=6&ni=".$now_ini."&nf=".$now_fin."&hi=".$h_ini."&hf=".$h_fin); }
+                                                                    }else{}
+                                                                }else{}
 
                                                             }
                                                         }else{}
@@ -458,8 +458,8 @@ class Core{
                                                             $fi_f = $fi + $tiempo;
                                                             $code = $this->getrandstring(32);
 
-                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                            $sqli->bind_param("ssiiiiiis", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code);
+                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code, rut, correo, telefono, nombre, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                                            $sqli->bind_param("ssiiiiiissssss", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code, $rut, $correo, $telefono, $nombre, $mensaje);
                                                             if($sqli->execute()){
 
                                                                 $send['rut'] = $rut;
