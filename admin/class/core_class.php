@@ -554,19 +554,13 @@ class Core{
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                 $resp = json_decode(curl_exec($ch));
                 curl_close($ch);
-                
-                echo "<pre>";
-                print_r($resp);
-                echo "</pre>";
 
-                /*
-                if($resp['op'] == 1){
+                if($resp->{'op'} == 1){
                     header("Location: http://www.draescorza.cl/?contacto=1");
                 }else{
                     header("Location: http://www.draescorza.cl/?contacto=2");
                 }
-                */
-
+                
             }else{
                 header("Location: http://www.draescorza.cl/?contacto=2");
             }
