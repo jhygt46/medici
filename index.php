@@ -60,6 +60,7 @@ if(isset($_GET["contacto"])){
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
                                 <form onsubmit="return send()" action="./ajax/index.php" method="post">
+                                    <input type="hidden" name="accion" value="reserva" />
                                     <input type="hidden" name="id_ser" value="" />
                                     <input type="hidden" name="id_usr" value="" />
                                     <input type="hidden" name="f_fec" value="" />
