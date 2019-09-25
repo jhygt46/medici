@@ -167,7 +167,7 @@ if(isset($_GET["contacto"])){
                                     <div class="data valign"><h2 id="pre_serv_h2"></h2><h1 id="pre_serv_h1">Servicio</h1></div>
                                     <div onclick="close_servicio()" class="close" id="pre_serv_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
-                                <div id="pre_doctor" class="pregunta" style="background: #f0f0f0">
+                                <div id="pre_doctor" class="pregunta" style="background: #fafafa">
                                     <div class="data valign"><h2 id="pre_doc_h2"></h2><h1 id="pre_doc_h1">Doctor</h1></div>
                                     <div onclick="close_doctor()" class="close" id="pre_doc_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
@@ -175,7 +175,7 @@ if(isset($_GET["contacto"])){
                                     <div class="data valign"><h2 id="pre_fecha_h2"></h2><h1 id="pre_fecha_h1">Fecha</h1></div>
                                     <div onclick="close_fecha()" class="close" id="pre_fecha_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
-                                <div id="pre_estado" class="pregunta" style="background: #f0f0f0">
+                                <div id="pre_estado" class="pregunta" style="background: #fafafa">
                                     <div class="data valign"><h2 id="pre_hora_h2"></h2><h1 id="pre_hora_h1">Hora</h1></div>
                                     <div onclick="close_hora()" class="close" id="pre_hora_close" style="display: none"><div class="cont_close"><div class="line l1 valign"></div><div class="line l2 halign"></div></div></div>
                                 </div>
