@@ -349,9 +349,16 @@ class Core{
                                 $aux_ser = $res->fetch_all(MYSQLI_ASSOC)[0];
                                 $tiempo = $aux_ser["tiempo_min"];
                                 $correo_doc = $aux_ser["correo"];
+                                $profesional = $aux_ser["nombre"];
                                 $precio = $aux_ser["precio"];
                                 $fecha = $_POST["f_fec"];
                                 $hora = $_POST["f_hor"];
+                                $fecha_time = date("w", strtotime($fecha));
+
+                                $dia = date("w", $fecha_time);
+                                $date_day = date("d", $fecha_time);
+                                $date_month = date("m", $fecha_time);
+                                $date_year = date("y", $fecha_time);
 
                                 $now_ini = intval($hora);
                                 $now_fin = $now_ini + $tiempo;
@@ -376,7 +383,6 @@ class Core{
                                             $resexc = $sqlexc->get_result();
                                             if($resexc->{"num_rows"} == 0){
 
-                                                $dia = date("w", strtotime($fecha));
                                                 if($sqlran = $this->con->prepare("SELECT * FROM rangos t1, rango_servicios t2 WHERE t1.id_usr=? AND t1.dia_ini<=? AND t1.dia_fin>=? AND t1.id_ran=t2.id_ran AND t2.id_ser=?")){
                                                     if($sqlran->bind_param("iiii", $id_usr, $dia, $dia, $id_ser)){
                                                         if($sqlran->execute()){
@@ -415,6 +421,13 @@ class Core{
                                                                                     $send['code'] = $code;
                                                                                     $send['correo_doc'] = $correo_doc;
                                                                                     $send['id'] = $this->con->insert_id;
+                                                                                    $send['hora'] = $str_hr1.":".$str_hr2;
+                                                                                    $send['semana'] = $dia;
+                                                                                    $send['dia'] = $date_day;
+                                                                                    $send['mes'] = $date_month;
+                                                                                    $send['ano'] = $date_year;
+                                                                                    $send['profesional'] = $profesional;
+                                                                                    //$send['especialidad'] = $especialidad;
 
                                                                                     $ch = curl_init();
                                                                                     curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
@@ -471,6 +484,13 @@ class Core{
                                                                         $send['code'] = $code;
                                                                         $send['correo_doc'] = $correo_doc;
                                                                         $send['id'] = $this->con->insert_id;
+                                                                        $send['hora'] = $str_hr1.":".$str_hr2;
+                                                                        $send['semana'] = $dia;
+                                                                        $send['dia'] = $date_day;
+                                                                        $send['mes'] = $date_month;
+                                                                        $send['ano'] = $date_year;
+                                                                        $send['profesional'] = $profesional;
+                                                                        //$send['especialidad'] = $especialidad;
 
                                                                         $ch = curl_init();
                                                                         curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
