@@ -389,7 +389,7 @@ html{
                                         .row_calendar{
                                             border-right: 1px solid #000;
                                             .calendar_semana{
-                                                background: #009;
+                                                background: #33c;
                                                 width: calc(14.2857% - 1px);
                                                 float: left;
                                                 height: 40px;
@@ -397,6 +397,7 @@ html{
                                                 border-bottom: 1px solid #000;
                                                 border-left: 1px solid #000;
                                                 position: relative;
+                                                color: #fff;
                                                 .semana_info{
                                                     text-align: center;
                                                     font-size: 18px;

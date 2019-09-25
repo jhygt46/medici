@@ -398,7 +398,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
   border-right: 1px solid #000;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_semana {
-  background: #009;
+  background: #33c;
   width: calc(14.2857% - 1px);
   float: left;
   height: 40px;
@@ -406,6 +406,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
   border-bottom: 1px solid #000;
   border-left: 1px solid #000;
   position: relative;
+  color: #fff;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario .table_calendar .row_calendar .calendar_semana .semana_info {
   text-align: center;
