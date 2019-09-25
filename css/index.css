@@ -493,7 +493,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .m_error {
 html body #contenedor .sitio .cont_sitio .sitio_pagina .info {
   position: relative;
   min-height: 410px;
-  background: #eee;
+  background: #fafafa;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info {
   width: 100%;
