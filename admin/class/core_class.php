@@ -426,12 +426,12 @@ class Core{
                                                                                     if($resp->{'op'} == 1){
                                                                                         header("Location: http://www.draescorza.cl/?status=1");
                                                                                     }else{
-                                                                                        header("Location: http://www.draescorza.cl/?status=2&err=1");
+                                                                                        header("Location: http://www.draescorza.cl/?status=2");
                                                                                     }
 
-                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2&err=".htmlspecialchars($sqli->error)); }
-                                                                            }else{ header("Location: http://www.draescorza.cl/?status=2&err=3"); }
-                                                                        }else{ header("Location: http://www.draescorza.cl/?status=2&err=4"); }
+                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                                            }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                                        }else{ header("Location: http://www.draescorza.cl/?status=2"); }
                                                                     }else{}
                                                                 }else{}
 
@@ -459,33 +459,35 @@ class Core{
                                                             $fi_f = $fi + $tiempo;
                                                             $code = $this->getrandstring(32);
 
-                                                            $sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code, rut, correo, telefono, nombre, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                            $sqli->bind_param("ssiiiiiissssss", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code, $rut, $correo, $telefono, $nombre, $mensaje);
-                                                            if($sqli->execute()){
+                                                            if($sqli = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, eliminado, id_ser, id_usr, id_suc, code, rut, correo, telefono, nombre, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")){
+                                                                if($sqli->bind_param("ssiiiiiissssss", date("Y-m-d H:i:s", $fi), date("Y-m-d H:i:s", $fi_f), $tiempo, $precio, $this->eliminado, $id_ser, $id_usr, $id_suc, $code, $rut, $correo, $telefono, $nombre, $mensaje)){
+                                                                    if($sqli->execute()){
 
-                                                                $send['rut'] = $rut;
-                                                                $send['nombre'] = $nombre;
-                                                                $send['correo'] = $correo;
-                                                                $send['telefono'] = $telefono;
-                                                                $send['mensaje'] = $mensaje;
-                                                                $send['code'] = $code;
-                                                                $send['correo_doc'] = $correo_doc;
-                                                                $send['id'] = $this->con->insert_id;
+                                                                        $send['rut'] = $rut;
+                                                                        $send['nombre'] = $nombre;
+                                                                        $send['correo'] = $correo;
+                                                                        $send['telefono'] = $telefono;
+                                                                        $send['mensaje'] = $mensaje;
+                                                                        $send['code'] = $code;
+                                                                        $send['correo_doc'] = $correo_doc;
+                                                                        $send['id'] = $this->con->insert_id;
 
-                                                                $ch = curl_init();
-                                                                curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
-                                                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                                                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
-                                                                $resp = json_decode(curl_exec($ch));
-                                                                curl_close($ch);
+                                                                        $ch = curl_init();
+                                                                        curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
+                                                                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                                                        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
+                                                                        $resp = json_decode(curl_exec($ch));
+                                                                        curl_close($ch);
 
-                                                                if($resp->{'op'} == 1){
-                                                                    header("Location: http://www.draescorza.cl/?status=1");
-                                                                }else{
-                                                                    header("Location: http://www.draescorza.cl/?status=2");
-                                                                }
-                                                            
-                                                            }
+                                                                        if($resp->{'op'} == 1){
+                                                                            header("Location: http://www.draescorza.cl/?status=1");
+                                                                        }else{
+                                                                            header("Location: http://www.draescorza.cl/?status=2");
+                                                                        }
+                                                                    
+                                                                    }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                                }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                            }else{ header("Location: http://www.draescorza.cl/?status=2"); }
                                                         }
                                                     }
                                                 }
@@ -795,6 +797,40 @@ class Core{
             }else{ return htmlspecialchars($sql->error); }
         }else{ return htmlspecialchars($this->con->error); }
         
+    }
+    public function confirmar($id, $code){
+        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=? AND eliminado=?")){
+            if($sql->bind_param("isi", $id, $code, $this->eliminado)){
+                if($sql->execute()){
+                    $res = $sql->get_result();
+                    if($res->{"num_rows"} == 1){
+                        $estado = 1;
+                        $sqlu = $this->con->prepare("UPDATE horas SET estado=? WHERE id_hor=?");
+                        $sqlu->bind_param("ii", $estado, $id);
+                        $sqlu->execute();
+                        $sqlu->close();
+                        echo "HORA CONFIRMADA";
+                    }
+                    $sql->close();
+                }
+            }
+        }
+    }
+    public function cancelar($id, $code){
+        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=? AND eliminado=?")){
+            if($sql->bind_param("isi", $id, $code, $this->eliminado)){
+                if($sql->execute()){
+                    $res = $sql->get_result();
+                    if($res->{"num_rows"} == 1){
+                        $sqld = $this->con->prepare("DELETE FROM horas WHERE id_hor=?");
+                        $sqld->bind_param("i", $id);
+                        $sqld->execute();
+                        echo "HORA CANCELADA";
+                    }
+                    $sql->close();
+                }
+            }
+        }
     }
 
 }
