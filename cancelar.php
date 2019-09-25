@@ -10,6 +10,6 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
-$core->concelar($_GET["id"], $_GET["code"]);
+$core->cancelar($_GET["id"], $_GET["code"]);
 
 ?>
