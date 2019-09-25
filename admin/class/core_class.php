@@ -326,7 +326,7 @@ class Core{
             $context  = stream_context_create($options);
             $response = file_get_contents($url, false, $context);
             $res = json_decode($response, true);
-
+            $dias_semana = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
             if($res['success'] == true){
 
@@ -353,7 +353,7 @@ class Core{
                                 $precio = $aux_ser["precio"];
                                 $fecha = $_POST["f_fec"];
                                 $hora = $_POST["f_hor"];
-                                $fecha_time = date("w", strtotime($fecha));
+                                $fecha_time = strtotime($fecha);
 
                                 $dia = date("w", $fecha_time);
                                 $date_day = date("d", $fecha_time);
@@ -422,7 +422,7 @@ class Core{
                                                                                     $send['correo_doc'] = $correo_doc;
                                                                                     $send['id'] = $this->con->insert_id;
                                                                                     $send['hora'] = $str_hr1.":".$str_hr2;
-                                                                                    $send['semana'] = $dia;
+                                                                                    $send['semana'] = $dias_semana[$dia];
                                                                                     $send['dia'] = $date_day;
                                                                                     $send['mes'] = $date_month;
                                                                                     $send['ano'] = $date_year;
@@ -485,7 +485,7 @@ class Core{
                                                                         $send['correo_doc'] = $correo_doc;
                                                                         $send['id'] = $this->con->insert_id;
                                                                         $send['hora'] = $str_hr1.":".$str_hr2;
-                                                                        $send['semana'] = $dia;
+                                                                        $send['semana'] = $dias_semana[$dia];
                                                                         $send['dia'] = $date_day;
                                                                         $send['mes'] = $date_month;
                                                                         $send['ano'] = $date_year;
