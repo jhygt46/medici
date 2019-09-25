@@ -353,7 +353,6 @@ html{
                             .cont_fecha{
                                 display: block;
                                 .detalle{
-                                    background: #ddd;
                                     .cont_dtl{
                                         padding: 4px;
                                         .dtl_titulo{
@@ -444,7 +443,7 @@ html{
                                 .horas{
                                     background: #ddd;
                                     overflow-y: scroll;
-                                    height: 350px;
+                                    height: 410px;
                                     .cont_hrs{
                                         padding: 5px 10px;
                                         .titulo_hrs{
@@ -482,7 +481,7 @@ html{
                         }
                         .btn_pre{
                             height: 85px;
-                            background: #ee9;
+                            border-bottom: 1px solid #999;
                         }
                         .m_error{
                             font-size: 18px;
@@ -492,7 +491,7 @@ html{
                         }
                         .info{
                             position: relative;
-                            min-height: 350px;
+                            min-height: 410px;
                             background: #eee;
                             .cont_info{
                                 width: 100%;

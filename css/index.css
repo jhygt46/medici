@@ -360,9 +360,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .list_doctores .
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha {
   display: block;
 }
-html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle {
-  background: #ddd;
-}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl {
   padding: 4px;
 }
@@ -452,7 +449,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas {
   background: #ddd;
   overflow-y: scroll;
-  height: 350px;
+  height: 410px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs {
   padding: 5px 10px;
@@ -486,7 +483,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .btn_pre {
   height: 85px;
-  background: #ee9;
+  border-bottom: 1px solid #999;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .m_error {
   font-size: 18px;
@@ -496,7 +493,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .m_error {
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .info {
   position: relative;
-  min-height: 350px;
+  min-height: 410px;
   background: #eee;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .info .cont_info {
