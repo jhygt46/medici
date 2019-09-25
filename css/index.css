@@ -300,7 +300,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .preguntas .preg
   height: 100%;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .preguntas .pregunta .close .cont_close .line {
-  background: #fff;
+  background: #666;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .preguntas .pregunta .close .cont_close .l1 {
   width: 100%;
