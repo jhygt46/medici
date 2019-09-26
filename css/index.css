@@ -630,7 +630,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#no
   width: 100%;
   padding: 20px 0px;
   position: relative;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #aaa;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .nosotros .sec_cont ul#nosotros2 li .nos {
   padding-right: 20px;
