@@ -460,6 +460,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
   font-size: 22px;
   padding-bottom: 10px;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .espacion {
+  display: block;
+  height: 30px;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora {
   margin-bottom: 3px;
   position: relative;
@@ -474,7 +478,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .reserva {
   right: 10px;
   padding: 0px 20px 4px 20px;
-  background: #ddd;
+  background: #ccc;
   text-align: center;
   font-size: 20px;
   color: #fff;

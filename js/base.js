@@ -1057,8 +1057,8 @@ function html_horas(){
             html_hora.appendChild(reserv);
             html_hora.setAttribute('id', horas[i].m);
             html_hora.onclick = function(){ seleccionar_hora(this) };
-
             lista_hrs.appendChild(html_hora);
+            fr_aux = 0;
 
         }
         if(horas[i].p == 1){
@@ -1070,6 +1070,7 @@ function html_horas(){
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             lista_hrs.appendChild(html_hora);
+            fr_aux = 0;
 
         }
         if(horas[i].p == 2 && fr_aux == 0){
@@ -1083,7 +1084,7 @@ function html_horas(){
             html_hora.appendChild(reserv);
             lista_hrs.appendChild(html_hora);
             */
-           
+
             var espacio = create_element_class('espacio');
             lista_hrs.appendChild(espacio);
             fr_aux = 1;

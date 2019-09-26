@@ -453,6 +453,10 @@ html{
                                             padding-bottom: 10px;
                                         }
                                         .lista_hrs{
+                                            .espacion{
+                                                display: block;
+                                                height: 30px;
+                                            }
                                             .hora{
                                                 margin-bottom: 3px;
                                                 position: relative;
@@ -466,7 +470,7 @@ html{
                                                 .reserva{
                                                     right: 10px;
                                                     padding: 0px 20px 4px 20px;
-                                                    background: #ddd;
+                                                    background: #ccc;
                                                     text-align: center;
                                                     font-size: 20px;
                                                     color: #fff;
