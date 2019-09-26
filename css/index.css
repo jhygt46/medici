@@ -370,14 +370,14 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .det
   font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_doctor {
-  padding-top: 4px;
-  font-size: 12px;
+  padding-top: 10px;
+  font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_precio {
-  font-size: 12px;
+  font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_tiempo {
-  font-size: 12px;
+  font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario {
   background: #bbb;

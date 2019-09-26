@@ -1253,7 +1253,7 @@ function html_detalle(){
                 if(data.servicios[i].lista_doctores[j].id == reserva.doctor){
                     console.log(data.servicios[i].lista_doctores[j]);
                     var dtl_doctor = create_element_class_inner('dtl_doctor', data.servicios[i].lista_doctores[j].nombre);
-                    var dtl_precio = create_element_class_inner('dtl_precio', data.servicios[i].lista_doctores[j].precio);
+                    var dtl_precio = create_element_class_inner('dtl_precio', formatNumber.new(parseInt(data.servicios[i].lista_doctores[j].precio), "$")));
                     var dtl_tiempo = create_element_class_inner('dtl_tiempo', data.servicios[i].lista_doctores[j].tiempo_min);
                     cont_dtl.appendChild(dtl_doctor);
                     cont_dtl.appendChild(dtl_precio);
@@ -1542,4 +1542,23 @@ function reserva_blank(){
 }
 function set_reserva(reserva){
     localStorage.setItem("reserva", JSON.stringify(reserva));
+}
+var formatNumber = {
+    separador: ".", // separador para los miles
+    sepDecimal: ',', // separador para los decimales
+    formatear: function(num){
+        num +='';
+        var splitStr = num.split('.');
+        var splitLeft = splitStr[0];
+        var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
+        var regx = /(\d+)(\d{3})/;
+        while (regx.test(splitLeft)) {
+            splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
+        }
+        return this.simbol + splitLeft +splitRight;
+    },
+    new: function(num, simbol){
+        this.simbol = simbol ||'';
+        return this.formatear(num);
+    }
 }
