@@ -464,7 +464,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
   margin-bottom: 2px;
   position: relative;
   height: 40px;
-  background: #ddd;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .dtl {
   left: 5px;
