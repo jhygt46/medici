@@ -359,7 +359,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha {
   display: block;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl {
-  padding: 15px 5px 5px 10px;
+  padding: 15px 10px 5px 10px;
   color: #666;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_titulo {
@@ -462,9 +462,10 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
   padding-bottom: 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora {
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   position: relative;
-  height: 40px;
+  height: 46px;
+  background: #f0f0f0;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .dtl {
   left: 5px;
