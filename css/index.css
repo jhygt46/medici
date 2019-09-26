@@ -788,7 +788,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .servicios .sec_cont ul l
   width: 16.66%;
 }
 html body #contenedor .sitio .cont_sitio .back_inicio {
-  background: url("../images/background.jpg") repeat-x;
+  background: url("../images/background.jpg") no-repeat;
+  background-position-x: center;
 }
 
 .grecaptcha-badge {

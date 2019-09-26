@@ -809,7 +809,8 @@ html{
                         }
                     }
                     .back_inicio{
-                        background: url('../images/background.jpg') repeat-x;
+                        background: url('../images/background.jpg') no-repeat;
+                        background-position-x: center;
                     }
                 }
             }
