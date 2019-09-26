@@ -633,8 +633,9 @@ html{
                                 ul#nosotros2{
                                     li{
                                         width: 100%;
-                                        padding-top: 20px;
+                                        padding: 20px 0px;
                                         position: relative;
+                                        border-bottom: 1px solid #666;
                                         .nos{
                                             padding-right: 20px;
                                             .nos_foto{
