@@ -359,14 +359,14 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha {
   display: block;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl {
-  padding: 4px;
+  padding: 10px 5px 5px 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_titulo {
-  color: #900;
+  color: #999;
   font-size: 24px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_descripcion {
-  color: #909;
+  color: #999;
   font-size: 18px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_doctor {
