@@ -224,6 +224,7 @@ html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_l
   height: 100px;
   left: 0px;
   background: #999;
+  cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_logo .botones {
   width: calc(100% - 240px);
@@ -238,6 +239,7 @@ html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_l
   text-align: right;
   color: #999;
   font-weight: bold;
+  cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .titulo_pagina .logo_pagina_web .cont_logo .botones .btns .btn1 {
   width: 110px;
