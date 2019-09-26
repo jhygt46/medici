@@ -1253,8 +1253,8 @@ function html_detalle(){
                 if(data.servicios[i].lista_doctores[j].id == reserva.doctor){
                     console.log(data.servicios[i].lista_doctores[j]);
                     //var dtl_doctor = create_element_class_inner('dtl_doctor', data.servicios[i].lista_doctores[j].nombre);
-                    var dtl_precio = create_element_class_inner('dtl_precio', formatNumber.new(parseInt(data.servicios[i].lista_doctores[j].precio), "$"));
-                    var dtl_tiempo = create_element_class_inner('dtl_tiempo', data.servicios[i].lista_doctores[j].tiempo_min + " minutos");
+                    var dtl_precio = create_element_class_inner('dtl_precio', "Costo: " + formatNumber.new(parseInt(data.servicios[i].lista_doctores[j].precio), "$"));
+                    var dtl_tiempo = create_element_class_inner('dtl_tiempo', "Duracion: " + data.servicios[i].lista_doctores[j].tiempo_min + " minutos");
                     //cont_dtl.appendChild(dtl_doctor);
                     cont_dtl.appendChild(dtl_precio);
                     cont_dtl.appendChild(dtl_tiempo);

@@ -368,9 +368,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .det
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_descripcion {
   color: #666;
   font-size: 14px;
+  padding-top: 6px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_doctor {
-  padding-top: 10px;
   font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_precio {
