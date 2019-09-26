@@ -1014,6 +1014,7 @@ function in_array(arr, x){
 }
 function html_horas(){
 
+    var fr_aux = 0;
     var reserva = get_reserva();
     var html_hora = "";
     var fecha = reserva.fecha.split("-");
@@ -1071,8 +1072,9 @@ function html_horas(){
             lista_hrs.appendChild(html_hora);
 
         }
-        if(horas[i].p == 2){
+        if(horas[i].p == 2 && fr_aux == 0){
 
+            /*
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
             var reserv = create_element_class_inner('reserva valign', 'Fuera de Rango..');
@@ -1080,6 +1082,11 @@ function html_horas(){
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             lista_hrs.appendChild(html_hora);
+            */
+           
+            var espacio = create_element_class('espacio');
+            lista_hrs.appendChild(espacio);
+            fr_aux = 1;
 
         }
 
