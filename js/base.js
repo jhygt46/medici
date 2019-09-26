@@ -1065,7 +1065,7 @@ function html_horas(){
 
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
-            var reserv = create_element_class_inner('reserva valign', 'Reservado..');
+            var reserv = create_element_class_inner('reservado valign', 'Reservado..');
             
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);

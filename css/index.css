@@ -489,6 +489,13 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
   color: #fff;
   cursor: pointer;
 }
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .reservado {
+  right: 10px;
+  padding: 0px 20px 4px 20px;
+  text-align: center;
+  font-size: 20px;
+  color: #ccc;
+}
 html body #contenedor .sitio .cont_sitio .sitio_pagina .btn_pre {
   height: 85px;
   border-bottom: 1px solid #999;
