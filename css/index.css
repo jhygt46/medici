@@ -360,13 +360,12 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha {
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl {
   padding: 10px 5px 5px 10px;
+  color: #666;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_titulo {
-  color: #666;
   font-size: 24px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_descripcion {
-  color: #666;
   font-size: 14px;
   padding-top: 6px;
 }
@@ -377,6 +376,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .det
   font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_tiempo {
+  font-size: 14px;
+}
+html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_html1 {
   font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .calendario {

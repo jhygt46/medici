@@ -353,12 +353,11 @@ html{
                                 .detalle{
                                     .cont_dtl{
                                         padding: 10px 5px 5px 10px;
+                                        color: #666;
                                         .dtl_titulo{
-                                            color: #666;
                                             font-size: 24px;
                                         }
                                         .dtl_descripcion{
-                                            color: #666;
                                             font-size: 14px;
                                             padding-top: 6px;
                                         }
@@ -369,6 +368,9 @@ html{
                                             font-size: 14px;
                                         }
                                         .dtl_tiempo{
+                                            font-size: 14px;
+                                        }
+                                        .dtl_html1{
                                             font-size: 14px;
                                         }
                                     }
