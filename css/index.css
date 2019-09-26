@@ -491,10 +491,9 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .hor
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas .cont_hrs .lista_hrs .hora .reservado {
   right: 10px;
-  padding: 0px 20px 4px 20px;
   text-align: center;
   font-size: 20px;
-  color: #ccc;
+  color: #999;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .btn_pre {
   height: 85px;
