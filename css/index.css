@@ -450,7 +450,6 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .cal
   cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .horas {
-  background: #f0f0f0;
   overflow-y: scroll;
   height: 410px;
 }
