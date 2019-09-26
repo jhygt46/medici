@@ -362,16 +362,16 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .det
   padding: 10px 5px 5px 10px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_titulo {
-  color: #999;
+  color: #666;
   font-size: 24px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_descripcion {
-  color: #999;
-  font-size: 18px;
+  color: #666;
+  font-size: 14px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_doctor {
   padding-top: 4px;
-  font-size: 11px;
+  font-size: 12px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_precio {
   font-size: 12px;
