@@ -370,8 +370,8 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .det
   font-size: 18px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_doctor {
-  padding-top: 10px;
-  font-size: 12px;
+  padding-top: 4px;
+  font-size: 11px;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha .detalle .cont_dtl .dtl_precio {
   font-size: 12px;
