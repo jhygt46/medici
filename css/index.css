@@ -344,6 +344,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .list_servicios 
   padding: 10px 6px;
   border-bottom: 1px solid #999;
   color: #666;
+  cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .list_doctores {
   display: block;
@@ -357,6 +358,7 @@ html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .list_doctores .
   padding: 10px 6px;
   border-bottom: 1px solid #999;
   color: #666;
+  cursor: pointer;
 }
 html body #contenedor .sitio .cont_sitio .sitio_pagina .seccion .cont_fecha {
   display: block;
