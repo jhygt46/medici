@@ -51,7 +51,7 @@ $list = $core->get_horas_fecha_admin($fecha);
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre"><?php echo $fecha[1]." ".$nombre_user." ".$nombre_serv; ?></div>
-                        <!--<a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>-->
+                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
                 <?php } ?>
