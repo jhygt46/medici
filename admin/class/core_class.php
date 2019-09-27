@@ -611,10 +611,10 @@ class Core{
         }else{ return htmlspecialchars($this->con->error); }
 
     }
-    public function ver_hora($id_hor){
+    public function ver_detalle_hora($id_hor){
 
-        if($sql = $this->con->prepare("SELECT * FROM horas t1, servicios t2 WHERE t1.id_hor=? AND t1.id_ser=t2.id_ser")){
-            if($sql->bind_param("i", $id_hor)){
+        if($sql = $this->con->prepare("SELECT * FROM horas t1, servicios t2 WHERE t1.id_hor=? AND t1.id_usr=? AND t1.id_ser=t2.id_ser")){
+            if($sql->bind_param("ii", $id_hor, $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
                 }else{ return htmlspecialchars($sql->error); }

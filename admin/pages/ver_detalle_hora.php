@@ -16,7 +16,7 @@ $id_hor = $_GET["id_hor"];
 /* CONFIG PAGE */
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$hora = $core->ver_hora($id_hor);
+$hora = $core->ver_detalle_hora($id_hor);
 
 ?>
 <div class="pagina">
