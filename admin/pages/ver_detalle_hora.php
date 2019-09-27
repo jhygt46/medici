@@ -31,9 +31,23 @@ $titulo = "Hora: ".$aux2[0].":".$aux2[1];
     </div>
     <hr>
     <div>
-        <div>Nombre</div>
-        <div><?php echo $hora['nombre_usr']; ?></div>
-        <div>Servicio</div>
-        <div><?php echo $hora['nombre_ser']; ?></div>
+        <div class="info_tit">Nombre</div>
+        <div class="info_data"><?php echo $hora['nombre_usr']; ?></div>
+        <div class="info_tit">Rut</div>
+        <div class="info_data"><?php echo $hora['rut']; ?></div>
+        <div class="info_tit">telefono</div>
+        <div class="info_data"><?php echo $hora['telefono']; ?></div>
+        <div class="info_tit">Correo</div>
+        <div class="info_data"><?php echo $hora['correo']; ?></div>
+        <div class="info_tit">Mensaje</div>
+        <div class="info_data"><?php echo $hora['mensaje']; ?></div>
+        <div class="info_tit">Servicio</div>
+        <div class="info_data"><?php echo $hora['nombre_ser']; ?></div>
+        <div class="info_tit">Tiempo</div>
+        <div class="info_data"><?php echo $hora['tiempo_min']; ?></div>
+        <div class="info_tit">Precio</div>
+        <div class="info_data"><?php echo $hora['precio']; ?></div>
+        <div class="info_tit">Estado</div>
+        <div class="info_data"><?php echo $hora['estado']; ?></div>
     </div>
 </div>

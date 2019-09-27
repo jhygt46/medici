@@ -788,6 +788,15 @@ body .relative {
   font-size: 32px;
   text-shadow: 1px 1px 0px #969696;
 }
+.pagina .title .info_tit {
+  display: block;
+  font-size: 14px;
+}
+.pagina .title .info_data {
+  display: block;
+  font-size: 20px;
+  padding-bottom: 4px;
+}
 .pagina .title ul {
   position: absolute;
   top: 6px;
