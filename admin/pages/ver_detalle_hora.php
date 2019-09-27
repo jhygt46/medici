@@ -31,7 +31,7 @@ $titulo = "Hora: ".$aux2[0].":".$aux2[1];
     </div>
     <hr>
     <div class="clearfix" style="padding: 10px 0px">
-        <div style="float: left: width: 50%">
+        <div style="float: left; width: 50%">
             <div class="info_tit">Nombre</div>
             <div class="info_data"><?php echo $hora['nombre_usr']; ?></div>
             <div class="info_tit">Rut</div>
@@ -43,7 +43,7 @@ $titulo = "Hora: ".$aux2[0].":".$aux2[1];
             <div class="info_tit">Mensaje</div>
             <div class="info_data"><?php echo $hora['mensaje']; ?></div>
         </div>
-        <div style="float: left: width: 50%">
+        <div style="float: left; width: 50%">
             <div class="info_tit">Servicio</div>
             <div class="info_data"><?php echo $hora['nombre_ser']; ?></div>
             <div class="info_tit">Tiempo</div>
