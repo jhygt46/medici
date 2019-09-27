@@ -22,10 +22,6 @@ $id_list = "id_hor";
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_horas_fecha_admin($fecha);
 
-echo "<pre>";
-print_r($list);
-echo "</pre>";
-
 ?>
 <div class="pagina">
     <div class="title">
@@ -48,12 +44,14 @@ echo "</pre>";
                 <?php 
                 for($i=0; $i<count($list); $i++){
                     $id = $list[$i][$id_list];
-                    $fecha = $list[$i]['fecha'];
+                    $fecha = explode(" ", $list[$i]['fecha']);
+                    $nombre_user = $list[$i]['nombre_user'];
+                    $nombre_serv = $list[$i]['nombre_serv'];
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre"><?php echo $fecha; ?></div>
-                        <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
+                        <div class="nombre"><?php echo $fecha[1]." ".$nombre_user." ".$nombre_serv; ?></div>
+                        <!--<a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>-->
                     </div>
                 </div>
                 <?php } ?>
