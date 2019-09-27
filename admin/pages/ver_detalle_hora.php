@@ -21,6 +21,17 @@ $aux = explode(" ", $hora['fecha']);
 $aux2 = explode(":", $aux[1]);
 $titulo = "Hora: ".$aux2[0].":".$aux2[1];
 
+if($hora['eliminado'] == 1){
+    $estado = "<div style='color: #900'>Eliminado</div>";
+}else{
+    if($hora['estado'] == 1){
+        $estado = "<div style='color: #090'>Confirmado</div>";
+    }else{
+        $estado = "<div'>Sin Confirmar Correo</div>";
+    }
+}
+
+
 ?>
 <div class="pagina">
     <div class="title">
@@ -51,7 +62,7 @@ $titulo = "Hora: ".$aux2[0].":".$aux2[1];
             <div class="info_tit">Precio</div>
             <div class="info_data"><?php echo $hora['precio']; ?></div>
             <div class="info_tit">Estado</div>
-            <div class="info_data"><?php echo $hora['estado']; ?></div>
+            <div class="info_data"><?php echo $estado; ?></div>
         </div>
     </div>
     
