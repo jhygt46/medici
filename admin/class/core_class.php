@@ -613,7 +613,7 @@ class Core{
     }
     public function ver_detalle_hora($id_hor){
 
-        if($sql = $this->con->prepare("SELECT * FROM horas t1, servicios t2 WHERE t1.id_hor=? AND t1.id_usr=? AND t1.id_ser=t2.id_ser")){
+        if($sql = $this->con->prepare("SELECT t1.fecha, t1.fecha_f, t1.nombre as nombre_usr, t1.tiempo_min, t1.precio, t1.rut, t2.nombre as nombre_ser, t1.correo, t1.telefono, t1.mensaje, t1.estado, t1.eliminado FROM horas t1, servicios t2 WHERE t1.id_hor=? AND t1.id_usr=? AND t1.id_ser=t2.id_ser")){
             if($sql->bind_param("ii", $id_hor, $this->id_usr)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC)[0];
