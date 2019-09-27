@@ -248,7 +248,7 @@ class Guardar{
 
         $aux = explode("/", $_POST['id']);
         $nombre = $_POST['nombre'];
-        $id = $aux[0];
+        $id_hor = $aux[0];
         $fecha = $aux[1];
 
         $sql = $this->con->prepare("UPDATE horas SET eliminado='1' WHERE id_hor=? AND id_usr=?");
