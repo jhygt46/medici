@@ -57,16 +57,16 @@ $list = $core->get_horas_fecha_admin($fecha);
 
                         }
                         if($list[$i]['estado'] == 1){
-                            $style = "style='color: #090'";
+                            $style = 'style="color: #090"';
                         }
                     }else{
-                        $style = "style='color: #900'";
+                        $style = 'style="color: #900"';
                     }
 
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre" <?php echo $style; ?>><?php echo $fecha_aux[0].":".$fecha_aux[1]." ".$nombre_user." ".$nombre_serv; ?></div>
+                        <div class="nombre" <?php echo $style; ?>></div>
                         <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
