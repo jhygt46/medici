@@ -53,11 +53,7 @@ $list = $core->get_horas_fecha_admin($fecha);
                     $eliminado = $list[$i]['eliminado'];
 
                     echo "<pre>";
-                    print_r($fecha);
-                    echo "</pre>";
-
-                    echo "<pre>";
-                    print_r($fecha_aux);
+                    print_r($list);
                     echo "</pre>";
 
                     if($list[$i]['eliminado'] == 0){
