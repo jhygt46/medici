@@ -67,8 +67,8 @@ $list = $core->get_horas_fecha_admin($fecha);
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre" <?php echo $style; ?>><?php echo $fecha_aux[0].":".$fecha_aux[1]." ".$nombre_user." ".$nombre_serv; ?></div>
+                        <?php if($list[$i]['eliminado'] == 0){ ?><a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $nombre; ?>')"></a><?php }else{ ?><div>AAA</div><?php } ?>
                         <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
-                        <?php if($list[$i]['eliminado'] == 0){ ?><a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a><?php } ?>
                     </div>
                 </div>
                 <?php } ?>
