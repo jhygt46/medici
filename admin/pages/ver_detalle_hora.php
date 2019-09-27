@@ -30,7 +30,7 @@ $titulo = "Hora: ".$aux2[0].":".$aux2[1];
         </ul>
     </div>
     <hr>
-    <div>
+    <div style="padding: 10px 0px">
         <div class="info_tit">Nombre</div>
         <div class="info_data"><?php echo $hora['nombre_usr']; ?></div>
         <div class="info_tit">Rut</div>
