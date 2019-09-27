@@ -20,12 +20,12 @@ $id_list = "id_hor";
 /* CONFIG PAGE */
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
-$list = $core->get_horas_fecha($fecha);
-/*
+$list = $core->get_horas_fecha_admin($fecha);
+
 echo "<pre>";
 print_r($list);
 echo "</pre>";
-*/
+
 ?>
 <div class="pagina">
     <div class="title">
