@@ -43,34 +43,16 @@ $list = $core->get_horas_fecha_admin($fecha);
             <div class="listado_items">
                 <?php 
                 for($i=0; $i<count($list); $i++){
-
-                    $style = "";
                     $id = $list[$i][$id_list];
                     $fecha = explode(" ", $list[$i]['fecha']);
-                    $fecha_aux = explode(":", $fecha[1]);
                     $nombre_user = $list[$i]['nombre_user'];
                     $nombre_serv = $list[$i]['nombre_serv'];
+                    $estado = $list[$i]['estado'];
                     $eliminado = $list[$i]['eliminado'];
-
-                    echo "<pre>";
-                    print_r($list);
-                    echo "</pre>";
-
-                    if($list[$i]['eliminado'] == 0){
-                        if($list[$i]['estado'] == 0){
-
-                        }
-                        if($list[$i]['estado'] == 1){
-                            $style = 'style="color: #090"';
-                        }
-                    }else{
-                        $style = 'style="color: #900"';
-                    }
-
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre">  </div>
+                        <div class="nombre"><?php echo $fecha[1]." ".$nombre_user." ".$nombre_serv; ?></div>
                         <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
