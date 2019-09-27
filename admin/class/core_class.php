@@ -625,8 +625,8 @@ class Core{
     public function get_fechas_horas(){
 
         $fecha = date("Y-m-d", time() - 60*60*24);
-        if($sql = $this->con->prepare("SELECT DISTINCT DATE(fecha) FROM horas WHERE id_usr=? AND fecha>? AND eliminado=? ORDER BY fecha")){
-            if($sql->bind_param("isi", $this->id_usr, $fecha, $this->eliminado)){
+        if($sql = $this->con->prepare("SELECT DISTINCT DATE(fecha) FROM horas WHERE id_usr=? AND fecha>? ORDER BY fecha")){
+            if($sql->bind_param("is", $this->id_usr, $fecha)){
                 if($sql->execute()){
                     return $sql->get_result()->fetch_all(MYSQLI_ASSOC);
                 }else{ return htmlspecialchars($sql->error); }
