@@ -17,6 +17,7 @@ $id_hor = $_GET["id_hor"];
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $hora = $core->ver_detalle_hora($id_hor);
+$aux = explode(" ", $hora['fecha']);
 
 echo "<pre>";
 print_r($hora);
@@ -27,7 +28,7 @@ echo "</pre>";
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
         <ul class="clearfix">
-            <li class="back" onclick="navlink('pages/mis_horas.php')"></li>
+            <li class="back" onclick="navlink('pages/ver_horas.php?fecha=<?php echo $aux[0]; ?>')"></li>
         </ul>
     </div>
     <hr>
