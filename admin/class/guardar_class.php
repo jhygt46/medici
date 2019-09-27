@@ -58,6 +58,9 @@ class Guardar{
             if($_POST['accion'] == "eliminar_horario"){
                 return $this->eliminar_horario();
             }
+            if($_POST['accion'] == "eliminar_hora"){
+                return $this->eliminar_hora();
+            }
             if($_POST['accion'] == "crear_excepcion"){
                 return $this->crear_excepcion();
             }
@@ -238,6 +241,34 @@ class Guardar{
 
         }
 
+        return $info;
+        
+    }
+    private function eliminar_hora(){
+
+        $aux = explode("/", $_POST['id']);
+        $nombre = $_POST['nombre'];
+        $id = $aux[0];
+        $fecha = $aux[1];
+
+        $sql = $this->con->prepare("UPDATE horas SET eliminado='1' WHERE id_hor=? AND id_usr=?");
+        $sql->bind_param("ii", $id_hor, $this->id_usr);
+        if($sql->execute()){
+
+            $info['tipo'] = "success";
+            $info['titulo'] = "Eliminado";
+            $info['texto'] = "Hora ".$nombre." Eliminado";
+            $info['reload'] = 1;
+            $info['page'] = "ver_horas.php?fecha=".$fecha;
+
+        }else{
+
+            $info['tipo'] = "error";
+            $info['titulo'] = "Error";
+            $info['texto'] = "Hora ".$nombre." no pudo ser eliminado";
+
+        }
+        $sql->close();
         return $info;
         
     }

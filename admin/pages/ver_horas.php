@@ -50,8 +50,8 @@ $list = $core->get_horas_fecha_admin($fecha);
 
                     $style = "";
                     $id = $list[$i][$id_list];
-                    $fecha = explode(" ", $list[$i]['fecha']);
-                    $fecha_aux = explode(":", $fecha[1]);
+                    $fechas = explode(" ", $list[$i]['fecha']);
+                    $fecha_aux = explode(":", $fechas[1]);
                     $fecha_mostrar = $fecha_aux[0].":".$fecha_aux[1];
                     $nombre_user = $list[$i]['nombre_user'];
                     $nombre_serv = $list[$i]['nombre_serv'];
@@ -72,7 +72,7 @@ $list = $core->get_horas_fecha_admin($fecha);
                 <div class="l_item">
                     <div class="detalle_item clearfix">
                         <div class="nombre" <?php echo $style; ?>><?php echo $fecha_aux[0].":".$fecha_aux[1]." ".$nombre_user." ".$nombre_serv; ?></div>
-                        <?php if($list[$i]['eliminado'] == 0){ ?><a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $fecha_mostrar ?>')"></a><?php }else{ ?><div class="sinicono"></div><?php } ?>
+                        <?php if($list[$i]['eliminado'] == 0){ ?><a class="icono ic11" onclick="eliminar('<?php echo $eliminaraccion; ?>', '<?php echo $id; ?>/<?php echo $fecha; ?>', '<?php echo $eliminarobjeto; ?>', '<?php echo $fecha_mostrar ?>')"></a><?php }else{ ?><div class="sinicono"></div><?php } ?>
                         <a class="icono ic3" onclick="navlink('<?php echo $page_ver; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
