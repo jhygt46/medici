@@ -18,6 +18,10 @@ $id_hor = $_GET["id_hor"];
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $hora = $core->ver_detalle_hora($id_hor);
 
+echo "<pre>";
+print_r($hora);
+echo "</pre>";
+
 ?>
 <div class="pagina">
     <div class="title">
