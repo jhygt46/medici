@@ -18,7 +18,8 @@ $id_hor = $_GET["id_hor"];
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $hora = $core->ver_detalle_hora($id_hor);
 $aux = explode(" ", $hora['fecha']);
-$titulo = $aux[1];
+$aux2 = explode(":", $aux[1]);
+$titulo = "Hora: ".$aux2[0].":".$aux2[1];
 
 ?>
 <div class="pagina">
@@ -29,4 +30,10 @@ $titulo = $aux[1];
         </ul>
     </div>
     <hr>
+    <div>
+        <div>Nombre</div>
+        <div><?php echo $hora['nombre_usr']; ?></div>
+        <div>Servicio</div>
+        <div><?php echo $hora['nombre_ser']; ?></div>
+    </div>
 </div>
