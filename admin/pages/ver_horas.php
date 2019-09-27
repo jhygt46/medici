@@ -52,6 +52,14 @@ $list = $core->get_horas_fecha_admin($fecha);
                     $nombre_serv = $list[$i]['nombre_serv'];
                     $eliminado = $list[$i]['eliminado'];
 
+                    echo "<pre>";
+                    print_r($fecha);
+                    echo "</pre>";
+
+                    echo "<pre>";
+                    print_r($fecha_aux);
+                    echo "</pre>";
+
                     if($list[$i]['eliminado'] == 0){
                         if($list[$i]['estado'] == 0){
 
@@ -66,7 +74,7 @@ $list = $core->get_horas_fecha_admin($fecha);
                 ?>
                 <div class="l_item">
                     <div class="detalle_item clearfix">
-                        <div class="nombre" <?php echo $style; ?>></div>
+                        <div class="nombre">  </div>
                         <a class="icono ic3" onclick="navlink('<?php echo $page_mod; ?>?id_hor=<?php echo $id; ?>')"></a>
                     </div>
                 </div>
