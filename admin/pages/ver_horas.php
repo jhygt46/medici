@@ -47,14 +47,14 @@ $list = $core->get_horas_fecha_admin($fecha);
                     $style = "";
                     $id = $list[$i][$id_list];
                     $fecha = explode(" ", $list[$i]['fecha']);
-                    $fecha_aux = explode(":", $fecha);
+                    $fecha_aux = explode(":", $fecha[0]);
                     $nombre_user = $list[$i]['nombre_user'];
                     $nombre_serv = $list[$i]['nombre_serv'];
                     $eliminado = $list[$i]['eliminado'];
 
                     if($list[$i]['eliminado'] == 0){
                         if($list[$i]['estado'] == 0){
-                            
+
                         }
                         if($list[$i]['estado'] == 1){
                             $style = "style='color: #090'";
