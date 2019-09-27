@@ -18,6 +18,7 @@ $id_hor = $_GET["id_hor"];
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $hora = $core->ver_detalle_hora($id_hor);
 $aux = explode(" ", $hora['fecha']);
+$titulo = $aux[1];
 
 ?>
 <div class="pagina">
