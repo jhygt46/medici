@@ -275,7 +275,7 @@ body .relative {
   height: 28px;
   cursor: pointer;
   transform: scale(1);
-  background: url('../images/icons-set.png');
+  background: url('../images/icons-set.png') no-repeat;
   padding-left: 4px;
 }
 .pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .ic1 {
