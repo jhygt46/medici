@@ -261,13 +261,21 @@ body .relative {
   font-size: 16px;
   position: absolute;
 }
+.pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .sinicono {
+  float: right;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transform: scale(1);
+  padding-left: 4px;
+}
 .pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .icono {
   float: right;
   width: 28px;
   height: 28px;
-  background: url("../images/icons-set.png") no-repeat;
   cursor: pointer;
   transform: scale(1);
+  background: url('../images/icons-set.png');
   padding-left: 4px;
 }
 .pagina .cont_pagina .cont_pag .listado_items .l_item .detalle_item .ic1 {
