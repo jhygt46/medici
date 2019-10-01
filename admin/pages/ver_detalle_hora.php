@@ -60,7 +60,7 @@ if($hora['eliminado'] == 1){
             <div class="info_tit">Tiempo</div>
             <div class="info_data"><?php echo $hora['tiempo_min']; ?></div>
             <div class="info_tit">Precio</div>
-            <div class="info_data"><?php echo $hora['precio']; ?></div>
+            <div class="info_data">$<?php echo $hora['precio']; ?></div>
             <div class="info_tit">Estado</div>
             <div class="info_data"><?php echo $estado; ?></div>
         </div>
