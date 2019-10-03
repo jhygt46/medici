@@ -930,11 +930,17 @@ function tiene_excepcion(date){
     return obj;
 
 }
-function dia_reglas(regla, d){
+function dia_reglas(regla, x){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
     var reserva = get_reserva();
+
+    if(x == 1 && regla.length == 1){
+        if(regla[0].hora_ini == "08:00:00" && regla[0].hora_fin == "08:00:00"){
+            return false;
+        }
+    }
 
     for(var x=0, xlen=regla.length; x<xlen; x++){
 
@@ -954,7 +960,6 @@ function dia_reglas(regla, d){
                     }
                 }
                 horas = data.doctores[j].horas;
-                console.log(horas);
                 if(Array.isArray(horas)){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
@@ -993,7 +998,7 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     if(exc.op){
-        return dia_reglas(exc.excepciones, d);
+        return dia_reglas(exc.excepciones, 1);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -1002,7 +1007,7 @@ function horas_disponibles(y, m, d){
                 rangos.push(data.rangos[i]);
             }
         }
-        return dia_reglas(rangos, d);
+        return dia_reglas(rangos, 2);
     }
 
 }
@@ -1258,15 +1263,11 @@ function html_detalle(){
             var dtl_descripcion = create_element_class_inner('dtl_descripcion', data.servicios[i].descripcion);
             cont_dtl.appendChild(dtl_titulo);
             cont_dtl.appendChild(dtl_descripcion);
-            //console.log(data.servicios[i]);
             for(var j=0, jlen=data.servicios[i].lista_doctores.length; j<jlen; j++){
                 if(data.servicios[i].lista_doctores[j].id == reserva.doctor){
-                    //console.log(data.servicios[i].lista_doctores[j]);
-                    //var dtl_doctor = create_element_class_inner('dtl_doctor', data.servicios[i].lista_doctores[j].nombre);
                     var dtl_precio = create_element_class_inner('dtl_precio', "Costo: " + formatNumber.new(parseInt(data.servicios[i].lista_doctores[j].precio), "$"));
                     var dtl_tiempo = create_element_class_inner('dtl_tiempo', "Duracion: " + data.servicios[i].lista_doctores[j].tiempo_min + " minutos");
                     var dtl_html_1 = create_element_class_inner('dtl_html_1', data.servicios[i].lista_doctores[j].html_1);
-                    //cont_dtl.appendChild(dtl_doctor);
                     cont_dtl.appendChild(dtl_precio);
                     cont_dtl.appendChild(dtl_tiempo);
                     cont_dtl.appendChild(dtl_html_1);
