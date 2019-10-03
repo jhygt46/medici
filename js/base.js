@@ -963,19 +963,20 @@ function dia_reglas(regla){
 
                         if(aux_i >= h_ini && aux_f <= h_fin){
                             if(i == 0){
-                                if(aux_i > h_ini + tiempo){ return true }
+                                if(aux_i > h_ini + tiempo){ console.log("A1"); return true }
                             }
                             if(i > 0){
-                                if(aux_i >= last + tiempo){ return true }   
+                                if(aux_i >= last + tiempo){ console.log("A2"); return true }   
                             }
                             if(i == ilen - 1){
-                                if(aux_f + tiempo < h_fin){ return true }
+                                if(aux_f + tiempo < h_fin){ console.log("A3"); return true }
                             }
                             last = aux_f;
                         }
 
                     }
                 }else{
+                    console.log("A4");
                     return true;
                 }
             }
@@ -991,7 +992,6 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     if(exc.op){
-        console.log(exc.excepciones);
         return dia_reglas(exc.excepciones);
     }else{
         var semana = date.getDay();
