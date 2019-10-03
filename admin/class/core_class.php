@@ -830,15 +830,14 @@ class Core{
         
     }
     public function confirmar($id, $code){
-        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=? AND eliminado=?")){
+        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=?")){
             if($sql->bind_param("isi", $id, $code, $this->eliminado)){
                 if($sql->execute()){
                     $res = $sql->get_result();
                     if($res->{"num_rows"} == 1){
                         $estado = 1;
-                        $eliminado = 0;
                         $sqlu = $this->con->prepare("UPDATE horas SET estado=?, eliminado=? WHERE id_hor=?");
-                        $sqlu->bind_param("iii", $estado, $eliminado, $id);
+                        $sqlu->bind_param("iii", $estado, $this->eliminado, $id);
                         $sqlu->execute();
                         echo "HORA CONFIRMADA";
                     }
@@ -848,7 +847,7 @@ class Core{
         }
     }
     public function cancelar($id, $code){
-        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=? AND eliminado=?")){
+        if($sql = $this->con->prepare("SELECT * FROM horas WHERE id_hor=? AND code=?")){
             if($sql->bind_param("isi", $id, $code, $this->eliminado)){
                 if($sql->execute()){
                     $res = $sql->get_result();
