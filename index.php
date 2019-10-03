@@ -11,10 +11,11 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 require_once DIR."admin/class/core_class.php";
 $core = new Core();
 $core->get_data();
+/*
 if($_GET["accion"] == "actualizar" || isset($_GET["status"])){
     
 }
-
+*/
 $status = 0;
 $contacto = 0;
 if(isset($_GET["contacto"])){
@@ -94,8 +95,6 @@ if(isset($_GET["contacto"])){
                     </div>
                 </div>
             </div>
-
-
             <div class="menu m1" style="top: 0px; left: -280px; z-index: 5">
                 <div class="cont_menu">
                     <div class="data_menu">
@@ -123,9 +122,7 @@ if(isset($_GET["contacto"])){
                     </div>
                 </div>
             </div>
-
-
-
+            <!--
             <div class="menu m1" style="top: 0px; right: -280px; z-index: 4">
                 <div class="cont_menu">
                     <div class="data_menu"></div>
@@ -141,6 +138,7 @@ if(isset($_GET["contacto"])){
                     <div class="data_menu"></div>
                 </div>
             </div>
+            -->
             <div class="sitio">
                 <div class="cont_sitio">
                     <div class="titulo_pagina">
@@ -159,7 +157,7 @@ if(isset($_GET["contacto"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina" style="display: none">
+                    <div class="sitio_pagina" <?php if($status > 0){ ?>style="display: block"<?php }else{ ?>style="display: none" <?php } ?>>
                         <div class="seccion m_error"></div>
                         <div class="seccion btn_pre">
                             <div class="preguntas clearfix">
@@ -183,7 +181,7 @@ if(isset($_GET["contacto"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina back_inicio" <?php if($contacto > 0){ ?>style="display: none"<?php } ?>>
+                    <div class="sitio_pagina back_inicio" <?php if($contacto > 0 || $status > 0){ ?>style="display: none"<?php } ?>>
                         <div class="seccion inicio">
                             <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
                             <div class="inicio_fotos" id="fotos">

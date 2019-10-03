@@ -28,10 +28,10 @@ function inicio(){
     render_web();
     setTimeout(function(){ slider(0); }, 4000);
 
-    document.addEventListener('dragstart', dragstart, false);
-    document.addEventListener('drag', test, false);
-    document.addEventListener('dragend', dragend, false);
-    document.addEventListener('dragover', dragover, false);
+    //document.addEventListener('dragstart', dragstart, false);
+    //document.addEventListener('drag', test, false);
+    //document.addEventListener('dragend', dragend, false);
+    //document.addEventListener('dragover', dragover, false);
     document.addEventListener('touchstart', dragstart, false);
     document.addEventListener('touchmove', test, false);
     document.addEventListener('touchend', dragend, false);
