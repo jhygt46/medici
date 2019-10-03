@@ -706,10 +706,26 @@ class Guardar{
 
         }
         if($tipo == 1){
+
             $_h = "08:00:00";
             $sqli = $this->con->prepare("INSERT INTO excepciones (fecha, hora_ini, hora_fin, eliminado, id_suc, id_usr) VALUES (?, ?, ?, ?, ?, ?)");
             $sqli->bind_param("sssiii", $fecha, $_h, $_h, $this->eliminado, $id_suc, $this->id_usr);
-            if($sqli->execute()){}
+            if($sqli->execute()){
+
+                $id_exc = $this->con->insert_id;
+                $sqlx = $this->con->prepare("SELECT id_ser FROM servicio_usuarios WHERE id_usr=? AND eliminado=? LIMIT 1");
+                $sqlx->bind_param("i", $this->id_usr);
+                $sqlx->execute();
+                $resx = $sqlx->get_result();
+                $aux_serx = $resx->fetch_all(MYSQLI_ASSOC)[0];
+                $id_serx = $aux_user["id_ser"];
+
+                $sqlw = $this->con->prepare("INSERT INTO excepcion_servicios (id_exc, id_ser) VALUES (?, ?)");
+                $sqlw->bind_param("ii", $id_serx, $id_exc);
+                $sqlw->execute();
+
+            }
+
         }
 
         return $info;

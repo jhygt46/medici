@@ -1025,10 +1025,8 @@ function html_horas(){
     var horas = [];
 
     if(exc.op){
-        console.log("EXC");
         horas = horas_reglas(exc.excepciones, fecha);
     }else{
-        console.log("HOR");
         var semana = date.getDay();
         var rangos = [];
         for(var i=0, ilen=data.rangos.length; i<ilen; i++){
@@ -1038,8 +1036,6 @@ function html_horas(){
         }
         horas = horas_reglas(rangos, fecha);
     }
-
-    console.log(horas);
 
     var html_horas = create_element_class('horas');
     var cont_hrs = create_element_class('cont_hrs');
