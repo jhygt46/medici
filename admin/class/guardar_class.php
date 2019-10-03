@@ -720,11 +720,13 @@ class Guardar{
                 $aux_serx = $resx->fetch_all(MYSQLI_ASSOC)[0];
                 $id_serx = $aux_serx["id_ser"];
 
-                $info['mensaje'] = "id_serx ".$id_serx." // id_exc ".$id_exc;
-
                 $sqlw = $this->con->prepare("INSERT INTO excepcion_servicios (id_exc, id_ser) VALUES (?, ?)");
                 $sqlw->bind_param("ii", $id_serx, $id_exc);
-                $sqlw->execute();
+                if($sqlw->execute()){
+                    $info['mensaje'] = "INSERTADO";
+                }else{
+                    $info['mensaje'] = "NO: ERROR";
+                }
 
             }
 
