@@ -725,7 +725,7 @@ class Guardar{
                 if($sqlw->execute()){
                     $info['mensaje'] = "INSERTADO";
                 }else{
-                    $info['mensaje'] = "NO: ERROR";
+                    $info['mensaje'] = "NO: ERROR -> ".$sqlw->error;
                 }
 
             }
