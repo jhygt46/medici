@@ -954,6 +954,7 @@ function dia_reglas(regla, d){
                     }
                 }
                 horas = data.doctores[j].horas;
+                console.log(horas);
                 if(Array.isArray(horas)){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
