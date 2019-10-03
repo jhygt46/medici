@@ -836,8 +836,9 @@ class Core{
                     $res = $sql->get_result();
                     if($res->{"num_rows"} == 1){
                         $estado = 1;
-                        $sqlu = $this->con->prepare("UPDATE horas SET estado=? WHERE id_hor=?");
-                        $sqlu->bind_param("ii", $estado, $id);
+                        $eliminado = 0;
+                        $sqlu = $this->con->prepare("UPDATE horas SET estado=?, eliminado=? WHERE id_hor=?");
+                        $sqlu->bind_param("iii", $estado, $eliminado, $id);
                         $sqlu->execute();
                         echo "HORA CONFIRMADA";
                     }
