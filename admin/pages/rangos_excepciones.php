@@ -67,11 +67,11 @@ if(isset($_GET["id_exc"]) && is_numeric($_GET["id_exc"]) && $_GET["id_exc"] != 0
                     <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
                     <label class="clearfix">
                         <span><p>Hora inicio:</p></span>
-                        <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="08:30" />
+                        <input id="hora_ini" class="inputs" type="text" value="<?php echo $that['hora_ini']; ?>" require="" placeholder="08:30:00" />
                     </label>
                     <label class="clearfix">
                         <span><p>Hora fin:</p></span>
-                        <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30" />
+                        <input id="hora_fin" class="inputs" type="text" value="<?php echo $that['hora_fin']; ?>" require="" placeholder="14:30:00" />
                     </label>
                     <label class="clearfix">
                         <span><p>Sucursal:</p></span>
