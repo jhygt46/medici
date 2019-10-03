@@ -969,20 +969,19 @@ function dia_reglas(regla, x){
 
                         if(aux_i >= h_ini && aux_f <= h_fin){
                             if(i == 0){
-                                if(aux_i > h_ini + tiempo){ console.log("A1: "+d); return true }
+                                if(aux_i > h_ini + tiempo){ return true }
                             }
                             if(i > 0){
-                                if(aux_i >= last + tiempo){ console.log("A2: "+d); return true }   
+                                if(aux_i >= last + tiempo){ return true }   
                             }
                             if(i == ilen - 1){
-                                if(aux_f + tiempo < h_fin){ console.log("A3: "+d); return true }
+                                if(aux_f + tiempo < h_fin){ return true }
                             }
                             last = aux_f;
                         }
 
                     }
                 }else{
-                    console.log("A4: "+d);
                     return true;
                 }
             }
