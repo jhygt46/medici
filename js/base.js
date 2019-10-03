@@ -991,7 +991,7 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     if(exc.op){
-        console.log(dia_reglas(exc.excepciones));
+        console.log(exc.excepciones);
         return dia_reglas(exc.excepciones);
     }else{
         var semana = date.getDay();
