@@ -839,7 +839,6 @@ class Core{
                         $sqlu = $this->con->prepare("UPDATE horas SET estado=? WHERE id_hor=?");
                         $sqlu->bind_param("ii", $estado, $id);
                         $sqlu->execute();
-                        $sqlu->close();
                         echo "HORA CONFIRMADA";
                     }
                     $sql->close();
@@ -853,8 +852,9 @@ class Core{
                 if($sql->execute()){
                     $res = $sql->get_result();
                     if($res->{"num_rows"} == 1){
-                        $sqld = $this->con->prepare("DELETE FROM horas WHERE id_hor=?");
-                        $sqld->bind_param("i", $id);
+                        $eliminado = 1;
+                        $sqld = $this->con->prepare("UPDATE horas SET eliminado=? WHERE id_hor=?");
+                        $sqld->bind_param("ii", $eliminado, $id);
                         $sqld->execute();
                         echo "HORA CANCELADA";
                     }
