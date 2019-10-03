@@ -717,7 +717,7 @@ class Guardar{
                 $sqlx->bind_param("i", $this->id_usr);
                 $sqlx->execute();
                 $resx = $sqlx->get_result();
-                $aux_serx = $resx->fetch_all(MYSQLI_ASSOC)[0];
+                $aux_serx = $resx->fetch_all(MYSQLI_ASSOC);
                 $id_serx = $aux_serx["id_ser"];
 
                 $sqlw = $this->con->prepare("INSERT INTO excepcion_servicios (id_exc, id_ser) VALUES (?, ?)");
