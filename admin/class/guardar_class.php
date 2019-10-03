@@ -714,10 +714,10 @@ class Guardar{
 
                 $id_exc = $this->con->insert_id;
                 $sqlx = $this->con->prepare("SELECT id_ser FROM servicio_usuarios WHERE id_usr=? AND eliminado=? LIMIT 1");
-                $sqlx->bind_param("i", $this->id_usr);
+                $sqlx->bind_param("ii", $this->id_usr, $this->eliminado);
                 $sqlx->execute();
                 $resx = $sqlx->get_result();
-                $aux_serx = $resx->fetch_all(MYSQLI_ASSOC);
+                $aux_serx = $resx->fetch_all(MYSQLI_ASSOC)[0];
                 $id_serx = $aux_serx["id_ser"];
 
                 $sqlw = $this->con->prepare("INSERT INTO excepcion_servicios (id_exc, id_ser) VALUES (?, ?)");
