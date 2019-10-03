@@ -930,7 +930,7 @@ function tiene_excepcion(date){
     return obj;
 
 }
-function dia_reglas(regla){
+function dia_reglas(regla, d){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
@@ -963,20 +963,20 @@ function dia_reglas(regla){
 
                         if(aux_i >= h_ini && aux_f <= h_fin){
                             if(i == 0){
-                                if(aux_i > h_ini + tiempo){ console.log("A1"); return true }
+                                if(aux_i > h_ini + tiempo){ console.log("A1: "+d); return true }
                             }
                             if(i > 0){
-                                if(aux_i >= last + tiempo){ console.log("A2"); return true }   
+                                if(aux_i >= last + tiempo){ console.log("A2: "+d); return true }   
                             }
                             if(i == ilen - 1){
-                                if(aux_f + tiempo < h_fin){ console.log("A3"); return true }
+                                if(aux_f + tiempo < h_fin){ console.log("A3: "+d); return true }
                             }
                             last = aux_f;
                         }
 
                     }
                 }else{
-                    console.log("A4");
+                    console.log("A4: "+d);
                     return true;
                 }
             }
@@ -992,7 +992,7 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     if(exc.op){
-        return dia_reglas(exc.excepciones);
+        return dia_reglas(exc.excepciones, d);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -1001,7 +1001,7 @@ function horas_disponibles(y, m, d){
                 rangos.push(data.rangos[i]);
             }
         }
-        return dia_reglas(rangos);
+        return dia_reglas(rangos, d);
     }
 
 }
