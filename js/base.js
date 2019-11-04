@@ -942,10 +942,6 @@ function dia_reglas(regla, w){
         h_ini = parseInt(hi[0]) * 60 + parseInt(hi[1]);
         h_fin = parseInt(hf[0]) * 60 + parseInt(hf[1]);
 
-        if(regla.length == 1){
-            console.log(regla.length + ">" + h_ini + "/" + h_fin);
-        }
-
         for(var j=0, jlen=data.doctores.length; j<jlen; j++){
             if(data.doctores[j].id == reserva.doctor){
 
@@ -955,7 +951,15 @@ function dia_reglas(regla, w){
                         var tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
+                
                 horas = data.doctores[j].horas;
+
+                if(regla.length == 1){
+                    console.log(regla.length + ">" + h_ini + "/" + h_fin);
+                    console.log(horas);
+                    console.log(tiempo);
+                }
+
                 if(Array.isArray(horas)){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
@@ -987,8 +991,6 @@ function dia_reglas(regla, w){
 
 }
 function horas_disponibles(y, m, d){
-
-    console.log(y+"-"+m+"-"+d);
 
     var date = new Date(y, m, d);
     var exc = tiene_excepcion(date);
