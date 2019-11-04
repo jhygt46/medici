@@ -76,7 +76,7 @@ if(isset($_GET["contacto"])){
                                     <h3>Mensaje:</h3>
                                     <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
                                     <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
-                                    <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
+                                    <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 10px">This site is protected by reCAPTCHA and the Google 
                                         <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                                         <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                                     </small>
@@ -212,7 +212,7 @@ if(isset($_GET["contacto"])){
                                             <h3>Mensaje:</h3>
                                             <div class="input"><TEXTAREA class="txta" id="co_mensaje" name="mensaje"></TEXTAREA></div>
                                             <div class="acciones"><input type="submit" value="Enviar" class="empezar" onclick="enviar_contacto()" /></div>
-                                            <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
+                                            <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 10px">This site is protected by reCAPTCHA and the Google 
                                                 <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                                                 <a href="https://policies.google.com/terms">Terms of Service</a> apply.
                                             </small>
