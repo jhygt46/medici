@@ -157,10 +157,6 @@ html body #contenedor .pop_up .cont_pop .pop .cp .titulo {
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario {
   display: block;
 }
-html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form {
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form h3 {
   font-size: 18px;
 }
@@ -170,7 +166,7 @@ html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form .input {
 }
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form .input input {
   width: calc(100% - 2px);
-  height: 35px;
+  height: 30px;
   border: 1px solid #999;
 }
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form .input textarea {
