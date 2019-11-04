@@ -542,8 +542,8 @@ class Guardar{
 
         }
 
-        $sqlsel = $this->con->prepare("SELECT MIN(tiempo_min) as minimo FROM servicio_usuarios WHERE id_usr=?");
-        $sqlsel->bind_param("i", $this->id_usr);
+        $sqlsel = $this->con->prepare("SELECT MIN(tiempo_min) as minimo FROM servicio_usuarios WHERE id_usr=? AND eliminado=?");
+        $sqlsel->bind_param("ii", $this->id_usr, $this->eliminado);
         $sqlsel->execute();
         $ressel = $sqlsel->get_result();
         if($ressel->{"num_rows"} > 0){
