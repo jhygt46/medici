@@ -1525,12 +1525,6 @@ function create_element_class_inner(clase, value){
     Div.innerHTML = value;
     return Div;
 }
-function send(){
-    return true;
-}
-function send2(){
-    return true;
-}
 function get_reserva(){
     return JSON.parse(localStorage.getItem("reserva")) || reserva_blank();
 }
@@ -1605,7 +1599,7 @@ function enviar_contacto(){
     var nombre = document.getElementById("co_nombre").value;
     var correo = document.getElementById("co_correo").value;
     var asunto = document.getElementById("co_asunto").value;
-    var mensaje = document.getElementById("re_mensaje").value;
+    var mensaje = document.getElementById("co_mensaje").value;
 
     if(validar_email(correo)){
         if(nombre.length > 2){
