@@ -112,6 +112,8 @@ html body #contenedor .pop_up .cont_pop {
 }
 html body #contenedor .pop_up .cont_pop .pop {
   width: 90%;
+  height: 100%;
+  max-height: 520px;
   min-width: 300px;
   max-width: 360px;
   background: #fff;
@@ -119,7 +121,7 @@ html body #contenedor .pop_up .cont_pop .pop {
 }
 html body #contenedor .pop_up .cont_pop .pop .cp {
   display: block;
-  padding: 30px;
+  padding: 15px;
   position: relative;
 }
 html body #contenedor .pop_up .cont_pop .pop .cp .close {

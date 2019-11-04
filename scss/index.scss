@@ -107,13 +107,15 @@ html{
                     position: relative;
                     .pop{
                         width: 90%;
+                        height: 100%;
+                        max-height: 520px;
                         min-width: 300px;
                         max-width: 360px;
                         background: #fff;
                         border-radius: 10px;
                         .cp{
                             display: block;
-                            padding: 30px;
+                            padding: 15px;
                             position: relative;
                             .close{
                                 position: absolute;
