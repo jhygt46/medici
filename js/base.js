@@ -56,6 +56,8 @@ function inicio(){
             ver_servicio();
         }else{
             seleccionar_servicio_id();
+            document.getElementById('pagina_reserva').style.display = 'block';
+            document.getElementById('pagina_inicio').style.display = 'none';
         }
         if(reserva.doctor == 0){
             ver_doctores();
@@ -66,9 +68,8 @@ function inicio(){
             ver_fechas();
         }else{
             seleccionar_fecha_id();
-            if(reserva.hora == 0){
-                ver_horas();
-            }else{
+            ver_horas();
+            if(reserva.hora != 0){
                 seleccionar_hora_id();
                 document.getElementById('pop_up').style.display = 'block';
             }

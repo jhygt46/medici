@@ -47,7 +47,7 @@ if(isset($_GET["contacto"])){
             var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"]) : intval(date("m")) - 1 ; ?>;
             var n_day = <?php echo (isset($_GET["d"])) ? $_GET["d"] : date("d") ; ?>;
             var n_hours = <?php echo intval(date("H")); echo " + Math.round(".(date("i")/60).") + 1"; ?>;
-            var status = <?php echo $status; ?>;
+            var status = 0;
             var contacto = <?php echo $contacto; ?>;
         </script>
     </head>
@@ -141,7 +141,7 @@ if(isset($_GET["contacto"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina" style="display: none">
+                    <div class="sitio_pagina" id="pagina_reserva" style="display: none">
                         <div class="seccion m_error"></div>
                         <div class="seccion btn_pre">
                             <div class="preguntas clearfix">
@@ -165,7 +165,7 @@ if(isset($_GET["contacto"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina back_inicio" style="display: block">
+                    <div class="sitio_pagina back_inicio" id="pagina_inicio" style="display: block">
                         <div class="seccion inicio">
                             <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
                             <div class="inicio_fotos" id="fotos">
