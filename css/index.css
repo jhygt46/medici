@@ -171,7 +171,7 @@ html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form .input input 
 }
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form .input textarea {
   width: calc(100% - 2px);
-  height: 60px;
+  height: 50px;
   border: 1px solid #999;
 }
 html body #contenedor .pop_up .cont_pop .pop .cp .formulario .form h6 {
