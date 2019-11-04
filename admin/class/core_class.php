@@ -431,12 +431,14 @@ class Core{
                                                                                     $send['profesional'] = $profesional;
                                                                                     //$send['especialidad'] = $especialidad;
 
+                                                                                    /*
                                                                                     $ch = curl_init();
                                                                                     curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
                                                                                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                                                                                     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                                                                                     $resp = json_decode(curl_exec($ch));
                                                                                     curl_close($ch);
+                                                                                    */
 
                                                                                     if($resp->{'op'} == 1){
                                                                                         $info['op'] = 1;
@@ -496,12 +498,14 @@ class Core{
                                                                         $send['profesional'] = $profesional;
                                                                         //$send['especialidad'] = $especialidad;
 
+                                                                        /*
                                                                         $ch = curl_init();
                                                                         curl_setopt($ch, CURLOPT_URL, 'https://www.izusushi.cl/mail_reserva_medici');
                                                                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                                                                         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                                                                         $resp = json_decode(curl_exec($ch));
                                                                         curl_close($ch);
+                                                                        */
 
                                                                         if($resp->{'op'} == 1){
                                                                             $info['op'] = 1;
