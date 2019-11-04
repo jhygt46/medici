@@ -61,10 +61,10 @@ if(isset($_GET["contacto"])){
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
                                 <div class="form">
-                                    <input type="hidden" name="id_ser" name="id_ser" value="" />
-                                    <input type="hidden" name="id_usr" name="id_usr" value="" />
-                                    <input type="hidden" name="f_fec" name="f_fec" value="" />
-                                    <input type="hidden" name="f_hor" name="f_hor" value="" />
+                                    <input type="hidden" id="id_ser" name="id_ser" value="" />
+                                    <input type="hidden" id="id_usr" name="id_usr" value="" />
+                                    <input type="hidden" id="f_fec" name="f_fec" value="" />
+                                    <input type="hidden" id="f_hor" name="f_hor" value="" />
                                     <h3>Rut:</h3>
                                     <div class="input"><input type="text" id="re_rut" name="rut" placeholder="" /></div>
                                     <h3>Nombre completo:</h3>
