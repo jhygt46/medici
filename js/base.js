@@ -980,6 +980,7 @@ function dia_reglas(regla, w){
             }
         }
     }
+    console.log("RETURN FALSE 1");
     return false;
 
 }
