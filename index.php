@@ -60,25 +60,27 @@ if(isset($_GET["contacto"])){
                             <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
-                                <input type="hidden" name="id_ser" name="id_ser" value="" />
-                                <input type="hidden" name="id_usr" name="id_usr" value="" />
-                                <input type="hidden" name="f_fec" name="f_fec" value="" />
-                                <input type="hidden" name="f_hor" name="f_hor" value="" />
-                                <h3>Rut:</h3>
-                                <div class="input"><input type="text" id="re_rut" name="rut" placeholder="" /></div>
-                                <h3>Nombre completo:</h3>
-                                <div class="input"><input type="text" id="re_nombre" name="nombre" placeholder="" /></div>
-                                <h3>Correo electronico:</h3>
-                                <div class="input"><input type="text" id="re_correo" name="correo" placeholder="" /></div>
-                                <h3>Telefono:</h3>
-                                <div class="input"><input type="text" id="re_telefono" name="telefono" placeholder="" /></div>
-                                <h3>Mensaje:</h3>
-                                <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
-                                <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
-                                <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
-                                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                                    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-                                </small>
+                                <div class="form">
+                                    <input type="hidden" name="id_ser" name="id_ser" value="" />
+                                    <input type="hidden" name="id_usr" name="id_usr" value="" />
+                                    <input type="hidden" name="f_fec" name="f_fec" value="" />
+                                    <input type="hidden" name="f_hor" name="f_hor" value="" />
+                                    <h3>Rut:</h3>
+                                    <div class="input"><input type="text" id="re_rut" name="rut" placeholder="" /></div>
+                                    <h3>Nombre completo:</h3>
+                                    <div class="input"><input type="text" id="re_nombre" name="nombre" placeholder="" /></div>
+                                    <h3>Correo electronico:</h3>
+                                    <div class="input"><input type="text" id="re_correo" name="correo" placeholder="" /></div>
+                                    <h3>Telefono:</h3>
+                                    <div class="input"><input type="text" id="re_telefono" name="telefono" placeholder="" /></div>
+                                    <h3>Mensaje:</h3>
+                                    <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
+                                    <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
+                                    <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
+                                        <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                        <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                    </small>
+                                </div>
                             </div>
                         </div>
                     </div>
