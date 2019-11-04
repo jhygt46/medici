@@ -1559,7 +1559,7 @@ function enviar_reserva(){
                 data: send,
                 success: function(data){
                     if(data.op == 1){
-                        $(location).attr('href','/?status=1');
+                        location.href = '/?status=1';
                     }
                     if(data.op == 2){
                         console.log(data);
@@ -1586,7 +1586,7 @@ function enviar_contacto(){
                 data: send,
                 success: function(data){
                     if(data.op == 1){
-                        $(location).attr('href','/?contacto=1');
+                        location.href = '/?contacto=1';
                     }
                     if(data.op == 2){
                         console.log(data);
