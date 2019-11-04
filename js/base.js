@@ -933,8 +933,7 @@ function dia_reglas(regla, w){
         }
     }
 
-    console.log(regla.length);
-
+    
     for(var x=0, xlen=regla.length; x<xlen; x++){
 
         hi = regla[x].hora_ini.split(":");
@@ -942,6 +941,10 @@ function dia_reglas(regla, w){
 
         h_ini = parseInt(hi[0]) * 60 + parseInt(hi[1]);
         h_fin = parseInt(hf[0]) * 60 + parseInt(hf[1]);
+
+        if(regla.length == 1){
+            console.log(regla.length + ">" + h_ini + "/" + h_fin);
+        }
 
         for(var j=0, jlen=data.doctores.length; j<jlen; j++){
             if(data.doctores[j].id == reserva.doctor){
