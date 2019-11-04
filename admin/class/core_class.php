@@ -439,13 +439,12 @@ class Core{
                                                                                     $resp = json_decode(curl_exec($ch));
                                                                                     curl_close($ch);
                                                                                     */
+                                                                                    $info['op'] = 1;
 
                                                                                     if($resp->{'op'} == 1){
                                                                                         $info['op'] = 1;
-                                                                                        //header("Location: http://www.draescorza.cl/?status=1");
                                                                                     }else{
                                                                                         $info['tipo'] = 3;
-                                                                                        //header("Location: http://www.draescorza.cl/?status=2");
                                                                                     }
 
                                                                                 }else{  }
@@ -507,12 +506,11 @@ class Core{
                                                                         curl_close($ch);
                                                                         */
 
+                                                                        $info['op'] = 1;
                                                                         if($resp->{'op'} == 1){
                                                                             $info['op'] = 1;
-                                                                            //header("Location: http://www.draescorza.cl/?status=1");
                                                                         }else{
                                                                             $info['tipo'] = 3;
-                                                                            //header("Location: http://www.draescorza.cl/?status=2");
                                                                         }
                                                                     
                                                                     }else{  }
@@ -540,12 +538,10 @@ class Core{
 
             }else{
                 $info['tipo'] = 2;
-                //header("Location: http://www.draescorza.cl/?status=2");
             }
 
         }else{
             $info['tipo'] = 1;
-            //header("Location: http://www.draescorza.cl/?status=2");
         }
         return $info;
 
@@ -592,19 +588,15 @@ class Core{
 
                 if($resp->{'op'} == 1){
                     $info['op'] = 1;
-                    //header("Location: http://www.draescorza.cl/?contacto=1");
                 }else{
                     $info['tipo'] = 3;
-                    //header("Location: http://www.draescorza.cl/?contacto=2");
                 }
                 
             }else{
                 $info['tipo'] = 2;
-                //header("Location: http://www.draescorza.cl/?contacto=2");
             }
         }else{
             $info['tipo'] = 1;
-            //header("Location: http://www.draescorza.cl/?contacto=3");
         }
         return $info;
 
