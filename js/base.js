@@ -752,15 +752,6 @@ function sitio_servicios_(that){
 function ver_success(){
 
     var reserva = get_reserva();
-    if(reserva.servicio == 0 && reserva.doctor == 0 && reserva.fecha == 0 && reserva.hora == 0){
-        window.location.href = "./";
-    }
-
-    if(reserva.servicio > 0){ seleccionar_servicio_id(); }
-    if(reserva.doctor > 0){ seleccionar_doctor_id(); }
-    if(reserva.fecha != 0){ seleccionar_fecha_id(); }
-    if(reserva.hora > 0){ seleccionar_hora_id(); }
-
     set_reserva(reserva_blank());
 
     document.getElementById("info").innerHTML = "";
@@ -1551,7 +1542,6 @@ function enviar_reserva(){
         if(nombre.length > 2){
             if(rut.length > 2){
                 if(telefono.length > 2){
-
                     document.getElementById("btn_reserva").disabled = true;
                     grecaptcha.ready(function(){
                         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
@@ -1561,9 +1551,9 @@ function enviar_reserva(){
                                 type: "POST",
                                 data: send,
                                 success: function(data){
-                                    console.log(data);
+                                    
                                     if(data.op == 1){
-
+                                        ver_success();
                                         document.getElementById("id_ser").value = "";
                                         document.getElementById("id_usr").value = "";
                                         document.getElementById("f_fec").value = "";
@@ -1573,21 +1563,15 @@ function enviar_reserva(){
                                         document.getElementById("re_correo").value = "";
                                         document.getElementById("re_telefono").value = "";
                                         document.getElementById("re_mensaje").value = "";
-                                        alert("Hora reservada");
-
                                     }
                                     if(data.op == 2){
-                                        
                                         alert("Se produjo un Error");
-                                        console.log(data);
-
                                     }
                                     document.getElementById("btn_reserva").disabled = false;
                                 }, error: function(e){}
                             });
                         });
                     });
-
                 }else{ alert("Debe ingresar telefono"); }
             }else{ alert("Debe ingresar rut"); }
         }else{ alert("Debe ingresar nombre"); }
@@ -1616,8 +1600,6 @@ function enviar_contacto(){
                                 data: send,
                                 success: function(data){
                                     
-                                    console.log(data);
-
                                     if(data.op == 1){
                                         document.getElementById("co_nombre").value = "";
                                         document.getElementById("co_correo").value = "";
@@ -1627,7 +1609,6 @@ function enviar_contacto(){
                                     }
                                     if(data.op == 2){
                                         alert("Se produjo un Error");
-                                        
                                     }
                                     document.getElementById("btn_contacto").disabled = false;
                                 }, error: function(e){}

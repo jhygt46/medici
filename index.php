@@ -141,7 +141,7 @@ if(isset($_GET["contacto"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina" <?php if($status > 0){ ?>style="display: block"<?php }else{ ?>style="display: none" <?php } ?>>
+                    <div class="sitio_pagina" style="display: none">
                         <div class="seccion m_error"></div>
                         <div class="seccion btn_pre">
                             <div class="preguntas clearfix">
@@ -165,7 +165,7 @@ if(isset($_GET["contacto"])){
                         </div>
                         <div class="seccion info" id="info"></div>
                     </div>
-                    <div class="sitio_pagina back_inicio" <?php if($contacto > 0 || $status > 0){ ?>style="display: none"<?php } ?>>
+                    <div class="sitio_pagina back_inicio" style="display: block">
                         <div class="seccion inicio">
                             <div class="inicio_titulo">BIENVENIDO<br/>A TU<br/>SALUD INTEGRAL</div>
                             <div class="inicio_fotos" id="fotos">
@@ -194,7 +194,7 @@ if(isset($_GET["contacto"])){
                             </div>
                         </div>
                     </div>
-                    <div class="sitio_pagina" <?php if($contacto > 0){ ?>style="display: block"<?php }else{ ?>style="display: none" <?php } ?>>
+                    <div class="sitio_pagina" style="display: none">
                         <div class="seccion contacto">
                             <div class="titulo_seccion">Contacto</div>
                             <div class="linea"></div>
