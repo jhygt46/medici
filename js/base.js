@@ -70,7 +70,7 @@ function inicio(){
                 ver_horas();
             }else{
                 seleccionar_hora_id();
-                //document.getElementById('pop_up').style.display = 'block';
+                document.getElementById('pop_up').style.display = 'block';
             }
         }
     }
@@ -1551,9 +1551,10 @@ function enviar_reserva(){
                                 type: "POST",
                                 data: send,
                                 success: function(data){
-                                    
+
                                     if(data.op == 1){
                                         ver_success();
+                                        document.getElementById("pop_up").style.display = "none";
                                         document.getElementById("id_ser").value = "";
                                         document.getElementById("id_usr").value = "";
                                         document.getElementById("f_fec").value = "";
