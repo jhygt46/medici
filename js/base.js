@@ -1070,16 +1070,22 @@ function html_horas(){
                 }
             }
 
-            console.log(show);
-
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
-            var reserv = create_element_class_inner('reserva valign', 'reservar');
+
+            if(show){
+                var reserv = create_element_class_inner('reserva valign', 'reservar');
+            }else{
+                var reserv = create_element_class_inner('reservado valign', 'tiempo insuficiente');
+            }
+            
             
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             html_hora.setAttribute('id', horas[i].m);
-            html_hora.onclick = function(){ seleccionar_hora(this) };
+            if(show){
+                html_hora.onclick = function(){ seleccionar_hora(this) };
+            }
             lista_hrs.appendChild(html_hora);
             fr_aux = 0;
 
