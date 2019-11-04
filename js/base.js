@@ -927,6 +927,8 @@ function dia_reglas(regla, w){
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
     var reserva = get_reserva();
 
+    console.log(regla);
+
     if(w == 1 && regla.length == 1){
         if(regla[0].hora_ini == regla[0].hora_fin){
             return false;
