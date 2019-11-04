@@ -1044,6 +1044,7 @@ function html_horas(){
         
         var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
         var hr = (parseInt(horas[i].m/60) < 10) ? "0"+parseInt(horas[i].m/60) : parseInt(horas[i].m/60) ;       
+        console.log(horas[i]);
         if(horas[i].p == 0){
             
             html_hora = create_element_class('hora');
