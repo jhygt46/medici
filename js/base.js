@@ -1057,17 +1057,23 @@ function html_horas(){
         
         var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
         var hr = (parseInt(horas[i].m/60) < 10) ? "0"+parseInt(horas[i].m/60) : parseInt(horas[i].m/60) ;       
+        var whilecont = true;
         
         if(horas[i].p == 0){
             
             show = true;
-            var j = i + 1;
-            if(typeof horas[j] !== 'undefined') {
-                if(horas[j].p == 1){
-                    if(horas[j].m - horas[i].m < tiempo_servicio){
-                        show = false;
+            var x = 1;
+            while(whilecont){
+                var j = i + x;
+                if(typeof horas[j] !== 'undefined') {
+                    if(horas[j].p == 1){
+                        if(horas[j].m - horas[i].m < tiempo_servicio){
+                            show = false;
+                            whilecont = false;
+                        }
                     }
                 }
+                x++;
             }
 
             html_hora = create_element_class('hora');
