@@ -1,5 +1,8 @@
 <?php
 
+header('Content-type: text/json');
+header('Content-type: application/json');
+
 if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");
