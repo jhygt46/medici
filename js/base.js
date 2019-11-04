@@ -921,13 +921,13 @@ function tiene_excepcion(date){
     return obj;
 
 }
-function dia_reglas(regla, x){
+function dia_reglas(regla, w){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
     var reserva = get_reserva();
 
-    if(x == 1 && regla.length == 1){
+    if(w == 1 && regla.length == 1){
         if(regla[0].hora_ini == regla[0].hora_fin){
             return false;
         }
