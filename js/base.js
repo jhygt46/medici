@@ -1615,17 +1615,19 @@ function enviar_contacto(){
                                 type: "POST",
                                 data: send,
                                 success: function(data){
+                                    
+                                    console.log(data);
 
                                     if(data.op == 1){
                                         document.getElementById("co_nombre").value = "";
                                         document.getElementById("co_correo").value = "";
                                         document.getElementById("co_asunto").value = "";
-                                        document.getElementById("re_mensaje").value = "";
+                                        document.getElementById("co_mensaje").value = "";
                                         alert("Mensaje enviado");
                                     }
                                     if(data.op == 2){
                                         alert("Se produjo un Error");
-                                        console.log(data);
+                                        
                                     }
                                     document.getElementById("btn_contacto").disabled = false;
                                 }, error: function(e){}
