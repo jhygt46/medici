@@ -1079,7 +1079,6 @@ function html_horas(){
                 var reserv = create_element_class_inner('reservado valign', 'tiempo insuficiente');
             }
             
-            
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             html_hora.setAttribute('id', horas[i].m);
