@@ -1063,7 +1063,7 @@ function html_horas(){
             show = true;
             var j = i + 1;
             if(typeof horas[j] !== 'undefined') {
-                if(horas[i].p == 1 || horas[i].p == 2){
+                if(horas[j].p == 1 || horas[j].p == 2){
                     if(horas[j].m - horas[i].m < tiempo_servicio){
                         show = false;
                     }
