@@ -1049,8 +1049,8 @@ function html_horas(){
         if(horas[i].p == 0){
             
             j = i + 1;
-            if (typeof horas[j] === 'undefined') {
-                console.log("SIGUIENTE DEFINIDO");
+            if (typeof horas[j] !== 'undefined') {
+                console.log("SIGUIENTE DEFINIDO: "+horas[j].m+" "+horas[j].p);
             }
 
 
