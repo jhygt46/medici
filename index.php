@@ -40,8 +40,8 @@ if(isset($_GET["contacto"])){
         <link rel="stylesheet" href="css/index.css" media="all" />
 
         <script src="js/base.js" type="text/javascript"></script>
-        <!--<script src="js/info.js" type="text/javascript"></script>-->
-        <script src="http://35.225.100.155/js/info.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="js/info.js" type="text/javascript"></script>
         <script>
             var n_year = <?php echo (isset($_GET["y"])) ? $_GET["y"] : date("Y") ; ?>;
             var n_month = <?php echo (isset($_GET["m"])) ? intval($_GET["m"]) : intval(date("m")) - 1 ; ?>;
