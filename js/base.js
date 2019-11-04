@@ -1072,6 +1072,8 @@ function html_horas(){
                             whilecont = false;
                         }
                     }
+                }else{
+                    whilecont = false;
                 }
                 x++;
             }
