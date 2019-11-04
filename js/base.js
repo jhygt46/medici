@@ -1012,7 +1012,7 @@ function in_array(arr, x){
 function html_horas(){
 
     var fr_aux = 0;
-    var j = 0;
+    var show = true;
     var reserva = get_reserva();
     var html_hora = "";
     var fecha = reserva.fecha.split("-");
@@ -1021,6 +1021,18 @@ function html_horas(){
     var date = new Date(fecha[2], (fecha[1] - 1), fecha[0]);
     var exc = tiene_excepcion(date);
     var horas = [];
+
+    for(var j=0, jlen=data.doctores.length; j<jlen; j++){
+        if(data.doctores[j].id == reserva.doctor){
+            lista_servicios = data.doctores[j].lista_servicios;
+            for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
+                if(lista_servicios[i].id == reserva.servicio){
+                    var tiempo_servicio = parseInt(lista_servicios[i].tiempo_min);
+                }
+            }
+        }
+    }
+
 
     if(exc.op){
         horas = horas_reglas(exc.excepciones, fecha);
@@ -1048,11 +1060,17 @@ function html_horas(){
         console.log(horas[i]);
         if(horas[i].p == 0){
             
-            j = i + 1;
-            if (typeof horas[j] !== 'undefined') {
-                console.log("SIGUIENTE DEFINIDO: "+horas[j].m+" "+horas[j].p);
+            show = true;
+            var j = i + 1;
+            if(typeof horas[j] !== 'undefined') {
+                if(horas[i].p == 1 || horas[i].p == 2){
+                    if(horas[j].m - horas[i].m < tiempo_servicio){
+                        show = false;
+                    }
+                }
             }
 
+            console.log(show);
 
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
@@ -1079,16 +1097,6 @@ function html_horas(){
 
         }
         if(horas[i].p == 2 && fr_aux == 0){
-
-            /*
-            html_hora = create_element_class('hora');
-            var dtl = create_element_class_inner('dtl valign', hr+':'+min);
-            var reserv = create_element_class_inner('reserva valign', 'Fuera de Rango..');
-            
-            html_hora.appendChild(dtl);
-            html_hora.appendChild(reserv);
-            lista_hrs.appendChild(html_hora);
-            */
 
             var espacio = create_element_class('espacio');
             lista_hrs.appendChild(espacio);
