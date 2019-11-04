@@ -1024,6 +1024,7 @@ function html_horas(){
 
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
+            console.log(data.doctores[j]);
             lista_servicios = data.doctores[j].lista_servicios;
             for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
                 if(lista_servicios[i].id == reserva.servicio){
@@ -1032,7 +1033,6 @@ function html_horas(){
             }
         }
     }
-
 
     if(exc.op){
         horas = horas_reglas(exc.excepciones, fecha);
@@ -1057,7 +1057,7 @@ function html_horas(){
         
         var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
         var hr = (parseInt(horas[i].m/60) < 10) ? "0"+parseInt(horas[i].m/60) : parseInt(horas[i].m/60) ;       
-        console.log(horas[i]);
+        
         if(horas[i].p == 0){
             
             show = true;
@@ -1069,16 +1069,13 @@ function html_horas(){
                     }
                 }
             }
-
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
-
             if(show){
                 var reserv = create_element_class_inner('reserva valign', 'reservar');
             }else{
                 var reserv = create_element_class_inner('reservado valign', 'tiempo insuficiente');
             }
-            
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             html_hora.setAttribute('id', horas[i].m);
@@ -1094,7 +1091,6 @@ function html_horas(){
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
             var reserv = create_element_class_inner('reservado valign', 'Reservado..');
-            
             html_hora.appendChild(dtl);
             html_hora.appendChild(reserv);
             lista_hrs.appendChild(html_hora);
@@ -1102,11 +1098,9 @@ function html_horas(){
 
         }
         if(horas[i].p == 2 && fr_aux == 0){
-
             var espacio = create_element_class('espacio');
             lista_hrs.appendChild(espacio);
             fr_aux = 1;
-
         }
 
     }
