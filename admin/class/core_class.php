@@ -112,7 +112,7 @@ class Core{
                 $sqlex->close();
             }
         }
-        if($sql = $this->con->prepare("SELECT t3.id_usr, t3.nombre as doctor_nombre, t3.titulo, t3.html_descripcion, t3.imagen as imagen_user, t1.imagen as imagen_serv, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.html_1, t2.html_2, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr AND t1.eliminado='0' AND t2.eliminado='0' AND t3.eliminado='0' ORDER BY t3.orders, t1.orders")){
+        if($sql = $this->con->prepare("SELECT t3.tiempo_minimo, t3.id_usr, t3.nombre as doctor_nombre, t3.titulo, t3.html_descripcion, t3.imagen as imagen_user, t1.imagen as imagen_serv, t1.id_ser, t1.nombre as servicio_nombre, t1.descripcion as servicio_descripcion, t2.tiempo_min, t2.html_1, t2.html_2, t2.precio FROM servicios t1, servicio_usuarios t2, usuarios t3 WHERE t1.id_ser=t2.id_ser AND t2.id_usr=t3.id_usr AND t1.eliminado='0' AND t2.eliminado='0' AND t3.eliminado='0' ORDER BY t3.orders, t1.orders")){
             if($sql->execute()){
                 $result = $sql->get_result();
                 while($row = $result->fetch_assoc()){
@@ -125,7 +125,7 @@ class Core{
                         $user['imagen'] = $row['imagen_user'];
                         $user['titulo'] = $row['titulo'];
                         $user['html_descripcion'] = $row['html_descripcion'];
-                        $user['min'] = 30;
+                        $user['min'] = $row['tiempo_minimo'];
                         $user['lista_servicios'] = [];
 
                         $aux_serv['id'] = $row['id_ser'];
