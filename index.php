@@ -60,26 +60,21 @@ if(isset($_GET["contacto"])){
                             <div class="close" id="close" onclick="close()"><div class="cc c1"></div><div class="cc c2"></div></div>
                             <div class="titulo">Ingresa tus datos</div>
                             <div class="formulario">
-                                <form onsubmit="return send()" action="./ajax/index.php" method="post">
-                                    <input type="hidden" name="accion" value="reserva" />
-                                    <input type="hidden" name="id_ser" value="" />
-                                    <input type="hidden" name="id_usr" value="" />
-                                    <input type="hidden" name="f_fec" value="" />
-                                    <input type="hidden" name="f_hor" value="" />
-                                    <input type="hidden" name="accion" value="reserva" />
-                                    <h3>Rut:</h3>
-                                    <div class="input"><input type="text" name="rut" placeholder="" /></div>
-                                    <h3>Nombre completo:</h3>
-                                    <div class="input"><input type="text" name="nombre" placeholder="" /></div>
-                                    <h3>Correo electronico:</h3>
-                                    <div class="input"><input type="text" name="correo" placeholder="" /></div>
-                                    <h3>Telefono:</h3>
-                                    <div class="input"><input type="text" name="telefono" placeholder="" /></div>
-                                    <h3>Mensaje:</h3>
-                                    <div class="input"><TEXTAREA class="txta" name="mensaje"></TEXTAREA></div>
-                                    <input type="hidden" name="token" id="token_reserva" />
-                                    <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
-                                </form>
+                                <input type="hidden" name="id_ser" name="id_ser" value="" />
+                                <input type="hidden" name="id_usr" name="id_usr" value="" />
+                                <input type="hidden" name="f_fec" name="f_fec" value="" />
+                                <input type="hidden" name="f_hor" name="f_hor" value="" />
+                                <h3>Rut:</h3>
+                                <div class="input"><input type="text" id="re_rut" name="rut" placeholder="" /></div>
+                                <h3>Nombre completo:</h3>
+                                <div class="input"><input type="text" id="re_nombre" name="nombre" placeholder="" /></div>
+                                <h3>Correo electronico:</h3>
+                                <div class="input"><input type="text" id="re_correo" name="correo" placeholder="" /></div>
+                                <h3>Telefono:</h3>
+                                <div class="input"><input type="text" id="re_telefono" name="telefono" placeholder="" /></div>
+                                <h3>Mensaje:</h3>
+                                <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
+                                <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
                             </div>
                         </div>
                     </div>
@@ -122,23 +117,6 @@ if(isset($_GET["contacto"])){
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="menu m1" style="top: 0px; right: -280px; z-index: 4">
-                <div class="cont_menu">
-                    <div class="data_menu"></div>
-                </div>
-            </div>
-            <div class="menu m2" style="left: 0px; top: -100px; z-index: 3">
-                <div class="cont_menu">
-                    <div class="data_menu"></div>
-                </div>
-            </div>
-            <div class="menu m2" style="left: 0px; bottom: -100px; z-index: 2">
-                <div class="cont_menu">
-                    <div class="data_menu"></div>
-                </div>
-            </div>
-            -->
             <div class="sitio">
                 <div class="cont_sitio">
                     <div class="titulo_pagina">
@@ -219,19 +197,15 @@ if(isset($_GET["contacto"])){
                                     <div class="cont_form">
                                         <div class="cont_forms">
                                             <?php if($contacto == 0 || $contacto == 2){ ?>
-                                            <form onsubmit="return send2()" action="./ajax/index.php" method="post">
-                                                <input type="hidden" name="accion" value="contacto" />
-                                                <h3>Nombre:</h3>
-                                                <div class="input"><input type="text" name="nombre" placeholder="" /></div>
-                                                <h3>Correo electronico:</h3>
-                                                <div class="input"><input type="text" name="correo" placeholder="" /></div>
-                                                <h3>Asunto:</h3>
-                                                <div class="input"><input type="text" name="asunto" placeholder="" /></div>
-                                                <h3>Mensaje:</h3>
-                                                <div class="input"><TEXTAREA class="txta" name="mensaje"></TEXTAREA></div>
-                                                <input type="hidden" name="token" id="token_contacto" />
-                                                <div class="acciones"><input type="submit" value="Enviar" class="empezar" /></div>
-                                            </form>
+                                            <h3>Nombre:</h3>
+                                            <div class="input"><input type="text" id="co_nombre" name="nombre" placeholder="" /></div>
+                                            <h3>Correo electronico:</h3>
+                                            <div class="input"><input type="text" id="co_correo" name="correo" placeholder="" /></div>
+                                            <h3>Asunto:</h3>
+                                            <div class="input"><input type="text" id="co_asunto" name="asunto" placeholder="" /></div>
+                                            <h3>Mensaje:</h3>
+                                            <div class="input"><TEXTAREA class="txta" id="co_mensaje" name="mensaje"></TEXTAREA></div>
+                                            <div class="acciones"><input type="submit" value="Enviar" class="empezar" onclick="enviar_contacto()" /></div>
                                             <?php }else{ ?>
                                             <div class="felicitaciones">
                                                 Su solictud fue enviado con exito, pronto nos contactaremos con usted

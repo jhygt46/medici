@@ -305,6 +305,8 @@ class Core{
     }
     public function reservar_hora(){
 
+        $info['op'] = 2;
+        $info['tipo'] = 0;
         $correo = $_POST["correo"];
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
 
@@ -437,14 +439,16 @@ class Core{
                                                                                     curl_close($ch);
 
                                                                                     if($resp->{'op'} == 1){
-                                                                                        header("Location: http://www.draescorza.cl/?status=1");
+                                                                                        $info['op'] = 1;
+                                                                                        //header("Location: http://www.draescorza.cl/?status=1");
                                                                                     }else{
-                                                                                        header("Location: http://www.draescorza.cl/?status=2");
+                                                                                        $info['tipo'] = 3;
+                                                                                        //header("Location: http://www.draescorza.cl/?status=2");
                                                                                     }
 
-                                                                                }else{ header("Location: http://www.draescorza.cl/?status=2"); }
-                                                                            }else{ header("Location: http://www.draescorza.cl/?status=2"); }
-                                                                        }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                                                }else{  }
+                                                                            }else{  }
+                                                                        }else{  }
                                                                     }else{}
                                                                 }else{}
 
@@ -500,14 +504,16 @@ class Core{
                                                                         curl_close($ch);
 
                                                                         if($resp->{'op'} == 1){
-                                                                            header("Location: http://www.draescorza.cl/?status=1");
+                                                                            $info['op'] = 1;
+                                                                            //header("Location: http://www.draescorza.cl/?status=1");
                                                                         }else{
-                                                                            header("Location: http://www.draescorza.cl/?status=2");
+                                                                            $info['tipo'] = 3;
+                                                                            //header("Location: http://www.draescorza.cl/?status=2");
                                                                         }
                                                                     
-                                                                    }else{ header("Location: http://www.draescorza.cl/?status=2"); }
-                                                                }else{ header("Location: http://www.draescorza.cl/?status=2"); }
-                                                            }else{ header("Location: http://www.draescorza.cl/?status=2"); }
+                                                                    }else{  }
+                                                                }else{  }
+                                                            }else{  }
                                                         }
                                                     }
                                                 }
@@ -529,16 +535,21 @@ class Core{
                 }else{}
 
             }else{
-                header("Location: http://www.draescorza.cl/?status=2");
+                $info['tipo'] = 2;
+                //header("Location: http://www.draescorza.cl/?status=2");
             }
 
         }else{
-            header("Location: http://www.draescorza.cl/?status=2");
+            $info['tipo'] = 1;
+            //header("Location: http://www.draescorza.cl/?status=2");
         }
+        return $info;
 
     }
     public function contacto(){
 
+        $info['op'] = 2;
+        $info['tipo'] = 0;
         $correo = $_POST["correo"];
         if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
             
@@ -576,17 +587,22 @@ class Core{
                 curl_close($ch);
 
                 if($resp->{'op'} == 1){
-                    header("Location: http://www.draescorza.cl/?contacto=1");
+                    $info['op'] = 1;
+                    //header("Location: http://www.draescorza.cl/?contacto=1");
                 }else{
-                    header("Location: http://www.draescorza.cl/?contacto=2");
+                    $info['tipo'] = 3;
+                    //header("Location: http://www.draescorza.cl/?contacto=2");
                 }
                 
             }else{
-                header("Location: http://www.draescorza.cl/?contacto=2");
+                $info['tipo'] = 2;
+                //header("Location: http://www.draescorza.cl/?contacto=2");
             }
         }else{
-            header("Location: http://www.draescorza.cl/?contacto=3");
+            $info['tipo'] = 1;
+            //header("Location: http://www.draescorza.cl/?contacto=3");
         }
+        return $info;
 
     }
     public function get_sucursales(){

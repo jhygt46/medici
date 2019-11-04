@@ -1555,6 +1555,66 @@ function reserva_blank(){
 function set_reserva(reserva){
     localStorage.setItem("reserva", JSON.stringify(reserva));
 }
+function enviar_reserva(){
+
+    var id_ser = $('#id_ser').val();
+    var id_usr = $('#id_usr').val();
+    var f_fec = $('#f_fec').val();
+    var f_hor = $('#f_hor').val();
+
+    var rut = $('#re_rut').val();
+    var nombre = $('#re_nombre').val();
+    var correo = $('#re_correo').val();
+    var telefono = $('#re_telefono').val();
+    var mensaje = $('#re_mensaje').val();
+
+    grecaptcha.ready(function(){
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
+            var send = { accion: 'reserva', correo: correo, token: token, id_ser: id_ser, id_usr: id_usr, rut: rut, nombre: nombre, telefono: telefono, mensaje: mensaje, f_fec: f_fec, f_hor: f_hor };
+            $.ajax({
+                url: 'ajax/index.php',
+                type: "POST",
+                data: send,
+                success: function(data){
+                    if(data.op == 1){
+                        $(location).attr('href','/?status=1');
+                    }
+                    if(data.op == 2){
+                        console.log(data);
+                    }
+                }, error: function(e){}
+            });
+        });
+    });
+
+}
+function enviar_contacto(){
+
+    var nombre = $('#co_nombre').val();
+    var correo = $('#co_correo').val();
+    var asunto = $('#co_asunto').val();
+    var mensaje = $('#re_mensaje').val();
+
+    grecaptcha.ready(function(){
+        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
+            var send = { accion: 'contacto', correo: correo, token: token, nombre: nombre, asunto: asunto, mensaje: mensaje };
+            $.ajax({
+                url: 'ajax/index.php',
+                type: "POST",
+                data: send,
+                success: function(data){
+                    if(data.op == 1){
+                        $(location).attr('href','/?contacto=1');
+                    }
+                    if(data.op == 2){
+                        console.log(data);
+                    }
+                }, error: function(e){}
+            });
+        });
+    });
+
+}
 var formatNumber = {
     separador: ".", // separador para los miles
     sepDecimal: ',', // separador para los decimales
