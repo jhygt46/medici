@@ -368,7 +368,6 @@ class Guardar{
             $html_descripcion = $_POST['html_descripcion'];
             $pass1 = $_POST['pass1'];
             $pass2 = $_POST['pass2'];
-
             if($id > 0){
 
                 $sqlu = $this->con->prepare("SELECT id_usr FROM usuarios WHERE correo=? AND eliminado=?");
@@ -426,8 +425,9 @@ class Guardar{
 
                 if($res->{"num_rows"} == 0){
 
-                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, titulo, html_descripcion, eliminado) VALUES (?, ?, ?, ?, ?, ?)");
-                    $sql->bind_param("ssissi", $nombre, $correo, $tipo, $titulo, $html_descripcion, $this->eliminado);
+                    $tiempo_minimo = 30;
+                    $sql = $this->con->prepare("INSERT INTO usuarios (nombre, correo, tipo, titulo, html_descripcion, tiempo_minimo, eliminado) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    $sql->bind_param("ssissii", $nombre, $correo, $tipo, $titulo, $html_descripcion, $tiempo_minimo, $this->eliminado);
                     if($sql->execute()){
                         $info['op'] = 1;
                         $info['mensaje'] = "Medico ingresado exitosamente";
@@ -445,7 +445,6 @@ class Guardar{
                 $sqlu->close();
 
             }
-
             if($id > 0){
                 if($pass1 == $pass2 && strlen($pass1) >= 8){
                     $sqlup = $this->con->prepare("UPDATE usuarios SET pass=? WHERE id_usr=? AND eliminado=?");
@@ -542,6 +541,21 @@ class Guardar{
             }
 
         }
+
+        $sqlsel = $this->con->prepare("SELECT MIN(tiempo_min) as minimo FROM servicio_usuarios WHERE id_usr=?");
+        $sqlsel->bind_param("i", $this->id_usr);
+        $sqlsel->execute();
+        $ressel = $sqlsel->get_result();
+        if($ressel->{"num_rows"} > 0){
+            $minimo = $ressel->fetch_all(MYSQLI_ASSOC)[0]["minimo"];
+        }else{
+            $minimo = 30;
+        }
+
+        $sqlup = $this->con->prepare("UPDATE usuarios SET tiempo_minimo=? WHERE id_usr=?");
+        $sqlup->bind_param("ii", $minimo, $this->id_usr);
+        $sqlup->execute();
+
         $info['reload'] = 1;
         $info['page'] = "mis_servicios.php";
         return $info;

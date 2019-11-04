@@ -1024,7 +1024,7 @@ function html_horas(){
 
     for(var j=0, jlen=data.doctores.length; j<jlen; j++){
         if(data.doctores[j].id == reserva.doctor){
-            console.log(data.doctores[j]);
+            var tiempo = data.doctores[j].min;
             lista_servicios = data.doctores[j].lista_servicios;
             for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
                 if(lista_servicios[i].id == reserva.servicio){
@@ -1035,7 +1035,7 @@ function html_horas(){
     }
 
     if(exc.op){
-        horas = horas_reglas(exc.excepciones, fecha);
+        horas = horas_reglas(exc.excepciones, fecha, tiempo);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -1044,7 +1044,7 @@ function html_horas(){
                 rangos.push(data.rangos[i]);
             }
         }
-        horas = horas_reglas(rangos, fecha);
+        horas = horas_reglas(rangos, fecha, tiempo);
     }
 
     var html_horas = create_element_class('horas');
@@ -1061,6 +1061,7 @@ function html_horas(){
         if(horas[i].p == 0){
             
             show = true;
+            
             var j = i + 1;
             if(typeof horas[j] !== 'undefined') {
                 if(horas[j].p == 1){
@@ -1069,6 +1070,7 @@ function html_horas(){
                     }
                 }
             }
+
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
             if(show){
@@ -1159,9 +1161,9 @@ function horas_dia(horas, fecha){
     return ret;
 
 }
-function horas_reglas(reglas, fecha){
+function horas_reglas(reglas, fecha, tiempo){
 
-    var min=9999999, max=0, tiempo=30, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
+    var min=9999999, max=0, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
     var reserva = get_reserva();
 
     if(reglas.length > 0){
