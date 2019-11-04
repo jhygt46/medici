@@ -75,7 +75,7 @@ if(isset($_GET["contacto"])){
                                     <div class="input"><input type="text" id="re_telefono" name="telefono" placeholder="" /></div>
                                     <h3>Mensaje:</h3>
                                     <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
-                                    <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
+                                    <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" id="btn_reserva" /></div>
                                     <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 10px">This site is protected by reCAPTCHA and the Google 
                                         <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                                         <a href="https://policies.google.com/terms">Terms of Service</a> apply.
@@ -211,7 +211,7 @@ if(isset($_GET["contacto"])){
                                             <div class="input"><input type="text" id="co_asunto" name="asunto" placeholder="" /></div>
                                             <h3>Mensaje:</h3>
                                             <div class="input"><TEXTAREA class="txta" id="co_mensaje" name="mensaje"></TEXTAREA></div>
-                                            <div class="acciones"><input type="submit" value="Enviar" class="empezar" onclick="enviar_contacto()" /></div>
+                                            <div class="acciones"><input type="submit" value="Enviar" class="empezar" onclick="enviar_contacto()" id="btn_contacto" /></div>
                                             <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 10px">This site is protected by reCAPTCHA and the Google 
                                                 <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                                                 <a href="https://policies.google.com/terms">Terms of Service</a> apply.

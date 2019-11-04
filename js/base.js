@@ -40,13 +40,16 @@ function inicio(){
     if(contacto > 0){
         show_map();
     }
-
+    
+    /*
     if(status == 2){
         ver_error();
     }
     if(status == 1){
         ver_success();
     }
+    */
+
     if(status == 0){
         var reserva = get_reserva();
         if(reserva.servicio == 0){
@@ -1550,24 +1553,51 @@ function enviar_reserva(){
     var telefono = document.getElementById("re_telefono").value;
     var mensaje = document.getElementById("re_mensaje").value;
 
-    grecaptcha.ready(function(){
-        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
-            var send = { accion: 'reserva', correo: correo, token: token, id_ser: id_ser, id_usr: id_usr, rut: rut, nombre: nombre, telefono: telefono, mensaje: mensaje, f_fec: f_fec, f_hor: f_hor };
-            $.ajax({
-                url: 'ajax/index.php',
-                type: "POST",
-                data: send,
-                success: function(data){
-                    if(data.op == 1){
-                        location.href = '/?status=1';
-                    }
-                    if(data.op == 2){
-                        console.log(data);
-                    }
-                }, error: function(e){}
-            });
-        });
-    });
+    if(validar_email(correo)){
+        if(nombre.length > 2){
+            if(rut.length > 2){
+                if(telefono.length > 2){
+
+                    document.getElementById("btn_reserva").disabled = true;
+                    grecaptcha.ready(function(){
+                        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
+                            var send = { accion: 'reserva', correo: correo, token: token, id_ser: id_ser, id_usr: id_usr, rut: rut, nombre: nombre, telefono: telefono, mensaje: mensaje, f_fec: f_fec, f_hor: f_hor };
+                            $.ajax({
+                                url: 'ajax/index.php',
+                                type: "POST",
+                                data: send,
+                                success: function(data){
+                                    console.log(data);
+                                    if(data.op == 1){
+
+                                        document.getElementById("id_ser").value = "";
+                                        document.getElementById("id_usr").value = "";
+                                        document.getElementById("f_fec").value = "";
+                                        document.getElementById("f_hor").value = "";
+                                        document.getElementById("re_rut").value = "";
+                                        document.getElementById("re_nombre").value = "";
+                                        document.getElementById("re_correo").value = "";
+                                        document.getElementById("re_telefono").value = "";
+                                        document.getElementById("re_mensaje").value = "";
+                                        alert("Hora reservada");
+
+                                    }
+                                    if(data.op == 2){
+                                        
+                                        alert("Se produjo un Error");
+                                        console.log(data);
+
+                                    }
+                                    document.getElementById("btn_reserva").disabled = false;
+                                }, error: function(e){}
+                            });
+                        });
+                    });
+
+                }else{ alert("Debe ingresar telefono"); }
+            }else{ alert("Debe ingresar rut"); }
+        }else{ alert("Debe ingresar nombre"); }
+    }else{ alert("Debe ingresar correo valido"); }
 
 }
 function enviar_contacto(){
@@ -1577,25 +1607,47 @@ function enviar_contacto(){
     var asunto = document.getElementById("co_asunto").value;
     var mensaje = document.getElementById("re_mensaje").value;
 
-    grecaptcha.ready(function(){
-        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
-            var send = { accion: 'contacto', correo: correo, token: token, nombre: nombre, asunto: asunto, mensaje: mensaje };
-            $.ajax({
-                url: 'ajax/index.php',
-                type: "POST",
-                data: send,
-                success: function(data){
-                    if(data.op == 1){
-                        location.href = '/?contacto=1';
-                    }
-                    if(data.op == 2){
-                        console.log(data);
-                    }
-                }, error: function(e){}
-            });
-        });
-    });
+    if(validar_email(correo)){
+        if(nombre.length > 2){
+            if(asunto.length > 2){
+                if(mensaje.length > 2){
 
+                    document.getElementById("btn_contacto").disabled = true;
+                    grecaptcha.ready(function(){
+                        grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
+                            var send = { accion: 'contacto', correo: correo, token: token, nombre: nombre, asunto: asunto, mensaje: mensaje };
+                            $.ajax({
+                                url: 'ajax/index.php',
+                                type: "POST",
+                                data: send,
+                                success: function(data){
+
+                                    if(data.op == 1){
+                                        document.getElementById("co_nombre").value = "";
+                                        document.getElementById("co_correo").value = "";
+                                        document.getElementById("co_asunto").value = "";
+                                        document.getElementById("re_mensaje").value = "";
+                                        alert("Mensaje enviado");
+                                    }
+                                    if(data.op == 2){
+                                        alert("Se produjo un Error");
+                                        console.log(data);
+                                    }
+                                    document.getElementById("btn_contacto").disabled = false;
+                                }, error: function(e){}
+                            });
+                        });
+                    });
+
+                }else{ alert("Debe ingresar mensaje"); }
+            }else{ alert("Debe ingresar asunto"); }
+        }else{ alert("Debe ingresar nombre"); }
+    }else{ alert("Correo Invalido"); }
+
+}
+function validar_email(email){
+    var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email) ? true : false;
 }
 var formatNumber = {
     separador: ".", // separador para los miles
