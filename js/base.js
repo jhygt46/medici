@@ -928,7 +928,7 @@ function dia_reglas(regla, x){
     var reserva = get_reserva();
 
     if(x == 1 && regla.length == 1){
-        if(regla[0].hora_ini == "08:00:00" && regla[0].hora_fin == "08:00:00"){
+        if(regla[0].hora_ini == regla[0].hora_fin){
             return false;
         }
     }
@@ -1169,8 +1169,6 @@ function horas_dia(horas, fecha){
 
 }
 function horas_reglas(reglas, fecha, tiempo){
-
-    console.log(tiempo);
 
     var min=9999999, max=0, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
     var reserva = get_reserva();
