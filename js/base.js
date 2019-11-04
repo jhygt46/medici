@@ -1012,6 +1012,7 @@ function in_array(arr, x){
 function html_horas(){
 
     var fr_aux = 0;
+    var j = 0;
     var reserva = get_reserva();
     var html_hora = "";
     var fecha = reserva.fecha.split("-");
@@ -1047,6 +1048,12 @@ function html_horas(){
         console.log(horas[i]);
         if(horas[i].p == 0){
             
+            j = i + 1;
+            if (typeof horas[j] === 'undefined') {
+                console.log("SIGUIENTE DEFINIDO");
+            }
+
+
             html_hora = create_element_class('hora');
             var dtl = create_element_class_inner('dtl valign', hr+':'+min);
             var reserv = create_element_class_inner('reserva valign', 'reservar');
