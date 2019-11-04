@@ -75,6 +75,10 @@ if(isset($_GET["contacto"])){
                                 <h3>Mensaje:</h3>
                                 <div class="input"><TEXTAREA class="txta" id="re_mensaje" name="mensaje"></TEXTAREA></div>
                                 <div class="acciones"><input type="button" value="Enviar" class="empezar" onclick="enviar_reserva()" /></div>
+                                <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
+                                    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                </small>
                             </div>
                         </div>
                     </div>
@@ -206,6 +210,10 @@ if(isset($_GET["contacto"])){
                                             <h3>Mensaje:</h3>
                                             <div class="input"><TEXTAREA class="txta" id="co_mensaje" name="mensaje"></TEXTAREA></div>
                                             <div class="acciones"><input type="submit" value="Enviar" class="empezar" onclick="enviar_contacto()" /></div>
+                                            <small class="smallrecaptcha" style="display: block; font-size: 13px; padding-top: 20px">This site is protected by reCAPTCHA and the Google 
+                                                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                                            </small>
                                             <?php }else{ ?>
                                             <div class="felicitaciones">
                                                 Su solictud fue enviado con exito, pronto nos contactaremos con usted
