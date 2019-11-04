@@ -1539,16 +1539,16 @@ function set_reserva(reserva){
 }
 function enviar_reserva(){
 
-    var id_ser = $('#id_ser').val();
-    var id_usr = $('#id_usr').val();
-    var f_fec = $('#f_fec').val();
-    var f_hor = $('#f_hor').val();
+    var id_ser = document.getElementById("id_ser").value;
+    var id_usr = document.getElementById("id_usr").value;
+    var f_fec = document.getElementById("f_fec").value;
+    var f_hor = document.getElementById("f_hor").value;
 
-    var rut = $('#re_rut').val();
-    var nombre = $('#re_nombre').val();
-    var correo = $('#re_correo').val();
-    var telefono = $('#re_telefono').val();
-    var mensaje = $('#re_mensaje').val();
+    var rut = document.getElementById("re_rut").value;
+    var nombre = document.getElementById("re_nombre").value;
+    var correo = document.getElementById("re_correo").value;
+    var telefono = document.getElementById("re_telefono").value;
+    var mensaje = document.getElementById("re_mensaje").value;
 
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'contacto' }).then(function(token){
@@ -1572,10 +1572,10 @@ function enviar_reserva(){
 }
 function enviar_contacto(){
 
-    var nombre = $('#co_nombre').val();
-    var correo = $('#co_correo').val();
-    var asunto = $('#co_asunto').val();
-    var mensaje = $('#re_mensaje').val();
+    var nombre = document.getElementById("co_nombre").value;
+    var correo = document.getElementById("co_correo").value;
+    var asunto = document.getElementById("co_asunto").value;
+    var mensaje = document.getElementById("re_mensaje").value;
 
     grecaptcha.ready(function(){
         grecaptcha.execute('6Lfor7kUAAAAABomMyYcaO0RhvHJBmPF85PrNP2v', { action: 'reserva' }).then(function(token){
