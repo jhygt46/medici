@@ -1061,7 +1061,6 @@ function html_horas(){
         if(horas[i].p == 0){
             
             show = true;
-            
             var j = i + 1;
             if(typeof horas[j] !== 'undefined') {
                 if(horas[j].p == 1){
@@ -1162,6 +1161,8 @@ function horas_dia(horas, fecha){
 
 }
 function horas_reglas(reglas, fecha, tiempo){
+
+    console.log(tiempo);
 
     var min=9999999, max=0, hr_ini=0, hr_fin=0, aux=[], lista_servicios=[], hr_last=0, res=[], tiempo_servicio=0, dia=0;
     var reserva = get_reserva();
