@@ -927,7 +927,7 @@ function get_horas_date(horas, date){
     if(Array.isArray(horas)){
         for(var i=0, ilen=horas.length; i<ilen; i++){
             var aux_ini = horas[i].fecha.split(" ")[0].split("-");
-            if(aux_ini[0] == date.getFullYear() && aux_ini[1] == date.getMonth() && aux_ini[2] == date.getDate()){
+            if(parseInt(aux_ini[0]) == date.getFullYear() && parseInt(aux_ini[1]) == date.getMonth() && parseInt(aux_ini[2]) == date.getDate()){
                 res.push(horas[i]);
             }
         }
@@ -968,10 +968,7 @@ function dia_reglas(regla, w, date){
                 horas = get_horas_date(data.doctores[j].horas, date);
 
                 if(regla.length == 1){
-                    //console.log(regla.length + ">" + h_ini + "/" + h_fin);
-                    console.log(horas);
-                    console.log(tiempo);
-                    console.log(date.getFullYear()+" / "+date.getMonth()+" / "+date.getDate());
+                    console.log(horas.length);
                 }
 
                 if(horas.length > 0){
