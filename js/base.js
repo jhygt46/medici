@@ -969,6 +969,7 @@ function dia_reglas(regla, w, date){
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
+                        console.log(horas[i]);
                         aux_ini = horas[i].fecha.split(" ")[1].split(":");
                         aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
                         aux_f = aux_i + parseInt(horas[i].tiempo);
@@ -1069,8 +1070,6 @@ function html_horas(){
     var titulo_hrs = create_element_class_inner('titulo_hrs', 'Seleccione hora');
     cont_hrs.appendChild(titulo_hrs);
     var lista_hrs = create_element_class('lista_hrs');
-
-    console.log(horas);
 
     for(var i=0, ilen=horas.length; i<ilen; i++){
         
