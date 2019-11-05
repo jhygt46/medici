@@ -921,7 +921,21 @@ function tiene_excepcion(date){
     return obj;
 
 }
-function dia_reglas(regla, w){
+function get_horas_date(horas, date){
+
+    var res = [];
+    if(Array.isArray(horas)){
+        for(var i=0, ilen=horas.length; i<ilen; i++){
+            var aux_ini = horas[i].fecha.split(" ")[0].split("-");
+            if(aux_ini[0] == date.getFullYear() && aux_ini[1] == date.getMonth() && aux_ini[2] == date.getDate()){
+                res.push(horas[i]);
+            }
+        }
+    }
+    return res;
+
+}
+function dia_reglas(regla, w, date){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
     var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
@@ -933,7 +947,6 @@ function dia_reglas(regla, w){
         }
     }
 
-    
     for(var x=0, xlen=regla.length; x<xlen; x++){
 
         hi = regla[x].hora_ini.split(":");
@@ -951,16 +964,17 @@ function dia_reglas(regla, w){
                         var tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
-                
-                horas = data.doctores[j].horas;
+
+                horas = get_horas_date(data.doctores[j].horas, date);
 
                 if(regla.length == 1){
-                    console.log(regla.length + ">" + h_ini + "/" + h_fin);
+                    //console.log(regla.length + ">" + h_ini + "/" + h_fin);
                     console.log(horas);
                     console.log(tiempo);
+                    console.log(date.getFullYear()+" / "+date.getMonth()+" / "+date.getDate());
                 }
 
-                if(Array.isArray(horas)){
+                if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
                         aux_ini = horas[i].fecha.split(" ")[1].split(":");
@@ -997,7 +1011,7 @@ function horas_disponibles(y, m, d){
     var reserva = get_reserva();
 
     if(exc.op){
-        return dia_reglas(exc.excepciones, 1);
+        return dia_reglas(exc.excepciones, 1, date);
     }else{
         var semana = date.getDay();
         var rangos = [];
@@ -1006,7 +1020,7 @@ function horas_disponibles(y, m, d){
                 rangos.push(data.rangos[i]);
             }
         }
-        return dia_reglas(rangos, 2);
+        return dia_reglas(rangos, 2, date);
     }
 
 }
