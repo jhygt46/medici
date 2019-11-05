@@ -966,10 +966,13 @@ function dia_reglas(regla, w, date){
                 }
                 horas = get_horas_date(data.doctores[j].horas, date);
 
+                console.log(horas);
+                console.log(date);
+
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
-                        console.log(horas[i]);
+                        
                         aux_ini = horas[i].fecha.split(" ")[1].split(":");
                         aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
                         aux_f = aux_i + parseInt(horas[i].tiempo);
