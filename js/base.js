@@ -965,10 +965,6 @@ function dia_reglas(regla, w, date){
                     }
                 }
                 horas = get_horas_date(data.doctores[j].horas, date);
-                if(regla.length == 1){
-                    console.log(date);
-                    console.log(horas);
-                }
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
@@ -979,15 +975,13 @@ function dia_reglas(regla, w, date){
                         if(aux_i >= h_ini && aux_f <= h_fin){
                             
                             if(i == 0){
-                                console.log("1: "+aux_i+" "+h_ini+" "+tiempo);
-                                if(aux_i > h_ini + tiempo){ return true }
+                                if(aux_i >= h_ini + tiempo){ return true }
                             }
                             if(i > 0){
                                 if(aux_i >= last + tiempo){ return true }   
                             }
                             if(i == ilen - 1){
-                                console.log("2: "+aux_f+" "+tiempo+" "+h_fin);
-                                if(aux_f + tiempo < h_fin){ return true }
+                                if(aux_f + tiempo <= h_fin){ return true }
                             }
                             last = aux_f;
                         }
