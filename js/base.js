@@ -964,10 +964,11 @@ function dia_reglas(regla, w, date){
                         var tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
+
                 horas = get_horas_date(data.doctores[j].horas, date);
 
+                console.log(data.doctores[j].horas);
                 console.log(horas);
-                console.log(date);
 
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
