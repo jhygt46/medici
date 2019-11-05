@@ -977,14 +977,16 @@ function dia_reglas(regla, w, date){
                         aux_f = aux_i + parseInt(horas[i].tiempo);
 
                         if(aux_i >= h_ini && aux_f <= h_fin){
-                            console.log("ENTRO1");
+                            
                             if(i == 0){
+                                console.log("1: "+aux_i+" "+h_ini+" "+tiempo);
                                 if(aux_i > h_ini + tiempo){ return true }
                             }
                             if(i > 0){
                                 if(aux_i >= last + tiempo){ return true }   
                             }
                             if(i == ilen - 1){
+                                console.log("2: "+aux_f+" "+tiempo+" "+h_fin);
                                 if(aux_f + tiempo < h_fin){ return true }
                             }
                             last = aux_f;
