@@ -1070,6 +1070,8 @@ function html_horas(){
     cont_hrs.appendChild(titulo_hrs);
     var lista_hrs = create_element_class('lista_hrs');
 
+    console.log(horas);
+
     for(var i=0, ilen=horas.length; i<ilen; i++){
         
         var min = (parseInt(horas[i].m%60) < 10) ? "0"+parseInt(horas[i].m%60) : parseInt(horas[i].m%60) ;
