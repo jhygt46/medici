@@ -964,12 +964,7 @@ function dia_reglas(regla, w, date){
                         var tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
-
                 horas = get_horas_date(data.doctores[j].horas, date);
-
-                if(regla.length == 1){
-                    console.log(h_ini+" / "+h_fin);
-                }
 
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
@@ -993,7 +988,9 @@ function dia_reglas(regla, w, date){
 
                     }
                 }else{
-                    return true;
+                    if(h_fin - h_ini >= tiempo){
+                        return true;
+                    }
                 }
             }
         }
