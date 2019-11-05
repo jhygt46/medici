@@ -965,8 +965,10 @@ function dia_reglas(regla, w, date){
                     }
                 }
                 horas = get_horas_date(data.doctores[j].horas, date);
-                console.log(date);
-                console.log(horas);
+                if(regla.length == 1){
+                    console.log(date);
+                    console.log(horas);
+                }
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
