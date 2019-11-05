@@ -977,6 +977,7 @@ function dia_reglas(regla, w, date){
                         aux_f = aux_i + parseInt(horas[i].tiempo);
 
                         if(aux_i >= h_ini && aux_f <= h_fin){
+                            console.log("ENTRO1");
                             if(i == 0){
                                 if(aux_i > h_ini + tiempo){ return true }
                             }
