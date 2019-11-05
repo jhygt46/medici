@@ -938,7 +938,7 @@ function get_horas_date(horas, date){
 function dia_reglas(regla, w, date){
 
     var hi = [], hf = [], aux_ini = [], horas = [], lista_servicios = [];
-    var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0;
+    var h_ini = 0, h_fin = 0, aux_i = 0, aux_f = 0, last = 0, tiempo = 0;
     var reserva = get_reserva();
 
     if(w == 1 && regla.length == 1){
@@ -961,13 +961,12 @@ function dia_reglas(regla, w, date){
                 lista_servicios = data.doctores[j].lista_servicios;
                 for(var i=0, ilen=lista_servicios.length; i<ilen; i++){
                     if(lista_servicios[i].id == reserva.servicio){
-                        var tiempo = parseInt(lista_servicios[i].tiempo_min);
+                        tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
                 horas = get_horas_date(data.doctores[j].horas, date);
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
-                        
                         
                         aux_ini = horas[i].fecha.split(" ")[1].split(":");
                         aux_i = parseInt(aux_ini[0] * 60) + parseInt(aux_ini[1]);
