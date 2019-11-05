@@ -967,6 +967,7 @@ function dia_reglas(regla, w, date){
 
                 horas = get_horas_date(data.doctores[j].horas, date);
 
+                console.log(date);
                 console.log(data.doctores[j].horas);
                 console.log(horas);
 
