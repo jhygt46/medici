@@ -927,8 +927,6 @@ function get_horas_date(horas, date){
     if(Array.isArray(horas)){
         for(var i=0, ilen=horas.length; i<ilen; i++){
             var aux_ini = horas[i].fecha.split(" ")[0].split("-");
-            //console.log(parseInt(aux_ini[0])+"-"+parseInt(aux_ini[1])+"-"+parseInt(aux_ini[2]));
-            //console.log(date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate());
             if(parseInt(aux_ini[0]) == date.getFullYear() && parseInt(aux_ini[1]) == date.getMonth()+1 && parseInt(aux_ini[2]) == date.getDate()){
                 res.push(horas[i]);
             }
@@ -966,13 +964,7 @@ function dia_reglas(regla, w, date){
                         var tiempo = parseInt(lista_servicios[i].tiempo_min);
                     }
                 }
-
                 horas = get_horas_date(data.doctores[j].horas, date);
-
-                console.log(date);
-                console.log(data.doctores[j].horas);
-                console.log(horas);
-
                 if(horas.length > 0){
                     for(var i=0, ilen=horas.length; i<ilen; i++){
                         
