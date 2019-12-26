@@ -1,5 +1,7 @@
 <?php
 
+die("INSTALADO");
+
 if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");
@@ -11,8 +13,6 @@ if($_SERVER["HTTP_HOST"] == "localhost"){
 require_once DIR."db.php";
 require_once DIR_BASE."config/config.php";
 $con = new mysqli($db_host[0], $db_user[0], $db_password[0]);
-
-die("INSTALADO");
 
 $tablas[0]['nombre'] = 'usuarios';
 $tablas[0]['campos'][0]['nombre'] = 'id_usr';
