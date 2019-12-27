@@ -19,10 +19,9 @@ $page_mod = "pages/ver_horas.php";
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_fechas_horas();
-//$servicios = $core->get_servicos_user();
 
-$servicios = [];
-$sucursal = [];
+$servicios = $core->get_servicios();
+$sucursal = $core->get_sucursales();
 
 ?>
 <script>
@@ -31,7 +30,7 @@ $sucursal = [];
             onSelect: function(dateText){
                 //navlink('pages/mis_excepciones.php?fecha='+dateText);
             },
-            dateFormat: 'YYYY-MM-DD HH:mm:ss'
+            dateFormat: 'yy-mm-dd'
         });
     });
 </script>
@@ -75,6 +74,10 @@ $sucursal = [];
                     <label class="clearfix">
                         <span><p>Fecha:</p></span>
                         <input id="fecha" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Hora:</p></span>
+                        <input id="hora" class="inputs" type="text" value="" require="" placeholder="10:30" />
                     </label>
                     <label class="clearfix">
                         <span><p>Rut:</p></span>
