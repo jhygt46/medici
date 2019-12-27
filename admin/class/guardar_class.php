@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+date_default_timezone_set("America/Santiago");
+
 if($_SERVER["HTTP_HOST"] == "localhost"){
     define("DIR_BASE", $_SERVER["DOCUMENT_ROOT"]."/");
     define("DIR", DIR_BASE."medici/");
