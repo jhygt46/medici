@@ -27,7 +27,7 @@ $sucursal = [];
 ?>
 <script>
     $(function(){
-        $("#fecha").datepicker({
+        $("#fecha").datetimepicker({
             onSelect: function(dateText){
                 //navlink('pages/mis_excepciones.php?fecha='+dateText);
             },
