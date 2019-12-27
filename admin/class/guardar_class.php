@@ -123,16 +123,14 @@ class Guardar{
         $dbfecha1 = strtotime($fecha) + intval($dbhora[0]) * 60 + intval($dbhora[1]);
         $dbfecha2 = $dbfecha1 + $tiempo_min;
 
-        $fecha_1 = date("Y-m-d H:i:s", $dbfech1);
-        $fecha_2 = date("Y-m-d H:i:s", $dbfech2);
 
         $sqligir = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, rut, nombre, correo, telefono, mensaje, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $sqligir->bind_param("ssiisssssiii", $fecha_1, $fecha_2, $tiempo_min, $precio, $rut, $nombre, $correo, $telefono, $mensaje, $id_ser, $this->id_usr, $id_suc);
+        $sqligir->bind_param("ssiisssssiii", date("Y-m-d H:i:s", $dbfech1), date("Y-m-d H:i:s", $dbfech2), $tiempo_min, $precio, $rut, $nombre, $correo, $telefono, $mensaje, $id_ser, $this->id_usr, $id_suc);
         if($sqligir->execute()){
             $info['op'] = 1;
             $info['mensaje'] = "Hora ingresada exitosamente";
             $info['reload'] = 1;
-            $info['page'] = "mis_horas.php?fecha=".$dbfecha1;
+            $info['page'] = "mis_horas.php?fecha=".$dbfecha1."//".date("Y-m-d H:i:s", $dbfech1);
         }else{
             $info['op'] = 2;
             $info['mensaje'] = "Error: B1";
