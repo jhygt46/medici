@@ -31,7 +31,7 @@ $sucursal = [];
             onSelect: function(dateText){
                 //navlink('pages/mis_excepciones.php?fecha='+dateText);
             },
-            dateFormat: 'yy-mm-dd h:i:s'
+            dateFormat: 'yy-mm-dd'
         });
     });
 </script>
