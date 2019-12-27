@@ -27,12 +27,11 @@ $sucursal = [];
 ?>
 <script>
     $(function(){
-        $("#fecha").datetimepicker({
+        $("#fecha").datepicker({
             onSelect: function(dateText){
                 //navlink('pages/mis_excepciones.php?fecha='+dateText);
             },
-            dateFormat: 'yy-mm-dd',
-            timeFormat:  'hh:mm:ss'
+            dateFormat: 'YYYY-MM-DD HH:mm:ss'
         });
     });
 </script>
