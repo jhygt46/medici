@@ -53,7 +53,7 @@ $sucursal = $core->get_sucursales();
                     </ul>
                 </div>
                 <fieldset class="<?php echo $class; ?>">
-                    <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
+                    <input id="accion" type="hidden" value="guardar_hora_admin" />
                     <label class="clearfix">
                         <span><p>Servicio:</p></span>
                         <select id="id_ser">
@@ -94,6 +94,10 @@ $sucursal = $core->get_sucursales();
                     <label class="clearfix">
                         <span><p>Telefono:</p></span>
                         <input id="telefono" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>HTML 2:</p></span>
+                        <TEXTAREA id="mensaje"></TEXTAREA>
                     </label>
                     <label>
                         <div class="enviar"><a onclick="form(this)">Enviar</a></div>

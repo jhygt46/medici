@@ -88,7 +88,54 @@ class Guardar{
             if($_POST['accion'] == "subir_imagen"){
                 return $this->subir_imagen();
             }
+            if($_POST['accion'] == "guardar_hora_admin"){
+                return $this->guardar_hora_admin();
+            }
+            
         }
+
+    }
+    private function guardar_hora_admin(){
+
+        $id_ser = $_POST["id_ser"];
+        $id_suc = $_POST["id_suc"];
+        $fecha = $_POST["fecha"];
+        $hora = $_POST["hora"];
+
+        $rut = $_POST["rut"];
+        $nombre = $_POST["nombre"];
+        $correo = $_POST["correo"];
+        $telefono = $_POST["telefono"];
+        $mensaje = $_POST["mensaje"];
+
+        $sqlu = $this->con->prepare("SELECT tiempo_min, precio FROM servicio_usuarios WHERE id_ser=? AND id_usr=?");
+        $sqlu->bind_param("ii", $id_ser, $this->id_usr);
+        $sqlu->execute();
+        $res = $sqlu->get_result()->fetch_all(MYSQLI_ASSOC)[0];
+
+        $tiempo_min = $res['tiempo_min'];
+        $precio = $res['precio'];
+
+        $dbhora = explode(":", $hora);
+
+        $dbfecha1 = strtotime($fecha) + $dbhora[0] * 60 + $dbhora[1];
+        $dbfecha2 = $dbfecha1 + $tiempo_min;
+
+        $fecha_1 = date("Y-m-d H:i:s", $dbfech1);
+        $fecha_2 = date("Y-m-d H:i:s", $dbfech2);
+
+        $sqligir = $this->con->prepare("INSERT INTO horas (fecha, fecha_f, tiempo_min, precio, rut, nombre, correo, telefono, mensaje, id_ser, id_usr, id_suc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sqligir->bind_param("ssiisssssiii", $fecha_1, $fecha_2, $tiempo_min, $precio, $rut, $nombre, $correo, $telefono, $mensaje, $id_ser, $this->id_usr, $id_suc);
+        if($sqligir->execute()){
+            $info['op'] = 1;
+            $info['mensaje'] = "Hora ingresada exitosamente";
+            $info['reload'] = 1;
+            $info['page'] = "mis_horas.php";
+        }else{
+            $info['op'] = 2;
+            $info['mensaje'] = "Error: B1";
+        }
+        $sqligir->close();
 
     }
     private function subir_imagen(){
