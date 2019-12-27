@@ -118,9 +118,9 @@ class Guardar{
 
         $dbhora = explode(":", $hora);
 
-        $dbfecha1 = strtotime($fecha) + $dbhora[0] * 60 + $dbhora[1];
+        $dbfecha1 = strtotime($fecha) + intval($dbhora[0]) * 60 + intval($dbhora[1]);
         $dbfecha2 = $dbfecha1 + $tiempo_min;
-
+        
         $fecha_1 = date("Y-m-d H:i:s", $dbfech1);
         $fecha_2 = date("Y-m-d H:i:s", $dbfech2);
 
@@ -136,6 +136,7 @@ class Guardar{
             $info['mensaje'] = "Error: B1";
         }
         $sqligir->close();
+        return $info;
 
     }
     private function subir_imagen(){

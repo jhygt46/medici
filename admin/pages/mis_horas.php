@@ -96,7 +96,7 @@ $sucursal = $core->get_sucursales();
                         <input id="telefono" class="inputs" type="text" value="" require="" placeholder="" />
                     </label>
                     <label class="clearfix">
-                        <span><p>HTML 2:</p></span>
+                        <span><p>Mensajes:</p></span>
                         <TEXTAREA id="mensaje"></TEXTAREA>
                     </label>
                     <label>
