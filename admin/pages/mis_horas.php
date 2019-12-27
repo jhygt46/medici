@@ -23,6 +23,8 @@ $list = $core->get_fechas_horas();
 $servicios = $core->get_servicios();
 $sucursal = $core->get_sucursales();
 
+echo $_GET["fecha"]."<br/>";
+
 ?>
 <script>
     $(function(){
