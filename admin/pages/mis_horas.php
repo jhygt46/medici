@@ -19,7 +19,10 @@ $page_mod = "pages/ver_horas.php";
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_fechas_horas();
-$servicios = $core->get_servicos_user();
+//$servicios = $core->get_servicos_user();
+
+$servicios = [];
+$sucursal = [];
 
 ?>
 <script>
