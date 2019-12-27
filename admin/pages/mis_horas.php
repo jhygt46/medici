@@ -19,8 +19,19 @@ $page_mod = "pages/ver_horas.php";
 
 $class = ($_POST['w'] < 600) ? 'resp' : 'normal' ;
 $list = $core->get_fechas_horas();
+$servicios = $core->get_servicos_user();
 
 ?>
+<script>
+    $(function(){
+        $("#datepicker").datepicker({
+            onSelect: function(dateText){
+                //navlink('pages/mis_excepciones.php?fecha='+dateText);
+            },
+            dateFormat: 'yy-mm-dd h:i:s'
+        });
+    });
+</script>
 <div class="pagina">
     <div class="title">
         <h1><?php echo $titulo; ?></h1>
@@ -29,6 +40,62 @@ $list = $core->get_fechas_horas();
         </ul>
     </div>
     <hr>
+    <div class="cont_pagina">
+        <div class="cont_pag">
+            <form action="" method="post">
+                <div class="form_titulo clearfix">
+                    <div class="titulo"><?php echo $sub_titulo; ?></div>
+                    <ul class="opts clearfix">
+                        <li class="opt">1</li>
+                        <li class="opt">2</li>
+                    </ul>
+                </div>
+                <fieldset class="<?php echo $class; ?>">
+                    <input id="accion" type="hidden" value="<?php echo $accion; ?>" />
+                    <label class="clearfix">
+                        <span><p>Servicio:</p></span>
+                        <select id="id_ser">
+                            <option value="0">Seleccionar</option> 
+                            <?php for($i=0; $i<count($servicios); $i++){ ?>
+                            <option value="<?php echo $servicios[$i]["id_ser"]; ?>"><?php echo $servicios[$i]["nombre"]; ?></option>
+                            <?php } ?>
+                        </select>
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Sucursal:</p></span>
+                        <select id="id_suc">
+                            <?php for($i=0; $i<count($sucursal); $i++){ ?>
+                            <option value="<?php echo $sucursal[$i]["id_suc"]; ?>"><?php echo $sucursal[$i]["nombre"]; ?></option>
+                            <?php } ?>
+                        </select>
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Fecha:</p></span>
+                        <input id="fecha" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Rut:</p></span>
+                        <input id="rut" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Nombre:</p></span>
+                        <input id="nombre" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Correo:</p></span>
+                        <input id="correo" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label class="clearfix">
+                        <span><p>Telefono:</p></span>
+                        <input id="telefono" class="inputs" type="text" value="" require="" placeholder="" />
+                    </label>
+                    <label>
+                        <div class="enviar"><a onclick="form(this)">Enviar</a></div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
     <div class="cont_pagina">
         <div class="cont_pag">
             <div class="list_titulo clearfix">
