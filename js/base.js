@@ -1642,7 +1642,7 @@ function enviar_contacto(){
                                 type: "POST",
                                 data: send,
                                 success: function(data){
-                                    
+                                    console.log(data);
                                     if(data.op == 1){
                                         document.getElementById("co_nombre").value = "";
                                         document.getElementById("co_correo").value = "";
