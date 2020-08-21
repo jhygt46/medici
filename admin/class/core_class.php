@@ -574,12 +574,16 @@ class Core{
                 $send['mensaje'] = $_POST["mensaje"];
                 
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, 'https://35.239.1.3/mail_contacto_medici');
+                curl_setopt($ch, CURLOPT_URL, 'http://35.239.1.3/mail_contacto_medici');
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($send));
                 $resp = json_decode(curl_exec($ch));
                 curl_close($ch);
+
+                $info['url'] = 'http://35.239.1.3/mail_contacto_medici';
+                $info['vars'] = $send;
                 $info['resp'] = $resp;
+
                 if($resp->{'op'} == 1){
                     $info['op'] = 1;
                 }else{
