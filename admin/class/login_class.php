@@ -217,7 +217,24 @@ class Login {
                         $ses['info']['id_usr'] = $id_usr;
                         $ses['info']['nombre'] = $result['nombre'];
                         $ses['info']['tipo'] = $result['tipo'];
+
                         $_SESSION['user'] = $ses;
+                        
+                        /*
+                        $cookie_code = $this->getrandstring(15);
+                        $sqluu = $this->con->prepare("UPDATE usuarios SET cookie_code=? WHERE id_usr=? AND eliminado=?");
+                        $sqluu->bind_param("sii", $cookie_code, $id_usr, $this->eliminado);
+                        if($sqluu->execute()){
+
+                            $tiempo = time() + 365*24*60*60;
+                            setcookie('user_id', $id_usr, $tiempo, '/', '', true, true);
+                            setcookie('user_code', $cookie_code, $tiempo, '/', '', true, true);
+
+                        }else{
+                            $info['op'] = 2;
+                            $info['message'] = "Error: 2";
+                        }
+                        */                               
 
                     }else{
 

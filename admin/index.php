@@ -14,10 +14,6 @@ if(isset($_GET["accion"]) && $_GET["accion"] == "logout"){
     exit;
 }
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
 if(!isset($_SESSION['user']['info']['id_usr'])){
     include("ingreso_login.php");
 }else{
